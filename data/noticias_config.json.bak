@@ -1,0 +1,47 @@
+[
+    {
+        "cat": "noticia",
+        "badge": "Noticia",
+        "titulo": "¡Soldados del 26.º Regimiento! ",
+        "desc": "Marchamos donde caminan los muertos y rugen los forajidos.",
+        "fecha": "25 Mayo 2026",
+        "img": "imgs/noticias/hjk9inwwiae6btf.jpg",
+        "url": "https://x.com/HuntShowdown/status/2058915941144994180"
+    },
+    {
+        "badge": "Juego",
+        "cat": "juego",
+        "desc": "¡La actualización 1.6.3 ya está disponible en los servidores, así que asegúrate de actualizar el juego!",
+        "fecha": "23 Abril 2026",
+        "img": "imgs/noticias/hotfix-1-6-1-restored-land-edition-1-6-v0-cjhimz1y5rsg1.webp",
+        "titulo": "Hotfix 1.6.3 - Restored Land Edition (1.6)",
+        "url": ""
+    },
+    {
+        "badge": "Noticia",
+        "cat": "noticia",
+        "desc": "Nuevos elementos introducidos en la próxima gran actualización de Black One Blood Brothers.",
+        "fecha": "22 Mayo 2026",
+        "img": "imgs/noticias/hi9gqudx0aahj54.jpg",
+        "titulo": "Buceo profundo - Característica subacuática",
+        "url": ""
+    },
+    {
+        "badge": "Juego",
+        "cat": "juego",
+        "desc": "Lleva contigo al mejor amigo del cazador a donde quiera que vayas. ¡Consigue el tuyo ahora!",
+        "fecha": "17 Mayo 2026",
+        "img": "imgs/noticias/hih8afdxiaankpo.jpg",
+        "titulo": "Los escarabajos vaqueros están listos para invadir tu armario. 🤠🪲",
+        "url": ""
+    },
+    {
+        "badge": "Stream",
+        "cat": "stream",
+        "desc": "Contra todo pronóstico, el sentido común y varias decisiones de diseño probablemente evitables…",
+        "fecha": "13 Mayo 2026",
+        "img": "imgs/noticias/598ba25e9fafbd8646fe0bb061d6d091892714a0.jpg",
+        "titulo": "¡Mr Toilet ya está disponible en acceso anticipado!",
+        "url": ""
+    }
+]

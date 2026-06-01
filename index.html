@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>AmbiTV | Web v2.0 | BETA</title>
+
+    <!-- FONTS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <!-- ICONS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <!-- CSS GLOBAL -->
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- CSS POR SECCIÓN -->
+    <link rel="stylesheet" href="css/nav.css">
+    <link rel="stylesheet" href="css/player.css">
+    <link rel="stylesheet" href="css/hero.css">
+    <link rel="stylesheet" href="css/agenda.css">
+    <link rel="stylesheet" href="css/twitch.css">
+    <link rel="stylesheet" href="css/noticias.css">
+    <link rel="stylesheet" href="css/spotify.css">
+    <link rel="stylesheet" href="css/creatorphunt.css">
+
+</head>
+
+<body>
+
+        
+    <!-- MOBILE BLOCK -->
+    <div class="mobile-block">
+        <img src="imgs/loading/ambitv_loading.webp" alt="AmbiTV">
+        <p>Esta web está optimizada para tablet, notebook o PC.</p>
+        <span>Por favor visitá desde un dispositivo más grande para disfrutar la experiencia completa.</span>
+    </div>
+
+    <!-- ══════════════════════════════════════════════
+    LOADER — INTRO ANIMADO
+    ══════════════════════════════════════════════ -->
+
+    <!-- LOADER -->
+    <link rel="stylesheet" href="css/loading.css">
+    <div id="ambi-loader">
+        <img id="loader-ghost" src="imgs/loading/ghost_loading.webp" alt="">
+        <img id="loader-text"  src="imgs/loading/ambitv_loading.webp" alt="">
+    </div>
+
+    <!-- ══════════════════════════════════════════════
+    NAV — MENÚ FLOTANTE FIJO
+    ══════════════════════════════════════════════ -->
+
+    <nav class="nav" id="nav">
+        
+        
+       
+        
+        <div class="nav-left">
+            
+         <div class="nav-sep"></div> <!-- SEPARADOR -->
+            
+            <a class="nav-home" href="#hero">
+                <i class="fas fa-home"></i>
+            </a>
+            
+
+            <ul class="nav-links">
+                <li><a href="#agenda">Agenda</a></li>
+                <li><a href="#noticias">Noticias</a></li>
+                <li><a href="#twitch">Twitch</a></li>
+                <li><a href="#creatorphunt">Hunt</a></li>
+                <li><a href="https://www.clavecd.es/giveaway/4mbitv/sorteazo/XeBJI-148014048/" target="_blank" class="nav-sorteo">Sorteo</a></li>
+            </ul>
+            
+        </div>
+        
+            <ul class="nav-social">
+                <li><a href="https://www.twitch.tv/4mbitv" target="_blank" class="social-twitch"><i class="fab fa-twitch"></i></a></li>
+                <li><a href="https://www.youtube.com/@ambitvok" target="_blank" class="social-youtube"><i class="fab fa-youtube"></i></a></li>
+                <li><a href="https://www.instagram.com/4mbitv/" target="_blank" class="social-instagram"><i class="fab fa-instagram"></i></a></li>
+                <li><a href="https://discord.com/invite/CSQDumV" target="_blank" class="social-discord"><i class="fab fa-discord"></i></a></li>
+                <li><a href="https://x.com/4mbiTV" target="_blank" class="social-x"><i class="fab fa-x-twitter"></i></a></li>
+                <li><a href="https://open.spotify.com/intl-es/artist/64VR4resIiyFchXF9FCLGd?si=XwD_1BIhSKyxrguS7zMNEA" target="_blank" class="social-spotify"><i class="fab fa-spotify"></i></a></li>
+            </ul>
+
+    </nav>
+
+
+    <!-- ══════════════════════════════════════════════
+    SECTION — HERO
+    ══════════════════════════════════════════════ -->
+
+    <section class="hero" id="hero">
+
+        <!-- CAPA 1: BG -->
+        <div class="section-bg">
+            <div class="hero-bg" id="hero-bg"></div>
+            <div class="hero-fx-grain"><canvas></canvas></div>
+            <div class="hero-fx-scan"></div>
+            <div class="hero-fx-vignette"></div>
+        </div>
+
+        <!-- CAPA 2: CONTENIDO -->
+        <div class="section-content">
+            <div class="hero-logo">
+                <img id="hero-logo" src="" alt="">
+            </div>
+        </div>
+
+        <!-- CAPA 3: BLEEDS -->
+        <div class="section-bleeds">
+            <div class="hero-ovimg">
+                <img id="hero-ovimg" src="" alt="">
+            </div>
+        </div>
+
+    </section>
+    
+    <div id="sections-below">
+
+    <!-- ══════════════════════════════════════════════
+    SECTION — AGENDA
+    ══════════════════════════════════════════════ -->
+
+    <section class="agenda" id="agenda">
+
+        <!-- CAPA 1: BG -->
+        <div class="section-bg"></div>
+
+        <!-- CAPA 2: CONTENIDO -->
+        <div class="section-content">
+            <div class="agenda-inner">
+
+                <div class="agenda-left">
+                    <span class="agenda-kicker">AGENDA</span>
+                    <h2 class="agenda-title" id="agenda-title"></h2>
+                    <div class="agenda-thumb">
+                        <img id="agenda-thumb" src="" alt="Imagen del juego">
+                    </div>
+                </div>
+
+                <div class="agenda-info">
+                    <span class="agenda-badge" id="agenda-badge"></span>
+                    <p class="agenda-fecha" id="agenda-fecha"></p>
+                    <p class="agenda-desc" id="agenda-desc"></p>
+                    <a class="agenda-btn" href="#" id="agenda-btn">VER AGENDA</a>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- CAPA 3: BLEEDS -->
+        <!-- CAPA 3: BLEEDS -->
+        <div class="section-bleeds">
+            <img class="bleed-agenda-papel" src="imgs/index/agenda/papel.webp" alt="">
+            <img class="bleed-agenda-top" src="imgs/index/agenda/agenda_over-img.webp" alt="">
+        </div>
+
+    </section>
+
+
+    <!-- ══════════════════════════════════════════════
+    SECTION — NOTICIAS
+    ══════════════════════════════════════════════ -->
+
+    <section class="noticias" id="noticias">
+
+        <!-- CAPA 1: BG -->
+        <div class="section-bg"></div>
+
+        <!-- CAPA 2: CONTENIDO -->
+        <div class="section-content">
+            <div class="noticias-inner">
+                <div class="noticias-grid">
+
+                    <!-- ── COLUMNA IZQUIERDA: lista chica ── -->
+                    <div>
+                        <div class="noticias-col-header">Otras novedades</div>
+                        <div class="noticias-list" id="noticias-list"></div>
+                    </div>
+
+                    <!-- ── COLUMNA DERECHA: featured ── -->
+                    <div>
+                        <div class="noticias-col-header">Noticia destacada</div>
+                        <div class="noticias-featured">
+
+                            <div class="noticias-featured-imgwrap">
+                                <img id="noticias-featured-img" src="" alt="">
+                                <div class="noticias-featured-body">
+                                    <div class="noticias-featured-meta">
+                                        <span class="noticias-badge" id="noticias-featured-badge"></span>
+                                        <span class="noticias-featured-fecha" id="noticias-featured-fecha"></span>
+                                    </div>
+                                    <div class="noticias-featured-title" id="noticias-featured-title"></div>
+                                    <div class="noticias-featured-desc" id="noticias-featured-desc"></div>
+                                    <div class="noticias-dots" id="noticias-dots"></div>
+                                </div>
+                                <button class="noticias-arrow prev" id="noticias-prev">&#8249;</button>
+                                <button class="noticias-arrow next" id="noticias-next">&#8250;</button>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <!-- CAPA 3: BLEEDS -->
+        <div class="section-bleeds"></div>
+
+    </section>
+
+
+    <!-- ══════════════════════════════════════════════
+    SECTION — TWITCH
+    ══════════════════════════════════════════════ -->
+
+    <section class="twitch" id="twitch">
+
+        <!-- CAPA 1: BG -->
+        <div class="section-bg"></div>
+
+        <!-- CAPA 2: CONTENIDO -->
+        <div class="section-content">
+
+            <!-- BLOQUE SUPERIOR — pintado por twitch-top.js -->
+            <div class="twitch-top">
+                <div class="twitch-top-header"></div>
+                <div class="twitch-top-cards"></div>
+                <div class="twitch-top-crew"></div>
+            </div>
+
+            <!-- BLOQUE INFERIOR — player + panel -->
+            <div class="twitch-inner">
+
+                <!-- PLAYER — columna izquierda -->
+                <div class="twitch-player">
+
+                    <div class="twitch-player-embed">
+                      <!-- inyectado por twitch-vod.js -->
+                    </div>
+
+                    <div class="twitch-player-bar">
+                        <span class="twitch-stream-title">// ESTATE ATENTO A LA AGENDA PARA EL PRÓXIMO STREAM</span>
+                        <span class="twitch-player-logo">
+                            <i class="fab fa-twitch"></i> Twitch
+                        </span>
+                    </div>
+
+                </div>
+
+                <!-- PANEL INFO — columna derecha -->
+                <div class="twitch-panel">
+
+                    <div class="twitch-vod-embed"></div>
+
+                    <span class="twitch-kicker">ÚLTIMO STREAM</span>
+                    <span class="twitch-channel-name">4MBITV</span>
+
+                    <div class="twitch-status">
+                        <span class="twitch-status-dot offline"></span>
+                        <span class="twitch-status-label offline">OFFLINE</span>
+                    </div>
+
+                    <p class="twitch-desc">Seguí el stream en vivo. Gameplays y contenido exclusivo.</p>
+
+                    <a class="twitch-btn" href="https://twitch.tv/4mbitv" target="_blank">
+                        VER EN TWITCH
+                    </a>
+
+                </div>
+
+            </div>
+        </div>
+
+        <!-- CAPA 3: BLEEDS -->
+        <div class="section-bleeds">
+            <img class="bleed-twitch-left" src="imgs/index/overflow/ambi_twitch.webp" alt="">
+        </div>
+
+    </section>
+
+
+    <!-- ══════════════════════════════════════════════
+    SECTION — SPOTIFY
+    ══════════════════════════════════════════════ -->
+
+    <section class="spotify" id="spotify">
+
+        <!-- CAPA 1: BG -->
+        <div class="section-bg"></div>
+
+        <!-- CAPA 2: CONTENIDO -->
+        <div class="section-content">
+            <div class="spotify-inner">
+                <div class="spotify-left">
+                    <i class="fab fa-spotify"></i>
+                    <span>No te olvides de escuchar mis temas en Spotify</span>
+                </div>
+                <a class="spotify-btn" href="https://open.spotify.com/intl-es/artist/64VR4resIiyFchXF9FCLGd?si=nzkdIBTnSWOOcw-oJPtPSw" target="_blank">
+                    ESCUCHAR EN SPOTIFY
+                </a>
+            </div>
+        </div>
+
+        <!-- CAPA 3: BLEEDS -->
+        <div class="section-bleeds"></div>
+
+    </section>
+
+
+    <!-- ══════════════════════════════════════════════
+    SECTION — CREATORPHUNT
+    ══════════════════════════════════════════════ -->
+
+    <section class="creatorphunt" id="creatorphunt">
+
+        <!-- CAPA 1: BG -->
+        <div class="section-bg"> </div>
+
+        <!-- CAPA 2: CONTENIDO -->
+        <div class="section-content">
+            <div class="creatorphunt-inner">
+                <div class="creatorphunt-grid">
+
+                    <!-- ── COLUMNA IZQUIERDA ── -->
+                    <div class="creatorphunt-col-left">
+
+                        <div class="creatorphunt-header">
+                            <span class="creatorphunt-kicker">PROGRAMA DE CREADORES</span>
+                            <h2 class="creatorphunt-titulo" id="creatorphunt-titulo"></h2>
+                            <p class="creatorphunt-subtitulo" id="creatorphunt-subtitulo"></p>
+
+                            <div class="creatorphunt-badge-wrap hidden" id="creatorphunt-badge-wrap">
+                                <span class="creatorphunt-badge-novedad" id="creatorphunt-badge-novedad">NOVEDAD</span>
+                                <span class="creatorphunt-badge-ver hidden" id="creatorphunt-badge-ver">▶ VER VIDEO</span>
+                            </div>
+
+                            <div class="creatorphunt-video-wrap hidden" id="creatorphunt-video-wrap">
+                                <iframe id="creatorphunt-iframe" src="" allowfullscreen allow="autoplay"></iframe>
+                                <div class="creatorphunt-video-close hidden" id="creatorphunt-video-close">✕</div>
+                            </div>
+                        </div>
+
+                        <div class="creatorphunt-rotacion-wrap">
+                            <div class="creatorphunt-rotacion-label">DLC EN ROTACIÓN</div>
+                            <div class="creatorphunt-rotacion">
+                                <div class="creatorphunt-rotacion-body">
+                                    <span class="creatorphunt-rotacion-fecha" id="creatorphunt-rotacion-fecha"></span>
+                                    <div class="creatorphunt-rotacion-titulo" id="creatorphunt-rotacion-titulo"></div>
+                                    <div class="creatorphunt-rotacion-desc" id="creatorphunt-rotacion-desc"></div>
+                                </div>
+                                <div class="creatorphunt-rotacion-imgvert">
+                                    <img id="creatorphunt-rotacion-img" src="" alt="DLC en rotación">
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- ── COLUMNA DERECHA ── -->
+                    <div class="creatorphunt-col-right">
+                        <div class="creatorphunt-dlcs-label">ÚLTIMOS DLC</div>
+                        <div class="creatorphunt-dlcs" id="creatorphunt-dlcs"></div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <!-- CAPA 3: BLEEDS -->
+        <div class="section-bleeds">
+            <img class="bleed-creatorPhunt-left"   src="imgs/index/creatorPhunt/bleed-creatorPhunt-left.webp" alt="">
+            <img class="bleed-creatorPhunt-right"  src="imgs/index/creatorPhunt/bleed-creatorPhunt-right.webp" alt="">
+            <img class="bleed-creatorPhunt-top"    src="imgs/index/creatorPhunt/bleed-creatorPhunt-top.webp" alt="">
+            <img class="bleed-creatorPhunt-bottom" src="imgs/index/creatorPhunt/bleed-creatorPhunt-bottom.webp" alt="">
+            <img class="bleed-creatorPhunt-middle" src="imgs/index/creatorPhunt/bleed-creatorPhunt-middle.webp" alt="">
+            <img class="bleed-creatorPhunt-hunter" src="imgs/index/creatorPhunt/cazador.webp" alt="Cazador Hunt Showdown">
+        </div>
+
+    </section>
+    
+    </div>
+    
+    
+    <!-- ══════════════════════════════════════════════
+    LIGHTBOX — AGENDA SCHEDULE
+    ══════════════════════════════════════════════ -->
+    <div id="lightbox-agenda" class="lightbox-agenda">
+        <button class="lightbox-agenda-close">×</button>
+        <button class="lightbox-video-pause" id="lb-pause-music">
+            <i class="fas fa-music"></i>
+            <span class="nav-player-bars" id="lb-pause-bars">
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+            </span>
+            <span class="lb-pause-label">PAUSAR MÚSICA</span>
+        </button>
+        <div class="lightbox-agenda-inner">
+            <div class="lightbox-agenda-list" id="lightbox-agenda-list"></div>
+        </div>
+    </div>
+    
+    <!-- ══════════════════════════════════════════════
+    LIGHTBOX — VIDEO TRAILER
+    ══════════════════════════════════════════════ -->
+    <div id="lightbox-video" class="lightbox-video">
+        <button class="lightbox-video-close">×</button>
+        <div class="lightbox-video-wrapper" id="lightbox-video-wrapper"></div>
+    </div>
+
+    <!-- ══════════════════════════════════════════════
+    JS POR SECCIÓN
+
+    ══════════════════════════════════════════════ -->
+    
+    <script src="js/loading.js"></script>
+    <script src="js/live-reload.js"></script>
+    <script src="js/menu.js"></script>
+    <script src="js/player.js"></script>
+    <script src="js/hero.js"></script>
+    <script src="js/agenda.js"></script>
+    <script src="js/twitch-top.js"></script>
+    <script src="js/twitch-vod.js"></script>
+    <script src="js/noticias.js"></script>
+    <script src="js/creatorphunt.js"></script>
+    <script src="js/lb-agenda.js"></script>
+
+</body>
+</html>

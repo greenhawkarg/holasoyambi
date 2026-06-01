@@ -1,0 +1,533 @@
+/* ══════════════════════════════════════════════════════════════════
+   AMBI — AGENDA.CSS
+══════════════════════════════════════════════════════════════════ */
+
+
+/* ──────────────────────────────────────────
+   AGENDA — SECCIÓN
+────────────────────────────────────────── */
+
+.agenda {
+    min-height: 400px;
+    /*box-shadow:
+        inset 0 5px 0 var(--c-red),
+        inset 0 -5px 0 var(--c-red);*/
+}
+
+/* ──────────────────────────────────────────
+   AGENDA — CAPA 1: FONDO
+   Vive dentro de .section-bg
+────────────────────────────────────────── */
+
+.agenda .section-bg {
+    /*background-color: var(--c-black);*/
+    background-image: url('../imgs/index/agenda/agenda-bg.webp');
+    background-repeat: no-repeat;
+    background-position: top center;
+    background-size: cover;
+}
+
+
+/* ──────────────────────────────────────────
+   AGENDA — INNER
+   Centrado a 1200px, dos columnas
+────────────────────────────────────────── */
+
+/* BLOQUE DE TEXTO, FECHA, HORA Y BTNS */
+.agenda-inner {
+    padding: 40px 0; /* solo arriba y abajo, nada en los costados */
+    min-height: 400px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 110px;
+}
+
+/* ──────────────────────────────────────────
+   AGENDA — LEFT
+   Columna izquierda: kicker, título y thumb
+────────────────────────────────────────── */
+
+.agenda-left {
+    display: flex;
+    flex-direction: column;
+    width: 400px;    /* mismo que el thumb, fijo */
+    flex-shrink: 0;  /* que no se achique */
+}
+
+.agenda-kicker {
+    margin-bottom: 5px; /* espacio entre AGENDA y el título */
+}
+
+.agenda-thumb {
+    margin-top: 24px; /* espacio entre título y thumb, ajustá este */
+}
+
+/* ──────────────────────────────────────────
+   AGENDA — THUMB
+   Imagen del juego 460×215px
+────────────────────────────────────────── */
+
+.agenda-thumb {
+    flex-shrink: 0;
+    width: 400px;
+}
+
+.agenda-thumb img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+
+/* ──────────────────────────────────────────
+   AGENDA — INFO
+   Texto sobre el papel blanco
+────────────────────────────────────────── */
+
+.agenda-info {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    max-width: 340px; /* ajustá según cuánto espacio querés */
+}
+
+.agenda-kicker {
+    font-family: var(--font-main);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    /*color: rgba(255,255,255,0.5);*/
+    color: var(--c-yellow);
+    text-transform: uppercase;
+}
+
+.agenda-title {
+    font-family: var(--font-main);
+    font-size: 30px;
+    font-weight: 700;
+    color: var(--c-white);
+    line-height: 1.1;
+    text-transform: uppercase;
+}
+
+.agenda-desc {
+    font-family: var(--font-main);
+    font-size: 14px;
+    font-weight: 400;
+    color: var(--c-black);
+    line-height: 1.6;
+}
+
+.agenda-badge {
+    display: inline-block;
+    font-family: var(--font-main);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--c-white);
+    background-color: #293946;
+    padding: 4px 12px;
+    align-self: flex-start;
+}
+
+.agenda-fecha {
+    font-family: var(--font-main);
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    color: var(--c-black);
+    text-transform: uppercase;
+}
+
+.agenda-btn {
+    display: inline-block;
+    font-family: var(--font-main);
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: var(--c-white);
+    background-color: var(--c-black);
+    padding: 12px 28px;
+    align-self: flex-start;
+    transition: background-color 0.2s ease;
+}
+
+.agenda-btn:hover {
+    background-color: #293946;
+    color: var(--c-white);
+}
+
+
+
+/* ──────────────────────────────────────────
+   AGENDA — CAPA 3: BLEEDS
+   .bleed-agenda-top vive dentro de .section-bleeds
+   Posicionado con CSS puro, sin JS
+────────────────────────────────────────── */
+
+.bleed-agenda-papel {
+    position: absolute;
+    height: 100%;
+    width: auto;
+    top: 0;
+    left: calc(50% - 160px); /* anclado al borde del container */
+    z-index: var(--z-bleeds-under);
+}
+
+.bleed-agenda-top {
+    position: absolute;
+    pointer-events: none;
+    width: 700px;
+    height: auto;
+    bottom: 0;
+    right: calc(50% - 820px); /* mitad de 1320px */
+    z-index: var(--z-bleeds);
+}
+
+
+/* ══════════════════════════════════════════════════════════════════
+   AGENDA — LIGHTBOX SCHEDULE
+══════════════════════════════════════════════════════════════════ */
+
+.lightbox-agenda {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.96);
+    display: none;
+    align-items: flex-start;
+    justify-content: center;
+    z-index: 9000;
+    overflow-y: auto;
+    scrollbar-width: none; /* Firefox */
+}
+
+.lightbox-agenda::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Edge */
+}
+
+.lightbox-agenda.active {
+    display: flex;
+    animation: lbAgendaIn 0.35s ease forwards;
+}
+
+.lightbox-agenda-close {
+    position: fixed;
+    top: 24px;
+    right: 36px;
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 50px;
+    line-height: 1;
+    cursor: pointer;
+    z-index: 9001;
+    transition: color 0.2s;
+}
+
+.lightbox-agenda-close:hover {
+    color: var(--c-red);
+}
+
+.lightbox-agenda-inner {
+    animation: lbAgendaSlide 0.4s ease forwards;
+}
+
+@keyframes lbAgendaIn {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+@keyframes lbAgendaSlide {
+    from { opacity: 0; transform: translateY(28px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+.lightbox-agenda.closing {
+    animation: lbAgendaOut 0.35s ease forwards;
+}
+
+.lightbox-agenda.closing .lightbox-agenda-inner {
+    animation: lbAgendaSlideOut 0.35s ease forwards;
+}
+
+@keyframes lbAgendaOut {
+    from { opacity: 1; }
+    to   { opacity: 0; }
+}
+
+@keyframes lbAgendaSlideOut {
+    from { opacity: 1; transform: translateY(0); }
+    to   { opacity: 0; transform: translateY(40px); }
+}
+
+.lightbox-agenda-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}
+
+/* ──────────────────────────────────────────
+   TARJETAS — ESTRUCTURA 3 CAPAS
+────────────────────────────────────────── */
+
+.section-twitch-agenda {
+    position: relative;
+    overflow: hidden;
+    border-top: 5px solid #9146ff;
+}
+
+.section-twitch-agenda.bg-exclusivo {
+    border-top-color: #d72626;
+}
+
+/* CAPA 1: BG */
+.section-twitch-agenda .section-bg {
+    position: absolute;
+    inset: 0;
+    background-color: #0f0f0f;
+    background-size: cover;
+    background-position: center;
+    opacity: 0.8;
+    z-index: var(--z-bg, 0);
+}
+
+.section-twitch-agenda.bg-standard .section-bg {
+    background-image: url('../imgs/index/bgs/bg_twtich-agenda.jpg');
+}
+
+.section-twitch-agenda.bg-exclusivo .section-bg {
+    background-image: var(--bg-url, url('../imgs/index/bgs/bg_twtich-ex-agenda.jpg'));
+}
+
+/* CAPA 2: CONTENIDO */
+.section-twitch-agenda .section-content {
+    position: relative;
+    z-index: var(--z-content, 20);
+    padding: 30px;
+}
+
+/* CAPA 3: BLEEDS */
+.section-twitch-agenda .section-bleeds {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+}
+
+/* ──────────────────────────────────────────
+   TARJETAS — CONTENIDO INTERNO
+────────────────────────────────────────── */
+
+.twitch-banner {
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.twitch-thumb {
+    width: 300px;
+    aspect-ratio: 460 / 215;
+    flex-shrink: 0;
+    overflow: hidden;
+}
+
+.twitch-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border: 6px solid #000;
+}
+
+.twitch-divider {
+    width: 2px;
+    height: 70%;
+    margin: 0 20px;
+    background: rgba(255,255,255,0.15);
+    flex-shrink: 0;
+}
+
+.twitch-info {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.twitch-actions {
+    margin-left: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.twitch-date {
+    color: #9146ff;
+    font-weight: 700;
+    font-size: 15px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.bg-exclusivo .twitch-date {
+    color: #ff4d4d;
+}
+
+.twitch-game {
+    font-size: 25px;
+    font-weight: 900;
+    color: #fff;
+}
+
+.twitch-day {
+    color: #ccc;
+    font-size: 20px;
+}
+
+.twitch-type {
+    color: #888;
+    font-size: 18px;
+}
+
+.bg-exclusivo .twitch-type {
+    color: #E9DC24;
+}
+
+.twitch-btn {
+    padding: 10px 14px;
+    font-size: 12px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    text-decoration: none;
+    text-align: center;
+    cursor: pointer;
+    transition: transform 0.3s, filter 0.3s;
+}
+
+.twitch-btn.primary {
+    background: #9146ff;
+    color: #fff;
+}
+
+.bg-exclusivo .twitch-btn.primary {
+    background: #d72626;
+}
+
+.twitch-btn.channel {
+    border: 1px solid rgba(255,255,255,0.3);
+    color: #fff;
+    background: transparent;
+}
+
+.twitch-btn:hover {
+    transform: translateY(-3px);
+    filter: brightness(1.2);
+}
+
+/* ══════════════════════════════════════════════════════════════════
+   VIDEO — LIGHTBOX TRAILER
+══════════════════════════════════════════════════════════════════ */
+
+.lightbox-video {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.97);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 9500;
+}
+
+.lightbox-video.active {
+    display: flex;
+}
+
+.lightbox-video-close {
+    position: fixed;
+    top: 24px;
+    right: 36px;
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 50px;
+    line-height: 1;
+    cursor: pointer;
+    z-index: 9501;
+    transition: color 0.2s;
+}
+
+.lightbox-video-close:hover {
+    color: var(--c-red);
+}
+
+.lightbox-video-wrapper {
+    width: 85%;
+    max-width: 1100px;
+    aspect-ratio: 16 / 9;
+}
+
+.lightbox-video-wrapper iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+/* ── BOTÓN PAUSAR MÚSICA ── */
+.lightbox-video-pause {
+    position: fixed;
+    top: 32px;
+    left: 36px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(10, 10, 10, 0.85);
+    backdrop-filter: blur(8px);
+    border: none;
+    border-radius: 3px;
+    padding: 7px 12px;
+    cursor: pointer;
+    color: rgba(255, 255, 255, 0.70);
+    font-size: 13px;
+    z-index: 9501;
+    transition: color 0.2s, background 0.2s;
+}
+
+.lightbox-video-pause:hover {
+    color: #1ED760;
+    background: rgba(10, 10, 10, 0.97);
+}
+
+.lightbox-video-pause i {
+    color: #1ED760;
+    font-size: 12px;
+    animation: musicGlow 1.4s ease-in-out infinite;
+}
+
+.lightbox-video-pause.paused i {
+    animation: none;
+    color: rgba(255, 255, 255, 0.30);
+    filter: none;
+}
+
+.lb-pause-label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.lightbox-video-pause.paused .lb-pause-label {
+    color: rgba(255, 255, 255, 0.35);
+}
+
+/* Barras del botón — heredan animación del player */
+.lightbox-video-pause .nav-player-bars {
+    pointer-events: none;
+}
+
+.lightbox-video-pause.paused .nav-player-bars span {
+    background: rgba(255, 255, 255, 0.20);
+    animation: none;
+    height: 4px;
+}

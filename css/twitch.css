@@ -1,0 +1,508 @@
+/* ══════════════════════════════════════════════════════════════════
+   AMBI — TWITCH.CSS
+══════════════════════════════════════════════════════════════════ */
+
+
+/* ──────────────────────────────────────────
+   TWITCH — SECCIÓN
+────────────────────────────────────────── */
+
+.twitch {
+    min-height: 600px;
+}
+
+
+/* ──────────────────────────────────────────
+   TWITCH — CAPA 1: FONDO
+   Vive dentro de .section-bg
+────────────────────────────────────────── */
+
+.twitch .section-bg {
+    background-color: var(--c-white);
+    background-image: url('../imgs/index/bgs/section-twitch_bg.webp');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+
+/* ──────────────────────────────────────────
+   TWITCH — INNER
+   Centrado a 1200px, dos columnas
+────────────────────────────────────────── */
+
+.twitch-inner {
+    padding: 60px 0; /* solo vertical */
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 40px;
+}
+
+
+/* ──────────────────────────────────────────
+   TWITCH — PLAYER
+   Columna izquierda — embed de Twitch
+────────────────────────────────────────── */
+
+.twitch-player {
+    flex: 1 1 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}
+
+.twitch-player-embed {
+    position: relative;
+    width: 100%;
+    padding-top: 56.25%; /* 16:9 */
+    background-color: #000;
+    z-index: var(--z-bleeds-under);
+}
+
+.twitch-player-embed iframe {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+    display: block;
+}
+
+.twitch-player-bar {
+    background-color: var(--c-black);
+    padding: 10px 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.twitch-stream-title {
+    font-family: var(--font-main);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    color: var(--c-gray);
+    text-transform: uppercase;
+}
+
+.twitch-player-logo {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-family: var(--font-main);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: var(--c-white);
+    text-transform: uppercase;
+}
+
+.twitch-player-logo i {
+    color: var(--c-purple);
+    font-size: 14px;
+}
+
+
+/* ──────────────────────────────────────────
+   TWITCH — PANEL INFO
+   Columna derecha
+────────────────────────────────────────── */
+
+.twitch-panel {
+    flex: 0 0 320px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.twitch-kicker {
+    font-family: var(--font-main);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    color: var(--c-gray);
+    text-transform: uppercase;
+}
+
+.twitch-channel-name {
+    font-family: var(--font-main);
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--c-black);
+    text-transform: uppercase;
+    line-height: 1;
+}
+
+.twitch-status {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.twitch-status-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: var(--c-green);
+    flex-shrink: 0;
+}
+
+.twitch-status-dot.offline {
+    background-color: var(--c-red);
+}
+
+.twitch-status-label {
+    font-family: var(--font-main);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    color: var(--c-green);
+    text-transform: uppercase;
+}
+
+.twitch-status-label.offline {
+    color: var(--c-red);
+}
+
+.twitch-viewers {
+    font-family: var(--font-main);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    color: var(--c-gray);
+    text-transform: uppercase;
+}
+
+.twitch-desc {
+    font-family: var(--font-main);
+    font-size: 14px;
+    font-weight: 400;
+    color: var(--c-gray);
+    line-height: 1.5;
+}
+
+.twitch-btn {
+    display: inline-block;
+    font-family: var(--font-main);
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: var(--c-white);
+    background-color: var(--c-purple);
+    padding: 12px 28px;
+    align-self: flex-start;
+    transition: background-color 0.2s ease;
+}
+
+.twitch-btn:hover {
+    background-color: var(--c-black);
+}
+
+
+/* ──────────────────────────────────────────
+   TWITCH — VOD PREVIEW
+   Thumbnail del último stream con play
+────────────────────────────────────────── */
+
+.twitch-vod-embed {
+    position: relative;
+    width: 100%;
+    background-color: #000;
+}
+
+.twitch-vod-preview {
+    position: relative;
+    cursor: pointer;
+}
+
+.twitch-vod-thumb {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.twitch-vod-play {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.2s ease;
+}
+
+.twitch-vod-preview:hover .twitch-vod-play {
+    opacity: 0.8;
+}
+
+.twitch-vod-duration {
+    position: absolute;
+    bottom: 8px;
+    right: 8px;
+    font-family: var(--font-main);
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--c-white);
+    background-color: rgba(0,0,0,0.75);
+    padding: 2px 6px;
+    letter-spacing: 1px;
+}
+
+.twitch-vod-embed iframe {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    border: none;
+    display: block;
+}
+
+
+/* ──────────────────────────────────────────
+   TWITCH — CAPA 3: BLEEDS
+   .bleed-twitch-left vive dentro de .section-bleeds
+   Posicionado con CSS puro, sin JS
+────────────────────────────────────────── */
+
+.bleed-twitch-left {
+    position: absolute;
+    pointer-events: none;
+    width: 230px;
+    height: auto;
+    bottom: 0;
+    left: calc(50% - 690px); /* anclado al borde izquierdo del container 1200px */
+}
+
+.twitch .section-bleeds {
+    z-index: var(--z-content);
+}
+
+
+/* ══════════════════════════════════════════════════════════════════
+   TWITCH — BLOQUE SUPERIOR (kicker, título, cards, footer)
+══════════════════════════════════════════════════════════════════ */
+
+.twitch-top {
+    padding: 60px 0 0;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+/* ── Header ── */
+.twitch-top-header {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.twitch-top-kicker {
+    font-family: var(--font-main);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    color: var(--c-purple);
+    text-transform: uppercase;
+}
+
+.twitch-top-titulo {
+    font-family: var(--font-main);
+    font-size: 36px;
+    font-weight: 700;
+    color: var(--c-gray);
+    text-transform: uppercase;
+    line-height: 1.1;
+    margin: 0;
+}
+
+/* ── Cards ── */
+.twitch-top-cards {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+}
+
+.twitch-top-card {
+    position: relative;
+    aspect-ratio: 1080 / 1350;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.twitch-top-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.4s ease;
+}
+
+.twitch-top-card:hover img {
+    transform: scale(1.05);
+}
+
+/* Caption — oculto, aparece en hover */
+.twitch-top-card-caption {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, transparent 100%);
+    padding: 32px 16px 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    transform: translateY(100%);
+    transition: transform 0.35s ease;
+}
+
+.twitch-top-card:hover .twitch-top-card-caption {
+    transform: translateY(0);
+}
+
+.twitch-top-card-titulo {
+    font-family: var(--font-main);
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--c-white);
+}
+
+.twitch-top-card-desc {
+    font-family: var(--font-main);
+    font-size: 11px;
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.75);
+    line-height: 1.4;
+}
+
+/* ── Crew & Streamers ── */
+.twitch-top-crew {
+    background-color: var(--c-purple);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    border-radius: 4px;
+    padding: 32px 40px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+    
+    /*FONDO BG DE CREW & STREAMERS */
+    .twitch-top-crew::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background-image: inherit;
+        background-size: cover;
+        background-position: center;
+        opacity: ;
+        z-index: 0;
+        border-radius: 4px;
+    }
+
+.twitch-top-crew-header {
+    display: flex;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+    gap: 16px;
+}
+
+.twitch-top-crew-header i {
+    font-size: 32px;
+    color: #fff;
+    flex-shrink: 0;
+}
+
+.twitch-top-crew-titulo {
+    font-family: var(--font-main);
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #fff;
+    margin: 0;
+}
+
+.twitch-top-crew-grid {
+    display: grid;
+    grid-template-columns: repeat(var(--crew-count, 8), 1fr);
+    position: relative;
+    z-index: 1;
+    gap: 16px;
+}
+
+.twitch-top-crew-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.twitch-top-crew-avatar-wrap {
+    position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.twitch-top-crew-avatar {
+    width: 100%;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 3px solid rgba(255, 255, 255, 0.3);
+    transition: border-color 0.2s ease, transform 0.2s ease;
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.twitch-top-crew-item:hover .twitch-top-crew-avatar {
+    border-color: #fff;
+    transform: scale(1.06);
+}
+
+.twitch-top-crew-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.twitch-top-crew-nombre {
+    font-family: var(--font-main);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.85);
+    text-align: center;
+    transition: color 0.2s;
+}
+
+.twitch-top-crew-item:hover .twitch-top-crew-nombre {
+    color: #fff;
+}
+
+.twitch-top-crew-rol {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 18px;
+    height: 24px;
+    object-fit: contain;
+    opacity: 0.9;
+    transition: opacity 0.2s;
+    z-index: 2;
+    filter: drop-shadow(0 1px 3px rgba(0,0,0,0.5));
+}
+
+.twitch-top-crew-item:hover .twitch-top-crew-rol {
+    opacity: 1;
+}

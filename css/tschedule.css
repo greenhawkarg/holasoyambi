@@ -1,0 +1,380 @@
+@charset "utf-8";
+
+/*══════════════════════════════
+    ROOT & RESET
+══════════════════════════════*/
+:root {
+    --sub-main-width: 1200px;
+    --bg: #050505;
+    --panel: #111111;
+    --text: #ffffff;
+    --muted: #9a9a9a;
+
+    --color-games: #1d7c42;
+    --color-news:  #234aa3;
+    --color-brand-red: #e32222;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html { 
+	scroll-behavior: smooth;
+	scrollbar-width: none; /* Firefox */
+}
+
+html::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Edge */
+}
+
+body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Source Sans 3', Arial, sans-serif;
+    overflow-x: hidden;
+}
+
+html, body{
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+/*══════════════════════════════
+    LAYOUT BASE
+══════════════════════════════*/
+.main {
+    width: 100%;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+
+    /* FONDO LARGO UNIFICADO */
+    background-image: url("../imgs/index/bgs/bg-new.webp");
+    background-size: 1920px auto;
+    background-repeat: no-repeat;
+    background-position: top center;
+}
+
+.main::-webkit-scrollbar{
+    width: 0px;
+    background: transparent;
+}
+
+.sub-main {
+    position: relative;
+
+    width: 100%;
+    max-width: var(--sub-main-width);
+    margin: 0 auto;
+
+    zoom: 0.85;
+
+    transform: translateY(-160px);
+    z-index: 5;
+}
+
+.main-box {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/*══════════════════════════════
+    HERO
+══════════════════════════════*/
+.hero {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    min-height: 900px;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    z-index: 1;
+	margin-top: -50px;
+}
+
+.hero-bg {
+    position: absolute;
+    inset: 0;
+    /*background-image: url("../imgs/index/hero-bg.jpg");*/
+    background-size: cover;
+    z-index: 1;
+}
+
+.hero-overlay {
+    position: absolute;
+    inset: 0;
+    /*background: linear-gradient(to bottom, rgba(0,0,0,0.15), rgba(0,0,0,1));*/
+    z-index: 2;
+}
+
+/* HERO OBJECT */
+.hero-object {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 900px;
+    max-width: 70vw;
+    z-index: 4;
+    pointer-events: none;
+}
+
+.hero-object img {
+    width: 100%;
+    display: block;
+    transform: scale(1.8);
+}
+
+/* HERO LOGO */
+.hero-logo {
+    position: absolute;
+    z-index: 6;
+    top: 23%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 600px;
+    max-width: 70vw;
+    pointer-events: none;
+    animation: float 4s ease-in-out infinite;
+}
+
+.hero-logo img {
+    width: 100%;
+    display: block;
+    transform: scale(1.1);
+}
+
+@keyframes float {
+    0%,100% { transform: translate(-50%, -50%) translateY(0); }
+    50% { transform: translate(-50%, -50%) translateY(-8px); }
+}
+
+/*══════════════════════════════
+    SECCIONES
+══════════════════════════════*/
+.section-twitch-agenda,
+.section-featured,
+.section-news,
+.section-youtube {
+    position: relative;
+    padding: 80px 60px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+/*══════════════════════════════
+    TWITCH AGENDA (RECTÁNGULO OK)
+══════════════════════════════*/
+.section-twitch-agenda {
+    background-color: #0f0f0f;
+    border-top: 5px solid #9146ff;
+    padding: 30px;
+    overflow: hidden;
+}
+
+.section-twitch-agenda::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+
+    background-size: cover;
+    background-position: center;
+
+    opacity: 0.8;
+    z-index: 0;
+}
+
+			/*══════════════════════════════
+				EXCLUSIVO
+			══════════════════════════════*/
+
+			.bg-exclusivo {
+				border-top: 5px solid #d72626;
+			}
+
+			/* FECHA */
+			.bg-exclusivo .twitch-date {
+				color: #ff4d4d;
+			}
+
+			/* BOTÓN PRINCIPAL */
+			.bg-exclusivo .twitch-btn.primary {
+				background: #d72626;
+			}
+			
+			/* TEXT TIPO DE CAMPAÑA */
+			.bg-exclusivo .twitch-type {
+				color: #E9DC24;
+			}
+
+			/*══════════════════════════════
+				AGENDA BACKGROUNDS
+			══════════════════════════════*/
+
+			/* DESTACADO PRINCIPAL
+			   Usa --bg-url si el panel asignó un BG específico,
+			   sino cae al BG exclusivo genérico como fallback */
+			.bg-exclusivo::before {
+				background-image: var(--bg-url, url("../imgs/index/bgs/bg_twtich-ex-agenda.jpg"));
+			}
+
+			/* STANDARD */
+			.bg-standard::before {
+				background-image: url("../imgs/index/bgs/bg_twtich-agenda.jpg");
+			}
+
+.section-twitch-agenda > * {
+    position: relative;
+    z-index: 1;
+}
+
+/* BANNER */
+.twitch-banner {
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+
+/* THUMB */
+.twitch-thumb {
+    width: 300px;
+    aspect-ratio: 460 / 215;
+    flex-shrink: 0;
+    overflow: hidden;
+}
+
+.twitch-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border: 6px solid #000;
+}
+
+/* DIVIDER */
+.twitch-divider {
+    width: 2px;
+    height: 70%;
+    margin: 0 20px;
+    background: rgba(255,255,255,0.15);
+}
+
+/* texto */
+.twitch-info {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+/* ACTIONS */
+.twitch-actions {
+    margin-left: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.twitch-date {
+    color: #9146ff;
+    font-weight: bold;
+    font-size: 15px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.twitch-game {
+    font-size: 25px;
+    font-weight: 900;
+}
+
+.twitch-day {
+    color: #ccc;
+    font-size: 20px;
+}
+
+.twitch-type {
+    color: #888;
+    font-size: 18px;
+}
+
+.twitch-btn {
+    padding: 10px 14px;
+    font-size: 12px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    text-decoration: none;
+    text-align: center;
+    transition:
+		transform 0.3s,
+		filter 0.3s,
+		background 0.3s,
+		border-color 0.3s;
+}
+
+.twitch-btn.primary {
+    background: #9146ff;
+    color: #fff;
+}
+
+.twitch-btn.secondary,
+.twitch-btn.channel {
+    border: 1px solid rgba(255,255,255,0.3);
+    color: #fff;
+    background: transparent;
+}
+
+.twitch-btn:hover {
+    transform: translateY(-3px);
+    filter: brightness(1.2);
+}
+
+
+
+/*------------------
+    LIGHTBOX
+-------------------------------------------------------------------------------------------*/
+.lightbox {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.95);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 10000;
+}
+
+.lightbox.active { display: flex; }
+
+/* CORRECCIÓN: selector de clase (no de ID) */
+.video-wrapper {
+    width: 85%;
+    max-width: 1100px;
+    aspect-ratio: 16 / 9;
+    position: relative;
+}
+
+.video-wrapper iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+.close-lightbox {
+    position: absolute;
+    top: 25px;
+    right: 35px;
+    color: #ffffff;
+    font-size: 50px;
+    line-height: 1;
+    cursor: pointer;
+    z-index: 10001;
+    transition: color 0.2s;
+}
+
+.close-lightbox:hover { color: var(--color-brand-red); }

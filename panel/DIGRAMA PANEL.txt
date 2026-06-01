@@ -1,0 +1,7 @@
+Tengo el mapa completo. La separación va a quedar así:
+
+panel.css — todo el CSS
+panel-agenda.js — todo lo de Agenda (líneas ~865–1719)
+panel-dossier.js — todo lo de Dossier + Multi-upload (líneas ~1726–2443)
+panel-utils.js — utilidades compartidas (toast, setStatus, switchTab, fechas)
+index.html — solo HTML + los <link> y <script src="">

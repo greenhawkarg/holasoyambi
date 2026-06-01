@@ -1,0 +1,187 @@
+/* ══════════════════════════════════════════════════════════════════
+   AMBI — NAV.CSS
+   Menú flotante fijo — rectangular, centrado, semi-transparente
+══════════════════════════════════════════════════════════════════ */
+
+
+/* ──────────────────────────────────────────
+   NAV — CONTENEDOR
+────────────────────────────────────────── */
+
+.nav {
+    position: fixed;
+    top: 50px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: var(--z-nav);
+
+    display: flex;
+    align-items: center;
+    gap: 32px;
+
+    width: var(--max-width);
+    height: var(--nav-height);
+    padding: 0 30px;
+
+    background: rgba(5, 5, 5, 0.8);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+
+    white-space: nowrap;
+
+    /* Animación del autohide via top */
+    transition: top 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+
+/* ──────────────────────────────────────────
+   PESTAÑA PEEK
+────────────────────────────────────────── */
+
+.nav-peek-tab {
+    position: fixed;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: calc(var(--z-nav) - 1);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 48px;
+    height: 26px;
+
+    background: rgba(10, 10, 10, 0.88);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-top: none;
+    border-radius: 0 0 8px 8px;
+    cursor: pointer;
+
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.25s ease;
+}
+
+.nav-peek-tab i {
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.75);
+}
+
+.nav-peek-tab.visible {
+    opacity: 1;
+    pointer-events: all;
+}
+
+
+/* ──────────────────────────────────────────
+   NAV — ÍCONO HOME
+────────────────────────────────────────── */
+
+.nav-home {
+    color: rgba(255, 255, 255, 0.70);
+    font-size: 16px;
+    text-decoration: none;
+    transition: color 0.2s;
+    display: flex;
+    align-items: center;
+}
+
+.nav-home:hover {
+    color: #1ED760;
+}
+
+
+/* ──────────────────────────────────────────
+   NAV — LINKS DE SECCIÓN
+────────────────────────────────────────── */
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 28px;
+}
+
+.nav-links a {
+    color: rgba(255, 255, 255, 0.75);
+    text-decoration: none;
+    font-family: var(--font-main);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    transition: color 0.2s;
+}
+
+.nav-links a:hover {
+    color: #1ED760;
+}
+
+.nav-links a.active {
+    color: #1ED760;
+}
+
+
+/* ──────────────────────────────────────────
+   SEPARADOR ENTRE LINKS Y REDES
+────────────────────────────────────────── */
+
+.nav::before {
+    content: none;
+}
+
+.nav-sep {
+    width: 1px;
+    height: 20px;
+    background: rgba(255, 255, 255, 0.15);
+    flex-shrink: 0;
+}
+
+.nav-left {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+    margin-left: auto;
+}
+
+/* ──────────────────────────────────────────
+   NAV — REDES SOCIALES
+────────────────────────────────────────── */
+
+.nav-social {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 18px;
+}
+
+.nav-social a {
+    color: rgba(255, 255, 255, 0.70);
+    font-size: 15px;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    transition: color 0.2s;
+}
+
+.nav-social a:hover {
+    color: #1ED760;
+}
+
+.nav-sorteo {
+    color: #1ED760 !important;
+}
+
+.nav-social a:hover { color: #ffffff; } /* fallback — sobreescrito por los específicos */
+
+.social-twitch:hover    { color: #9146FF !important; }
+.social-youtube:hover   { color: #FF0000 !important; }
+.social-instagram:hover { color: #E1306C !important; }
+.social-discord:hover   { color: #5865F2 !important; }
+.social-x:hover         { color: #ffffff !important; }
+.social-spotify:hover   { color: #1ED760 !important; }
+
+

@@ -1,0 +1,1296 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<!-- ══════════════════════════════════════════════════════════════════
+     AMBI — PANEL DE CONTROL
+     ──────────────────────────────────────────────────────────────────
+     Archivo : panel/templates/index.html
+     Motor   : Flask (Jinja2, pero este archivo no usa variables Jinja)
+     Función : UI del panel de administración local.
+               Gestiona la Agenda de Streams y futuros módulos.
+     ══════════════════════════════════════════════════════════════════ -->
+
+<head>
+
+  <!-- ══════════════════════════════
+       META
+  ══════════════════════════════ -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AMBI — Panel de Control</title>
+
+  <!-- ══════════════════════════════
+       ESTILOS
+  ══════════════════════════════ -->
+  <link rel="stylesheet" href="/static/panel.css">
+
+  <!-- ══════════════════════════════
+       FONTS
+  ══════════════════════════════ -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+
+    
+  <!-- ══════════════════════════════
+       TOPBAR
+       Logo · Estado · Botón apagar
+  ══════════════════════════════ -->
+  <div class="topbar">
+    <div class="topbar-logo">AMBI <span>— Panel de Control</span></div>
+    <button class="btn btn-sm btn-red" onclick="apagarPanel()">⏻ Apagar</button>
+    <div class="topbar-status" id="status">
+      <span class="dot"></span>
+      <span id="status-text">Listo</span>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════
+       TABS DE NAVEGACIÓN
+  ══════════════════════════════ -->
+  <div class="tabs">
+    <button class="tab active" onclick="switchTab('home')">Home</button>
+    <button class="tab" onclick="switchTab('agenda')">
+      Agenda <span class="badge" id="badge-agenda">0</span>
+    </button>
+    <button class="tab" onclick="switchTab('twitch')">Twitch</button>
+    <button class="tab" onclick="switchTab('videos')">Videos</button>
+    <button class="tab" onclick="switchTab('noticias')">Noticias</button>
+    <button class="tab" onclick="switchTab('dossier')">Dossier</button>
+    <button class="tab" onclick="switchTab('config')">Config</button>
+  </div>
+
+  <!-- ══════════════════════════════
+       CONTENIDO PRINCIPAL
+  ══════════════════════════════ -->
+  <div class="content">
+
+    <!-- ── TAB: AGENDA DE STREAMS ── -->
+    <div class="tab-panel" id="tab-agenda">
+
+
+
+      <!-- ════ SUB-TAB: STREAMS (lista completa) ════ -->
+      <div id="atab-streams">
+
+        <div class="section-header">
+          <div class="section-title">Agenda de Streams <span id="agenda-count"></span></div>
+          <div class="section-actions">
+            <button class="btn btn-purple" onclick="abrirNuevo()">✨ Nuevo Stream</button>
+            <button class="btn btn-green"  onclick="guardarAgenda()">💾 Guardar Cambios</button>
+          </div>
+        </div>
+
+        <p class="drag-hint">⠿ Arrastrá las tarjetas para reordenar</p>
+        <div id="agenda-list"></div>
+
+      </div><!-- /atab-streams -->
+
+    </div><!-- /tab-agenda -->
+
+    <!-- ── TAB: DOSSIER ── -->
+    <div class="tab-panel" id="tab-dossier">
+
+      <!-- ── SUB-TABS DOSSIER ── -->
+      <div style="display:flex;gap:2px;margin-bottom:20px;border-bottom:1px solid var(--border);padding-bottom:0">
+        <button class="tab active" id="dsub-campanas"  onclick="switchDossierTab('campanas')">Campañas</button>
+        <button class="tab"        id="dsub-disenos"   onclick="switchDossierTab('disenos')">Diseños</button>
+        <button class="tab"        id="dsub-sponsors"  onclick="switchDossierTab('sponsors')">Gaming Network</button>
+      </div>
+
+      <!-- ════════════════════════════════════════
+           SUB-TAB: CAMPAÑAS
+           Flyers agrupados por año. Drag & drop dentro de cada año.
+      ════════════════════════════════════════ -->
+      <div id="dtab-campanas">
+
+        <!-- Header + acciones -->
+        <div class="section-header">
+          <div>
+            <div class="section-title">Campañas <span id="campanas-count"></span></div>
+            <div style="font-size:12px;color:var(--muted);margin-top:4px">Flyers agrupados por año · arrastrá para reordenar</div>
+          </div>
+          <div class="section-actions">
+            <button class="btn btn-purple" onclick="abrirNuevoCampana()">✨ Agregar Flyer</button>
+            <button class="btn btn-green"  onclick="guardarDossier()">💾 Guardar Dossier</button>
+          </div>
+        </div>
+
+        <!-- Textos del header del dossier (editables) -->
+        <div style="background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius-lg);padding:16px;margin-bottom:20px">
+          <div style="font-size:11px;font-weight:700;letter-spacing:.08em;color:var(--muted);text-transform:uppercase;margin-bottom:12px">Header del Dossier</div>
+          <div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:12px">
+            <div class="form-group">
+              <label class="form-label">Subtítulo</label>
+              <input class="form-input" type="text" id="d-subtitulo" placeholder="Streamer · Content Creator">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Stat 1 (ej: 4+)</label>
+              <input class="form-input" type="text" id="d-stat1-num" placeholder="4+">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Label Stat 1</label>
+              <input class="form-input" type="text" id="d-stat1-lbl" placeholder="Años activo">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Stat 2 (ej: 60+)</label>
+              <input class="form-input" type="text" id="d-stat2-num" placeholder="60+">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Label Stat 2</label>
+              <input class="form-input" type="text" id="d-stat2-lbl" placeholder="Campañas">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Stat 3 (ej: 15+)</label>
+              <input class="form-input" type="text" id="d-stat3-num" placeholder="15+">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Label Stat 3</label>
+              <input class="form-input" type="text" id="d-stat3-lbl" placeholder="Studios &amp; Sponsors">
+            </div>
+          </div>
+        </div>
+
+        <!-- Lista dinámica de años con sus flyers -->
+        <div id="campanas-list"></div>
+
+      </div><!-- /dtab-campanas -->
+
+
+      <!-- ════════════════════════════════════════
+           SUB-TAB: DISEÑOS
+           Overlays 16:9. Drag & drop.
+      ════════════════════════════════════════ -->
+      <div id="dtab-disenos" style="display:none">
+
+        <div class="section-header">
+          <div>
+            <div class="section-title">Diseños / Overlays <span id="disenos-count"></span></div>
+            <div style="font-size:12px;color:var(--muted);margin-top:4px">Imágenes 16:9 · arrastrá para reordenar</div>
+          </div>
+          <div class="section-actions">
+            <button class="btn btn-purple" onclick="abrirNuevoDiseno()">✨ Agregar Diseño</button>
+            <button class="btn btn-green"  onclick="guardarDossier()">💾 Guardar Dossier</button>
+          </div>
+        </div>
+
+        <p class="drag-hint">⠿ Arrastrá las tarjetas para reordenar</p>
+        <div id="disenos-list"></div>
+
+      </div><!-- /dtab-disenos -->
+
+
+      <!-- ════════════════════════════════════════
+           SUB-TAB: SPONSORS
+           Logo + link URL. Drag & drop.
+      ════════════════════════════════════════ -->
+      <div id="dtab-sponsors" style="display:none">
+
+        <div class="section-header">
+          <div>
+            <div class="section-title">Sponsors &amp; Studios <span id="sponsors-count"></span></div>
+            <div style="font-size:12px;color:var(--muted);margin-top:4px">Logo (PNG/SVG) + link oficial · arrastrá para reordenar</div>
+          </div>
+          <div class="section-actions">
+            <button class="btn btn-purple" onclick="abrirNuevoSponsor()">✨ Agregar Sponsor</button>
+            <button class="btn btn-green"  onclick="guardarDossier()">💾 Guardar Dossier</button>
+          </div>
+        </div>
+
+        <!-- Texto intro editable -->
+        <div style="background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius-lg);padding:14px;margin-bottom:20px">
+          <div style="display:flex;gap:16px;align-items:flex-start">
+            <div class="form-group" style="flex:1">
+              <label class="form-label">Texto intro (sponsors)</label>
+              <textarea class="form-input" id="d-sponsors-intro" rows="6"
+                        placeholder="Campañas y colaboraciones con estudios de videojuegos..."
+                        style="resize:vertical;line-height:1.6;white-space:pre-wrap"></textarea>
+            </div>
+            <div style="flex-shrink:0;width:160px">
+              <label class="form-label">Foto vertical</label>
+              <div id="sp-photo-preview" style="width:160px;height:200px;background:var(--bg4);border:1px solid var(--border2);border-radius:var(--radius);overflow:hidden;display:flex;align-items:center;justify-content:center;margin-bottom:6px">
+                <span style="font-size:11px;color:var(--muted)">Sin foto</span>
+              </div>
+              <input type="file" id="sp-photo-file" accept=".jpg,.jpeg,.png,.webp" style="display:none" onchange="uploadSponsorsPhoto(this)">
+              <button class="btn btn-sm" style="width:100%" onclick="document.getElementById('sp-photo-file').click()">📷 Subir foto</button>
+              <button class="btn btn-sm" style="width:100%;margin-top:4px;color:var(--red);border-color:rgba(239,68,68,.3)" onclick="quitarSponsorsPhoto()">✕ Quitar</button>
+            </div>
+          </div>
+        </div>
+
+        <p class="drag-hint">⠿ Arrastrá las tarjetas para reordenar</p>
+        <div id="sponsors-list"></div>
+
+      </div><!-- /dtab-sponsors -->
+
+    </div><!-- /tab-dossier -->
+      
+      
+
+      
+      
+
+    <!-- ── TAB: HOME ── -->
+    <div class="tab-panel active" id="tab-home">
+
+      <!-- SUB-TABS HOME -->
+      <div style="display:flex;gap:2px;margin-bottom:20px;border-bottom:1px solid var(--border);padding-bottom:0">
+        <button class="tab active" id="hsub-player"   onclick="switchHomeTab('player')">Reproductor</button>
+        <button class="tab"        id="hsub-hero"      onclick="switchHomeTab('hero')">Hero</button>
+        <button class="tab"        id="hsub-agenda"    onclick="switchHomeTab('agenda')">Agenda</button>
+        <button class="tab"        id="hsub-noticias"  onclick="switchHomeTab('noticias')">Noticias</button>
+        <button class="tab"        id="hsub-twitch"    onclick="switchHomeTab('twitch')">Twitch</button>
+        <button class="tab"        id="hsub-hunt"      onclick="switchHomeTab('hunt')">Hunt Showdown</button>
+      </div>
+        
+        
+         <!-- ════ SUB-TAB: REPRODUCTOR ════ -->
+      <div id="htab-player">
+ 
+        <div class="section-header">
+          <div class="section-title">Reproductor — Playlist <span id="player-count"></span></div>
+          <div class="section-actions">
+            <button class="btn btn-green" onclick="guardarPlayer()">💾 Guardar Playlist</button>
+          </div>
+        </div>
+ 
+        <!-- Formulario para agregar tema -->
+        <div style="background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius-lg);padding:20px;margin-bottom:20px">
+          <div style="font-size:11px;font-weight:700;letter-spacing:.08em;color:var(--muted);text-transform:uppercase;margin-bottom:14px">
+            Agregar tema
+          </div>
+          <div style="display:grid;grid-template-columns:1fr 1fr auto;gap:12px;align-items:end">
+ 
+            <div class="form-group">
+              <label class="form-label">Artista</label>
+              <input class="form-input" type="text" id="pl-name" placeholder="CHEVELLE">
+            </div>
+ 
+            <div class="form-group">
+              <label class="form-label">Nombre del tema</label>
+              <input class="form-input" type="text" id="pl-track" placeholder="FACE TO THE FLOOR">
+            </div>
+ 
+            <div class="form-group">
+              <label class="form-label">Archivo MP3</label>
+              <div style="display:flex;align-items:center;gap:8px">
+                <input type="file" id="pl-file" accept=".mp3" style="display:none" onchange="previewPlayerFile(this)">
+                <button class="btn btn-sm" onclick="document.getElementById('pl-file').click()">🎵 Seleccionar</button>
+                <span id="pl-file-name" style="font-size:11px;color:var(--muted)">(ninguno)</span>
+              </div>
+            </div>
+ 
+          </div>
+          <div style="margin-top:14px">
+            <button class="btn btn-purple" onclick="agregarTema()">➕ Agregar tema</button>
+          </div>
+        </div>
+ 
+        <!-- Lista de temas -->
+        <p class="drag-hint">⠿ Arrastrá para reordenar el orden de reproducción</p>
+        <div id="player-list"></div>
+ 
+      </div><!-- /htab-player -->
+        
+        
+
+      <!-- ════ SUB-TAB: HERO ════ -->
+      <div id="htab-hero">
+<div class="section-header">
+        <div class="section-title">Hero — Imágenes del Sitio</div>
+        <div class="section-actions">
+          <button class="btn btn-green" onclick="guardarIndex()">💾 Guardar Hero</button>
+        </div>
+      </div>
+
+      <div style="background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius-lg);padding:20px">
+        <div style="font-size:11px;font-weight:700;letter-spacing:.08em;color:var(--muted);text-transform:uppercase;margin-bottom:16px">Imágenes del Hero</div>
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:20px">
+
+          <!-- BG -->
+          <div class="form-group">
+            <label class="form-label">BG principal <span style="color:var(--muted);font-size:10px">(1920×750px)</span></label>
+            <input type="file" id="ix-bg-file" accept=".jpg,.jpeg,.png,.webp" style="display:none" onchange="indexPreview(this,'ix-bg-prev')">
+            <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px">
+              <button class="btn btn-sm" onclick="document.getElementById('ix-bg-file').click()">📷 Seleccionar</button>
+              <span id="ix-bg-name" style="font-size:11px;color:var(--muted)">(sin cambios)</span>
+            </div>
+            <div id="ix-bg-prev" style="height:80px;background:var(--bg4);border:1px solid var(--border2);border-radius:var(--radius);overflow:hidden;display:flex;align-items:center;justify-content:center;position:relative">
+              <span style="font-size:10px;color:var(--muted)">preview</span>
+            </div>
+          </div>
+
+          <!-- OBJECT -->
+          <div class="form-group">
+            <label class="form-label">Object / Key Art del juego</label>
+            <input type="file" id="ix-obj-file" accept=".jpg,.jpeg,.png,.webp" style="display:none" onchange="indexPreview(this,'ix-obj-prev')">
+            <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px">
+              <button class="btn btn-sm" onclick="document.getElementById('ix-obj-file').click()">📷 Seleccionar</button>
+              <span id="ix-obj-name" style="font-size:11px;color:var(--muted)">(sin cambios)</span>
+            </div>
+            <div id="ix-obj-prev" style="height:80px;background:var(--bg4);border:1px solid var(--border2);border-radius:var(--radius);overflow:hidden;display:flex;align-items:center;justify-content:center;position:relative">
+              <span style="font-size:10px;color:var(--muted)">preview</span>
+            </div>
+          </div>
+
+          <!-- LOGO JUEGO -->
+          <div class="form-group">
+            <label class="form-label">Logo del juego</label>
+            <input type="file" id="ix-logo-file" accept=".jpg,.jpeg,.png,.webp" style="display:none" onchange="indexPreview(this,'ix-logo-prev')">
+            <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px">
+              <button class="btn btn-sm" onclick="document.getElementById('ix-logo-file').click()">📷 Seleccionar</button>
+              <span id="ix-logo-name" style="font-size:11px;color:var(--muted)">(sin cambios)</span>
+            </div>
+            <div id="ix-logo-prev" style="height:80px;background:var(--bg4);border:1px solid var(--border2);border-radius:var(--radius);overflow:hidden;display:flex;align-items:center;justify-content:center;position:relative">
+              <span style="font-size:10px;color:var(--muted)">preview</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+      </div><!-- /htab-hero -->
+
+      <!-- ════ SUB-TAB: AGENDA (index del hero) ════ -->
+      <div id="htab-agenda" style="display:none">
+<div id="atab-index">
+
+        <div class="section-header">
+          <div class="section-title">Juego destacado en el Index</div>
+          <div class="section-actions">
+            <button class="btn btn-green" onclick="guardarIndex()">💾 Guardar</button>
+          </div>
+        </div>
+
+        <div style="background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius-lg);padding:20px">
+
+          <div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:16px;align-items:end">
+
+            <div class="form-group">
+              <label class="form-label">Nombre del juego</label>
+              <input class="form-input" type="text" id="ix-juego" placeholder="GHOST OF TSUSHIMA">
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Tipo de campaña</label>
+              <select class="form-select" id="ix-tipo">
+                <option value="EARLY ACCESS">EARLY ACCESS</option>
+                <option value="CAMPAÑA">CAMPAÑA</option>
+                <option value="REVIEW">REVIEW</option>
+                <option value="ESTRENO">ESTRENO</option>
+                <option value="CONTENIDO EXCLUSIVO">CONTENIDO EXCLUSIVO</option>
+                <option value="EARLY ACCESS EXCLUSIVO">EARLY ACCESS EXCLUSIVO</option>
+                <option value="INVITADOS A LA PLAYTEST">INVITADOS A LA PLAYTEST</option>
+                <option value="INVITADOS POR EL STUDIO">INVITADOS POR EL STUDIO</option>
+                <option value="DÍA DE FALOPITAS">DÍA DE FALOPITAS</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Fecha</label>
+              <input class="form-input" type="date" id="ix-fecha" onchange="onIndexFecha(this.value)">
+            </div>
+
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
+              <div class="form-group">
+                <label class="form-label">Día (auto)</label>
+                <input class="form-input" type="text" id="ix-dia" placeholder="VIERNES" readonly
+                       style="background:var(--bg4);color:var(--muted);cursor:default">
+              </div>
+              <div class="form-group">
+                <label class="form-label">Hora</label>
+                <input class="form-input" type="text" id="ix-hora" placeholder="20:00 HS">
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Descripción -->
+          <div style="margin-top:16px">
+            <label class="form-label">Descripción <span style="color:var(--muted);font-size:10px">(texto debajo del badge en la sección agenda)</span></label>
+            <textarea class="form-input" id="ix-desc" rows="3" placeholder="Descripción breve del juego o campaña..." style="margin-top:6px;resize:vertical;width:100%"></textarea>
+          </div>
+
+          <!-- Thumb -->
+          <div style="margin-top:16px">
+            <label class="form-label">Imagen thumb <span style="color:var(--muted);font-size:10px">(460×215px)</span></label>
+            <div style="display:flex;align-items:center;gap:16px;margin-top:6px">
+              <div>
+                <input type="file" id="ix-thumb-file" accept=".jpg,.jpeg,.png,.webp" style="display:none" onchange="indexPreview(this,'ix-thumb-prev')">
+                <button class="btn btn-sm" onclick="document.getElementById('ix-thumb-file').click()">📷 Seleccionar imagen</button>
+                <button class="btn btn-sm" style="color:var(--red);border-color:rgba(239,68,68,.3);margin-left:4px" onclick="limpiarIndexPreview('ix-thumb-prev','ix-thumb-file','ix-thumb-name')">✕ Quitar</button>
+                <span id="ix-thumb-name" style="font-size:11px;color:var(--muted);margin-left:8px">(sin cambios)</span>
+              </div>
+              <div id="ix-thumb-prev" style="width:230px;height:65px;background:var(--bg4);border:1px solid var(--border2);border-radius:var(--radius);overflow:hidden;display:flex;align-items:center;justify-content:center;flex-shrink:0">
+                <span style="font-size:10px;color:var(--muted)">460×215px</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Bleed Agenda -->
+          <div style="margin-top:16px;padding-top:16px;border-top:1px solid var(--border)">
+            <label class="form-label">Bleed Agenda <span style="color:var(--muted);font-size:10px">(siempre sobreescribe agenda_over-img.webp)</span></label>
+            <div style="display:flex;align-items:center;gap:16px;margin-top:6px">
+              <div>
+                <input type="file" id="ix-bleed-file" accept=".jpg,.jpeg,.png,.webp" style="display:none" onchange="indexPreview(this,'ix-bleed-prev')">
+                <button class="btn btn-sm" onclick="document.getElementById('ix-bleed-file').click()">📷 Seleccionar imagen</button>
+                <button class="btn btn-sm" style="color:var(--red);border-color:rgba(239,68,68,.3);margin-left:4px" onclick="limpiarIndexPreview('ix-bleed-prev','ix-bleed-file','ix-bleed-name')">✕ Quitar</button>
+                <span id="ix-bleed-name" style="font-size:11px;color:var(--muted);margin-left:8px">(sin cambios)</span>
+              </div>
+              <div id="ix-bleed-prev" style="width:230px;height:65px;background:var(--bg4);border:1px solid var(--border2);border-radius:var(--radius);overflow:hidden;display:flex;align-items:center;justify-content:center;flex-shrink:0">
+                <span style="font-size:10px;color:var(--muted)">preview</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div><!-- /atab-index -->
+      </div><!-- /htab-agenda -->
+
+      <!-- ════ SUB-TAB: NOTICIAS ════ -->
+      <div id="htab-noticias" style="display:none">
+
+        <div class="section-header">
+          <div class="section-title">Noticias del Sitio <span id="noticias-count"></span></div>
+          <div class="section-actions">
+            <button class="btn btn-purple" onclick="abrirNuevaNoticia()">✨ Nueva Noticia</button>
+            <button class="btn btn-green"  onclick="guardarNoticias()">💾 Guardar Cambios</button>
+          </div>
+        </div>
+
+        <p class="drag-hint">⠿ Arrastrá para reordenar · La primera noticia es la destacada al cargar la web</p>
+        <div id="noticias-list"></div>
+
+      </div><!-- /htab-noticias -->
+
+      <!-- ════ SUB-TAB: TWITCH ════ -->
+      <div id="htab-twitch" style="display:none">
+
+        <div class="section-header">
+          <div class="section-title">Twitch — Bloque Superior</div>
+          <div class="section-actions">
+            <button class="btn btn-green" onclick="guardarTwitchTop()">💾 Guardar</button>
+          </div>
+        </div>
+
+        <!-- Kicker + Título -->
+        <div style="background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius-lg);padding:20px;margin-bottom:16px">
+          <div style="font-size:11px;font-weight:700;letter-spacing:.08em;color:var(--muted);text-transform:uppercase;margin-bottom:12px">Textos de la sección</div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+            <div class="form-group">
+              <label class="form-label">Kicker</label>
+              <input class="form-input" type="text" id="tw-kicker" placeholder="TWITCH">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Título</label>
+              <input class="form-input" type="text" id="tw-titulo" placeholder="SEGUIME EN TWITCH">
+            </div>
+          </div>
+        </div>
+
+        <!-- Crew & Streamers -->
+        <div style="background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius-lg);padding:20px;margin-bottom:16px">
+          <div style="font-size:11px;font-weight:700;letter-spacing:.08em;color:var(--muted);text-transform:uppercase;margin-bottom:16px">Crew &amp; Streamers</div>
+        <!-- BG del rectángulo Crew -->
+        <div style="margin-bottom:20px">
+          <div style="font-size:11px;color:var(--muted);margin-bottom:8px">Fondo del rectángulo Crew &amp; Streamers</div>
+          <div style="display:flex;align-items:center;gap:12px">
+            <div id="tw-crew-bg-prev" style="width:200px;height:60px;background:var(--bg4);border:1px solid var(--border2);border-radius:4px;overflow:hidden;display:flex;align-items:center;justify-content:center">
+              <span style="font-size:10px;color:var(--muted)">Sin textura</span>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:6px">
+              <input type="file" id="tw-crew-bg-file" accept=".jpg,.jpeg,.png,.webp" style="display:none" onchange="twitchCrewBgPreview(this)">
+              <button class="btn btn-sm" onclick="document.getElementById('tw-crew-bg-file').click()">📷 Subir textura</button>
+              <button class="btn btn-sm" style="color:var(--red);border-color:rgba(239,68,68,.3)" onclick="limpiarCrewBg()">✕ Quitar</button>
+            </div>
+          </div>
+        </div>
+          <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:16px" id="tw-crew-grid">
+
+            <!-- CREW 1 -->
+            <div style="display:flex;flex-direction:column;gap:8px">
+              <div style="font-size:11px;font-weight:600;color:var(--text)">Streamer 1</div>
+              <input type="file" id="tw-crew1-file" accept=".jpg,.jpeg,.png,.webp" style="display:none" onchange="twitchCrewPreview(this,'tw-crew1-prev')">
+              <div id="tw-crew1-prev" style="width:80px;height:80px;border-radius:50%;background:var(--bg4);border:1px solid var(--border2);overflow:hidden;display:flex;align-items:center;justify-content:center;margin:0 auto">
+                <span style="font-size:10px;color:var(--muted)">foto</span>
+              </div>
+              <div style="display:flex;gap:6px">
+                <button class="btn btn-sm" onclick="document.getElementById('tw-crew1-file').click()">📷 Foto</button>
+                <button class="btn btn-sm" style="color:var(--red);border-color:rgba(239,68,68,.3)" onclick="limpiarCrewFoto('tw-crew1-prev','tw-crew1-file')">✕</button>
+              </div>
+              <input class="form-input" type="text" id="tw-crew1-nombre" placeholder="Nombre">
+              <input class="form-input" type="text" id="tw-crew1-url" placeholder="https://twitch.tv/...">
+              <select class="form-select" id="tw-crew1-rol">
+                <option value="">— Sin rol —</option>
+                <option value="crown">👑 Crown — Líder</option>
+                <option value="hammer">🔨 Hammer — Constructor</option>
+                <option value="shield">🛡️ Shield — Tanque</option>
+                <option value="sword">⚔️ Sword — DPS</option>
+                <option value="bolt">⚡ Bolt — Velocidad</option>
+                <option value="fire">🔥 Fire — Agresivo</option>
+                <option value="skull">💀 Skull — Tryhard</option>
+                <option value="dragon">🐉 Dragon — Mítico</option>
+                <option value="vip">💎 VIP</option>
+              </select>
+            </div>
+
+            <!-- CREW 2 -->
+            <div style="display:flex;flex-direction:column;gap:8px">
+              <div style="font-size:11px;font-weight:600;color:var(--text)">Streamer 2</div>
+              <input type="file" id="tw-crew2-file" accept=".jpg,.jpeg,.png,.webp" style="display:none" onchange="twitchCrewPreview(this,'tw-crew2-prev')">
+              <div id="tw-crew2-prev" style="width:80px;height:80px;border-radius:50%;background:var(--bg4);border:1px solid var(--border2);overflow:hidden;display:flex;align-items:center;justify-content:center;margin:0 auto">
+                <span style="font-size:10px;color:var(--muted)">foto</span>
+              </div>
+              <div style="display:flex;gap:6px">
+                <button class="btn btn-sm" onclick="document.getElementById('tw-crew2-file').click()">📷 Foto</button>
+                <button class="btn btn-sm" style="color:var(--red);border-color:rgba(239,68,68,.3)" onclick="limpiarCrewFoto('tw-crew2-prev','tw-crew2-file')">✕</button>
+              </div>
+              <input class="form-input" type="text" id="tw-crew2-nombre" placeholder="Nombre">
+              <input class="form-input" type="text" id="tw-crew2-url" placeholder="https://twitch.tv/...">
+              <select class="form-select" id="tw-crew2-rol">
+                <option value="">— Sin rol —</option>
+                <option value="crown">👑 Crown — Líder</option>
+                <option value="hammer">🔨 Hammer — Constructor</option>
+                <option value="shield">🛡️ Shield — Tanque</option>
+                <option value="sword">⚔️ Sword — DPS</option>
+                <option value="bolt">⚡ Bolt — Velocidad</option>
+                <option value="fire">🔥 Fire — Agresivo</option>
+                <option value="skull">💀 Skull — Tryhard</option>
+                <option value="dragon">🐉 Dragon — Mítico</option>
+                <option value="vip">💎 VIP</option>
+              </select>
+            </div>
+
+            <!-- CREW 3 -->
+            <div style="display:flex;flex-direction:column;gap:8px">
+              <div style="font-size:11px;font-weight:600;color:var(--text)">Streamer 3</div>
+              <input type="file" id="tw-crew3-file" accept=".jpg,.jpeg,.png,.webp" style="display:none" onchange="twitchCrewPreview(this,'tw-crew3-prev')">
+              <div id="tw-crew3-prev" style="width:80px;height:80px;border-radius:50%;background:var(--bg4);border:1px solid var(--border2);overflow:hidden;display:flex;align-items:center;justify-content:center;margin:0 auto">
+                <span style="font-size:10px;color:var(--muted)">foto</span>
+              </div>
+              <div style="display:flex;gap:6px">
+                <button class="btn btn-sm" onclick="document.getElementById('tw-crew3-file').click()">📷 Foto</button>
+                <button class="btn btn-sm" style="color:var(--red);border-color:rgba(239,68,68,.3)" onclick="limpiarCrewFoto('tw-crew3-prev','tw-crew3-file')">✕</button>
+              </div>
+              <input class="form-input" type="text" id="tw-crew3-nombre" placeholder="Nombre">
+              <input class="form-input" type="text" id="tw-crew3-url" placeholder="https://twitch.tv/...">
+              <select class="form-select" id="tw-crew3-rol">
+                <option value="">— Sin rol —</option>
+                <option value="crown">👑 Crown — Líder</option>
+                <option value="hammer">🔨 Hammer — Constructor</option>
+                <option value="shield">🛡️ Shield — Tanque</option>
+                <option value="sword">⚔️ Sword — DPS</option>
+                <option value="bolt">⚡ Bolt — Velocidad</option>
+                <option value="fire">🔥 Fire — Agresivo</option>
+                <option value="skull">💀 Skull — Tryhard</option>
+                <option value="dragon">🐉 Dragon — Mítico</option>
+                <option value="vip">💎 VIP</option>
+              </select>
+            </div>
+
+            <!-- CREW 4 -->
+            <div style="display:flex;flex-direction:column;gap:8px">
+              <div style="font-size:11px;font-weight:600;color:var(--text)">Streamer 4</div>
+              <input type="file" id="tw-crew4-file" accept=".jpg,.jpeg,.png,.webp" style="display:none" onchange="twitchCrewPreview(this,'tw-crew4-prev')">
+              <div id="tw-crew4-prev" style="width:80px;height:80px;border-radius:50%;background:var(--bg4);border:1px solid var(--border2);overflow:hidden;display:flex;align-items:center;justify-content:center;margin:0 auto">
+                <span style="font-size:10px;color:var(--muted)">foto</span>
+              </div>
+              <div style="display:flex;gap:6px">
+                <button class="btn btn-sm" onclick="document.getElementById('tw-crew4-file').click()">📷 Foto</button>
+                <button class="btn btn-sm" style="color:var(--red);border-color:rgba(239,68,68,.3)" onclick="limpiarCrewFoto('tw-crew4-prev','tw-crew4-file')">✕</button>
+              </div>
+              <input class="form-input" type="text" id="tw-crew4-nombre" placeholder="Nombre">
+              <input class="form-input" type="text" id="tw-crew4-url" placeholder="https://twitch.tv/...">
+              <select class="form-select" id="tw-crew4-rol">
+                <option value="">— Sin rol —</option>
+                <option value="crown">👑 Crown — Líder</option>
+                <option value="hammer">🔨 Hammer — Constructor</option>
+                <option value="shield">🛡️ Shield — Tanque</option>
+                <option value="sword">⚔️ Sword — DPS</option>
+                <option value="bolt">⚡ Bolt — Velocidad</option>
+                <option value="fire">🔥 Fire — Agresivo</option>
+                <option value="skull">💀 Skull — Tryhard</option>
+                <option value="dragon">🐉 Dragon — Mítico</option>
+                <option value="vip">💎 VIP</option>
+              </select>
+            </div>
+
+            <!-- CREW 5 -->
+            <div style="display:flex;flex-direction:column;gap:8px">
+              <div style="font-size:11px;font-weight:600;color:var(--text)">Streamer 5</div>
+              <input type="file" id="tw-crew5-file" accept=".jpg,.jpeg,.png,.webp" style="display:none" onchange="twitchCrewPreview(this,'tw-crew5-prev')">
+              <div id="tw-crew5-prev" style="width:80px;height:80px;border-radius:50%;background:var(--bg4);border:1px solid var(--border2);overflow:hidden;display:flex;align-items:center;justify-content:center;margin:0 auto">
+                <span style="font-size:10px;color:var(--muted)">foto</span>
+              </div>
+              <div style="display:flex;gap:6px">
+                <button class="btn btn-sm" onclick="document.getElementById('tw-crew5-file').click()">📷 Foto</button>
+                <button class="btn btn-sm" style="color:var(--red);border-color:rgba(239,68,68,.3)" onclick="limpiarCrewFoto('tw-crew5-prev','tw-crew5-file')">✕</button>
+              </div>
+              <input class="form-input" type="text" id="tw-crew5-nombre" placeholder="Nombre">
+              <input class="form-input" type="text" id="tw-crew5-url" placeholder="https://twitch.tv/...">
+              <select class="form-select" id="tw-crew5-rol">
+                <option value="">— Sin rol —</option>
+                <option value="crown">👑 Crown — Líder</option>
+                <option value="hammer">🔨 Hammer — Constructor</option>
+                <option value="shield">🛡️ Shield — Tanque</option>
+                <option value="sword">⚔️ Sword — DPS</option>
+                <option value="bolt">⚡ Bolt — Velocidad</option>
+                <option value="fire">🔥 Fire — Agresivo</option>
+                <option value="skull">💀 Skull — Tryhard</option>
+                <option value="dragon">🐉 Dragon — Mítico</option>
+                <option value="vip">💎 VIP</option>
+              </select>
+            </div>
+
+            <!-- CREW 6 -->
+            <div style="display:flex;flex-direction:column;gap:8px">
+              <div style="font-size:11px;font-weight:600;color:var(--text)">Streamer 6</div>
+              <input type="file" id="tw-crew6-file" accept=".jpg,.jpeg,.png,.webp" style="display:none" onchange="twitchCrewPreview(this,'tw-crew6-prev')">
+              <div id="tw-crew6-prev" style="width:80px;height:80px;border-radius:50%;background:var(--bg4);border:1px solid var(--border2);overflow:hidden;display:flex;align-items:center;justify-content:center;margin:0 auto">
+                <span style="font-size:10px;color:var(--muted)">foto</span>
+              </div>
+              <div style="display:flex;gap:6px">
+                <button class="btn btn-sm" onclick="document.getElementById('tw-crew6-file').click()">📷 Foto</button>
+                <button class="btn btn-sm" style="color:var(--red);border-color:rgba(239,68,68,.3)" onclick="limpiarCrewFoto('tw-crew6-prev','tw-crew6-file')">✕</button>
+              </div>
+              <input class="form-input" type="text" id="tw-crew6-nombre" placeholder="Nombre">
+              <input class="form-input" type="text" id="tw-crew6-url" placeholder="https://twitch.tv/...">
+              <select class="form-select" id="tw-crew6-rol">
+                <option value="">— Sin rol —</option>
+                <option value="crown">👑 Crown — Líder</option>
+                <option value="hammer">🔨 Hammer — Constructor</option>
+                <option value="shield">🛡️ Shield — Tanque</option>
+                <option value="sword">⚔️ Sword — DPS</option>
+                <option value="bolt">⚡ Bolt — Velocidad</option>
+                <option value="fire">🔥 Fire — Agresivo</option>
+                <option value="skull">💀 Skull — Tryhard</option>
+                <option value="dragon">🐉 Dragon — Mítico</option>
+                <option value="vip">💎 VIP</option>
+              </select>
+            </div>
+
+            <!-- CREW 7 -->
+            <div style="display:flex;flex-direction:column;gap:8px">
+              <div style="font-size:11px;font-weight:600;color:var(--text)">Streamer 7</div>
+              <input type="file" id="tw-crew7-file" accept=".jpg,.jpeg,.png,.webp" style="display:none" onchange="twitchCrewPreview(this,'tw-crew7-prev')">
+              <div id="tw-crew7-prev" style="width:80px;height:80px;border-radius:50%;background:var(--bg4);border:1px solid var(--border2);overflow:hidden;display:flex;align-items:center;justify-content:center;margin:0 auto">
+                <span style="font-size:10px;color:var(--muted)">foto</span>
+              </div>
+              <div style="display:flex;gap:6px">
+                <button class="btn btn-sm" onclick="document.getElementById('tw-crew7-file').click()">📷 Foto</button>
+                <button class="btn btn-sm" style="color:var(--red);border-color:rgba(239,68,68,.3)" onclick="limpiarCrewFoto('tw-crew7-prev','tw-crew7-file')">✕</button>
+              </div>
+              <input class="form-input" type="text" id="tw-crew7-nombre" placeholder="Nombre">
+              <input class="form-input" type="text" id="tw-crew7-url" placeholder="https://twitch.tv/...">
+              <select class="form-select" id="tw-crew7-rol">
+                <option value="">— Sin rol —</option>
+                <option value="crown">👑 Crown — Líder</option>
+                <option value="hammer">🔨 Hammer — Constructor</option>
+                <option value="shield">🛡️ Shield — Tanque</option>
+                <option value="sword">⚔️ Sword — DPS</option>
+                <option value="bolt">⚡ Bolt — Velocidad</option>
+                <option value="fire">🔥 Fire — Agresivo</option>
+                <option value="skull">💀 Skull — Tryhard</option>
+                <option value="dragon">🐉 Dragon — Mítico</option>
+                <option value="vip">💎 VIP</option>
+              </select>
+            </div>
+
+            <!-- CREW 8 -->
+            <div style="display:flex;flex-direction:column;gap:8px">
+              <div style="font-size:11px;font-weight:600;color:var(--text)">Streamer 8</div>
+              <input type="file" id="tw-crew8-file" accept=".jpg,.jpeg,.png,.webp" style="display:none" onchange="twitchCrewPreview(this,'tw-crew8-prev')">
+              <div id="tw-crew8-prev" style="width:80px;height:80px;border-radius:50%;background:var(--bg4);border:1px solid var(--border2);overflow:hidden;display:flex;align-items:center;justify-content:center;margin:0 auto">
+                <span style="font-size:10px;color:var(--muted)">foto</span>
+              </div>
+              <div style="display:flex;gap:6px">
+                <button class="btn btn-sm" onclick="document.getElementById('tw-crew8-file').click()">📷 Foto</button>
+                <button class="btn btn-sm" style="color:var(--red);border-color:rgba(239,68,68,.3)" onclick="limpiarCrewFoto('tw-crew8-prev','tw-crew8-file')">✕</button>
+              </div>
+              <input class="form-input" type="text" id="tw-crew8-nombre" placeholder="Nombre">
+              <input class="form-input" type="text" id="tw-crew8-url" placeholder="https://twitch.tv/...">
+              <select class="form-select" id="tw-crew8-rol">
+                <option value="">— Sin rol —</option>
+                <option value="crown">👑 Crown — Líder</option>
+                <option value="hammer">🔨 Hammer — Constructor</option>
+                <option value="shield">🛡️ Shield — Tanque</option>
+                <option value="sword">⚔️ Sword — DPS</option>
+                <option value="bolt">⚡ Bolt — Velocidad</option>
+                <option value="fire">🔥 Fire — Agresivo</option>
+                <option value="skull">💀 Skull — Tryhard</option>
+                <option value="dragon">🐉 Dragon — Mítico</option>
+                <option value="vip">💎 VIP</option>
+              </select>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Cards -->
+        <div style="background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius-lg);padding:20px">
+          <div style="font-size:11px;font-weight:700;letter-spacing:.08em;color:var(--muted);text-transform:uppercase;margin-bottom:16px">Cards (1080×1350px)</div>
+          <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:16px" id="tw-cards-grid">
+
+            <!-- CARD 1 -->
+            <div style="display:flex;flex-direction:column;gap:8px">
+              <div style="font-size:11px;font-weight:600;color:var(--text)">Card 1</div>
+              <input type="file" id="tw-card1-file" accept=".jpg,.jpeg,.png,.webp" style="display:none" onchange="twitchCardPreview(this,'tw-card1-prev')">
+              <div id="tw-card1-prev" style="width:100%;aspect-ratio:1080/1350;background:var(--bg4);border:1px solid var(--border2);border-radius:var(--radius);overflow:hidden;display:flex;align-items:center;justify-content:center">
+                <span style="font-size:10px;color:var(--muted)">preview</span>
+              </div>
+              <button class="btn btn-sm" onclick="document.getElementById('tw-card1-file').click()">📷 Imagen</button>
+              <input class="form-input" type="text" id="tw-card1-titulo" placeholder="Título">
+              <input class="form-input" type="text" id="tw-card1-desc" placeholder="Descripción">
+            </div>
+
+            <!-- CARD 2 -->
+            <div style="display:flex;flex-direction:column;gap:8px">
+              <div style="font-size:11px;font-weight:600;color:var(--text)">Card 2</div>
+              <input type="file" id="tw-card2-file" accept=".jpg,.jpeg,.png,.webp" style="display:none" onchange="twitchCardPreview(this,'tw-card2-prev')">
+              <div id="tw-card2-prev" style="width:100%;aspect-ratio:1080/1350;background:var(--bg4);border:1px solid var(--border2);border-radius:var(--radius);overflow:hidden;display:flex;align-items:center;justify-content:center">
+                <span style="font-size:10px;color:var(--muted)">preview</span>
+              </div>
+              <button class="btn btn-sm" onclick="document.getElementById('tw-card2-file').click()">📷 Imagen</button>
+              <input class="form-input" type="text" id="tw-card2-titulo" placeholder="Título">
+              <input class="form-input" type="text" id="tw-card2-desc" placeholder="Descripción">
+            </div>
+
+            <!-- CARD 3 -->
+            <div style="display:flex;flex-direction:column;gap:8px">
+              <div style="font-size:11px;font-weight:600;color:var(--text)">Card 3</div>
+              <input type="file" id="tw-card3-file" accept=".jpg,.jpeg,.png,.webp" style="display:none" onchange="twitchCardPreview(this,'tw-card3-prev')">
+              <div id="tw-card3-prev" style="width:100%;aspect-ratio:1080/1350;background:var(--bg4);border:1px solid var(--border2);border-radius:var(--radius);overflow:hidden;display:flex;align-items:center;justify-content:center">
+                <span style="font-size:10px;color:var(--muted)">preview</span>
+              </div>
+              <button class="btn btn-sm" onclick="document.getElementById('tw-card3-file').click()">📷 Imagen</button>
+              <input class="form-input" type="text" id="tw-card3-titulo" placeholder="Título">
+              <input class="form-input" type="text" id="tw-card3-desc" placeholder="Descripción">
+            </div>
+
+            <!-- CARD 4 -->
+            <div style="display:flex;flex-direction:column;gap:8px">
+              <div style="font-size:11px;font-weight:600;color:var(--text)">Card 4</div>
+              <input type="file" id="tw-card4-file" accept=".jpg,.jpeg,.png,.webp" style="display:none" onchange="twitchCardPreview(this,'tw-card4-prev')">
+              <div id="tw-card4-prev" style="width:100%;aspect-ratio:1080/1350;background:var(--bg4);border:1px solid var(--border2);border-radius:var(--radius);overflow:hidden;display:flex;align-items:center;justify-content:center">
+                <span style="font-size:10px;color:var(--muted)">preview</span>
+              </div>
+              <button class="btn btn-sm" onclick="document.getElementById('tw-card4-file').click()">📷 Imagen</button>
+              <input class="form-input" type="text" id="tw-card4-titulo" placeholder="Título">
+              <input class="form-input" type="text" id="tw-card4-desc" placeholder="Descripción">
+            </div>
+
+          </div>
+        </div>
+
+      </div><!-- /htab-twitch -->
+
+      <!-- ════ SUB-TAB: HUNT SHOWDOWN ════ -->
+      <div id="htab-hunt" style="display:none">
+
+        <div class="section-header">
+          <div class="section-title">Hunt Showdown — Programa de Creadores</div>
+          <div class="section-actions">
+            <button class="btn btn-green" onclick="guardarHunt()">💾 Guardar</button>
+          </div>
+        </div>
+
+        <!-- SECCIÓN -->
+        <div style="background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius-lg);padding:20px;margin-bottom:16px">
+          <div style="font-size:11px;font-weight:700;letter-spacing:.08em;color:var(--muted);text-transform:uppercase;margin-bottom:12px">Textos de la sección</div>
+          <div style="display:grid;grid-template-columns:1fr;gap:12px">
+            <div class="form-group">
+              <label class="form-label">Título</label>
+              <input class="form-input" type="text" id="hunt-titulo" placeholder="Hunt: Showdown 1896">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Descripción</label>
+              <textarea class="form-input" id="hunt-desc" rows="2" placeholder="Soy creador oficial..." style="resize:vertical;width:100%"></textarea>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Video YouTube</label>
+              <input class="form-input" type="text" id="hunt-video" placeholder="https://www.youtube.com/watch?v=...">
+            </div>
+          </div>
+        </div>
+
+        <!-- DLC EN ROTACIÓN + ÚLTIMOS DLC — misma fila 50/50 -->
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px">
+
+        <!-- DLC EN ROTACIÓN -->
+        <div style="background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius-lg);padding:20px">
+          <div style="font-size:11px;font-weight:700;letter-spacing:.08em;color:var(--muted);text-transform:uppercase;margin-bottom:16px">DLC en Rotación</div>
+          <div style="display:flex;gap:20px;align-items:flex-start">
+
+            <!-- Preview vertical -->
+            <div style="flex-shrink:0">
+              <label class="form-label">Imagen (vertical)</label>
+              <input type="file" id="hunt-rot-img-file" accept=".jpg,.jpeg,.png,.webp" style="display:none" onchange="huntPreview(this,'hunt-rot-prev','hunt-rot-img')">
+              <div id="hunt-rot-prev" style="width:120px;height:180px;background:var(--bg4);border:1px solid var(--border2);border-radius:var(--radius);overflow:hidden;display:flex;align-items:center;justify-content:center;margin-bottom:8px">
+                <span style="font-size:10px;color:var(--muted)">preview</span>
+              </div>
+              <button class="btn btn-sm" style="width:120px" onclick="document.getElementById('hunt-rot-img-file').click()">📷 Seleccionar</button>
+              <div style="font-size:11px;color:var(--muted);margin-top:4px" id="hunt-rot-img-name">(sin cambios)</div>
+              <input type="hidden" id="hunt-rot-img">
+            </div>
+
+            <!-- Campos de texto -->
+            <div style="flex:1;display:flex;flex-direction:column;gap:12px">
+              <div class="form-group">
+                <label class="form-label">Título</label>
+                <input class="form-input" type="text" id="hunt-rot-titulo" placeholder="The Heart of Lower DeSalle">
+              </div>
+              <div class="form-group">
+                <label class="form-label">Fecha</label>
+                <input class="form-input" type="text" id="hunt-rot-fecha" placeholder="Abril 2026">
+              </div>
+              <div class="form-group" style="flex:1;display:flex;flex-direction:column">
+                <label class="form-label">Descripción</label>
+                <textarea class="form-input" id="hunt-rot-desc" rows="4" placeholder="Descripción del DLC..." style="resize:vertical;flex:1;width:100%"></textarea>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- ÚLTIMOS DLC -->
+        <div style="background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius-lg);padding:20px">
+          <div style="font-size:11px;font-weight:700;letter-spacing:.08em;color:var(--muted);text-transform:uppercase;margin-bottom:16px">Últimos DLC</div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px">
+
+            <!-- DLC 1 -->
+            <div style="display:flex;flex-direction:column;gap:8px">
+              <div style="font-size:11px;font-weight:600;color:var(--text)">DLC 1</div>
+              <div class="form-group">
+                <label class="form-label">Título</label>
+                <input class="form-input" type="text" id="hunt-dlc1-titulo" placeholder="The Heart of Lower DeSalle">
+              </div>
+              <div style="flex-shrink:0;width:100%">
+                <label class="form-label">Imagen</label>
+                <input type="file" id="hunt-dlc1-img-file" accept=".jpg,.jpeg,.png,.webp" style="display:none" onchange="huntPreview(this,'hunt-dlc1-prev','hunt-dlc1-img')">
+                <div id="hunt-dlc1-prev" style="width:100%;aspect-ratio:2/3;background:var(--bg4);border:1px solid var(--border2);border-radius:var(--radius);overflow:hidden;display:flex;align-items:center;justify-content:center;margin-bottom:8px">
+                  <span style="font-size:10px;color:var(--muted)">preview</span>
+                </div>
+                <button class="btn btn-sm" style="width:100%" onclick="document.getElementById('hunt-dlc1-img-file').click()">📷 Seleccionar</button>
+                <div style="font-size:11px;color:var(--muted);margin-top:4px" id="hunt-dlc1-img-name">(sin cambios)</div>
+                <input type="hidden" id="hunt-dlc1-img">
+              </div>
+            </div>
+
+            <!-- DLC 2 -->
+            <div style="display:flex;flex-direction:column;gap:8px">
+              <div style="font-size:11px;font-weight:600;color:var(--text)">DLC 2</div>
+              <div class="form-group">
+                <label class="form-label">Título</label>
+                <input class="form-input" type="text" id="hunt-dlc2-titulo" placeholder="Montresor">
+              </div>
+              <div style="flex-shrink:0;width:100%">
+                <label class="form-label">Imagen</label>
+                <input type="file" id="hunt-dlc2-img-file" accept=".jpg,.jpeg,.png,.webp" style="display:none" onchange="huntPreview(this,'hunt-dlc2-prev','hunt-dlc2-img')">
+                <div id="hunt-dlc2-prev" style="width:100%;aspect-ratio:2/3;background:var(--bg4);border:1px solid var(--border2);border-radius:var(--radius);overflow:hidden;display:flex;align-items:center;justify-content:center;margin-bottom:8px">
+                  <span style="font-size:10px;color:var(--muted)">preview</span>
+                </div>
+                <button class="btn btn-sm" style="width:100%" onclick="document.getElementById('hunt-dlc2-img-file').click()">📷 Seleccionar</button>
+                <div style="font-size:11px;color:var(--muted);margin-top:4px" id="hunt-dlc2-img-name">(sin cambios)</div>
+                <input type="hidden" id="hunt-dlc2-img">
+              </div>
+            </div>
+
+          </div>
+        </div>
+        </div><!-- /grid 50/50 -->
+
+      </div><!-- /htab-hunt -->
+
+    </div><!-- /tab-home -->
+
+    <!-- ── TAB: TWITCH ── -->
+    <div class="tab-panel" id="tab-twitch">
+      <div class="section-header">
+        <div class="section-title">Twitch</div>
+      </div>
+      <div class="coming-soon"><h2>📡</h2><p>Sección Twitch — próximamente</p></div>
+    </div>
+
+    <!-- ── TAB: VIDEOS ── -->
+    <div class="tab-panel" id="tab-videos">
+      <div class="section-header">
+        <div class="section-title">Videos</div>
+      </div>
+      <div class="coming-soon"><h2>🎬</h2><p>Sección Videos — próximamente</p></div>
+    </div>
+
+    <!-- ── TAB: NOTICIAS ── -->
+    <div class="tab-panel" id="tab-noticias">
+      <div class="section-header">
+        <div class="section-title">Noticias</div>
+      </div>
+      <div class="coming-soon"><h2>📰</h2><p>Las noticias se editan desde el tab <strong>Home → Noticias</strong></p></div>
+    </div>
+
+    <!-- ── TAB: CONFIG ── -->
+    <div class="tab-panel" id="tab-config">
+      <div class="section-header">
+        <div class="section-title">Configuración</div>
+      </div>
+      <div class="coming-soon"><h2>⚙️</h2><p>Configuración — próximamente</p></div>
+    </div>
+
+
+
+
+
+  </div><!-- /content -->
+
+
+  <!-- ══════════════════════════════
+       PANEL NUEVO STREAM
+       Slide desde arriba al hacer clic en "✨ Nuevo Stream"
+  ══════════════════════════════ -->
+
+  <!-- Overlay oscuro de fondo (clic fuera cierra el panel) -->
+  <div class="nuevo-overlay" id="nuevo-overlay" onclick="if(event.target===this)cerrarNuevo()"></div>
+
+  <!-- Panel deslizante -->
+  <div class="nuevo-panel" id="nuevo-panel">
+
+    <!-- Cabecera del panel -->
+    <div class="nuevo-panel-header">
+      <span class="nuevo-panel-title">✨ Nuevo Stream</span>
+      <button class="btn btn-sm" onclick="cerrarNuevo()">✕ Cancelar</button>
+    </div>
+
+    <!-- Cuerpo: formulario + preview imagen -->
+    <div class="nuevo-panel-body">
+
+      <div class="nuevo-form">
+
+        <!-- Tipo: Standard / Exclusivo -->
+        <div>
+          <div class="form-label">Tipo</div>
+          <select class="form-select" id="n-tipo">
+            <option value="standard">Standard</option>
+            <option value="exclusivo">Exclusivo</option>
+          </select>
+        </div>
+
+        <!-- Fecha (input date → se convierte a "DD DE MES" al agregar) -->
+        <!-- Al cambiar la fecha, auto-completa el select de Día -->
+        <div>
+          <div class="form-label">Fecha Web</div>
+          <input class="form-input" id="n-fecha" type="date" onchange="onNuevoFecha(this.value)">
+        </div>
+
+        <!-- Título del juego (se guardará en mayúsculas) -->
+        <div class="full">
+          <div class="form-label">Título del Juego</div>
+          <input class="form-input" id="n-juego" type="text" placeholder="NOMBRE DEL JUEGO">
+        </div>
+
+        <!-- Día de la semana (se autocompleta al elegir fecha) -->
+        <div>
+          <div class="form-label">Día</div>
+          <select class="form-select" id="n-dia">
+            <option>LUNES</option>
+            <option>MARTES</option>
+            <option>MIÉRCOLES</option>
+            <option>JUEVES</option>
+            <option selected>VIERNES</option>
+            <option>SÁBADO</option>
+            <option>DOMINGO</option>
+          </select>
+        </div>
+
+        <!-- Horario del stream (texto libre, ej: "20:00 HS") -->
+        <div>
+          <div class="form-label">Horario</div>
+          <input class="form-input" id="n-hora" type="text" placeholder="16:00 HS">
+        </div>
+
+        <!-- Días restantes para el stream (genera fecha límite calculada) -->
+        <div>
+          <div class="form-label">Días Restantes</div>
+          <input class="form-input" id="n-dias" type="number" min="0" placeholder="0" oninput="onNuevoDias(this.value)">
+          <span id="n-countdown" style="font-size:11px;color:var(--yellow);display:block;margin-top:4px"></span>
+        </div>
+
+        <!-- Descripción: hasta 3 categorías encadenadas con " / " -->
+        <div class="full">
+          <div class="form-label">Descripción</div>
+          <div class="desc-row">
+            <select class="form-select" id="n-d1" onchange="rebuildNuevoDesc()"><option value="">—</option></select>
+            <span class="desc-sep">/</span>
+            <select class="form-select" id="n-d2" onchange="rebuildNuevoDesc()"><option value="">—</option></select>
+            <span class="desc-sep">/</span>
+            <select class="form-select" id="n-d3" onchange="rebuildNuevoDesc()"><option value="">—</option></select>
+          </div>
+        </div>
+
+        <!-- ID de video de YouTube para el trailer (acepta URL completa o ID directo) -->
+        <div>
+          <div class="form-label">Link / ID YouTube</div>
+          <input class="form-input" id="n-video" type="text" placeholder="dQw4w9WgXcQ"
+                 onpaste="setTimeout(()=>{this.value=extractYoutubeId(this.value)},0)"
+                 oninput="this.value=extractYoutubeId(this.value)">
+        </div>
+
+        <!-- Selector de imagen del thumbnail -->
+        <div>
+          <div class="form-label">Imagen</div>
+          <input type="file" id="n-img-file" accept=".jpg,.jpeg,.png,.webp"
+                 style="display:none" onchange="previewNuevoImg(this)">
+          <button class="btn btn-sm" onclick="document.getElementById('n-img-file').click()">📷 Seleccionar</button>
+          <span id="n-img-name" style="font-size:11px;color:var(--muted);margin-left:8px">(ninguna)</span>
+        </div>
+
+      </div><!-- /nuevo-form -->
+
+      <!-- Preview de imagen seleccionada -->
+      <div class="nuevo-preview">
+        <div class="form-label">Preview imagen</div>
+        <div class="nuevo-preview-img" id="n-preview"><span>Sin imagen</span></div>
+        <div style="font-size:10px;color:var(--muted);margin-top:6px;text-align:center">460 × 215 px recomendado</div>
+      </div>
+
+    </div><!-- /nuevo-panel-body -->
+
+    <!-- Botón de confirmación -->
+    <div class="nuevo-panel-footer">
+      <button class="btn btn-green"
+              style="width:100%;justify-content:center;padding:11px;font-size:14px"
+              onclick="agregarNuevo()">
+        ➕ Agregar a la Agenda
+      </button>
+    </div>
+
+  </div><!-- /nuevo-panel -->
+
+
+
+  <!-- ══════════════════════════════
+       PANEL NUEVO FLYER (CAMPAÑAS)
+  ══════════════════════════════ -->
+  <div class="nuevo-overlay" id="nuevo-campana-overlay" onclick="if(event.target===this)cerrarNuevoCampana()"></div>
+  <div class="nuevo-panel" id="nuevo-campana-panel">
+    <div class="nuevo-panel-header">
+      <span class="nuevo-panel-title">✨ Nuevo Flyer de Campaña</span>
+      <button class="btn btn-sm" onclick="cerrarNuevoCampana()">✕ Cancelar</button>
+    </div>
+    <div class="nuevo-panel-body">
+      <div class="nuevo-form" style="grid-template-columns:1fr 1fr">
+        <div class="full">
+          <div class="form-label">Año</div>
+          <select class="form-select" id="nc-anio">
+            <option>2026</option><option>2025</option><option>2024</option><option>2023</option><option>2022</option>
+          </select>
+        </div>
+        <div class="full">
+          <div class="form-label">Título / Juego</div>
+          <input class="form-input" id="nc-titulo" type="text" placeholder="Nombre del juego o campaña (opcional)">
+        </div>
+        <div class="full">
+          <div class="form-label">Descripción del año <span style="color:var(--muted);font-size:10px">(opcional, se muestra bajo el año)</span></div>
+          <input class="form-input" id="nc-desc" type="text" placeholder="Texto descriptivo del año...">
+        </div>
+        <div class="full">
+          <div class="form-label">Imagen del Flyer</div>
+          <input type="file" id="nc-img-file" accept=".jpg,.jpeg,.png,.webp" style="display:none" onchange="previewNuevoCampana(this)">
+          <button class="btn btn-sm" onclick="document.getElementById('nc-img-file').click()">📷 Seleccionar imagen</button>
+          <span id="nc-img-name" style="font-size:11px;color:var(--muted);margin-left:8px">(ninguna)</span>
+        </div>
+      </div>
+      <div class="nuevo-preview">
+        <div class="form-label">Preview</div>
+        <div class="nuevo-preview-img" id="nc-preview" style="aspect-ratio:3/4;height:auto"><span>Sin imagen</span></div>
+        <div style="font-size:10px;color:var(--muted);margin-top:6px;text-align:center">Formato vertical recomendado</div>
+      </div>
+    </div>
+    <div class="nuevo-panel-footer">
+      <button class="btn btn-green" style="width:100%;justify-content:center;padding:11px;font-size:14px" onclick="agregarNuevoCampana()">
+        ➕ Agregar Flyer
+      </button>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════
+       PANEL NUEVO DISEÑO (OVERLAYS)
+  ══════════════════════════════ -->
+  <div class="nuevo-overlay" id="nuevo-diseno-overlay" onclick="if(event.target===this)cerrarNuevoDiseno()"></div>
+  <div class="nuevo-panel" id="nuevo-diseno-panel">
+    <div class="nuevo-panel-header">
+      <span class="nuevo-panel-title">✨ Nuevo Diseño / Overlay</span>
+      <button class="btn btn-sm" onclick="cerrarNuevoDiseno()">✕ Cancelar</button>
+    </div>
+    <div class="nuevo-panel-body">
+      <div class="nuevo-form" style="grid-template-columns:1fr">
+        <div>
+          <div class="form-label">Categoría</div>
+          <select class="form-select" id="nd-categoria"></select>
+        </div>
+        <div>
+          <div class="form-label">Caption / Descripción</div>
+          <input class="form-input" id="nd-caption" type="text" placeholder="Diseños para stream, intro.">
+        </div>
+        <div>
+          <div class="form-label">Imagen del Diseño (16:9)</div>
+          <input type="file" id="nd-img-file" accept=".jpg,.jpeg,.png,.webp" style="display:none" onchange="previewNuevoDiseno(this)">
+          <button class="btn btn-sm" onclick="document.getElementById('nd-img-file').click()">📷 Seleccionar imagen</button>
+          <span id="nd-img-name" style="font-size:11px;color:var(--muted);margin-left:8px">(ninguna)</span>
+        </div>
+      </div>
+      <div class="nuevo-preview">
+        <div class="form-label">Preview</div>
+        <div class="nuevo-preview-img" id="nd-preview"><span>Sin imagen</span></div>
+        <div style="font-size:10px;color:var(--muted);margin-top:6px;text-align:center">16:9 recomendado</div>
+      </div>
+    </div>
+    <div class="nuevo-panel-footer">
+      <button class="btn btn-green" style="width:100%;justify-content:center;padding:11px;font-size:14px" onclick="agregarNuevoDiseno()">
+        ➕ Agregar Diseño
+      </button>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════
+       PANEL NUEVO SPONSOR
+  ══════════════════════════════ -->
+  <div class="nuevo-overlay" id="nuevo-sponsor-overlay" onclick="if(event.target===this)cerrarNuevoSponsor()"></div>
+  <div class="nuevo-panel" id="nuevo-sponsor-panel">
+    <div class="nuevo-panel-header">
+      <span class="nuevo-panel-title">✨ Nuevo Sponsor / Studio</span>
+      <button class="btn btn-sm" onclick="cerrarNuevoSponsor()">✕ Cancelar</button>
+    </div>
+    <div class="nuevo-panel-body">
+      <div class="nuevo-form" style="grid-template-columns:1fr">
+        <div>
+          <div class="form-label">Nombre del Sponsor</div>
+          <input class="form-input" id="ns-nombre" type="text" placeholder="Crytek">
+        </div>
+        <div>
+          <div class="form-label">Categoría</div>
+          <select class="form-select" id="ns-categoria">
+            <option value="Collab">Collab</option>
+            <option value="Marketing / PR">Marketing / PR</option>
+            <option value="Partner & Creator Programs">Partner & Creator Programs</option>
+            <option value="Press & Creator">Press & Creator</option>
+            <option value="Publishers">Publishers</option>
+            <option value="Services & Tech">Services & Tech</option>
+            <option value="Sponsors">Gaming Network</option>
+            <option value="Studios">Studios</option>
+          </select>
+        </div>
+        <div>
+          <div class="form-label">URL Web Oficial</div>
+          <input class="form-input" id="ns-url" type="url" placeholder="https://www.crytek.com">
+        </div>
+        <div>
+          <div class="form-label">Logo (PNG/SVG — fondo transparente o negro)</div>
+          <input type="file" id="ns-img-file" accept=".jpg,.jpeg,.png,.webp,.svg" style="display:none" onchange="previewNuevoSponsor(this)">
+          <button class="btn btn-sm" onclick="document.getElementById('ns-img-file').click()">📷 Seleccionar logo</button>
+          <span id="ns-img-name" style="font-size:11px;color:var(--muted);margin-left:8px">(ninguna)</span>
+        </div>
+      </div>
+      <div class="nuevo-preview">
+        <div class="form-label">Preview logo</div>
+        <div class="nuevo-preview-img" id="ns-preview"><span style="color:var(--muted)">Sin logo</span></div>
+        <div style="font-size:10px;color:var(--muted);margin-top:6px;text-align:center">Se muestra sobre fondo blanco</div>
+      </div>
+    </div>
+    <div class="nuevo-panel-footer">
+      <button class="btn btn-green" style="width:100%;justify-content:center;padding:11px;font-size:14px" onclick="agregarNuevoSponsor()">
+        ➕ Agregar Sponsor
+      </button>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════
+       PANEL NUEVA NOTICIA
+  ══════════════════════════════ -->
+  <div class="nuevo-overlay" id="nuevo-noticia-overlay" onclick="if(event.target===this)cerrarNuevaNoticia()"></div>
+  <div class="nuevo-panel" id="nuevo-noticia-panel">
+    <div class="nuevo-panel-header">
+      <span class="nuevo-panel-title">✨ Nueva Noticia</span>
+      <button class="btn btn-sm" onclick="cerrarNuevaNoticia()">✕ Cancelar</button>
+    </div>
+    <div class="nuevo-panel-body">
+
+      <div class="nuevo-form" style="grid-template-columns:1fr 1fr">
+
+        <div class="full">
+          <div class="form-label">Título</div>
+          <input class="form-input" id="nn-titulo" type="text" placeholder="Título de la noticia">
+        </div>
+
+        <div class="full">
+          <div class="form-label">Descripción</div>
+          <textarea class="form-input" id="nn-desc" rows="3" placeholder="Descripción breve..." style="resize:vertical"></textarea>
+        </div>
+
+        <div>
+          <div class="form-label">Categoría / Badge</div>
+          <select class="form-select" id="nn-cat">
+            <option value="stream">Stream</option>
+            <option value="juego">Juego</option>
+            <option value="comunidad">Comunidad</option>
+            <option value="noticia">Noticia</option>
+            <option value="review">Review</option>
+          </select>
+        </div>
+
+        <div>
+          <div class="form-label">Fecha</div>
+          <input class="form-input" id="nn-fecha" type="text" placeholder="24 Mayo 2026">
+        </div>
+
+        <div class="full">
+          <div class="form-label">URL de la noticia <span style="color:var(--muted);font-size:10px">(opcional, para cuando haya página propia)</span></div>
+          <input class="form-input" id="nn-url" type="text" placeholder="https://...">
+        </div>
+
+        <div class="full">
+          <div class="form-label">Imagen</div>
+          <input type="file" id="nn-img-file" accept=".jpg,.jpeg,.png,.webp" style="display:none" onchange="previewNuevaNoticia(this)">
+          <button class="btn btn-sm" onclick="document.getElementById('nn-img-file').click()">📷 Seleccionar imagen</button>
+          <span id="nn-img-name" style="font-size:11px;color:var(--muted);margin-left:8px">(ninguna)</span>
+        </div>
+
+      </div><!-- /nuevo-form -->
+
+      <div class="nuevo-preview">
+        <div class="form-label">Preview imagen</div>
+        <div class="nuevo-preview-img" id="nn-preview"><span>Sin imagen</span></div>
+        <div style="font-size:10px;color:var(--muted);margin-top:6px;text-align:center">16:9 recomendado</div>
+      </div>
+
+    </div><!-- /nuevo-panel-body -->
+    <div class="nuevo-panel-footer">
+      <button class="btn btn-green" style="width:100%;justify-content:center;padding:11px;font-size:14px" onclick="agregarNuevaNoticia()">
+        ➕ Agregar Noticia
+      </button>
+    </div>
+  </div><!-- /nuevo-noticia-panel -->
+
+  <!-- Canvas oculto usado para extraer color dominante del BG exclusivo -->
+  <canvas id="color-canvas"></canvas>
+
+  <!-- ══════════════════════════════
+       TOAST (notificación flotante)
+  ══════════════════════════════ -->
+  <div class="toast" id="toast"></div>
+
+
+  <!-- ══════════════════════════════
+       SCRIPTS
+  ══════════════════════════════ -->
+    <script src="/static/panel-utils.js"></script>
+    <script src="/static/panel-agenda.js"></script>
+    <script src="/static/panel-dossier.js"></script>
+    <script src="/static/panel-index.js"></script>
+    <script src="/static/panel-noticias.js"></script>
+    <script src="/static/panel-creatorphunt.js"></script>
+    <script src="/static/panel-twitch.js"></script>
+     <script src="/static/panel-player.js"></script>
+</body>
+</html>

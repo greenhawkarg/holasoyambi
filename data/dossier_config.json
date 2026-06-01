@@ -1,0 +1,670 @@
+{
+    "campanas": [
+        {
+            "anio": "2023",
+            "desc": "Mis comienzos estuvieron ligados a colaboraciones y campañas junto a distintas webs y proyectos gaming, experiencias que me ayudaron a dar mis primeros pasos creando contenido y formando parte de la comunidad.",
+            "imagen": "imgs/dossier/flyers/2023/21-09-23_•_payday3.png",
+            "titulo": "21 09 23 • Payday3"
+        },
+        {
+            "anio": "2023",
+            "desc": "Mis comienzos estuvieron ligados a colaboraciones y campañas junto a distintas webs y proyectos gaming, experiencias que me ayudaron a dar mis primeros pasos creando contenido y formando parte de la comunidad.",
+            "imagen": "imgs/dossier/flyers/2023/22-09-23_•_diluvian_ultra.png",
+            "titulo": "22 09 23 • Diluvian Ultra"
+        },
+        {
+            "anio": "2023",
+            "desc": "Mis comienzos estuvieron ligados a colaboraciones y campañas junto a distintas webs y proyectos gaming, experiencias que me ayudaron a dar mis primeros pasos creando contenido y formando parte de la comunidad.",
+            "imagen": "imgs/dossier/flyers/2023/29-09-23_•_forgive_me_father_2.png",
+            "titulo": "29 09 23 • Forgive Me Father 2"
+        },
+        {
+            "anio": "2023",
+            "desc": "Mis comienzos estuvieron ligados a colaboraciones y campañas junto a distintas webs y proyectos gaming, experiencias que me ayudaron a dar mis primeros pasos creando contenido y formando parte de la comunidad.",
+            "imagen": "imgs/dossier/flyers/2023/11nov13-feudalconbalto.png",
+            "titulo": "11NOV13 FeudalConBalto"
+        },
+        {
+            "anio": "2023",
+            "desc": "Mis comienzos estuvieron ligados a colaboraciones y campañas junto a distintas webs y proyectos gaming, experiencias que me ayudaron a dar mis primeros pasos creando contenido y formando parte de la comunidad.",
+            "imagen": "imgs/dossier/flyers/2023/10oct-20_•_mhs.png",
+            "titulo": "10OCT 20 • MHS"
+        },
+        {
+            "anio": "2023",
+            "desc": "Mis comienzos estuvieron ligados a colaboraciones y campañas junto a distintas webs y proyectos gaming, experiencias que me ayudaron a dar mis primeros pasos creando contenido y formando parte de la comunidad.",
+            "imagen": "imgs/dossier/flyers/2023/10oct-04_•_tide_of_corruption.png",
+            "titulo": "10OCT 04 • Tide Of Corruption"
+        },
+        {
+            "anio": "2023",
+            "desc": "Mis comienzos estuvieron ligados a colaboraciones y campañas junto a distintas webs y proyectos gaming, experiencias que me ayudaron a dar mis primeros pasos creando contenido y formando parte de la comunidad.",
+            "imagen": "imgs/dossier/flyers/2023/10oct-01_•_hyperviolent.png",
+            "titulo": "10OCT 01 • Hyperviolent"
+        },
+        {
+            "anio": "2023",
+            "desc": "Mis comienzos estuvieron ligados a colaboraciones y campañas junto a distintas webs y proyectos gaming, experiencias que me ayudaron a dar mis primeros pasos creando contenido y formando parte de la comunidad.",
+            "imagen": "imgs/dossier/flyers/2023/11nov16-menofwarii.png",
+            "titulo": "11NOV16 MenofwarII"
+        },
+        {
+            "anio": "2023",
+            "desc": "Mis comienzos estuvieron ligados a colaboraciones y campañas junto a distintas webs y proyectos gaming, experiencias que me ayudaron a dar mis primeros pasos creando contenido y formando parte de la comunidad.",
+            "imagen": "imgs/dossier/flyers/2023/23-09-23_•_drg_descuento.png",
+            "titulo": "23 09 23 • DRG Descuento"
+        },
+        {
+            "anio": "2023",
+            "desc": "Mis comienzos estuvieron ligados a colaboraciones y campañas junto a distintas webs y proyectos gaming, experiencias que me ayudaron a dar mis primeros pasos creando contenido y formando parte de la comunidad.",
+            "imagen": "imgs/dossier/flyers/2023/10oct-11_•_tatari.png",
+            "titulo": "10OCT 11 • Tatari"
+        },
+        {
+            "anio": "2023",
+            "desc": "Mis comienzos estuvieron ligados a colaboraciones y campañas junto a distintas webs y proyectos gaming, experiencias que me ayudaron a dar mis primeros pasos creando contenido y formando parte de la comunidad.",
+            "imagen": "imgs/dossier/flyers/2023/10oct-06_•_hunt_drops.png",
+            "titulo": "10OCT 06 • Hunt Drops"
+        },
+        {
+            "anio": "2023",
+            "desc": "Mis comienzos estuvieron ligados a colaboraciones y campañas junto a distintas webs y proyectos gaming, experiencias que me ayudaron a dar mis primeros pasos creando contenido y formando parte de la comunidad.",
+            "imagen": "imgs/dossier/flyers/2023/10oct-18_•_rush.png",
+            "titulo": "10OCT 18 • Rush"
+        },
+        {
+            "anio": "2023",
+            "desc": "Mis comienzos estuvieron ligados a colaboraciones y campañas junto a distintas webs y proyectos gaming, experiencias que me ayudaron a dar mis primeros pasos creando contenido y formando parte de la comunidad.",
+            "imagen": "imgs/dossier/flyers/2023/14-09-23_•_boti.png",
+            "titulo": "14 09 23 • Boti"
+        },
+        {
+            "anio": "2023",
+            "desc": "Mis comienzos estuvieron ligados a colaboraciones y campañas junto a distintas webs y proyectos gaming, experiencias que me ayudaron a dar mis primeros pasos creando contenido y formando parte de la comunidad.",
+            "imagen": "imgs/dossier/flyers/2023/10oct-19_•_ts2.png",
+            "titulo": "10OCT 19 • TS2"
+        },
+        {
+            "anio": "2023",
+            "desc": "Mis comienzos estuvieron ligados a colaboraciones y campañas junto a distintas webs y proyectos gaming, experiencias que me ayudaron a dar mis primeros pasos creando contenido y formando parte de la comunidad.",
+            "imagen": "imgs/dossier/flyers/2023/10oct-03_•_bang_o_balls.png",
+            "titulo": "10OCT 03 • Bang O Balls"
+        },
+        {
+            "anio": "2023",
+            "desc": "Mis comienzos estuvieron ligados a colaboraciones y campañas junto a distintas webs y proyectos gaming, experiencias que me ayudaron a dar mis primeros pasos creando contenido y formando parte de la comunidad.",
+            "imagen": "imgs/dossier/flyers/2023/10oct-22_•_pine_harbor_dmeo.png",
+            "titulo": "10OCT 22 • Pine Harbor Dmeo"
+        },
+        {
+            "anio": "2023",
+            "desc": "Mis comienzos estuvieron ligados a colaboraciones y campañas junto a distintas webs y proyectos gaming, experiencias que me ayudaron a dar mis primeros pasos creando contenido y formando parte de la comunidad.",
+            "imagen": "imgs/dossier/flyers/2023/•_drops_-_hs-01.png",
+            "titulo": "Hutn Showdown DROPS"
+        },
+        {
+            "anio": "2023",
+            "desc": "Mis comienzos estuvieron ligados a colaboraciones y campañas junto a distintas webs y proyectos gaming, experiencias que me ayudaron a dar mis primeros pasos creando contenido y formando parte de la comunidad.",
+            "imagen": "imgs/dossier/flyers/2023/10oct-23_•_duck.png",
+            "titulo": "10OCT 23 • Duck"
+        },
+        {
+            "anio": "2023",
+            "desc": "Mis comienzos estuvieron ligados a colaboraciones y campañas junto a distintas webs y proyectos gaming, experiencias que me ayudaron a dar mis primeros pasos creando contenido y formando parte de la comunidad.",
+            "imagen": "imgs/dossier/flyers/2023/11nov12-outrage.png",
+            "titulo": "11NOV12 OUTRAGE"
+        },
+        {
+            "anio": "2023",
+            "desc": "Mis comienzos estuvieron ligados a colaboraciones y campañas junto a distintas webs y proyectos gaming, experiencias que me ayudaron a dar mis primeros pasos creando contenido y formando parte de la comunidad.",
+            "imagen": "imgs/dossier/flyers/2023/02-10-23_•_army_troop.png",
+            "titulo": "Army Troop"
+        },
+        {
+            "anio": "2023",
+            "desc": "Mis comienzos estuvieron ligados a colaboraciones y campañas junto a distintas webs y proyectos gaming, experiencias que me ayudaron a dar mis primeros pasos creando contenido y formando parte de la comunidad.",
+            "imagen": "imgs/dossier/flyers/2023/10oct-07_•_krd_drops.png",
+            "titulo": "10OCT 07 • KRD Drops"
+        },
+        {
+            "anio": "2023",
+            "desc": "Mis comienzos estuvieron ligados a colaboraciones y campañas junto a distintas webs y proyectos gaming, experiencias que me ayudaron a dar mis primeros pasos creando contenido y formando parte de la comunidad.",
+            "imagen": "imgs/dossier/flyers/2023/11nov21-bailorjail.png",
+            "titulo": "11NOV21 Bailorjail"
+        },
+        {
+            "anio": "2023",
+            "desc": "Mis comienzos estuvieron ligados a colaboraciones y campañas junto a distintas webs y proyectos gaming, experiencias que me ayudaron a dar mis primeros pasos creando contenido y formando parte de la comunidad.",
+            "imagen": "imgs/dossier/flyers/2023/10oct-18_•_snek.png",
+            "titulo": "10OCT 18 • Snek"
+        },
+        {
+            "anio": "2023",
+            "desc": "Mis comienzos estuvieron ligados a colaboraciones y campañas junto a distintas webs y proyectos gaming, experiencias que me ayudaron a dar mis primeros pasos creando contenido y formando parte de la comunidad.",
+            "imagen": "imgs/dossier/flyers/2023/10oct-09_•_sot.png",
+            "titulo": "10OCT 09 • SOT"
+        },
+        {
+            "anio": "2023",
+            "desc": "Mis comienzos estuvieron ligados a colaboraciones y campañas junto a distintas webs y proyectos gaming, experiencias que me ayudaron a dar mis primeros pasos creando contenido y formando parte de la comunidad.",
+            "imagen": "imgs/dossier/flyers/2023/011223_-_stronghold.png",
+            "titulo": "011223   Stronghold"
+        },
+        {
+            "anio": "2023",
+            "desc": "Mis comienzos estuvieron ligados a colaboraciones y campañas junto a distintas webs y proyectos gaming, experiencias que me ayudaron a dar mis primeros pasos creando contenido y formando parte de la comunidad.",
+            "imagen": "imgs/dossier/flyers/2023/021223_-_orten.png",
+            "titulo": "021223   Orten"
+        },
+        {
+            "anio": "2023",
+            "desc": "Mis comienzos estuvieron ligados a colaboraciones y campañas junto a distintas webs y proyectos gaming, experiencias que me ayudaron a dar mis primeros pasos creando contenido y formando parte de la comunidad.",
+            "imagen": "imgs/dossier/flyers/2023/051223_-cave_digger_2.png",
+            "titulo": "051223  Cave Digger 2"
+        },
+        {
+            "anio": "2023",
+            "desc": "Mis comienzos estuvieron ligados a colaboraciones y campañas junto a distintas webs y proyectos gaming, experiencias que me ayudaron a dar mis primeros pasos creando contenido y formando parte de la comunidad.",
+            "imagen": "imgs/dossier/flyers/2023/061223_-_pa_drops.png",
+            "titulo": "061223   PA Drops"
+        },
+        {
+            "anio": "2023",
+            "desc": "Mis comienzos estuvieron ligados a colaboraciones y campañas junto a distintas webs y proyectos gaming, experiencias que me ayudaron a dar mis primeros pasos creando contenido y formando parte de la comunidad.",
+            "imagen": "imgs/dossier/flyers/2023/111223_-_dwarf.png",
+            "titulo": "111223   Dwarf"
+        },
+        {
+            "anio": "2023",
+            "desc": "Mis comienzos estuvieron ligados a colaboraciones y campañas junto a distintas webs y proyectos gaming, experiencias que me ayudaron a dar mis primeros pasos creando contenido y formando parte de la comunidad.",
+            "imagen": "imgs/dossier/flyers/2023/121223_-_aloft.png",
+            "titulo": "121223   Aloft"
+        },
+        {
+            "anio": "2023",
+            "desc": "Mis comienzos estuvieron ligados a colaboraciones y campañas junto a distintas webs y proyectos gaming, experiencias que me ayudaron a dar mis primeros pasos creando contenido y formando parte de la comunidad.",
+            "imagen": "imgs/dossier/flyers/2023/121223_-_astral_tracks.png",
+            "titulo": "121223   Astral Tracks"
+        },
+        {
+            "anio": "2023",
+            "desc": "Mis comienzos estuvieron ligados a colaboraciones y campañas junto a distintas webs y proyectos gaming, experiencias que me ayudaron a dar mis primeros pasos creando contenido y formando parte de la comunidad.",
+            "imagen": "imgs/dossier/flyers/2023/151223_-_its_only_money.png",
+            "titulo": "151223   Its Only Money"
+        },
+        {
+            "anio": "2023",
+            "desc": "Mis comienzos estuvieron ligados a colaboraciones y campañas junto a distintas webs y proyectos gaming, experiencias que me ayudaron a dar mis primeros pasos creando contenido y formando parte de la comunidad.",
+            "imagen": "imgs/dossier/flyers/2023/151223_-_metal_hellsinger_dlc.png",
+            "titulo": "151223   Metal Hellsinger DLC"
+        },
+        {
+            "anio": "2023",
+            "desc": "Mis comienzos estuvieron ligados a colaboraciones y campañas junto a distintas webs y proyectos gaming, experiencias que me ayudaron a dar mis primeros pasos creando contenido y formando parte de la comunidad.",
+            "imagen": "imgs/dossier/flyers/2023/151223_-_squad44.png",
+            "titulo": "151223   Squad44"
+        },
+        {
+            "anio": "2023",
+            "desc": "Mis comienzos estuvieron ligados a colaboraciones y campañas junto a distintas webs y proyectos gaming, experiencias que me ayudaron a dar mis primeros pasos creando contenido y formando parte de la comunidad.",
+            "imagen": "imgs/dossier/flyers/2023/171223_-_fromspace.png",
+            "titulo": "171223   Fromspace"
+        },
+        {
+            "anio": "2023",
+            "desc": "Mis comienzos estuvieron ligados a colaboraciones y campañas junto a distintas webs y proyectos gaming, experiencias que me ayudaron a dar mis primeros pasos creando contenido y formando parte de la comunidad.",
+            "imagen": "imgs/dossier/flyers/2023/171223_-_project_warlock_ii.png",
+            "titulo": "171223   Project Warlock II"
+        },
+        {
+            "anio": "2023",
+            "desc": "Mis comienzos estuvieron ligados a colaboraciones y campañas junto a distintas webs y proyectos gaming, experiencias que me ayudaron a dar mis primeros pasos creando contenido y formando parte de la comunidad.",
+            "imagen": "imgs/dossier/flyers/2023/201223_-_anvil_saga.png",
+            "titulo": "201223   Anvil Saga"
+        },
+        {
+            "anio": "2023",
+            "desc": "Mis comienzos estuvieron ligados a colaboraciones y campañas junto a distintas webs y proyectos gaming, experiencias que me ayudaron a dar mis primeros pasos creando contenido y formando parte de la comunidad.",
+            "imagen": "imgs/dossier/flyers/2023/201223_-_the_finals_regalos.png",
+            "titulo": "201223   The Finals Regalos"
+        },
+        {
+            "anio": "2023",
+            "desc": "Mis comienzos estuvieron ligados a colaboraciones y campañas junto a distintas webs y proyectos gaming, experiencias que me ayudaron a dar mis primeros pasos creando contenido y formando parte de la comunidad.",
+            "imagen": "imgs/dossier/flyers/2023/211223_-_dirty_dirty_pirates.png",
+            "titulo": "211223   Dirty Dirty Pirates"
+        },
+        {
+            "anio": "2023",
+            "desc": "Mis comienzos estuvieron ligados a colaboraciones y campañas junto a distintas webs y proyectos gaming, experiencias que me ayudaron a dar mis primeros pasos creando contenido y formando parte de la comunidad.",
+            "imagen": "imgs/dossier/flyers/2023/211223_-_space_trash_scavenger.png",
+            "titulo": "211223   Space Trash Scavenger"
+        },
+        {
+            "anio": "2023",
+            "desc": "Mis comienzos estuvieron ligados a colaboraciones y campañas junto a distintas webs y proyectos gaming, experiencias que me ayudaron a dar mis primeros pasos creando contenido y formando parte de la comunidad.",
+            "imagen": "imgs/dossier/flyers/2023/231223_-_american_truck_simulator.png",
+            "titulo": "231223   American Truck Simulator"
+        },
+        {
+            "anio": "2023",
+            "desc": "Mis comienzos estuvieron ligados a colaboraciones y campañas junto a distintas webs y proyectos gaming, experiencias que me ayudaron a dar mis primeros pasos creando contenido y formando parte de la comunidad.",
+            "imagen": "imgs/dossier/flyers/2023/231223_-_conan_exilies.png",
+            "titulo": "231223   Conan Exilies"
+        },
+        {
+            "anio": "2023",
+            "desc": "Mis comienzos estuvieron ligados a colaboraciones y campañas junto a distintas webs y proyectos gaming, experiencias que me ayudaron a dar mis primeros pasos creando contenido y formando parte de la comunidad.",
+            "imagen": "imgs/dossier/flyers/2023/231223_-_taora.png",
+            "titulo": "231223   Taora"
+        },
+        {
+            "anio": "2023",
+            "desc": "Mis comienzos estuvieron ligados a colaboraciones y campañas junto a distintas webs y proyectos gaming, experiencias que me ayudaron a dar mis primeros pasos creando contenido y formando parte de la comunidad.",
+            "imagen": "imgs/dossier/flyers/2023/251123_-_dread_templar.png",
+            "titulo": "251123   Dread Templar"
+        },
+        {
+            "anio": "2023",
+            "desc": "Mis comienzos estuvieron ligados a colaboraciones y campañas junto a distintas webs y proyectos gaming, experiencias que me ayudaron a dar mis primeros pasos creando contenido y formando parte de la comunidad.",
+            "imagen": "imgs/dossier/flyers/2023/261223_-_ctw_hunter.png",
+            "titulo": "261223   Ctw Hunter"
+        },
+        {
+            "anio": "2023",
+            "desc": "Mis comienzos estuvieron ligados a colaboraciones y campañas junto a distintas webs y proyectos gaming, experiencias que me ayudaron a dar mis primeros pasos creando contenido y formando parte de la comunidad.",
+            "imagen": "imgs/dossier/flyers/2023/261223_-_frozenheim.png",
+            "titulo": "261223   Frozenheim"
+        },
+        {
+            "anio": "2023",
+            "desc": "Mis comienzos estuvieron ligados a colaboraciones y campañas junto a distintas webs y proyectos gaming, experiencias que me ayudaron a dar mis primeros pasos creando contenido y formando parte de la comunidad.",
+            "imagen": "imgs/dossier/flyers/2023/271123_-_the_angler.png",
+            "titulo": "271123   The Angler"
+        },
+        {
+            "anio": "2023",
+            "desc": "Mis comienzos estuvieron ligados a colaboraciones y campañas junto a distintas webs y proyectos gaming, experiencias que me ayudaron a dar mis primeros pasos creando contenido y formando parte de la comunidad.",
+            "imagen": "imgs/dossier/flyers/2023/281223_-_kingdom_the_blood.png",
+            "titulo": "281223   Kingdom The Blood"
+        },
+        {
+            "anio": "2023",
+            "desc": "Mis comienzos estuvieron ligados a colaboraciones y campañas junto a distintas webs y proyectos gaming, experiencias que me ayudaron a dar mis primeros pasos creando contenido y formando parte de la comunidad.",
+            "imagen": "imgs/dossier/flyers/2023/281223_-_sanguivore.png",
+            "titulo": "281223   Sanguivore"
+        },
+        {
+            "anio": "2023",
+            "desc": "Mis comienzos estuvieron ligados a colaboraciones y campañas junto a distintas webs y proyectos gaming, experiencias que me ayudaron a dar mis primeros pasos creando contenido y formando parte de la comunidad.",
+            "imagen": "imgs/dossier/flyers/2023/291223_-_toasterball.png",
+            "titulo": "291223   Toasterball"
+        },
+        {
+            "anio": "2024",
+            "desc": "Un año con nuevas oportunidades, participando en diferentes acciones, lanzamientos y trabajos junto a marcas y proyectos relacionados al mundo gaming y la creación digital.",
+            "imagen": "imgs/dossier/flyers/2024/00124_-_drug_dealer_simulator_2.png",
+            "titulo": "Drug Dealer Simulator 2"
+        },
+        {
+            "anio": "2024",
+            "desc": "Un año con nuevas oportunidades, participando en diferentes acciones, lanzamientos y trabajos junto a marcas y proyectos relacionados al mundo gaming y la creación digital.",
+            "imagen": "imgs/dossier/flyers/2024/010124_-_trinity_fusion.png",
+            "titulo": "Trinity Fusion"
+        },
+        {
+            "anio": "2024",
+            "desc": "Un año con nuevas oportunidades, participando en diferentes acciones, lanzamientos y trabajos junto a marcas y proyectos relacionados al mundo gaming y la creación digital.",
+            "imagen": "imgs/dossier/flyers/2024/010124_-_united_1944.png",
+            "titulo": "United 1944"
+        },
+        {
+            "anio": "2024",
+            "desc": "Un año con nuevas oportunidades, participando en diferentes acciones, lanzamientos y trabajos junto a marcas y proyectos relacionados al mundo gaming y la creación digital.",
+            "imagen": "imgs/dossier/flyers/2024/020124_-_omega_crafter.png",
+            "titulo": "Omega Crafter"
+        },
+        {
+            "anio": "2024",
+            "desc": "Un año con nuevas oportunidades, participando en diferentes acciones, lanzamientos y trabajos junto a marcas y proyectos relacionados al mundo gaming y la creación digital.",
+            "imagen": "imgs/dossier/flyers/2024/020124_-_strange_brigade.png",
+            "titulo": "Strange Brigade"
+        },
+        {
+            "anio": "2024",
+            "desc": "Un año con nuevas oportunidades, participando en diferentes acciones, lanzamientos y trabajos junto a marcas y proyectos relacionados al mundo gaming y la creación digital.",
+            "imagen": "imgs/dossier/flyers/2024/030124_-_aztek_tiki.png",
+            "titulo": "Aztek Tiki"
+        },
+        {
+            "anio": "2024",
+            "desc": "Un año con nuevas oportunidades, participando en diferentes acciones, lanzamientos y trabajos junto a marcas y proyectos relacionados al mundo gaming y la creación digital.",
+            "imagen": "imgs/dossier/flyers/2024/030124_-_bzzz.png",
+            "titulo": "Bzzzt"
+        },
+        {
+            "anio": "2024",
+            "desc": "Un año con nuevas oportunidades, participando en diferentes acciones, lanzamientos y trabajos junto a marcas y proyectos relacionados al mundo gaming y la creación digital.",
+            "imagen": "imgs/dossier/flyers/2024/030124_-_kao_dlc.png",
+            "titulo": "030124   Kao Dlc"
+        },
+        {
+            "anio": "2024",
+            "desc": "Un año con nuevas oportunidades, participando en diferentes acciones, lanzamientos y trabajos junto a marcas y proyectos relacionados al mundo gaming y la creación digital.",
+            "imagen": "imgs/dossier/flyers/2024/050124_-_the_kindeman_remedy.png",
+            "titulo": "050124   The Kindeman Remedy"
+        },
+        {
+            "anio": "2024",
+            "desc": "Un año con nuevas oportunidades, participando en diferentes acciones, lanzamientos y trabajos junto a marcas y proyectos relacionados al mundo gaming y la creación digital.",
+            "imagen": "imgs/dossier/flyers/2024/080124_-_undying.png",
+            "titulo": "080124   Undying"
+        },
+        {
+            "anio": "2024",
+            "desc": "Un año con nuevas oportunidades, participando en diferentes acciones, lanzamientos y trabajos junto a marcas y proyectos relacionados al mundo gaming y la creación digital.",
+            "imagen": "imgs/dossier/flyers/2024/090124_-_hidden.png",
+            "titulo": "090124   Hidden"
+        },
+        {
+            "anio": "2024",
+            "desc": "Un año con nuevas oportunidades, participando en diferentes acciones, lanzamientos y trabajos junto a marcas y proyectos relacionados al mundo gaming y la creación digital.",
+            "imagen": "imgs/dossier/flyers/2024/150124_-_contraption_maker.png",
+            "titulo": "150124   Contraption Maker"
+        },
+        {
+            "anio": "2024",
+            "desc": "Un año con nuevas oportunidades, participando en diferentes acciones, lanzamientos y trabajos junto a marcas y proyectos relacionados al mundo gaming y la creación digital.",
+            "imagen": "imgs/dossier/flyers/2024/160124_-_tail_of_iron.png",
+            "titulo": "160124   Tail Of Iron"
+        },
+        {
+            "anio": "2024",
+            "desc": "Un año con nuevas oportunidades, participando en diferentes acciones, lanzamientos y trabajos junto a marcas y proyectos relacionados al mundo gaming y la creación digital.",
+            "imagen": "imgs/dossier/flyers/2024/200124_-_deathbound.png",
+            "titulo": "200124   Deathbound"
+        },
+        {
+            "anio": "2024",
+            "desc": "Un año con nuevas oportunidades, participando en diferentes acciones, lanzamientos y trabajos junto a marcas y proyectos relacionados al mundo gaming y la creación digital.",
+            "imagen": "imgs/dossier/flyers/2024/200124_-_despair_blood_curse.png",
+            "titulo": "200124   Despair Blood Curse"
+        },
+        {
+            "anio": "2024",
+            "desc": "Un año con nuevas oportunidades, participando en diferentes acciones, lanzamientos y trabajos junto a marcas y proyectos relacionados al mundo gaming y la creación digital.",
+            "imagen": "imgs/dossier/flyers/2024/230124_-_palworld.png",
+            "titulo": "230124   Palworld"
+        },
+        {
+            "anio": "2024",
+            "desc": "Un año con nuevas oportunidades, participando en diferentes acciones, lanzamientos y trabajos junto a marcas y proyectos relacionados al mundo gaming y la creación digital.",
+            "imagen": "imgs/dossier/flyers/2024/250124_-_timberborn.png",
+            "titulo": "250124   Timberborn"
+        },
+        {
+            "anio": "2024",
+            "desc": "Un año con nuevas oportunidades, participando en diferentes acciones, lanzamientos y trabajos junto a marcas y proyectos relacionados al mundo gaming y la creación digital.",
+            "imagen": "imgs/dossier/flyers/2024/260124_-_enshrouded.png",
+            "titulo": "260124   Enshrouded"
+        },
+        {
+            "anio": "2024",
+            "desc": "Un año con nuevas oportunidades, participando en diferentes acciones, lanzamientos y trabajos junto a marcas y proyectos relacionados al mundo gaming y la creación digital.",
+            "imagen": "imgs/dossier/flyers/2024/260124_-_stuffed.png",
+            "titulo": "260124   Stuffed"
+        },
+        {
+            "anio": "2024",
+            "desc": "Un año con nuevas oportunidades, participando en diferentes acciones, lanzamientos y trabajos junto a marcas y proyectos relacionados al mundo gaming y la creación digital.",
+            "imagen": "imgs/dossier/flyers/2024/300124_-_drops_pa.png",
+            "titulo": "300124   DROPS PA"
+        },
+        {
+            "anio": "2025",
+            "desc": "Un año enfocado en el crecimiento y continuidad de mi proyecto GreenHawk, explorando más el lado de la fotografía y el filmmaking, además de formar parte del programa de creadores de Hunt: Showdown.",
+            "imagen": "imgs/dossier/flyers/2025/011223_-_law_of_salvage.png",
+            "titulo": "011223   Law Of Salvage"
+        },
+        {
+            "anio": "2025",
+            "desc": "Un año enfocado en el crecimiento y continuidad de mi proyecto GreenHawk, explorando más el lado de la fotografía y el filmmaking, además de formar parte del programa de creadores de Hunt: Showdown.",
+            "imagen": "imgs/dossier/flyers/2025/150224_-_northern_justice_dlc.png",
+            "titulo": "150224   Northern Justice DLC"
+        },
+        {
+            "anio": "2025",
+            "desc": "Un año enfocado en el crecimiento y continuidad de mi proyecto GreenHawk, explorando más el lado de la fotografía y el filmmaking, además de formar parte del programa de creadores de Hunt: Showdown.",
+            "imagen": "imgs/dossier/flyers/2025/170324_-_conspirador_dlc.png",
+            "titulo": "170324   Conspirador DLC"
+        },
+        {
+            "anio": "2025",
+            "desc": "Un año enfocado en el crecimiento y continuidad de mi proyecto GreenHawk, explorando más el lado de la fotografía y el filmmaking, además de formar parte del programa de creadores de Hunt: Showdown.",
+            "imagen": "imgs/dossier/flyers/2025/180124_-_the_shadow_under_the_cowl_dlc.png",
+            "titulo": "180124   The Shadow Under The Cowl DLC"
+        },
+        {
+            "anio": "2025",
+            "desc": "Un año enfocado en el crecimiento y continuidad de mi proyecto GreenHawk, explorando más el lado de la fotografía y el filmmaking, además de formar parte del programa de creadores de Hunt: Showdown.",
+            "imagen": "imgs/dossier/flyers/2025/231123_-_souls_of_a_feather.png",
+            "titulo": "231123   Souls Of A Feather"
+        },
+        {
+            "anio": "2025",
+            "desc": "Un año enfocado en el crecimiento y continuidad de mi proyecto GreenHawk, explorando más el lado de la fotografía y el filmmaking, además de formar parte del programa de creadores de Hunt: Showdown.",
+            "imagen": "imgs/dossier/flyers/2025/10oct-14_•_myth_of_the_moors.png",
+            "titulo": "10OCT 14 • Myth Of The Moors"
+        },
+        {
+            "anio": "2025",
+            "desc": "Un año enfocado en el crecimiento y continuidad de mi proyecto GreenHawk, explorando más el lado de la fotografía y el filmmaking, además de formar parte del programa de creadores de Hunt: Showdown.",
+            "imagen": "imgs/dossier/flyers/2025/15-09-23_•_hunt_ladrido_ferreo.png",
+            "titulo": "15 09 23 • Hunt Ladrido Ferreo"
+        },
+        {
+            "anio": "2025",
+            "desc": "Un año enfocado en el crecimiento y continuidad de mi proyecto GreenHawk, explorando más el lado de la fotografía y el filmmaking, además de formar parte del programa de creadores de Hunt: Showdown.",
+            "imagen": "imgs/dossier/flyers/2025/21-09-23_•_hunt_hayali.png",
+            "titulo": "21 09 23 • Hunt Hayali"
+        }
+    ],
+    "disenos": [
+        {
+            "caption": "Diseños para stream, intro.",
+            "categoria": "Stream Overlay",
+            "imagen": "imgs/dossier/overlays/intro.png"
+        }
+    ],
+    "header": {
+        "subtitulo": "Streamer · Content Creator · Gaming Press",
+        "stat1_num": "3+",
+        "stat1_lbl": "Años activos",
+        "stat2_num": "210+",
+        "stat2_lbl": "Camapañas",
+        "stat3_num": "30+",
+        "stat3_lbl": "Partners"
+    },
+    "sponsors": [
+        {
+            "categoria": "Studios",
+            "imagen": "imgs/dossier/sponsors/crytek.png",
+            "nombre": "Crytek",
+            "url": "https://www.crytek.com/"
+        },
+        {
+            "categoria": "Publishers",
+            "imagen": "imgs/dossier/sponsors/devolver_digital.png",
+            "nombre": "Devolver Digital",
+            "url": "https://www.devolverdigital.com/"
+        },
+        {
+            "categoria": "Studios",
+            "imagen": "imgs/dossier/sponsors/recreate_games.png",
+            "nombre": "Recreate Games",
+            "url": "https://recreate.games/en"
+        },
+        {
+            "categoria": "Studios",
+            "imagen": "imgs/dossier/sponsors/fumi_games.png",
+            "nombre": "Fumi Games",
+            "url": "https://fumigames.com/"
+        },
+        {
+            "categoria": "Studios",
+            "imagen": "imgs/dossier/sponsors/squareplays_games.png",
+            "nombre": "Squareplays Games",
+            "url": "https://www.squareplaygames.com/"
+        },
+        {
+            "categoria": "Publishers",
+            "imagen": "imgs/dossier/sponsors/fulqrum_publishing.png",
+            "nombre": "Fulqrum Publishing",
+            "url": "https://www.fulqrumpublishing.com/"
+        },
+        {
+            "categoria": "Marketing / PR",
+            "imagen": "imgs/dossier/sponsors/exitplan.png",
+            "nombre": "Exit Plan",
+            "url": "https://www.exitplangames.com/"
+        },
+        {
+            "categoria": "Publishers",
+            "imagen": "imgs/dossier/sponsors/freedom_games.png",
+            "nombre": "Freedom Games",
+            "url": "https://www.indie.io/"
+        },
+        {
+            "categoria": "Press & Creator",
+            "imagen": "imgs/dossier/sponsors/dare_drop.png",
+            "nombre": "Dare Drop",
+            "url": ""
+        },
+        {
+            "categoria": "Publishers",
+            "imagen": "imgs/dossier/sponsors/funcom_games.png",
+            "nombre": "Funcom Games",
+            "url": "https://www.funcom.com/"
+        },
+        {
+            "categoria": "Studios",
+            "imagen": "imgs/dossier/sponsors/fuzzybot.png",
+            "nombre": "Fuzzybot",
+            "url": "https://www.fuzzybot.com/"
+        },
+        {
+            "categoria": "Publishers",
+            "imagen": "imgs/dossier/sponsors/indie_io.png",
+            "nombre": "Indie Io",
+            "url": "https://www.indie.io/"
+        },
+        {
+            "categoria": "Press & Creator",
+            "imagen": "imgs/dossier/sponsors/keymailer.png",
+            "nombre": "Keymailer",
+            "url": ""
+        },
+        {
+            "categoria": "Studios",
+            "imagen": "imgs/dossier/sponsors/lazy_bear_games.png",
+            "nombre": "Lazy Bear Games",
+            "url": "http://lazybeargames.com/"
+        },
+        {
+            "categoria": "Press & Creator",
+            "imagen": "imgs/dossier/sponsors/lurkit.png",
+            "nombre": "Lurkit",
+            "url": ""
+        },
+        {
+            "categoria": "Studios",
+            "imagen": "imgs/dossier/sponsors/playside.png",
+            "nombre": "Playside",
+            "url": "https://playsidestudios.com/"
+        },
+        {
+            "categoria": "Services & Tech",
+            "imagen": "imgs/dossier/sponsors/source_technology.png",
+            "nombre": "Source Technology",
+            "url": ""
+        },
+        {
+            "categoria": "Press & Creator",
+            "imagen": "imgs/dossier/sponsors/terminals_io.png",
+            "nombre": "Terminals Io",
+            "url": ""
+        },
+        {
+            "categoria": "Studios",
+            "imagen": "imgs/dossier/sponsors/the_outsiders.png",
+            "nombre": "The Outsiders",
+            "url": "https://theoutsiders.se/"
+        },
+        {
+            "categoria": "Publishers",
+            "imagen": "imgs/dossier/sponsors/tiny_build.png",
+            "nombre": "Tiny Build",
+            "url": "https://www.tinybuild.com/"
+        },
+        {
+            "categoria": "Publishers",
+            "imagen": "imgs/dossier/sponsors/togue_productions.png",
+            "nombre": "Togue Productions",
+            "url": "https://www.togeproductions.com/"
+        },
+        {
+            "categoria": "Publishers",
+            "imagen": "imgs/dossier/sponsors/untold_tales.png",
+            "nombre": "Untold Tales",
+            "url": "https://untoldtales.games/"
+        },
+        {
+            "categoria": "Studios",
+            "imagen": "imgs/dossier/sponsors/usual_suspects.png",
+            "nombre": "Usual Suspects",
+            "url": "https://usualsuspects.games/"
+        },
+        {
+            "categoria": "Studios",
+            "imagen": "imgs/dossier/sponsors/world_makers.png",
+            "nombre": "World Makers",
+            "url": "https://www.worldmakers.com/"
+        },
+        {
+            "categoria": "Services & Tech",
+            "imagen": "imgs/dossier/sponsors/xsolla.png",
+            "nombre": "Xsolla",
+            "url": ""
+        },
+        {
+            "badge": "Creator",
+            "categoria": "Partner & Creator Programs",
+            "imagen": "imgs/dossier/sponsors/actrive_matter.png",
+            "nombre": "Actrive Matter",
+            "url": "https://activematter.game/en/"
+        },
+        {
+            "badge": "Partner",
+            "categoria": "Partner & Creator Programs",
+            "imagen": "imgs/dossier/sponsors/clavecd.png",
+            "nombre": "Clavecd",
+            "url": "https://www.clavecd.es/"
+        },
+        {
+            "badge": "Creator",
+            "categoria": "Partner & Creator Programs",
+            "imagen": "imgs/dossier/sponsors/hunt_showdown.png",
+            "nombre": "Hunt Showdown",
+            "url": "https://www.huntshowdown.com/"
+        },
+        {
+            "badge": "Partner",
+            "categoria": "Partner & Creator Programs",
+            "imagen": "imgs/dossier/sponsors/mouse_pi_for_hire.png",
+            "nombre": "Mouse Pi For Hire",
+            "url": "https://www.mousethegame.com/"
+        }
+    ],
+    "sponsors_intro": "Andrés ' Ambi ' Barrio... nunca fue solo gaming.   \nDurante años fui construyendo este espacio desde distintos lugares, los videojuegos, la fotografía, el mundo dentro del filmmaking, el contenido y experiencias compartidas con una comunidad que estuvo presente en cada etapa.\n\nMuchas de las marcas, estudios y proyectos que aparecen acá formaron parte de ese recorrido de distintas maneras, campañas, acceso a juegos, colaboraciones, eventos y oportunidades que fueron creciendo de manera natural con los años.\n\nHoy en 2026 sigo adelante, aprendiendo constantemente, equivocándome muchas veces en el proceso y tratando de crecer sin perder la esencia de todo lo que me llevó hasta acá.",
+    "sponsors_photo": "imgs/dossier/sponsors/ambi-gh-web.webp"
+}

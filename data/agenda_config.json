@@ -1,0 +1,114 @@
+[
+    {
+        "dia": "DOMINGO",
+        "fecha": "31 DE MAYO",
+        "fecha_limite_calculada": "2026-06-07",
+        "hora": "22:30 HS",
+        "imagen": "imgs/index/agenda/ta-daybreakslam.jpg",
+        "juego": "DAYBREAK SLAM",
+        "tipo": "standard",
+        "tipo_stream": "DÍA DE FALOPITAS / CAMPAÑA",
+        "video": "Q4INFTLLiDA"
+    },
+    {
+        "dia": "DOMINGO",
+        "fecha": "31 DE MAYO",
+        "fecha_limite_calculada": "2026-06-04",
+        "hora": "23:30 HS",
+        "imagen": "imgs/index/agenda/ta-warpeduniverse.jpg",
+        "juego": "WARPED UNIVERSE",
+        "tipo": "standard",
+        "tipo_stream": "DÍA DE FALOPITAS / CAMPAÑA",
+        "video": "_jH-HksPzmo"
+    },
+    {
+        "dia": "MARTES",
+        "fecha": "2 DE JUNIO",
+        "fecha_limite_calculada": "2026-06-29",
+        "hora": "14:00 HS",
+        "imagen": "imgs/index/agenda/ta-bobb.jpg",
+        "juego": "BLACK ONE BLOOD BROTHERS",
+        "tipo": "standard",
+        "tipo_stream": "INVITADOS POR EL STUDIO",
+        "video": "6YKIsZUOp-g"
+    },
+    {
+        "dia": "MARTES",
+        "fecha": "2 DE JUNIO",
+        "fecha_limite_calculada": "2026-06-05",
+        "hora": "13:00 HS",
+        "imagen": "imgs/index/agenda/a.a.u_black_site.jpg",
+        "juego": "A.A.U. BLACK SITE",
+        "tipo": "standard",
+        "tipo_stream": "CAMPAÑA",
+        "video": "Nvh5vqhE7U4"
+    },
+    {
+        "bg_imagen": "",
+        "border_color": "#d72626",
+        "dia": "VIERNES",
+        "fecha": "5 DE JUNIO",
+        "fecha_limite_calculada": "2026-06-26",
+        "hora": "13:00 HS",
+        "imagen": "imgs/index/agenda/everrail.jpg",
+        "juego": "EVERRAIL",
+        "tipo": "standard",
+        "tipo_stream": "INVITADOS AL EARLY ACCESS",
+        "video": "uQGwVPBGctI"
+    },
+    {
+        "dia": "SÁBADO",
+        "fecha": "6 DE JUNIO",
+        "fecha_limite_calculada": "2026-06-22",
+        "hora": "13:00 HS",
+        "imagen": "imgs/index/agenda/ta-mcb.jpg",
+        "juego": "MEDIEVAL CRAFTER BLACKSMITH",
+        "tipo": "standard",
+        "tipo_stream": "DÍA DE REALIDAD / CAMPAÑA",
+        "video": "FK9K_0j4KjE"
+    },
+    {
+        "dia": "SÁBADO",
+        "fecha": "6 DE JUNIO",
+        "fecha_limite_calculada": "2026-07-11",
+        "hora": "14:30 HS / 15:00 HS",
+        "imagen": "imgs/index/agenda/ta-mrtoilet.jpg",
+        "juego": "MR TOILET",
+        "tipo": "standard",
+        "tipo_stream": "DÍA DE REALIDAD / CAMPAÑA",
+        "video": "UYqXwcSyAP8"
+    },
+    {
+        "dia": "DOMINGO",
+        "fecha": "7 DE JUNIO",
+        "fecha_limite_calculada": "2026-07-12",
+        "hora": "15:00 HS",
+        "imagen": "imgs/index/agenda/ta-zombiehood.jpg",
+        "juego": "ZOMBIEHOOD",
+        "tipo": "standard",
+        "tipo_stream": "DÍA DE FALOPITAS / CAMPAÑA",
+        "video": "yWlx4alCoBw"
+    },
+    {
+        "dia": "DOMINGO",
+        "fecha": "7 DE JUNIO",
+        "fecha_limite_calculada": "2026-07-07",
+        "hora": "16:00 HS",
+        "imagen": "imgs/index/agenda/ta-stupidcars.jpg",
+        "juego": "STUPID CARS",
+        "tipo": "standard",
+        "tipo_stream": "DÍA DE FALOPITAS / CAMPAÑA",
+        "video": "LPsB0XtTewI"
+    },
+    {
+        "dia": "DOMINGO",
+        "fecha": "7 DE JUNIO",
+        "fecha_limite_calculada": "2026-06-19",
+        "hora": "17:00 HS",
+        "imagen": "imgs/index/agenda/ta-runedice.jpg",
+        "juego": "RUNE DICE",
+        "tipo": "standard",
+        "tipo_stream": "DÍA DE FALOPITAS / CAMPAÑA",
+        "video": "5i7OvHrj2AY"
+    }
+]

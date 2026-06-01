@@ -1,0 +1,14 @@
+{
+    "juego": "HELL LET LOOSE: VIETNAM",
+    "tipo": "INVITADOS A LA PLAYTEST",
+    "desc": "Volveremos a Vietnam para adentrarnos una vez más en la jungla, la coordinación y la potencia de fuego no es lo nuestro, pero prometo dar lo mejor de nosotros.",
+    "fecha": "1 DE JUNIO",
+    "fecha_iso": "2026-06-01",
+    "dia": "LUNES",
+    "hora": "14:00HS",
+    "thumb": "imgs/index/agenda/hll_vietnam.jpg",
+    "object": "imgs/index/hero/hero-bg_img.webp",
+    "logo": "imgs/index/hero/hero-bg_logo.webp",
+    "bg": "imgs/index/hero/hero-bg.webp",
+    "bleed": "imgs/index/agenda/agenda_over-img.webp"
+}

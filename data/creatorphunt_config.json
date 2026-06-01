@@ -1,0 +1,42 @@
+{
+    "seccion": {
+        "titulo": "Hunt: Showdown 1896",
+        "descripcion": "Sección para el programa de creadores de Hunt Showdown. Acceso anticipado a DLCs, contenido exclusivo y colaboración directa con el equipo de Crytek."
+    },
+    "rotacion": {
+        "titulo": "The Heart of Lower DeSalle - Lady Lewis",
+        "fecha": "15 De Abril 2026",
+        "descripcion": "No hay nada que Lady Lewis desee más que devolver a su antigua gloria a DeSalle bajo, incluso aunque solo sea por el bien de los cazadores. Su reputación la convierten en la persona perfecta para lograrlo.",
+        "img": "imgs/index/creatorPhunt/dlc_rotacion.webp"
+    },
+    "dlcs": [
+        {
+            "id": 1,
+            "titulo": "The Madness of Montresor",
+            "img": "imgs/index/creatorPhunt/dlc_01.webp"
+        },
+        {
+            "id": 2,
+            "titulo": "Violent Balance",
+            "img": "imgs/index/creatorPhunt/dlc_02.webp"
+        }
+    ],
+    "video": "https://www.youtube.com/watch?v=_3mTLRaZhcw",
+    "bleeds": {
+        "left": {
+            "activo": true
+        },
+        "right": {
+            "activo": true
+        },
+        "top": {
+            "activo": true
+        },
+        "bottom": {
+            "activo": true
+        },
+        "middle": {
+            "activo": true
+        }
+    }
+}

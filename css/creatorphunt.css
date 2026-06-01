@@ -1,0 +1,363 @@
+/* ══════════════════════════════════════════════════════════════════
+   AMBI — CREATORPHUNT.CSS
+   Sección: Programa de Creadores — Hunt Showdown
+   Depende de: style.css (variables globales)
+══════════════════════════════════════════════════════════════════ */
+
+
+/* ──────────────────────────────────────────
+   SECCIÓN BASE
+────────────────────────────────────────── */
+
+.creatorphunt {
+    background-color: var(--c-black);
+}
+
+
+/* ──────────────────────────────────────────
+   CREATORPHUNT — CAPA 1: FONDO
+   Vive dentro de .section-bg
+────────────────────────────────────────── */
+
+.creatorphunt .section-bg {
+    background-image:
+        url('../imgs/noise-texture.png'),
+        linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),
+        url('../imgs/index/creatorPhunt/bg.webp');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+.creatorphunt-inner {
+    max-width: var(--max-width);
+    min-height: 750px;
+    margin: 0 auto;
+    padding: 56px 40px;
+    display: flex;
+    align-items: stretch;
+}
+
+/* ──────────────────────────────────────────
+   GRID
+────────────────────────────────────────── */
+
+.creatorphunt-grid {
+    display: grid;
+    grid-template-columns: 7fr 3fr;
+    gap: 48px;
+    width: 100%;
+}
+
+/* ──────────────────────────────────────────
+   HEADER — kicker / título / subtítulo
+────────────────────────────────────────── */
+
+.creatorphunt-kicker {
+    display: block;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--c-yellow);
+    margin-bottom: 10px;
+}
+
+.creatorphunt-titulo {
+    font-size: 36px;
+    font-weight: 700;
+    color: var(--c-white);
+    line-height: 1.1;
+    margin-bottom: 12px;
+}
+
+.creatorphunt-subtitulo {
+    font-size: 14px;
+    color: var(--c-text-muted);
+    line-height: 1.6;
+    max-width: 480px;
+}
+
+
+/* ──────────────────────────────────────────
+   ROTACIÓN — anclada al bottom de col-left
+────────────────────────────────────────── */
+
+.creatorphunt-col-left {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+}
+
+/* POSICION DEL TITULO - DLC EN ROTACIÓN */
+.creatorphunt-rotacion-label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--c-yellow);
+    margin-bottom: 8px;
+}
+
+.creatorphunt-rotacion {
+    position: relative;
+    background: rgba(255,255,255,0.05);
+    border: 0.5px solid rgba(255,255,255,0.10);
+    border-radius: 8px;
+    padding: 26px 26px 26px 26px;
+    overflow: visible;
+}
+
+/* IMAGEN DEL DLC - DLC EN ROTACIÓN */
+.creatorphunt-rotacion-imgvert {
+    position: absolute;
+    width: 160px;
+    bottom: 0;
+    right: 0px;
+}
+
+.creatorphunt-rotacion-imgvert img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 4px;
+}
+
+.creatorphunt-rotacion-body {
+    padding-right: 140px;
+}
+
+.creatorphunt-rotacion-fecha {
+    display: block;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--c-accent);
+    margin-bottom: 6px;
+}
+
+.creatorphunt-rotacion-titulo {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--c-white);
+    margin-bottom: 6px;
+    line-height: 1.3;
+}
+
+.creatorphunt-rotacion-desc {
+    font-size: 12px;
+    color: var(--c-text-muted);
+    line-height: 1.5;
+}
+
+/* ──────────────────────────────────────────
+   COL DERECHA — DLCs
+────────────────────────────────────────── */
+
+.creatorphunt-col-right {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.creatorphunt-dlcs-label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--c-text-muted);
+}
+
+.creatorphunt-dlcs {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+}
+
+.creatorphunt-dlc {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.creatorphunt-dlc-imgwrap img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 6px;
+}
+
+
+.creatorphunt-dlc-titulo {
+    font-size: 11px;
+    color: var(--c-text-muted);
+    text-align: center;
+    line-height: 1.3;
+}
+
+/* ──────────────────────────────────────────
+   CREATORPHUNT — CAPA 3: BLEEDS
+   Todos viven dentro de .section-bleeds
+   Posicionados con CSS puro, sin JS
+────────────────────────────────────────── */
+
+.bleed-creatorPhunt-left {
+    position: absolute;
+    pointer-events: none;
+    width: 280px;
+    height: auto;
+    bottom: 0;
+    left: calc(50% - 600px);
+}
+
+.bleed-creatorPhunt-right {
+    position: absolute;
+    pointer-events: none;
+    width: 280px;
+    height: auto;
+    bottom: 0;
+    right: calc(50% - 600px);
+}
+
+.bleed-creatorPhunt-top {
+    position: absolute;
+    pointer-events: none;
+    width: 320px;
+    height: auto;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.bleed-creatorPhunt-bottom {
+    position: absolute;
+    pointer-events: none;
+    width: 320px;
+    height: auto;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.bleed-creatorPhunt-middle {
+    position: absolute;
+    pointer-events: none;
+    width: 200px;
+    height: auto;
+    top: 50%;
+    right: calc(50% - 600px);
+    transform: translateY(-50%);
+}
+
+.bleed-creatorPhunt-hunter {
+    position: absolute;
+    pointer-events: none;
+    width: 340px;
+    height: auto;
+    bottom: 0;
+    right: calc(50% - 550px); /* zona segura derecha */
+}
+
+/* ──────────────────────────────────────────
+   BADGE NOVEDAD + VER VIDEO + VIDEO EMBED
+────────────────────────────────────────── */
+
+.creatorphunt-badge-wrap {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 20px;
+}
+
+.creatorphunt-badge-novedad {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 0 14px;
+    height: 32px;
+    background: var(--c-yellow);
+    color: #000;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    border-radius: 4px;
+    cursor: pointer;
+    user-select: none;
+    white-space: nowrap;
+}
+
+.creatorphunt-badge-novedad::before {
+    content: '';
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #000;
+    opacity: 0.4;
+}
+
+.creatorphunt-badge-ver {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 0 14px;
+    height: 32px;
+    background: rgba(255,255,255,0.15);
+    color: #fff;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    border-radius: 4px;
+    cursor: pointer;
+    user-select: none;
+    white-space: nowrap;
+}
+
+.creatorphunt-video-wrap {
+    position: relative;
+    margin-top: 24px;
+    width: 100%;
+    max-width: 480px;
+    aspect-ratio: 16/9;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid rgba(255,255,255,0.12);
+    background: #000;
+}
+
+.creatorphunt-video-wrap iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+    display: block;
+}
+
+.creatorphunt-video-close {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    background: #c0392b;
+    color: #fff;
+    font-size: 13px;
+    font-weight: 700;
+    border-radius: 4px;
+    cursor: pointer;
+    user-select: none;
+    transition: background 0.15s;
+    z-index: 10;
+}
+
+.creatorphunt-video-close:hover {
+    background: #e74c3c;
+}
+
+.hidden { display: none !important; }

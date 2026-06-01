@@ -1,0 +1,77 @@
+{
+    "kicker": "ULTIMAS CAMPAÑAS",
+    "titulo": "Destacados",
+    "crew_bg": "imgs/index/twitch/c&s_bg.webp",
+    "cards": [
+        {
+            "img": "imgs/index/twitch/card1.jpg",
+            "caption_titulo": "MINOS",
+            "caption_desc": ""
+        },
+        {
+            "img": "imgs/index/twitch/card2.jpg",
+            "caption_titulo": "MOUSE P.I FOR HIRE",
+            "caption_desc": ""
+        },
+        {
+            "img": "imgs/index/twitch/card3.jpg",
+            "caption_titulo": "WE GOTTA GO!",
+            "caption_desc": ""
+        },
+        {
+            "img": "imgs/index/twitch/card4.jpg",
+            "caption_titulo": "WHISPER MOUNTAIN OUTBREAK",
+            "caption_desc": ""
+        }
+    ],
+    "crew": [
+        {
+            "foto": "",
+            "nombre": "Diegunnerr",
+            "url": "https://www.twitch.tv/diegunnerr",
+            "rol": "hammer"
+        },
+        {
+            "foto": "",
+            "nombre": "LvpvsArctos",
+            "url": "https://www.twitch.tv/lvpvsarctos",
+            "rol": "hammer"
+        },
+        {
+            "foto": "",
+            "nombre": "Anuchis",
+            "url": "https://www.twitch.tv/anuchis",
+            "rol": "sword"
+        },
+        {
+            "foto": "",
+            "nombre": "xcanut0x",
+            "url": "https://www.twitch.tv/xcanut0x",
+            "rol": "sword"
+        },
+        {
+            "foto": "",
+            "nombre": "Vearus_Krom",
+            "url": "https://www.twitch.tv/vearus_krom",
+            "rol": "sword"
+        },
+        {
+            "foto": "",
+            "nombre": "mostach0man",
+            "url": "https://www.twitch.tv/mostach0man",
+            "rol": "sword"
+        },
+        {
+            "foto": "",
+            "nombre": "bygaby777",
+            "url": "https://www.twitch.tv/bygaby777",
+            "rol": "sword"
+        },
+        {
+            "foto": "",
+            "nombre": "Lepore",
+            "url": "https://www.twitch.tv/leeepore",
+            "rol": "vip"
+        }
+    ]
+}

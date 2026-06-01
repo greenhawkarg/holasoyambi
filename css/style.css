@@ -1,0 +1,193 @@
+@charset "utf-8";
+
+/* ══════════════════════════════════════════════════════════════════
+   AMBI — STYLE.CSS
+   SOLO GLOBALES: reset, variables, base, secciones, bleeds
+   NO agregar estilos de componentes acá — cada sección tiene su CSS
+══════════════════════════════════════════════════════════════════ */
+
+
+/* ──────────────────────────────────────────
+   VARIABLES
+────────────────────────────────────────── */
+
+:root {
+
+    /* COLORES BASE */
+    --c-black:    #0A0A0A;
+    --c-white:    #FFFFFF;
+    --c-green:    #1ED760;
+    --c-purple:   #6D34A4;
+    --c-orange:   #D4830E;
+    --c-red:      #CB0A2F;
+    --c-yellow:   #F1DC28;
+    --c-blue:     #3E78C7;
+    --c-gray:     #424242;
+
+    /* USO SEMÁNTICO */
+    --bg:         var(--c-black);
+    --accent:     var(--c-green);
+    --text:       var(--c-white);
+    --muted:      var(--c-gray);
+
+    /* TIPOGRAFÍA */
+    --font-main:  'Source Sans 3', Arial, sans-serif;
+
+    /* MEDIDAS */
+    --max-width:  1200px;
+    --nav-height: 60px;
+
+    /* Z-INDEX global */
+    --z-sections: 1;
+    --z-nav:      100;
+
+    /* Z-INDEX dentro de cada sección — 3 capas fijas */
+    --z-bg:               0;
+    --z-sections-raised:  2;
+    --z-bleeds-under:     10;   /* bleeds detrás del contenido — papel, texturas */
+    --z-content:          20;
+    --z-bleeds:           30;  /* bleeds delante del contenido — personajes */
+    --z-nav:              100;
+
+}
+
+
+/* ──────────────────────────────────────────
+   RESET
+────────────────────────────────────────── */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    background: var(--bg);
+    overflow-x: hidden;
+    scrollbar-width: none; /* ← agregá esto */
+}
+
+html::-webkit-scrollbar {
+    display: none; /* ← y esto para Chrome/Edge/Safari */
+}
+
+body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font-main);
+    overflow-x: hidden;
+}
+
+
+/* ──────────────────────────────────────────
+   REGLA GLOBAL — SECCIONES
+   Toda section sigue estas reglas sin excepción
+────────────────────────────────────────── */
+
+section {
+    position: relative;
+    overflow: hidden;
+    z-index: var(--z-sections);
+    width: 100%;
+}
+
+
+/* ──────────────────────────────────────────
+   REGLAS GLOBALES — 3 CAPAS POR SECCIÓN
+   Toda section tiene siempre estos 3 divs hijos
+────────────────────────────────────────── */
+
+/* CAPA 1 — Fondo / BG */
+.section-bg {
+    position: absolute;
+    inset: 0;
+    z-index: var(--z-bg);
+    pointer-events: none;
+    overflow: hidden;
+}
+
+.section-bg img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+/* CAPA 2 — Contenido principal */
+.section-content {
+    position: relative;
+    z-index: var(--z-content);
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* CAPA 3 — Bleeds / decoración */
+.section-bleeds {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+}
+
+/* ──────────────────────────────────────────
+   MOBILE BLOCK — menos de 768px
+────────────────────────────────────────── */
+
+.mobile-block {
+    display: none;
+}
+
+@media (max-width: 767px) {
+
+    .mobile-block {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 20px;
+        position: fixed;
+        inset: 0;
+        z-index: 9999;
+        background: var(--c-black);
+        padding: 40px 32px;
+        text-align: center;
+    }
+
+    .mobile-block img {
+        width: 160px;
+        opacity: 0.9;
+    }
+
+    .mobile-block p {
+        font-size: 18px;
+        font-weight: 700;
+        color: var(--c-white);
+        line-height: 1.4;
+    }
+
+    .mobile-block span {
+        font-size: 14px;
+        color: var(--c-gray);
+        line-height: 1.6;
+    }
+
+    /* Ocultar todo lo demás */
+    body > *:not(.mobile-block) {
+        display: none !important;
+    }
+
+}
+
+#sections-below {
+    position: relative;
+    z-index: 2;
+    transition: margin-top 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+#sections-below.scrolled {
+    margin-top: -38px;
+    transition: margin-top 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}

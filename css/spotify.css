@@ -1,0 +1,82 @@
+/* ══════════════════════════════════════════════════════════════════
+   AMBI — SPOTIFY.CSS
+   Banner verde — link al perfil de artista
+══════════════════════════════════════════════════════════════════ */
+
+
+/* ──────────────────────────────────────────
+   SPOTIFY — SECCIÓN
+────────────────────────────────────────── */
+
+.spotify {
+    background-color: var(--c-green);
+    height: 90px;
+}
+
+.spotify .section-content {
+    height: 100%;
+}
+
+
+/* ──────────────────────────────────────────
+   SPOTIFY — INNER
+   Centrado a 1200px, dos columnas
+────────────────────────────────────────── */
+
+.spotify-inner {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 0 40px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+
+/* ──────────────────────────────────────────
+   SPOTIFY — IZQUIERDA
+   Icono + texto
+────────────────────────────────────────── */
+
+.spotify-left {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.spotify-left i {
+    font-size: 28px;
+    color: var(--c-black);
+}
+
+.spotify-left span {
+    font-family: var(--font-main);
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--c-black);
+}
+
+
+/* ──────────────────────────────────────────
+   SPOTIFY — BOTÓN
+────────────────────────────────────────── */
+
+.spotify-btn {
+    display: inline-block;
+    font-family: var(--font-main);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: var(--c-white);
+    background-color: var(--c-black);
+    padding: 12px 28px;
+    white-space: nowrap;
+    transition: opacity 0.2s ease;
+}
+
+.spotify-btn:hover {
+    opacity: 0.8;
+}

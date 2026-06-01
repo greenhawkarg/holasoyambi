@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dossier â 4mbiTV</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/dossier.css">
+</head>
+<body>
+<div class="dossier-wrap">
+
+    <div class="dossier-hero">
+        <div class="dossier-hero-left">
+            <span class="dossier-kicker">Media Kit &amp; Trayectoria</span>
+            <h1 class="dossier-name">4mbiTV / GREENHAWK</h1>
+            <p class="dossier-sub">Streamer · Content Creator · Gaming Press</p>
+            <p class="dossier-ceo">CEO · GREENHAWK</p>
+        </div>
+        <div class="dossier-stats">
+            <div class="dossier-stat"><span class="dossier-stat-num">3+</span><span class="dossier-stat-lbl">Años activos</span></div>
+            <div class="dossier-stat"><span class="dossier-stat-num">210+</span><span class="dossier-stat-lbl">Camapañas</span></div>
+            <div class="dossier-stat"><span class="dossier-stat-num">30+</span><span class="dossier-stat-lbl">Partners</span></div>
+        </div>
+    </div>
+
+    <nav class="dossier-tabs">
+        <div class="dossier-tab active" data-tab="campanas">Campañas</div>
+        <div class="dossier-tab" data-tab="disenos">Diseños</div>
+        <div class="dossier-tab" data-tab="sponsors">Gaming Network</div>
+    </nav>
+
+    <div class="tab-panel active" id="tab-campanas">
+
+        <div class="year-block">
+            <div class="year-header">
+                <span class="year-num">2025</span>
+                <div class="year-divider"></div>
+                <span class="year-count">8 Campañas</span>
+            </div>
+            <p class="year-desc">Un año enfocado en el crecimiento y continuidad de mi proyecto GreenHawk, explorando más el lado de la fotografía y el filmmaking, además de formar parte del programa de creadores de Hunt: Showdown.</p>
+            <div class="flyers-grid">
+                <div class="flyer-item"><img src="imgs/dossier/flyers/2025/011223_-_law_of_salvage.png" alt="011223   Law Of Salvage"><div class="flyer-caption">011223   Law Of Salvage</div></div>
+                <div class="flyer-item"><img src="imgs/dossier/flyers/2025/150224_-_northern_justice_dlc.png" alt="150224   Northern Justice DLC"><div class="flyer-caption">150224   Northern Justice DLC</div></div>
+                <div class="flyer-item"><img src="imgs/dossier/flyers/2025/170324_-_conspirador_dlc.png" alt="170324   Conspirador DLC"><div class="flyer-caption">170324   Conspirador DLC</div></div>
+                <div class="flyer-item"><img src="imgs/dossier/flyers/2025/180124_-_the_shadow_under_the_cowl_dlc.png" alt="180124   The Shadow Under The Cowl DLC"><div class="flyer-caption">180124   The Shadow Under The Cowl DLC</div></div>
+                <div class="flyer-item"><img src="imgs/dossier/flyers/2025/231123_-_souls_of_a_feather.png" alt="231123   Souls Of A Feather"><div class="flyer-caption">231123   Souls Of A Feather</div></div>
+                <div class="flyer-item"><img src="imgs/dossier/flyers/2025/10oct-14_•_myth_of_the_moors.png" alt="10OCT 14 • Myth Of The Moors"><div class="flyer-caption">10OCT 14 • Myth Of The Moors</div></div>
+                <div class="flyer-item"><img src="imgs/dossier/flyers/2025/15-09-23_•_hunt_ladrido_ferreo.png" alt="15 09 23 • Hunt Ladrido Ferreo"><div class="flyer-caption">15 09 23 • Hunt Ladrido Ferreo</div></div>
+                <div class="flyer-item"><img src="imgs/dossier/flyers/2025/21-09-23_•_hunt_hayali.png" alt="21 09 23 • Hunt Hayali"><div class="flyer-caption">21 09 23 • Hunt Hayali</div></div>
+            </div>
+        </div>
+
+        <div class="year-block">
+            <div class="year-header">
+                <span class="year-num">2024</span>
+                <div class="year-divider"></div>
+                <span class="year-count">20 Campañas</span>
+            </div>
+            <p class="year-desc">Un año con nuevas oportunidades, participando en diferentes acciones, lanzamientos y trabajos junto a marcas y proyectos relacionados al mundo gaming y la creación digital.</p>
+            <div class="flyers-grid">
+                <div class="flyer-item"><img src="imgs/dossier/flyers/2024/00124_-_drug_dealer_simulator_2.png" alt="Drug Dealer Simulator 2"><div class="flyer-caption">Drug Dealer Simulator 2</div></div>
+                <div class="flyer-item"><img src="imgs/dossier/flyers/2024/010124_-_trinity_fusion.png" alt="Trinity Fusion"><div class="flyer-caption">Trinity Fusion</div></div>
+                <div class="flyer-item"><img src="imgs/dossier/flyers/2024/010124_-_united_1944.png" alt="United 1944"><div class="flyer-caption">United 1944</div></div>
+                <div class="flyer-item"><img src="imgs/dossier/flyers/2024/020124_-_omega_crafter.png" alt="Omega Crafter"><div class="flyer-caption">Omega Crafter</div></div>
+                <div class="flyer-item"><img src="imgs/dossier/flyers/2024/020124_-_strange_brigade.png" alt="Strange Brigade"><div class="flyer-caption">Strange Brigade</div></div>
+                <div class="flyer-item"><img src="imgs/dossier/flyers/2024/030124_-_aztek_tiki.png" alt="Aztek Tiki"><div class="flyer-caption">Aztek Tiki</div></div>
+                <div class="flyer-item"><img src="imgs/dossier/flyers/2024/030124_-_bzzz.png" alt="Bzzzt"><div class="flyer-caption">Bzzzt</div></div>
+                <div class="flyer-item"><img src="imgs/dossier/flyers/2024/030124_-_kao_dlc.png" alt="030124   Kao Dlc"><div class="flyer-caption">030124   Kao Dlc</div></div>
+                <div class="flyer-item"><img src="imgs/dossier/flyers/2024/050124_-_the_kindeman_remedy.png" alt="050124   The Kindeman Remedy"><div class="flyer-caption">050124   The Kindeman Remedy</div></div>
+                <div class="flyer-item"><img src="imgs/dossier/flyers/2024/080124_-_undying.png" alt="080124   Undying"><div class="flyer-caption">080124   Undying</div></div>
+                <div class="flyer-item"><img src="imgs/dossier/flyers/2024/090124_-_hidden.png" alt="090124   Hidden"><div class="flyer-caption">090124   Hidden</div></div>
+                <div class="flyer-item"><img src="imgs/dossier/flyers/2024/150124_-_contraption_maker.png" alt="150124   Contraption Maker"><div class="flyer-caption">150124   Contraption Maker</div></div>
+                <div class="flyer-item"><img src="imgs/dossier/flyers/2024/160124_-_tail_of_iron.png" alt="160124   Tail Of Iron"><div class="flyer-caption">160124   Tail Of Iron</div></div>
+                <div class="flyer-item"><img src="imgs/dossier/flyers/2024/200124_-_deathbound.png" alt="200124   Deathbound"><div class="flyer-caption">200124   Deathbound</div></div>
+                <div class="flyer-item"><img src="imgs/dossier/flyers/2024/200124_-_despair_blood_curse.png" alt="200124   Despair Blood Curse"><div class="flyer-caption">200124   Despair Blood Curse</div></div>
+                <div class="flyer-item"><img src="imgs/dossier/flyers/2024/230124_-_palworld.png" alt="230124   Palworld"><div class="flyer-caption">230124   Palworld</div></div>
+                <div class="flyer-item"><img src="imgs/dossier/flyers/2024/250124_-_timberborn.png" alt="250124   Timberborn"><div class="flyer-caption">250124   Timberborn</div></div>
+                <div class="flyer-item"><img src="imgs/dossier/flyers/2024/260124_-_enshrouded.png" alt="260124   Enshrouded"><div class="flyer-caption">260124   Enshrouded</div></div>
+                <div class="flyer-item"><img src="imgs/dossier/flyers/2024/260124_-_stuffed.png" alt="260124   Stuffed"><div class="flyer-caption">260124   Stuffed</div></div>
+                <div class="flyer-item"><img src="imgs/dossier/flyers/2024/300124_-_drops_pa.png" alt="300124   DROPS PA"><div class="flyer-caption">300124   DROPS PA</div></div>
+            </div>
+        </div>
+
+        <div class="year-block">
+            <div class="year-header">
+                <span class="year-num">2023</span>
+                <div class="year-divider"></div>
+                <span class="year-count">50 Campañas</span>
+            </div>
+            <p class="year-desc">Mis comienzos estuvieron ligados a colaboraciones y campañas junto a distintas webs y proyectos gaming, experiencias que me ayudaron a dar mis primeros pasos creando contenido y formando parte de la comunidad.</p>
+            <div class="flyers-grid">
+                <div class="flyer-item"><img src="imgs/dossier/flyers/2023/21-09-23_•_payday3.png" alt="21 09 23 • Payday3"><div class="flyer-caption">21 09 23 • Payday3</div></div>
+                <div class="flyer-item"><img src="imgs/dossier/flyers/2023/22-09-23_•_diluvian_ultra.png" alt="22 09 23 • Diluvian Ultra"><div class="flyer-caption">22 09 23 • Diluvian Ultra</div></div>
+                <div class="flyer-item"><img src="imgs/dossier/flyers/2023/29-09-23_•_forgive_me_father_2.png" alt="29 09 23 • Forgive Me Father 2"><div class="flyer-caption">29 09 23 • Forgive Me Father 2</div></div>
+                <div class="flyer-item"><img src="imgs/dossier/flyers/2023/11nov13-feudalconbalto.png" alt="11NOV13 FeudalConBalto"><div class="flyer-caption">11NOV13 FeudalConBalto</div></div>
+                <div class="flyer-item"><img src="imgs/dossier/flyers/2023/10oct-20_•_mhs.png" alt="10OCT 20 • MHS"><div class="flyer-caption">10OCT 20 • MHS</div></div>
+                <div class="flyer-item"><img src="imgs/dossier/flyers/2023/10oct-04_•_tide_of_corruption.png" alt="10OCT 04 • Tide Of Corruption"><div class="flyer-caption">10OCT 04 • Tide Of Corruption</div></div>
+                <div class="flyer-item"><img src="imgs/dossier/flyers/2023/10oct-01_•_hyperviolent.png" alt="10OCT 01 • Hyperviolent"><div class="flyer-caption">10OCT 01 • Hyperviolent</div></div>
+                <div class="flyer-item"><img src="imgs/dossier/flyers/2023/11nov16-menofwarii.png" alt="11NOV16 MenofwarII"><div class="flyer-caption">11NOV16 MenofwarII</div></div>
+                <div class="flyer-item"><img src="imgs/dossier/flyers/2023/23-09-23_•_drg_descuento.png" alt="23 09 23 • DRG Descuento"><div class="flyer-caption">23 09 23 • DRG Descuento</div></div>
+                <div class="flyer-item"><img src="imgs/dossier/flyers/2023/10oct-11_•_tatari.png" alt="10OCT 11 • Tatari"><div class="flyer-caption">10OCT 11 • Tatari</div></div>
+                <div class="flyer-item"><img src="imgs/dossier/flyers/2023/10oct-06_•_hunt_drops.png" alt="10OCT 06 • Hunt Drops"><div class="flyer-caption">10OCT 06 • Hunt Drops</div></div>
+                <div class="flyer-item"><img src="imgs/dossier/flyers/2023/10oct-18_•_rush.png" alt="10OCT 18 • Rush"><div class="flyer-caption">10OCT 18 • Rush</div></div>
+                <div class="flyer-item"><img src="imgs/dossier/flyers/2023/14-09-23_•_boti.png" alt="14 09 23 • Boti"><div class="flyer-caption">14 09 23 • Boti</div></div>
+                <div class="flyer-item"><img src="imgs/dossier/flyers/2023/10oct-19_•_ts2.png" alt="10OCT 19 • TS2"><div class="flyer-caption">10OCT 19 • TS2</div></div>
+                <div class="flyer-item"><img src="imgs/dossier/flyers/2023/10oct-03_•_bang_o_balls.png" alt="10OCT 03 • Bang O Balls"><div class="flyer-caption">10OCT 03 • Bang O Balls</div></div>
+                <div class="flyer-item"><img src="imgs/dossier/flyers/2023/10oct-22_•_pine_harbor_dmeo.png" alt="10OCT 22 • Pine Harbor Dmeo"><div class="flyer-caption">10OCT 22 • Pine Harbor Dmeo</div></div>
+                <div class="flyer-item"><img src="imgs/dossier/flyers/2023/•_drops_-_hs-01.png" alt="Hutn Showdown DROPS"><div class="flyer-caption">Hutn Showdown DROPS</div></div>
+                <div class="flyer-item"><img src="imgs/dossier/flyers/2023/10oct-23_•_duck.png" alt="10OCT 23 • Duck"><div class="flyer-caption">10OCT 23 • Duck</div></div>
+                <div class="flyer-item"><img src="imgs/dossier/flyers/2023/11nov12-outrage.png" alt="11NOV12 OUTRAGE"><div class="flyer-caption">11NOV12 OUTRAGE</div></div>
+                <div class="flyer-item"><img src="imgs/dossier/flyers/2023/02-10-23_•_army_troop.png" alt="Army Troop"><div class="flyer-caption">Army Troop</div></div>
+                <div class="flyer-item"><img src="imgs/dossier/flyers/2023/10oct-07_•_krd_drops.png" alt="10OCT 07 • KRD Drops"><div class="flyer-caption">10OCT 07 • KRD Drops</div></div>
+                <div class="flyer-item"><img src="imgs/dossier/flyers/2023/11nov21-bailorjail.png" alt="11NOV21 Bailorjail"><div class="flyer-caption">11NOV21 Bailorjail</div></div>
+                <div class="flyer-item"><img src="imgs/dossier/flyers/2023/10oct-18_•_snek.png" alt="10OCT 18 • Snek"><div class="flyer-caption">10OCT 18 • Snek</div></div>
+                <div class="flyer-item"><img src="imgs/dossier/flyers/2023/10oct-09_•_sot.png" alt="10OCT 09 • SOT"><div class="flyer-caption">10OCT 09 • SOT</div></div>
+                <div class="flyer-item"><img src="imgs/dossier/flyers/2023/011223_-_stronghold.png" alt="011223   Stronghold"><div class="flyer-caption">011223   Stronghold</div></div>
+                <div class="flyer-item"><img src="imgs/dossier/flyers/2023/021223_-_orten.png" alt="021223   Orten"><div class="flyer-caption">021223   Orten</div></div>
+                <div class="flyer-item"><img src="imgs/dossier/flyers/2023/051223_-cave_digger_2.png" alt="051223  Cave Digger 2"><div class="flyer-caption">051223  Cave Digger 2</div></div>
+                <div class="flyer-item"><img src="imgs/dossier/flyers/2023/061223_-_pa_drops.png" alt="061223   PA Drops"><div class="flyer-caption">061223   PA Drops</div></div>
+                <div class="flyer-item"><img src="imgs/dossier/flyers/2023/111223_-_dwarf.png" alt="111223   Dwarf"><div class="flyer-caption">111223   Dwarf</div></div>
+                <div class="flyer-item"><img src="imgs/dossier/flyers/2023/121223_-_aloft.png" alt="121223   Aloft"><div class="flyer-caption">121223   Aloft</div></div>
+                <div class="flyer-item"><img src="imgs/dossier/flyers/2023/121223_-_astral_tracks.png" alt="121223   Astral Tracks"><div class="flyer-caption">121223   Astral Tracks</div></div>
+                <div class="flyer-item"><img src="imgs/dossier/flyers/2023/151223_-_its_only_money.png" alt="151223   Its Only Money"><div class="flyer-caption">151223   Its Only Money</div></div>
+                <div class="flyer-item"><img src="imgs/dossier/flyers/2023/151223_-_metal_hellsinger_dlc.png" alt="151223   Metal Hellsinger DLC"><div class="flyer-caption">151223   Metal Hellsinger DLC</div></div>
+                <div class="flyer-item"><img src="imgs/dossier/flyers/2023/151223_-_squad44.png" alt="151223   Squad44"><div class="flyer-caption">151223   Squad44</div></div>
+                <div class="flyer-item"><img src="imgs/dossier/flyers/2023/171223_-_fromspace.png" alt="171223   Fromspace"><div class="flyer-caption">171223   Fromspace</div></div>
+                <div class="flyer-item"><img src="imgs/dossier/flyers/2023/171223_-_project_warlock_ii.png" alt="171223   Project Warlock II"><div class="flyer-caption">171223   Project Warlock II</div></div>
+                <div class="flyer-item"><img src="imgs/dossier/flyers/2023/201223_-_anvil_saga.png" alt="201223   Anvil Saga"><div class="flyer-caption">201223   Anvil Saga</div></div>
+                <div class="flyer-item"><img src="imgs/dossier/flyers/2023/201223_-_the_finals_regalos.png" alt="201223   The Finals Regalos"><div class="flyer-caption">201223   The Finals Regalos</div></div>
+                <div class="flyer-item"><img src="imgs/dossier/flyers/2023/211223_-_dirty_dirty_pirates.png" alt="211223   Dirty Dirty Pirates"><div class="flyer-caption">211223   Dirty Dirty Pirates</div></div>
+                <div class="flyer-item"><img src="imgs/dossier/flyers/2023/211223_-_space_trash_scavenger.png" alt="211223   Space Trash Scavenger"><div class="flyer-caption">211223   Space Trash Scavenger</div></div>
+                <div class="flyer-item"><img src="imgs/dossier/flyers/2023/231223_-_american_truck_simulator.png" alt="231223   American Truck Simulator"><div class="flyer-caption">231223   American Truck Simulator</div></div>
+                <div class="flyer-item"><img src="imgs/dossier/flyers/2023/231223_-_conan_exilies.png" alt="231223   Conan Exilies"><div class="flyer-caption">231223   Conan Exilies</div></div>
+                <div class="flyer-item"><img src="imgs/dossier/flyers/2023/231223_-_taora.png" alt="231223   Taora"><div class="flyer-caption">231223   Taora</div></div>
+                <div class="flyer-item"><img src="imgs/dossier/flyers/2023/251123_-_dread_templar.png" alt="251123   Dread Templar"><div class="flyer-caption">251123   Dread Templar</div></div>
+                <div class="flyer-item"><img src="imgs/dossier/flyers/2023/261223_-_ctw_hunter.png" alt="261223   Ctw Hunter"><div class="flyer-caption">261223   Ctw Hunter</div></div>
+                <div class="flyer-item"><img src="imgs/dossier/flyers/2023/261223_-_frozenheim.png" alt="261223   Frozenheim"><div class="flyer-caption">261223   Frozenheim</div></div>
+                <div class="flyer-item"><img src="imgs/dossier/flyers/2023/271123_-_the_angler.png" alt="271123   The Angler"><div class="flyer-caption">271123   The Angler</div></div>
+                <div class="flyer-item"><img src="imgs/dossier/flyers/2023/281223_-_kingdom_the_blood.png" alt="281223   Kingdom The Blood"><div class="flyer-caption">281223   Kingdom The Blood</div></div>
+                <div class="flyer-item"><img src="imgs/dossier/flyers/2023/281223_-_sanguivore.png" alt="281223   Sanguivore"><div class="flyer-caption">281223   Sanguivore</div></div>
+                <div class="flyer-item"><img src="imgs/dossier/flyers/2023/291223_-_toasterball.png" alt="291223   Toasterball"><div class="flyer-caption">291223   Toasterball</div></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="tab-panel" id="tab-disenos">
+        <div class="diseno-grupo">
+            <div class="diseno-grupo-header">
+                <span class="diseno-grupo-titulo">🎮 GAMING</span>
+                <div class="diseno-grupo-line"></div>
+                <span class="diseno-grupo-count">1 Diseño</span>
+            </div>
+            <div class="overlays-grid">
+            <div class="overlay-item" onclick="abrirLightbox('imgs/dossier/overlays/intro.png','Diseños para stream, intro.','Stream Overlay')" style="cursor:pointer">
+                <span class="overlay-badge">Stream Overlay</span>
+                <img src="imgs/dossier/overlays/intro.png" alt="Diseños para stream, intro.">
+                <div class="overlay-caption">Diseños para stream, intro.</div>
+            </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="tab-panel" id="tab-sponsors">
+        <span class="block-kicker">Industry Partners</span>
+        <div class="sponsors-intro-block">
+            <p class="sponsors-intro">Andrés ' Ambi ' Barrio... nunca fue solo gaming.   <br>Durante años fui construyendo este espacio desde distintos lugares, los videojuegos, la fotografía, el mundo dentro del filmmaking, el contenido y experiencias compartidas con una comunidad que estuvo presente en cada etapa.<br><br>Muchas de las marcas, estudios y proyectos que aparecen acá formaron parte de ese recorrido de distintas maneras, campañas, acceso a juegos, colaboraciones, eventos y oportunidades que fueron creciendo de manera natural con los años.<br><br>Hoy en 2026 sigo adelante, aprendiendo constantemente, equivocándome muchas veces en el proceso y tratando de crecer sin perder la esencia de todo lo que me llevó hasta acá.</p>
+            <div class="sponsors-intro-photo"><img src="imgs/dossier/sponsors/ambi-gh-web.webp"></div>
+        </div>
+        <div class="sponsor-cat-block">
+            <div class="sponsor-cat-header">
+                <span class="sponsor-cat-name">🤜 Partner & Creator Programs</span>
+                <div class="sponsor-cat-line"></div>
+                <span class="sponsor-cat-count">4 Entidades</span>
+            </div>
+            <div class="sponsors-grid">
+                <div class="sponsor-item-wrap"><span class="sponsor-badge">Creator</span><a class="sponsor-item" href="https://activematter.game/en/" target="_blank" rel="noopener"><img src="imgs/dossier/sponsors/actrive_matter.png" alt="Actrive Matter"></a></div>
+                <div class="sponsor-item-wrap"><span class="sponsor-badge">Partner</span><a class="sponsor-item" href="https://www.clavecd.es/" target="_blank" rel="noopener"><img src="imgs/dossier/sponsors/clavecd.png" alt="Clavecd"></a></div>
+                <div class="sponsor-item-wrap"><span class="sponsor-badge">Creator</span><a class="sponsor-item" href="https://www.huntshowdown.com/" target="_blank" rel="noopener"><img src="imgs/dossier/sponsors/hunt_showdown.png" alt="Hunt Showdown"></a></div>
+                <div class="sponsor-item-wrap"><span class="sponsor-badge">Partner</span><a class="sponsor-item" href="https://www.mousethegame.com/" target="_blank" rel="noopener"><img src="imgs/dossier/sponsors/mouse_pi_for_hire.png" alt="Mouse Pi For Hire"></a></div>
+            </div>
+        </div>
+        <div class="sponsor-cat-block">
+            <div class="sponsor-cat-header">
+                <span class="sponsor-cat-name">📣 Marketing / PR</span>
+                <div class="sponsor-cat-line"></div>
+                <span class="sponsor-cat-count">1 Entidad</span>
+            </div>
+            <div class="sponsors-grid">
+                <div class="sponsor-item-wrap"><a class="sponsor-item" href="https://www.exitplangames.com/" target="_blank" rel="noopener"><img src="imgs/dossier/sponsors/exitplan.png" alt="Exit Plan"></a></div>
+            </div>
+        </div>
+        <div class="sponsor-cat-block">
+            <div class="sponsor-cat-header">
+                <span class="sponsor-cat-name">📢 Press & Creator</span>
+                <div class="sponsor-cat-line"></div>
+                <span class="sponsor-cat-count">4 Entidades</span>
+            </div>
+            <div class="sponsors-grid">
+                <div class="sponsor-item-wrap"><a class="sponsor-item" href="" target="_blank" rel="noopener"><img src="imgs/dossier/sponsors/dare_drop.png" alt="Dare Drop"></a></div>
+                <div class="sponsor-item-wrap"><a class="sponsor-item" href="" target="_blank" rel="noopener"><img src="imgs/dossier/sponsors/keymailer.png" alt="Keymailer"></a></div>
+                <div class="sponsor-item-wrap"><a class="sponsor-item" href="" target="_blank" rel="noopener"><img src="imgs/dossier/sponsors/lurkit.png" alt="Lurkit"></a></div>
+                <div class="sponsor-item-wrap"><a class="sponsor-item" href="" target="_blank" rel="noopener"><img src="imgs/dossier/sponsors/terminals_io.png" alt="Terminals Io"></a></div>
+            </div>
+        </div>
+        <div class="sponsor-cat-block">
+            <div class="sponsor-cat-header">
+                <span class="sponsor-cat-name">📦 Publishers</span>
+                <div class="sponsor-cat-line"></div>
+                <span class="sponsor-cat-count">8 Entidades</span>
+            </div>
+            <div class="sponsors-grid">
+                <div class="sponsor-item-wrap"><a class="sponsor-item" href="https://www.devolverdigital.com/" target="_blank" rel="noopener"><img src="imgs/dossier/sponsors/devolver_digital.png" alt="Devolver Digital"></a></div>
+                <div class="sponsor-item-wrap"><a class="sponsor-item" href="https://www.fulqrumpublishing.com/" target="_blank" rel="noopener"><img src="imgs/dossier/sponsors/fulqrum_publishing.png" alt="Fulqrum Publishing"></a></div>
+                <div class="sponsor-item-wrap"><a class="sponsor-item" href="https://www.indie.io/" target="_blank" rel="noopener"><img src="imgs/dossier/sponsors/freedom_games.png" alt="Freedom Games"></a></div>
+                <div class="sponsor-item-wrap"><a class="sponsor-item" href="https://www.funcom.com/" target="_blank" rel="noopener"><img src="imgs/dossier/sponsors/funcom_games.png" alt="Funcom Games"></a></div>
+                <div class="sponsor-item-wrap"><a class="sponsor-item" href="https://www.indie.io/" target="_blank" rel="noopener"><img src="imgs/dossier/sponsors/indie_io.png" alt="Indie Io"></a></div>
+                <div class="sponsor-item-wrap"><a class="sponsor-item" href="https://www.tinybuild.com/" target="_blank" rel="noopener"><img src="imgs/dossier/sponsors/tiny_build.png" alt="Tiny Build"></a></div>
+                <div class="sponsor-item-wrap"><a class="sponsor-item" href="https://www.togeproductions.com/" target="_blank" rel="noopener"><img src="imgs/dossier/sponsors/togue_productions.png" alt="Togue Productions"></a></div>
+                <div class="sponsor-item-wrap"><a class="sponsor-item" href="https://untoldtales.games/" target="_blank" rel="noopener"><img src="imgs/dossier/sponsors/untold_tales.png" alt="Untold Tales"></a></div>
+            </div>
+        </div>
+        <div class="sponsor-cat-block">
+            <div class="sponsor-cat-header">
+                <span class="sponsor-cat-name">🛠 Services & Tech</span>
+                <div class="sponsor-cat-line"></div>
+                <span class="sponsor-cat-count">2 Entidades</span>
+            </div>
+            <div class="sponsors-grid">
+                <div class="sponsor-item-wrap"><a class="sponsor-item" href="" target="_blank" rel="noopener"><img src="imgs/dossier/sponsors/source_technology.png" alt="Source Technology"></a></div>
+                <div class="sponsor-item-wrap"><a class="sponsor-item" href="" target="_blank" rel="noopener"><img src="imgs/dossier/sponsors/xsolla.png" alt="Xsolla"></a></div>
+            </div>
+        </div>
+        <div class="sponsor-cat-block">
+            <div class="sponsor-cat-header">
+                <span class="sponsor-cat-name">🎮 Studios</span>
+                <div class="sponsor-cat-line"></div>
+                <span class="sponsor-cat-count">10 Entidades</span>
+            </div>
+            <div class="sponsors-grid">
+                <div class="sponsor-item-wrap"><a class="sponsor-item" href="https://www.crytek.com/" target="_blank" rel="noopener"><img src="imgs/dossier/sponsors/crytek.png" alt="Crytek"></a></div>
+                <div class="sponsor-item-wrap"><a class="sponsor-item" href="https://recreate.games/en" target="_blank" rel="noopener"><img src="imgs/dossier/sponsors/recreate_games.png" alt="Recreate Games"></a></div>
+                <div class="sponsor-item-wrap"><a class="sponsor-item" href="https://www.squareplaygames.com/" target="_blank" rel="noopener"><img src="imgs/dossier/sponsors/squareplays_games.png" alt="Squareplays Games"></a></div>
+                <div class="sponsor-item-wrap"><a class="sponsor-item" href="https://fumigames.com/" target="_blank" rel="noopener"><img src="imgs/dossier/sponsors/fumi_games.png" alt="Fumi Games"></a></div>
+                <div class="sponsor-item-wrap"><a class="sponsor-item" href="https://www.fuzzybot.com/" target="_blank" rel="noopener"><img src="imgs/dossier/sponsors/fuzzybot.png" alt="Fuzzybot"></a></div>
+                <div class="sponsor-item-wrap"><a class="sponsor-item" href="http://lazybeargames.com/" target="_blank" rel="noopener"><img src="imgs/dossier/sponsors/lazy_bear_games.png" alt="Lazy Bear Games"></a></div>
+                <div class="sponsor-item-wrap"><a class="sponsor-item" href="https://playsidestudios.com/" target="_blank" rel="noopener"><img src="imgs/dossier/sponsors/playside.png" alt="Playside"></a></div>
+                <div class="sponsor-item-wrap"><a class="sponsor-item" href="https://theoutsiders.se/" target="_blank" rel="noopener"><img src="imgs/dossier/sponsors/the_outsiders.png" alt="The Outsiders"></a></div>
+                <div class="sponsor-item-wrap"><a class="sponsor-item" href="https://usualsuspects.games/" target="_blank" rel="noopener"><img src="imgs/dossier/sponsors/usual_suspects.png" alt="Usual Suspects"></a></div>
+                <div class="sponsor-item-wrap"><a class="sponsor-item" href="https://www.worldmakers.com/" target="_blank" rel="noopener"><img src="imgs/dossier/sponsors/world_makers.png" alt="World Makers"></a></div>
+            </div>
+        </div>
+    </div>
+
+</div>
+<!-- LIGHTBOX -->
+<div id="lightbox" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,.92);z-index:9999;align-items:center;justify-content:center;flex-direction:column;gap:16px" onclick="cerrarLightbox(event)">
+    <button onclick="cerrarLightbox()" style="position:fixed;top:24px;right:32px;background:none;border:none;color:#fff;font-size:32px;cursor:pointer;line-height:1">✕</button>
+    <div style="max-width:90vw;max-height:82vh;position:relative">
+        <img id="lb-img" src="" style="max-width:90vw;max-height:82vh;border-radius:6px;object-fit:contain;display:block">
+        <span id="lb-badge" style="position:absolute;top:12px;left:12px;background:rgba(0,0,0,.7);color:#22c55e;font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;padding:5px 12px;border-radius:4px;border:1px solid rgba(34,197,94,.4)"></span>
+    </div>
+    <p id="lb-caption" style="color:#9a9a9a;font-size:13px;font-weight:600;letter-spacing:3px;text-transform:uppercase;max-width:700px;text-align:center"></p>
+</div>
+<script>
+function abrirLightbox(src, caption, subcat) {
+    const lb = document.getElementById('lightbox');
+    document.getElementById('lb-img').src = src;
+    document.getElementById('lb-caption').textContent = caption;
+    const badge = document.getElementById('lb-badge');
+    badge.textContent = subcat; badge.style.display = subcat ? '' : 'none';
+    lb.style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+}
+function cerrarLightbox(e) {
+    if (e && e.target !== document.getElementById('lightbox')) return;
+    document.getElementById('lightbox').style.display = 'none';
+    document.getElementById('lb-img').src = '';
+    document.body.style.overflow = '';
+}
+document.addEventListener('keydown', e => { if (e.key === 'Escape') cerrarLightbox(); });
+const tabs   = document.querySelectorAll('.dossier-tab');
+const panels = document.querySelectorAll('.tab-panel');
+function activarTab(name) {
+    tabs.forEach(t   => t.classList.toggle('active', t.dataset.tab === name));
+    panels.forEach(p => p.classList.toggle('active', p.id === 'tab-' + name));
+}
+tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+        activarTab(tab.dataset.tab);
+        localStorage.setItem('dossier_tab', tab.dataset.tab);
+    });
+});
+const saved = localStorage.getItem('dossier_tab');
+if (saved && document.getElementById('tab-' + saved)) activarTab(saved);
+</script>
+</body>
+</html>

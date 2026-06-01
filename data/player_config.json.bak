@@ -1,0 +1,22 @@
+[
+    {
+        "file": "audio/tremonti-dust.mp3",
+        "name": "TREMONTI",
+        "track": "DUST"
+    },
+    {
+        "file": "audio/awakethedreamer-saveyou.mp3",
+        "name": "AWAKE THE DREAMER",
+        "track": "SAVE YOU"
+    },
+    {
+        "file": "audio/whileshesleeps-silencespeaks.mp3",
+        "name": "WHILE SHE SLEEPS",
+        "track": "SILENCE SPEAKS"
+    },
+    {
+        "file": "audio/chevelle-face-to-the-floor.mp3",
+        "name": "CHEVELLE",
+        "track": "FACE TO THE FLOOR"
+    }
+]
