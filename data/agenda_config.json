@@ -88,5 +88,44 @@
         "fecha_limite_calculada": "",
         "bg_imagen": "",
         "border_color": "#d72626"
+    },
+    {
+        "tipo": "standard",
+        "fecha": "12 DE JUNIO",
+        "juego": "CHEATER'S TABLE",
+        "dia": "VIERNES",
+        "hora": "19:00 HS",
+        "tipo_stream": "ESTRENO / CAMPAÑA",
+        "imagen": "imgs/index/agenda/cheaters_table.jpg",
+        "video": "xn21tfQep5k",
+        "fecha_limite_calculada": "2026-07-01",
+        "bg_imagen": "",
+        "border_color": "#d72626"
+    },
+    {
+        "tipo": "standard",
+        "fecha": "14 DE JUNIO",
+        "juego": "SCALE THE DEPTHS",
+        "dia": "DOMINGO",
+        "hora": "15:00 HS",
+        "tipo_stream": "CAMPAÑA",
+        "imagen": "imgs/index/agenda/scale_the_depths.jpg",
+        "video": "82rbcuZ__dw",
+        "fecha_limite_calculada": "2026-06-26",
+        "bg_imagen": "",
+        "border_color": "#d72626"
+    },
+    {
+        "tipo": "standard",
+        "fecha": "14 DE JUNIO",
+        "juego": "YERBA BUENA",
+        "dia": "DOMINGO",
+        "hora": "16:00 HS",
+        "tipo_stream": "CAMPAÑA",
+        "imagen": "imgs/index/agenda/yerba_buena.jpg",
+        "video": "cZgim-KYkZQ",
+        "fecha_limite_calculada": "2026-06-23",
+        "bg_imagen": "",
+        "border_color": "#d72626"
     }
 ]
