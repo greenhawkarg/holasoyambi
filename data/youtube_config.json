@@ -1,0 +1,35 @@
+{
+    "kicker": "CANAL DE YOUTUBE",
+    "titulo": "Contenido",
+    "col_izquierda": {
+        "titulo": "SHORTS",
+        "texto": "Los mejores momentos del stream condensados en segundos. Gameplay puro, reacciones y caos en formato corto."
+    },
+    "col_derecha": {
+        "titulo": "HIGHLIGHTS",
+        "texto": "Clips editados, momentos épicos y todo lo que no podés perderte del canal."
+    },
+    "shorts": [
+        {
+            "embed_id": "B0acOBr7bNU",
+            "titulo": "TÍTULO SHORT 1"
+        },
+        {
+            "embed_id": "7nGFN5avGzk",
+            "titulo": "TÍTULO SHORT 2"
+        }
+    ],
+    "videos_destacados": {
+        "bg": "",
+        "bg_opacity": 0.4,
+        "items": []
+    },
+    "ultimo_video": {
+        "embed_id": "oP0sQxYRH_Y",
+        "kicker": "ÚLTIMO VIDEO",
+        "titulo": "SIEMPRE FUI YO",
+        "desc": "Uno de los ultimos temas disponibles en youtube y proximamente en spotify.",
+        "btn_texto": "VER EN YOUTUBE",
+        "btn_url": "https://www.youtube.com/@ambitvok"
+    }
+}

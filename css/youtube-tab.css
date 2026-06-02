@@ -1,0 +1,522 @@
+/* ══════════════════════════════════════════════════════════════════
+   AMBI — YOUTUBE TAB
+   Agregar al final de twitch.css
+══════════════════════════════════════════════════════════════════ */
+
+
+/* ──────────────────────────────────────────
+   TABS NAV — los dos botones arriba
+────────────────────────────────────────── */
+
+.twitch-tabs-nav {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    padding-top: 60px;
+    border-bottom: 2px solid rgba(255,255,255,0.08);
+}
+
+.twitch-tab-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 14px 32px;
+    font-family: var(--font-main);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--c-gray);
+    background: transparent; 
+    border: none;
+    border-bottom: 3px solid transparent;
+    cursor: pointer;
+    margin-bottom: -2px;
+    transition: color 0.2s ease, border-color 0.2s ease;
+}
+
+.twitch-tab-btn i {
+    font-size: 16px;
+}
+
+    .twitch-tab-btn[data-tab="twitch"]:hover {
+        color: var(--c-purple);
+    }
+
+    .twitch-tab-btn[data-tab="youtube"]:hover {
+        color: #FF0000;
+    }
+
+.twitch-tab-btn.active[data-tab="twitch"] {
+    color: var(--c-purple);
+    border-bottom-color: var(--c-purple);
+}
+
+.twitch-tab-btn.active[data-tab="youtube"] {
+    color: #FF0000;
+    border-bottom-color: #FF0000;
+}
+
+
+/* ──────────────────────────────────────────
+   TABS CONTENIDO — show/hide
+────────────────────────────────────────── */
+
+.twitch-tab-panel {
+    display: none;
+}
+
+.twitch-tab-panel.active {
+    display: block;
+}
+
+
+/* ──────────────────────────────────────────
+   YOUTUBE — HEADER
+────────────────────────────────────────── */
+
+.yt-top-header {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 40px 0 0;
+}
+
+.yt-top-kicker {
+    font-family: var(--font-main);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    color: #FF0000;
+    text-transform: uppercase;
+}
+
+.yt-top-titulo {
+    font-family: var(--font-main);
+    font-size: 36px;
+    font-weight: 700;
+    color: var(--c-gray);
+    text-transform: uppercase;
+    line-height: 1.1;
+    margin: 0;
+}
+
+
+/* ──────────────────────────────────────────
+   YOUTUBE — FILA CARDS + COLUMNAS TEXTO
+────────────────────────────────────────── */
+
+.yt-top-row {
+    display: grid;
+    grid-template-columns: 1fr 2fr 2fr 1fr;
+    gap: 0;
+    margin-top: 32px;
+    align-items: stretch;
+}
+
+/* Columnas de texto */
+.yt-top-col-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 12px;
+    padding: 24px 20px;
+}
+
+.yt-top-col-text--left {
+    border-right: 2px solid rgba(255,255,255,0.1);
+}
+
+.yt-top-col-text--right {
+    border-left: 2px solid rgba(255,255,255,0.1);
+}
+
+.yt-top-col-label {
+    font-family: var(--font-main);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #FF0000;
+}
+
+.yt-top-col-body {
+    font-family: var(--font-main);
+    font-size: 13px;
+    font-weight: 400;
+    color: var(--c-gray);
+    line-height: 1.6;
+}
+
+/* Cards del centro */
+.yt-top-cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    padding: 0 16px;
+}
+
+.yt-top-card {
+    position: relative;
+    aspect-ratio: 1080 / 1350;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.yt-top-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.4s ease;
+}
+
+.yt-top-card:hover img {
+    transform: scale(1.05);
+}
+
+.yt-top-card-caption {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, transparent 100%);
+    padding: 32px 16px 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    transform: translateY(100%);
+    transition: transform 0.35s ease;
+}
+
+.yt-top-card:hover .yt-top-card-caption {
+    transform: translateY(0);
+}
+
+.yt-top-card-titulo {
+    font-family: var(--font-main);
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--c-white);
+}
+
+.yt-top-card-desc {
+    font-family: var(--font-main);
+    font-size: 11px;
+    font-weight: 400;
+    color: rgba(255,255,255,0.75);
+    line-height: 1.4;
+}
+
+
+/* ──────────────────────────────────────────
+   YOUTUBE — VIDEOS DESTACADOS
+   Rectángulo tipo Crew & Streamers pero rojo
+────────────────────────────────────────── */
+
+.yt-destac {
+    position: relative;
+    background-color: #FF0000;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    border-radius: 4px;
+    padding: 32px 40px;
+    margin-top: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.yt-destac-overlay {
+    position: absolute;
+    inset: 0;
+    background-color: rgba(180, 0, 0, calc(1 - var(--yt-destac-bg-opacity, 0.4)));
+    border-radius: 4px;
+    z-index: 0;
+}
+
+.yt-destac-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    position: relative;
+    z-index: 1;
+}
+
+    .yt-destac-col-izq {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+    }
+
+.yt-destac-header i {
+    font-size: 32px;
+    color: #fff;
+    flex-shrink: 0;
+}
+
+.yt-destac-titulo-bloque {
+    font-family: var(--font-main);
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #fff;
+    margin: 0;
+}
+
+.yt-destac-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 16px;
+    position: relative;
+    z-index: 1;
+    align-items: start;
+}
+
+.yt-destac-item {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.yt-destac-embed {
+    position: relative;
+    width: 100%;
+    padding-top: 56.25%;
+    background: #000;
+    border-radius: 2px;
+    overflow: hidden;
+}
+
+    .yt-destac-embed img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+.yt-destac-embed iframe {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+.yt-destac-titulo {
+    font-family: var(--font-main);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.85);
+    text-align: center;
+}
+
+
+/* ──────────────────────────────────────────
+   YOUTUBE — ÚLTIMO VIDEO
+   Texto izquierda, embed derecha
+────────────────────────────────────────── */
+
+.yt-ultimo {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 40px;
+    padding: 60px 0;
+}
+
+/* Panel de texto — izquierda */
+.yt-ultimo-panel {
+    flex: 0 0 320px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.yt-ultimo-kicker {
+    font-family: var(--font-main);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    color: var(--c-gray);
+    text-transform: uppercase;
+}
+
+.yt-ultimo-titulo {
+    font-family: var(--font-main);
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--c-black);
+    text-transform: uppercase;
+    line-height: 1.1;
+    margin: 0;
+}
+
+.yt-ultimo-desc {
+    font-family: var(--font-main);
+    font-size: 14px;
+    font-weight: 400;
+    color: var(--c-gray);
+    line-height: 1.5;
+}
+
+.yt-ultimo-btn {
+    display: inline-block;
+    font-family: var(--font-main);
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: var(--c-white);
+    background-color: #FF0000;
+    padding: 12px 28px;
+    align-self: flex-start;
+    transition: background-color 0.2s ease;
+}
+
+.yt-ultimo-btn:hover {
+    background-color: var(--c-black);
+}
+
+/* Embed — derecha */
+.yt-ultimo-embed {
+    flex: 1 1 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}
+
+.yt-ultimo-embed-inner {
+    position: relative;
+    width: 100%;
+    padding-top: 56.25%;
+    background-color: #000;
+    z-index: var(--z-bleeds-under);
+}
+
+.yt-ultimo-embed-inner iframe {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+    display: block;
+}
+
+.yt-ultimo-bar {
+    background-color: var(--c-black);
+    padding: 10px 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.yt-ultimo-bar-label {
+    font-family: var(--font-main);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    color: var(--c-gray);
+    text-transform: uppercase;
+}
+
+.yt-ultimo-bar-logo {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-family: var(--font-main);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: var(--c-white);
+    text-transform: uppercase;
+}
+
+.yt-ultimo-bar-logo i {
+    color: #FF0000;
+    font-size: 14px;
+}
+
+
+/* ──────────────────────────────────────────
+   YOUTUBE — SHORTS (iframes verticales 9:16)
+────────────────────────────────────────── */
+
+.yt-shorts-wrap {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    padding: 0 16px;
+    align-items: start;
+}
+
+.yt-short-item {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.yt-short-embed {
+    position: relative;
+    width: 100%;
+    padding-top: 177.78%; /* 9:16 vertical */
+    background: #000;
+    overflow: hidden;
+}
+
+    .yt-short-embed img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+.yt-short-embed iframe {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+.yt-short-titulo {
+    font-family: var(--font-main);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--c-white);
+    text-align: center;
+}
+
+.yt-destac-texto {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0 8px;
+}
+
+.yt-destac-texto-body {
+    font-family: var(--font-main);
+    font-size: 14px;
+    font-weight: 400;
+    color: rgba(255,255,255,0.9);
+    line-height: 1.7;
+    margin: 0;
+}
+
+.yt-destac-bleed {
+    /* reservado para el bleed que agregás después */
+    min-height: 200px;
+}

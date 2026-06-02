@@ -25,6 +25,7 @@
     <link rel="stylesheet" href="css/hero.css">
     <link rel="stylesheet" href="css/agenda.css">
     <link rel="stylesheet" href="css/twitch.css">
+    <link rel="stylesheet" href="css/youtube-tab.css">
     <link rel="stylesheet" href="css/noticias.css">
     <link rel="stylesheet" href="css/spotify.css">
     <link rel="stylesheet" href="css/creatorphunt.css">
@@ -219,7 +220,7 @@
 
 
     <!-- ══════════════════════════════════════════════
-    SECTION — TWITCH
+    SECTION — TWITCH (con tabs Twitch / YouTube)
     ══════════════════════════════════════════════ -->
 
     <section class="twitch" id="twitch">
@@ -230,54 +231,78 @@
         <!-- CAPA 2: CONTENIDO -->
         <div class="section-content">
 
-            <!-- BLOQUE SUPERIOR — pintado por twitch-top.js -->
-            <div class="twitch-top">
-                <div class="twitch-top-header"></div>
-                <div class="twitch-top-cards"></div>
-                <div class="twitch-top-crew"></div>
+            <!-- ── TABS NAV ── -->
+            <div class="twitch-tabs-nav">
+                <button class="twitch-tab-btn active" data-tab="twitch">
+                    <i class="fab fa-twitch"></i> Twitch
+                </button>
+                <button class="twitch-tab-btn" data-tab="youtube">
+                    <i class="fab fa-youtube"></i> YouTube
+                </button>
             </div>
 
-            <!-- BLOQUE INFERIOR — player + panel -->
-            <div class="twitch-inner">
+            <!-- ── TAB: TWITCH ── -->
+            <div class="twitch-tab-panel active" id="tab-twitch">
 
-                <!-- PLAYER — columna izquierda -->
-                <div class="twitch-player">
+                <!-- BLOQUE SUPERIOR — pintado por twitch-top.js -->
+                <div class="twitch-top">
+                    <div class="twitch-top-header"></div>
+                    <div class="twitch-top-cards"></div>
+                    <div class="twitch-top-crew"></div>
+                </div>
 
-                    <div class="twitch-player-embed">
-                      <!-- inyectado por twitch-vod.js -->
+                <!-- BLOQUE INFERIOR — player + panel -->
+                <div class="twitch-inner">
+
+                    <!-- PLAYER — columna izquierda -->
+                    <div class="twitch-player">
+
+                        <div class="twitch-player-embed">
+                          <!-- inyectado por twitch-vod.js -->
+                        </div>
+
+                        <div class="twitch-player-bar">
+                            <span class="twitch-stream-title">// ESTATE ATENTO A LA AGENDA PARA EL PRÓXIMO STREAM</span>
+                            <span class="twitch-player-logo">
+                                <i class="fab fa-twitch"></i> Twitch
+                            </span>
+                        </div>
+
                     </div>
 
-                    <div class="twitch-player-bar">
-                        <span class="twitch-stream-title">// ESTATE ATENTO A LA AGENDA PARA EL PRÓXIMO STREAM</span>
-                        <span class="twitch-player-logo">
-                            <i class="fab fa-twitch"></i> Twitch
-                        </span>
+                    <!-- PANEL INFO — columna derecha -->
+                    <div class="twitch-panel">
+
+                        <div class="twitch-vod-embed"></div>
+
+                        <span class="twitch-kicker">ÚLTIMO STREAM</span>
+                        <span class="twitch-channel-name">4MBITV</span>
+
+                        <div class="twitch-status">
+                            <span class="twitch-status-dot offline"></span>
+                            <span class="twitch-status-label offline">OFFLINE</span>
+                        </div>
+
+                        <p class="twitch-desc">Seguí el stream en vivo. Gameplays y contenido exclusivo.</p>
+
+                        <a class="twitch-btn" href="https://twitch.tv/4mbitv" target="_blank">
+                            VER EN TWITCH
+                        </a>
+
                     </div>
 
                 </div>
 
-                <!-- PANEL INFO — columna derecha -->
-                <div class="twitch-panel">
-
-                    <div class="twitch-vod-embed"></div>
-
-                    <span class="twitch-kicker">ÚLTIMO STREAM</span>
-                    <span class="twitch-channel-name">4MBITV</span>
-
-                    <div class="twitch-status">
-                        <span class="twitch-status-dot offline"></span>
-                        <span class="twitch-status-label offline">OFFLINE</span>
-                    </div>
-
-                    <p class="twitch-desc">Seguí el stream en vivo. Gameplays y contenido exclusivo.</p>
-
-                    <a class="twitch-btn" href="https://twitch.tv/4mbitv" target="_blank">
-                        VER EN TWITCH
-                    </a>
-
-                </div>
-
             </div>
+            <!-- /tab-twitch -->
+
+            <!-- ── TAB: YOUTUBE ── -->
+            <div class="twitch-tab-panel" id="tab-youtube">
+                <!-- pintado por youtube.js -->
+                <div id="youtube-tab-content"></div>
+            </div>
+            <!-- /tab-youtube -->
+
         </div>
 
         <!-- CAPA 3: BLEEDS -->
@@ -429,6 +454,8 @@
     <script src="js/player.js"></script>
     <script src="js/hero.js"></script>
     <script src="js/agenda.js"></script>
+    <script src="js/youtube.js"></script>
+    <script src="js/tabs.js"></script>
     <script src="js/twitch-top.js"></script>
     <script src="js/twitch-vod.js"></script>
     <script src="js/noticias.js"></script>

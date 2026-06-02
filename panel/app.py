@@ -836,7 +836,57 @@ def api_player_delete(idx):
 @app.route("/audio/<path:filename>")
 def serve_audio(filename):
     return send_from_directory(AUDIO_DIR, filename)
-    
+
+ # ══════════════════════════════════════════════════════════════════════════════
+# YOUTUBE
+# Lee/escribe data/youtube_config.json · guarda imágenes en imgs/index/youtube/
+# ══════════════════════════════════════════════════════════════════════════════
+
+YOUTUBE_JSON = os.path.join(WEB_DIR, "data", "youtube_config.json")
+YOUTUBE_IMGS = os.path.join(WEB_DIR, "imgs", "index", "youtube")
+
+
+def load_youtube():
+    if os.path.exists(YOUTUBE_JSON):
+        try:
+            with open(YOUTUBE_JSON, "r", encoding="utf-8") as f:
+                return json.load(f)
+        except:
+            pass
+    return {}
+
+
+@app.route("/api/youtube", methods=["GET"])
+def api_youtube_get():
+    return jsonify(load_youtube())
+
+
+@app.route("/api/youtube", methods=["POST"])
+def api_youtube_save():
+    data = request.json
+    try:
+        if os.path.exists(YOUTUBE_JSON):
+            shutil.copy2(YOUTUBE_JSON, YOUTUBE_JSON + ".bak")
+        os.makedirs(os.path.dirname(YOUTUBE_JSON), exist_ok=True)
+        with open(YOUTUBE_JSON, "w", encoding="utf-8") as f:
+            json.dump(data, f, indent=4, ensure_ascii=False)
+        if os.path.exists(INDEX_HTML):
+            os.utime(INDEX_HTML, None)
+        return jsonify({"ok": True, "msg": "YouTube guardado correctamente"})
+    except Exception as ex:
+        return jsonify({"ok": False, "msg": str(ex)}), 500
+
+
+@app.route("/api/youtube/upload-image", methods=["POST"])
+def api_youtube_upload_image():
+    if "file" not in request.files:
+        return jsonify({"ok": False, "msg": "No se recibió archivo"}), 400
+    f        = request.files["file"]
+    filename = f.filename.lower().replace(" ", "_")
+    os.makedirs(YOUTUBE_IMGS, exist_ok=True)
+    f.save(os.path.join(YOUTUBE_IMGS, filename))
+    return jsonify({"ok": True, "rel": f"imgs/index/youtube/{filename}"})
+       
 # ══════════════════════════════════════════════════════════════════════════════
 # BOTÓN DE CIERRE DEL PANEL
 # ══════════════════════════════════════════════════════════════════════════════

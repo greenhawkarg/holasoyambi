@@ -1,18 +1,8 @@
 [
     {
-        "file": "audio/tremonti-dust.mp3",
-        "name": "TREMONTI",
-        "track": "DUST"
-    },
-    {
-        "file": "audio/awakethedreamer-saveyou.mp3",
-        "name": "AWAKE THE DREAMER",
-        "track": "SAVE YOU"
-    },
-    {
-        "file": "audio/whileshesleeps-silencespeaks.mp3",
-        "name": "WHILE SHE SLEEPS",
-        "track": "SILENCE SPEAKS"
+        "name": "Ruby Friedman",
+        "track": "You'll Never Leave Harlan Alive",
+        "file": "audio/01_you’ll_never_leave_harlan_alive.mp3"
     },
     {
         "file": "audio/chevelle-face-to-the-floor.mp3",

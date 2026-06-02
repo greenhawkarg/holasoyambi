@@ -90,11 +90,13 @@ function switchHomeTab(name) {
     document.getElementById('htab-agenda').style.display    = name === 'agenda'   ? '' : 'none';
     document.getElementById('htab-noticias').style.display  = name === 'noticias' ? '' : 'none';
     document.getElementById('htab-twitch').style.display    = name === 'twitch'   ? '' : 'none';
+    document.getElementById('htab-youtube').style.display   = name === 'youtube'  ? '' : 'none';
     document.getElementById('htab-hunt').style.display      = name === 'hunt'     ? '' : 'none';
     document.getElementById('hsub-' + name).classList.add('active');
 
     /* Carga lazy al activar cada sub-tab */
     if (name === 'noticias') initNoticias();
+    if (name === 'youtube')  cargarYoutube();
     if (name === 'hunt')     cargarHunt();
 }
 

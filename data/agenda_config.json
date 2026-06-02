@@ -22,19 +22,6 @@
         "video": "Nvh5vqhE7U4"
     },
     {
-        "bg_imagen": "",
-        "border_color": "#d72626",
-        "dia": "VIERNES",
-        "fecha": "5 DE JUNIO",
-        "fecha_limite_calculada": "2026-06-26",
-        "hora": "13:00 HS",
-        "imagen": "imgs/index/agenda/everrail.jpg",
-        "juego": "EVERRAIL",
-        "tipo": "standard",
-        "tipo_stream": "INVITADOS AL EARLY ACCESS",
-        "video": "uQGwVPBGctI"
-    },
-    {
         "dia": "SÁBADO",
         "fecha": "6 DE JUNIO",
         "fecha_limite_calculada": "2026-06-22",
@@ -88,5 +75,18 @@
         "tipo": "standard",
         "tipo_stream": "DÍA DE FALOPITAS / CAMPAÑA",
         "video": "5i7OvHrj2AY"
+    },
+    {
+        "tipo": "standard",
+        "fecha": "9 DE JULIO",
+        "juego": "HUNT SHOWDOWN",
+        "dia": "JUEVES",
+        "hora": "11:00 HS",
+        "tipo_stream": "ESTRENO",
+        "imagen": "imgs/index/agenda/hunt_showdown.jpg",
+        "video": "_3mTLRaZhcw",
+        "fecha_limite_calculada": "",
+        "bg_imagen": "",
+        "border_color": "#d72626"
     }
 ]

@@ -243,6 +243,7 @@
         <button class="tab"        id="hsub-agenda"    onclick="switchHomeTab('agenda')">Agenda</button>
         <button class="tab"        id="hsub-noticias"  onclick="switchHomeTab('noticias')">Noticias</button>
         <button class="tab"        id="hsub-twitch"    onclick="switchHomeTab('twitch')">Twitch</button>
+        <button class="tab"        id="hsub-youtube"   onclick="switchHomeTab('youtube')">YouTube</button>
         <button class="tab"        id="hsub-hunt"      onclick="switchHomeTab('hunt')">Hunt Showdown</button>
       </div>
         
@@ -787,6 +788,168 @@
 
       </div><!-- /htab-twitch -->
 
+      <!-- ════ SUB-TAB: YOUTUBE ════ -->
+      <div id="htab-youtube" style="display:none">
+
+        <div class="section-header">
+          <div class="section-title">YouTube</div>
+          <div class="section-actions">
+            <button class="btn btn-green" onclick="guardarYoutube()">💾 Guardar</button>
+          </div>
+        </div>
+
+        <!-- ── TEXTOS DE LA SECCIÓN ── -->
+        <div style="background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius-lg);padding:20px;margin-bottom:16px">
+          <div style="font-size:11px;font-weight:700;letter-spacing:.08em;color:var(--muted);text-transform:uppercase;margin-bottom:12px">Textos de la sección</div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+            <div class="form-group">
+              <label class="form-label">Kicker</label>
+              <input class="form-input" type="text" id="yt-kicker" placeholder="CANAL DE YOUTUBE">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Título</label>
+              <input class="form-input" type="text" id="yt-titulo" placeholder="Contenido">
+            </div>
+          </div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:12px">
+            <div>
+              <div style="font-size:11px;color:var(--muted);margin-bottom:6px">Columna izquierda (junto a los shorts)</div>
+              <input class="form-input" type="text" id="yt-col-izq-titulo" placeholder="SHORTS" style="margin-bottom:6px">
+              <textarea class="form-input" id="yt-col-izq-texto" rows="3" placeholder="Texto de la columna izquierda..." style="resize:vertical"></textarea>
+            </div>
+            <div>
+              <div style="font-size:11px;color:var(--muted);margin-bottom:6px">Columna derecha (junto a los shorts)</div>
+              <input class="form-input" type="text" id="yt-col-der-titulo" placeholder="HIGHLIGHTS" style="margin-bottom:6px">
+              <textarea class="form-input" id="yt-col-der-texto" rows="3" placeholder="Texto de la columna derecha..." style="resize:vertical"></textarea>
+            </div>
+          </div>
+        </div>
+
+        <!-- ── SHORTS ── -->
+        <div style="background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius-lg);padding:20px;margin-bottom:16px">
+          <div style="font-size:11px;font-weight:700;letter-spacing:.08em;color:var(--muted);text-transform:uppercase;margin-bottom:16px">Shorts (2 videos verticales 9:16)</div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
+            <div style="display:flex;flex-direction:column;gap:8px">
+              <div style="font-size:11px;font-weight:600;color:var(--text)">Short 1</div>
+              <div class="form-group">
+                <label class="form-label">ID del Short</label>
+                <input class="form-input" type="text" id="yt-short1-id" placeholder="Ej: abc123XYZ">
+                <div style="font-size:10px;color:var(--muted);margin-top:4px">URL: youtube.com/shorts/<strong>abc123XYZ</strong></div>
+              </div>
+              <div class="form-group">
+                <label class="form-label">Título</label>
+                <input class="form-input" type="text" id="yt-short1-titulo" placeholder="Título del short">
+              </div>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:8px">
+              <div style="font-size:11px;font-weight:600;color:var(--text)">Short 2</div>
+              <div class="form-group">
+                <label class="form-label">ID del Short</label>
+                <input class="form-input" type="text" id="yt-short2-id" placeholder="Ej: abc123XYZ">
+                <div style="font-size:10px;color:var(--muted);margin-top:4px">URL: youtube.com/shorts/<strong>abc123XYZ</strong></div>
+              </div>
+              <div class="form-group">
+                <label class="form-label">Título</label>
+                <input class="form-input" type="text" id="yt-short2-titulo" placeholder="Título del short">
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ── VIDEOS DESTACADOS ── -->
+        <div style="background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius-lg);padding:20px;margin-bottom:16px">
+          <div style="font-size:11px;font-weight:700;letter-spacing:.08em;color:var(--muted);text-transform:uppercase;margin-bottom:12px">Videos Destacados (3 videos en el rectángulo rojo)</div>
+          <div style="margin-bottom:16px">
+            <div style="font-size:11px;color:var(--muted);margin-bottom:8px">Fondo del rectángulo (opcional)</div>
+            <div style="display:flex;align-items:center;gap:12px">
+              <div id="yt-destac-bg-prev" style="width:200px;height:60px;background:var(--bg4);border:1px solid var(--border2);border-radius:4px;overflow:hidden;display:flex;align-items:center;justify-content:center">
+                <span style="font-size:10px;color:var(--muted)">Sin fondo</span>
+              </div>
+              <div style="display:flex;flex-direction:column;gap:6px">
+                <input type="file" id="yt-destac-bg-file" accept=".jpg,.jpeg,.png,.webp" style="display:none" onchange="ytDestacBgPreview(this)">
+                <button class="btn btn-sm" onclick="document.getElementById('yt-destac-bg-file').click()">📷 Subir fondo</button>
+                <button class="btn btn-sm" style="color:var(--red);border-color:rgba(239,68,68,.3)" onclick="ytLimpiarDestacBg()">✕ Quitar</button>
+              </div>
+              <div style="display:flex;flex-direction:column;gap:4px">
+                <label class="form-label" style="font-size:10px">Opacidad del fondo</label>
+                <input class="form-input" type="number" id="yt-destac-bg-opacity" min="0" max="1" step="0.1" value="0.4" style="width:80px">
+              </div>
+            </div>
+          </div>
+          <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px">
+            <div style="display:flex;flex-direction:column;gap:8px">
+              <div style="font-size:11px;font-weight:600;color:var(--text)">Video 1</div>
+              <div class="form-group">
+                <label class="form-label">ID del Video</label>
+                <input class="form-input" type="text" id="yt-destac1-id" placeholder="Ej: dQw4w9WgXcQ">
+                <div style="font-size:10px;color:var(--muted);margin-top:4px">URL: youtube.com/watch?v=<strong>dQw4w9WgXcQ</strong></div>
+              </div>
+              <div class="form-group">
+                <label class="form-label">Título</label>
+                <input class="form-input" type="text" id="yt-destac1-titulo" placeholder="Título del video">
+              </div>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:8px">
+              <div style="font-size:11px;font-weight:600;color:var(--text)">Video 2</div>
+              <div class="form-group">
+                <label class="form-label">ID del Video</label>
+                <input class="form-input" type="text" id="yt-destac2-id" placeholder="Ej: dQw4w9WgXcQ">
+                <div style="font-size:10px;color:var(--muted);margin-top:4px">URL: youtube.com/watch?v=<strong>dQw4w9WgXcQ</strong></div>
+              </div>
+              <div class="form-group">
+                <label class="form-label">Título</label>
+                <input class="form-input" type="text" id="yt-destac2-titulo" placeholder="Título del video">
+              </div>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:8px">
+              <div style="font-size:11px;font-weight:600;color:var(--text)">Video 3</div>
+              <div class="form-group">
+                <label class="form-label">ID del Video</label>
+                <input class="form-input" type="text" id="yt-destac3-id" placeholder="Ej: dQw4w9WgXcQ">
+                <div style="font-size:10px;color:var(--muted);margin-top:4px">URL: youtube.com/watch?v=<strong>dQw4w9WgXcQ</strong></div>
+              </div>
+              <div class="form-group">
+                <label class="form-label">Título</label>
+                <input class="form-input" type="text" id="yt-destac3-titulo" placeholder="Título del video">
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ── ÚLTIMO VIDEO ── -->
+        <div style="background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius-lg);padding:20px">
+          <div style="font-size:11px;font-weight:700;letter-spacing:.08em;color:var(--muted);text-transform:uppercase;margin-bottom:16px">Último Video (video grande al pie)</div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+            <div class="form-group">
+              <label class="form-label">ID del Video</label>
+              <input class="form-input" type="text" id="yt-ultimo-id" placeholder="Ej: dQw4w9WgXcQ">
+              <div style="font-size:10px;color:var(--muted);margin-top:4px">URL: youtube.com/watch?v=<strong>dQw4w9WgXcQ</strong></div>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Kicker</label>
+              <input class="form-input" type="text" id="yt-ultimo-kicker" placeholder="ÚLTIMO VIDEO">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Título</label>
+              <input class="form-input" type="text" id="yt-ultimo-titulo" placeholder="Título del video">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Texto del botón</label>
+              <input class="form-input" type="text" id="yt-ultimo-btn-texto" placeholder="VER EN YOUTUBE">
+            </div>
+            <div class="form-group" style="grid-column:1/-1">
+              <label class="form-label">Descripción</label>
+              <textarea class="form-input" id="yt-ultimo-desc" rows="3" placeholder="Descripción del video..." style="resize:vertical"></textarea>
+            </div>
+            <div class="form-group" style="grid-column:1/-1">
+              <label class="form-label">URL del botón</label>
+              <input class="form-input" type="text" id="yt-ultimo-btn-url" placeholder="https://www.youtube.com/@ambitvok">
+            </div>
+          </div>
+        </div>
+
+      </div><!-- /htab-youtube -->
+
       <!-- ════ SUB-TAB: HUNT SHOWDOWN ════ -->
       <div id="htab-hunt" style="display:none">
 
@@ -907,6 +1070,7 @@
     </div><!-- /tab-home -->
 
     <!-- ── TAB: TWITCH ── -->
+
     <div class="tab-panel" id="tab-twitch">
       <div class="section-header">
         <div class="section-title">Twitch</div>
@@ -1291,6 +1455,7 @@
     <script src="/static/panel-noticias.js"></script>
     <script src="/static/panel-creatorphunt.js"></script>
     <script src="/static/panel-twitch.js"></script>
+    <script src="/static/panel-youtube.js"></script>
      <script src="/static/panel-player.js"></script>
 </body>
 </html>

@@ -182,10 +182,10 @@
 .bleed-agenda-top {
     position: absolute;
     pointer-events: none;
-    width: 700px;
+    width: 400px;
     height: auto;
     bottom: 0;
-    right: calc(50% - 820px); /* mitad de 1320px */
+    right: calc(50% - 660px); /* mitad de 1320px */
     z-index: var(--z-bleeds);
 }
 
