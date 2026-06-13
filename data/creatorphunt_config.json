@@ -4,10 +4,10 @@
         "descripcion": "Sección para el programa de creadores de Hunt Showdown. Acceso anticipado a DLCs, contenido exclusivo y colaboración directa con el equipo de Crytek."
     },
     "rotacion": {
-        "titulo": "The Heart of Lower DeSalle - Lady Lewis",
-        "fecha": "15 De Abril 2026",
-        "descripcion": "No hay nada que Lady Lewis desee más que devolver a su antigua gloria a DeSalle bajo, incluso aunque solo sea por el bien de los cazadores. Su reputación la convierten en la persona perfecta para lograrlo.",
-        "img": "imgs/index/creatorPhunt/dlc_rotacion.webp"
+        "titulo": "It Takes a Rogue",
+        "fecha": "11 De Junio 2026",
+        "descripcion": "Originario de las tierras de la antigua Australia, el Acorazado mantuvo un perfil bajo desde su presunta muerte. Pero cuando descubrió lo que estaba ocurriendo en Luisiana, supo que era hora de enfundarse una vez más su vieja armadura.",
+        "img": "imgs/index/creatorPhunt/it_takes_a_rogue.webp"
     },
     "dlcs": [
         {
@@ -17,8 +17,8 @@
         },
         {
             "id": 2,
-            "titulo": "Violent Balance",
-            "img": "imgs/index/creatorPhunt/dlc_02.webp"
+            "titulo": "The Heart of Lower DeSalle",
+            "img": "imgs/index/creatorPhunt/dlc_rotacion.webp"
         }
     ],
     "video": "https://www.youtube.com/watch?v=_3mTLRaZhcw",

@@ -7,8 +7,8 @@
     "dia": "MARTES",
     "hora": "12:00 HS",
     "thumb": "imgs/index/agenda/hunt_showdown.jpg",
-    "object": "imgs/index/hero/hero-bg_img.webp",
+    "object": "imgs/index/hero-bg_img.webp",
     "logo": "imgs/index/hero/hero-bg_logo.webp",
-    "bg": "imgs/index/hero/hero-bg.webp",
+    "bg": "imgs/index/bgs/hero-bg.webp",
     "bleed": "imgs/index/agenda/agenda_over-img.webp"
 }

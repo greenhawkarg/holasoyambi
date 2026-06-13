@@ -102,10 +102,15 @@ function getRealTop(el) {
     return el.getBoundingClientRect().top + window.scrollY;
 }
 
+/* ── SCROLL SPY ──
+   Marca el link activo en verde según la sección visible.
+   En páginas sin anclas internas (dossier.html) marca el link
+   cuyo href coincide con la URL actual como fallback.           */
 function updateActiveLink() {
     let current = '';
     const trigger = window.innerHeight * 0.45;
 
+    /* Detectar sección visible por scroll (funciona en index.html) */
     sections.forEach(section => {
         if (window.scrollY >= getRealTop(section) - trigger) {
             current = section.getAttribute('id');
@@ -115,8 +120,17 @@ function updateActiveLink() {
     document.querySelectorAll('.nav-links a, .side-nav-btn').forEach(btn => {
         const href = btn.getAttribute('href');
         btn.classList.remove('active');
+
+        /* Ancla interna coincide con sección actual */
         if (href === '#' + current) btn.classList.add('active');
         if (href === '#top' && current === '') btn.classList.add('active');
+
+        /* Fallback para páginas subpáginas (dossier.html, etc.):
+           marca el link cuyo href coincide con la página actual  */
+        const currentPage = window.location.pathname.split('/').pop();
+        if (href && !href.startsWith('#') && href.split('#')[0] === currentPage) {
+            btn.classList.add('active');
+        }
     });
 
     mobileBtns.forEach(btn => {
@@ -139,14 +153,24 @@ document.querySelectorAll('[href="#top"]').forEach(btn => {
     });
 });
 
-/* ── LINKS DE SECCIÓN — hide inmediato + bloquear scroll listener ── */
+/* ── LINKS DE SECCIÓN — hide inmediato + bloquear scroll listener ──
+   Solo actúa en anclas internas (href="#...").
+   Links a otras páginas (index.html#...) se ignoran para no romper
+   el autohide al navegar desde dossier.html                        */
 document.querySelectorAll('.nav-links a').forEach(btn => {
     btn.addEventListener('click', () => {
+
+        /* Si el link va a otra página, salir sin tocar el estado */
+        const href = btn.getAttribute('href');
+        if (!href || !href.startsWith('#')) return;
+
+        /* Solo anclas internas: ocultar nav y bloquear scroll spy */
         peekActive  = false;
         navigating  = true;
         nav.style.setProperty('top', '-200px', 'important');
         peekTab.classList.add('visible');
-        // Seguridad: liberar el flag después de 1.5s por si el scroll no dispara
+
+        /* Seguridad: liberar el flag después de 1.5s */
         setTimeout(() => { navigating = false; }, 1500);
     });
 });

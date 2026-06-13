@@ -25,10 +25,80 @@ body {
     overflow-x: hidden;
 }
 
-html, body { margin: 0; padding: 0; height: 100%; }
+/* height: 100% solo en html causa que el scroll pertenezca
+   a window correctamente — necesario para que menu.js funcione */
+html, body { margin: 0; padding: 0; }
 
 a { color: inherit; text-decoration: none; }
 img { display: block; max-width: 100%; }
+
+
+/* ══════════════════════════════════════════════════════
+   DOSSIER — MINI HERO
+   250px fijos de altura, BG posicionable + efectos FX
+══════════════════════════════════════════════════════ */
+
+.dossier-mini-hero {
+    position: relative;
+    width: 100%;
+    height: 250px;
+    overflow: hidden;
+}
+
+/* Imagen de fondo — posición configurable con background-position */
+.dossier-mini-hero-bg {
+    position: absolute;
+    inset: 0;
+    background-image: url('../imgs/dossier/bg/dossier-hero-bg.webp');
+    background-size: cover;
+    background-position: center center; /* ← cambiá esto para reposicionar */
+    z-index: 1;
+}
+
+/* Grain — canvas generado por JS */
+.dossier-fx-grain {
+    position: absolute;
+    inset: 0;
+    z-index: 3;
+    pointer-events: none;
+}
+.dossier-fx-grain canvas {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+}
+
+/* Scanlines */
+.dossier-fx-scan {
+    position: absolute;
+    inset: 0;
+    z-index: 4;
+    pointer-events: none;
+    opacity: 1.00;
+    background: repeating-linear-gradient(
+        0deg,
+        rgba(0, 0, 0, 0.35) 0px,
+        rgba(0, 0, 0, 0.35) 1px,
+        transparent 1px,
+        transparent 3px
+    );
+}
+
+/* Vignette */
+.dossier-fx-vignette {
+    position: absolute;
+    inset: 0;
+    z-index: 5;
+    pointer-events: none;
+    opacity: 0.74;
+    background: radial-gradient(
+        ellipse at center,
+        transparent 45%,
+        rgba(0, 0, 0, 0.95) 100%
+    );
+}
+
 
 /*══════════════════════════════
     LAYOUT WRAPPER

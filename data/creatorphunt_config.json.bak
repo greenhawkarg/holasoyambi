@@ -1,5 +1,4 @@
 {
-    "video": "https://www.youtube.com/watch?v=_3mTLRaZhcw",
     "seccion": {
         "titulo": "Hunt: Showdown 1896",
         "descripcion": "Sección para el programa de creadores de Hunt Showdown. Acceso anticipado a DLCs, contenido exclusivo y colaboración directa con el equipo de Crytek."
@@ -22,6 +21,7 @@
             "img": "imgs/index/creatorPhunt/dlc_02.webp"
         }
     ],
+    "video": "https://www.youtube.com/watch?v=_3mTLRaZhcw",
     "bleeds": {
         "left": {
             "activo": true
