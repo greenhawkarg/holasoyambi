@@ -1,38 +1,5 @@
 [
     {
-        "dia": "DOMINGO",
-        "fecha": "14 DE JUNIO",
-        "fecha_limite_calculada": "2026-06-19",
-        "hora": "14:00 HS",
-        "imagen": "imgs/index/agenda/ta-runedice.jpg",
-        "juego": "RUNE DICE",
-        "tipo": "standard",
-        "tipo_stream": "DÍA DE FALOPITAS / CAMPAÑA",
-        "video": "5i7OvHrj2AY"
-    },
-    {
-        "dia": "DOMINGO",
-        "fecha": "14 DE JUNIO",
-        "fecha_limite_calculada": "2026-07-12",
-        "hora": "15:00 HS",
-        "imagen": "imgs/index/agenda/ta-zombiehood.jpg",
-        "juego": "ZOMBIEHOOD",
-        "tipo": "standard",
-        "tipo_stream": "DÍA DE FALOPITAS / CAMPAÑA",
-        "video": "yWlx4alCoBw"
-    },
-    {
-        "dia": "DOMINGO",
-        "fecha": "14 DE JUNIO",
-        "fecha_limite_calculada": "2026-07-07",
-        "hora": "16:00 HS",
-        "imagen": "imgs/index/agenda/ta-stupidcars.jpg",
-        "juego": "STUPID CARS",
-        "tipo": "standard",
-        "tipo_stream": "DÍA DE FALOPITAS / CAMPAÑA",
-        "video": "LPsB0XtTewI"
-    },
-    {
         "bg_imagen": "",
         "border_color": "#d72626",
         "dia": "VIERNES",
