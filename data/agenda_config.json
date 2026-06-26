@@ -2,21 +2,8 @@
     {
         "bg_imagen": "",
         "border_color": "#d72626",
-        "dia": "VIERNES",
-        "fecha": "19 DE JUNIO",
-        "fecha_limite_calculada": "2026-07-01",
-        "hora": "18:00 HS",
-        "imagen": "imgs/index/agenda/cheaters_table.jpg",
-        "juego": "CHEATER'S TABLE",
-        "tipo": "standard",
-        "tipo_stream": "ESTRENO / CAMPAÑA",
-        "video": "xn21tfQep5k"
-    },
-    {
-        "bg_imagen": "",
-        "border_color": "#d72626",
-        "dia": "DOMINGO",
-        "fecha": "21 DE JUNIO",
+        "dia": "SÁBADO",
+        "fecha": "27 DE JUNIO",
         "fecha_limite_calculada": "2026-06-26",
         "hora": "15:00 HS",
         "imagen": "imgs/index/agenda/scale_the_depths.jpg",
@@ -27,7 +14,7 @@
     },
     {
         "dia": "SÁBADO",
-        "fecha": "20 DE JUNIO",
+        "fecha": "27 DE JUNIO",
         "fecha_limite_calculada": "2026-06-22",
         "hora": "13:00 HS",
         "imagen": "imgs/index/agenda/ta-mcb.jpg",
@@ -38,7 +25,7 @@
     },
     {
         "dia": "SÁBADO",
-        "fecha": "20 DE JUNIO",
+        "fecha": "27 DE JUNIO",
         "fecha_limite_calculada": "2026-07-11",
         "hora": "14:30 HS / 15:00 HS",
         "imagen": "imgs/index/agenda/ta-mrtoilet.jpg",
@@ -46,18 +33,5 @@
         "tipo": "standard",
         "tipo_stream": "DÍA DE REALIDAD / CAMPAÑA",
         "video": "UYqXwcSyAP8"
-    },
-    {
-        "bg_imagen": "",
-        "border_color": "#d72626",
-        "dia": "DOMINGO",
-        "fecha": "21 DE JUNIO",
-        "fecha_limite_calculada": "2026-06-23",
-        "hora": "16:00 HS",
-        "imagen": "imgs/index/agenda/yerba_buena.jpg",
-        "juego": "YERBA BUENA",
-        "tipo": "standard",
-        "tipo_stream": "CAMPAÑA",
-        "video": "cZgim-KYkZQ"
     }
 ]
