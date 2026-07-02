@@ -1,31 +1,7 @@
 [
     {
-        "bg_imagen": "",
-        "border_color": "#d72626",
         "dia": "SÁBADO",
-        "fecha": "27 DE JUNIO",
-        "fecha_limite_calculada": "2026-06-26",
-        "hora": "15:00 HS",
-        "imagen": "imgs/index/agenda/scale_the_depths.jpg",
-        "juego": "SCALE THE DEPTHS",
-        "tipo": "standard",
-        "tipo_stream": "CAMPAÑA",
-        "video": "82rbcuZ__dw"
-    },
-    {
-        "dia": "SÁBADO",
-        "fecha": "27 DE JUNIO",
-        "fecha_limite_calculada": "2026-06-22",
-        "hora": "13:00 HS",
-        "imagen": "imgs/index/agenda/ta-mcb.jpg",
-        "juego": "MEDIEVAL CRAFTER BLACKSMITH",
-        "tipo": "standard",
-        "tipo_stream": "DÍA DE REALIDAD / CAMPAÑA",
-        "video": "FK9K_0j4KjE"
-    },
-    {
-        "dia": "SÁBADO",
-        "fecha": "27 DE JUNIO",
+        "fecha": "4 DE JULIO",
         "fecha_limite_calculada": "2026-07-11",
         "hora": "14:30 HS / 15:00 HS",
         "imagen": "imgs/index/agenda/ta-mrtoilet.jpg",
