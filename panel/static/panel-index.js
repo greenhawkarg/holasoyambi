@@ -172,4 +172,14 @@ async function guardarIndex() {
 }
 
 /* ── INIT ── */
-document.addEventListener('DOMContentLoaded', loadIndex);
+document.addEventListener('DOMContentLoaded', () => {
+    loadIndex();
+
+    /* Habilita drag & drop en los recuadros de preview de Agenda:
+       Imagen Thumb y Bleed Agenda. Al soltar un archivo ahí, se carga
+       en el mismo <input type="file"> de siempre (ix-thumb-file /
+       ix-bleed-file), así el resto del flujo (preview, upload al
+       guardar) no cambia en absoluto */
+    habilitarDragDrop('ix-thumb-prev', 'ix-thumb-file');
+    habilitarDragDrop('ix-bleed-prev', 'ix-bleed-file');
+});
