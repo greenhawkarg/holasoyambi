@@ -1,29 +1,34 @@
-/* ------------------------------------------------------------------
-   AMBI � PANEL DE CONTROL � Utilidades compartidas
+/* ══════════════════════════════════════════════════════════════════
+   AMBI — PANEL DE CONTROL — Utilidades compartidas
    Archivo : panel/static/panel-utils.js
    Depende de: (ninguna)
------------------------------------------------------------------- */
+══════════════════════════════════════════════════════════════════ */
 
-    /* ------------------------------------------------------------------
+    /* ══════════════════════════════════════════════════════════════════
        CONSTANTES GLOBALES
-    ------------------------------------------------------------------ */
+    ══════════════════════════════════════════════════════════════════ */
 
-    /* Opciones del select de descripci�n de stream */
+    /* Opciones del select de descripción de stream */
     const OPCIONES = [
-      "ESTRENO",
-      "CAMPA�A",
-      "D�A DE FALOPITAS",
-      "D�A DE REALIDAD",
+      "CAMPAÑA",
       "CONTENIDO EXCLUSIVO",
+      "DEMO CERRADA",
+      "DESAFIO",
+      "DÍA DE FALOPITAS",
+      "DÍA DE SIMULANDO",
+      "EARLY ACCESS",
       "EARLY ACCESS EXCLUSIVO",
+      "ESTRENO",
+      "EVENTO",
       "INVITADOS A LA PLAYTEST",
+      "INVITADOS AL EVENTO",
       "INVITADOS POR EL STUDIO",
-      "INVITADOS AL EARLY ACCESS"
+      "REVIEW"
     ];
 
-    /* ------------------------------------------------------------------
-       UTILIDADES � YOUTUBE
-    ------------------------------------------------------------------ */
+    /* ══════════════════════════════════════════════════════════════════
+       UTILIDADES — YOUTUBE
+    ══════════════════════════════════════════════════════════════════ */
 
     /* Extrae el ID del video de cualquier formato de URL de YouTube.
        Soporta:
@@ -45,76 +50,76 @@
         const parts = url.pathname.split('/').filter(Boolean);
         if (parts.length) return parts[parts.length - 1];
       } catch(e) {
-        // No es URL v�lida ? asume que ya es un ID directo
+        // No es URL válida → asume que ya es un ID directo
         return input;
       }
       return input;
     }
 
-    /* ------------------------------------------------------------------
-       UTILIDADES � REFRESH VISTA P�BLICA
-    ------------------------------------------------------------------ */
+    /* ══════════════════════════════════════════════════════════════════
+       UTILIDADES — REFRESH VISTA PÚBLICA
+    ══════════════════════════════════════════════════════════════════ */
 
-    /* Despu�s de guardar, recarga autom�ticamente el HTML p�blico
+    /* Después de guardar, recarga automáticamente el HTML público
        para que el cambio se vea sin hacer F5 manualmente.
        Estrategia:
-         1. Si hay iframes en esta p�gina que apunten a tschedule ? los recarga
-         2. Si se abri� la web p�blica en otra pesta�a con window.open ? la recarga
+         1. Si hay iframes en esta página que apunten a tschedule → los recarga
+         2. Si se abrió la web pública en otra pestaña con window.open → la recarga
          3. Fallback: nada (el usuario puede hacer F5 si quiere)             */
     function refrescarVistaPublica() {
-      // Opci�n 1: iframes en el panel
+      // Opción 1: iframes en el panel
       document.querySelectorAll('iframe').forEach(f => {
         try { f.contentWindow.location.reload(); } catch(e) {}
       });
-      // Opci�n 2: referencia guardada a ventana externa abierta desde el panel
+      // Opción 2: referencia guardada a ventana externa abierta desde el panel
       if (window._vistaPublica && !window._vistaPublica.closed) {
         try { window._vistaPublica.location.reload(); } catch(e) {}
       }
     }
 
-    /* Abre la web p�blica (tschedule.html) en una ventana separada
+    /* Abre la web pública (tschedule.html) en una ventana separada
        y guarda la referencia para poder recargarla al guardar.
-       Pod�s agregar un bot�n en el panel que llame a esta funci�n si quer�s. */
+       Podés agregar un botón en el panel que llame a esta función si querés. */
     function abrirVistaPublica() {
       window._vistaPublica = window.open('../tschedule.html', 'vista-publica');
     }
 
-    /* Nombres de meses para conversi�n de fechas */
+    /* Nombres de meses para conversión de fechas */
     const MESES     = ["Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre"];
     const MESES_WEB = ["ENERO","FEBRERO","MARZO","ABRIL","MAYO","JUNIO","JULIO","AGOSTO","SEPTIEMBRE","OCTUBRE","NOVIEMBRE","DICIEMBRE"];
 
-    /* D�as de la semana (�ndice 0 = Domingo, igual que Date.getDay()) */
-    const DIAS_S = ["DOMINGO","LUNES","MARTES","MI�RCOLES","JUEVES","VIERNES","S�BADO"];
+    /* Días de la semana (índice 0 = Domingo, igual que Date.getDay()) */
+    const DIAS_S = ["DOMINGO","LUNES","MARTES","MIÉRCOLES","JUEVES","VIERNES","SÁBADO"];
 
     /* Array global de la agenda (se carga desde la API al iniciar) */
     let agenda = [];
 
-    /* �ndice origen del drag & drop */
+    /* Índice origen del drag & drop */
     let dragSrc = null;
 
 
-    /* ------------------------------------------------------------------
-       UTILIDADES � DRAG & DROP DE IM�GENES
+    /* ══════════════════════════════════════════════════════════════════
+       UTILIDADES — DRAG & DROP DE IMÁGENES
        Convierte el recuadro de preview de una imagen (el div que muestra
        "preview" / la miniatura) en una zona donde se puede soltar un
        archivo arrastrado desde el explorador de Windows/Mac.
 
-       No reemplaza el flujo existente: cuando se suelta un archivo v�lido,
+       No reemplaza el flujo existente: cuando se suelta un archivo válido,
        se lo asigna al <input type="file"> real (usando DataTransfer) y se
        dispara su evento "change". Como cada input ya tiene su propio
        onchange (indexPreview, twitchCardPreview, huntPreview, etc.), todo
-       el resto de la l�gica (preview, nombre del archivo, upload al
-       guardar) sigue funcionando sin tocar nada m�s.
+       el resto de la lógica (preview, nombre del archivo, upload al
+       guardar) sigue funcionando sin tocar nada más.
 
        Uso: habilitarDragDrop('ix-thumb-prev', 'ix-thumb-file');
-    ------------------------------------------------------------------ */
+    ══════════════════════════════════════════════════════════════════ */
 
     function habilitarDragDrop(previewId, fileInputId) {
       const zona  = document.getElementById(previewId);
       const input = document.getElementById(fileInputId);
       if (!zona || !input) return; // Si no existen los elementos, no hace nada (evita errores en consola)
 
-      /* Frena el comportamiento default del navegador (que ser�a abrir/
+      /* Frena el comportamiento default del navegador (que sería abrir/
          descargar el archivo) en todos los eventos de drag relevantes */
       ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(evName => {
         zona.addEventListener(evName, e => {
@@ -155,23 +160,23 @@
         input.files = dt.files;
 
         /* Dispara el evento change del input para que corra el mismo
-           preview/l�gica que correr�a si el usuario lo hubiera
-           seleccionado con el bot�n "Seleccionar imagen" */
+           preview/lógica que correría si el usuario lo hubiera
+           seleccionado con el botón "Seleccionar imagen" */
         input.dispatchEvent(new Event('change'));
       });
 
-      /* Bonus: permite tambi�n hacer click sobre el recuadro de preview
+      /* Bonus: permite también hacer click sobre el recuadro de preview
          para abrir el selector de archivos, no solo arrastrar */
       zona.style.cursor = 'pointer';
       zona.addEventListener('click', () => input.click());
     }
 
 
-    /* ------------------------------------------------------------------
-       UTILIDADES � TABS
-    ------------------------------------------------------------------ */
+    /* ══════════════════════════════════════════════════════════════════
+       UTILIDADES — TABS
+    ══════════════════════════════════════════════════════════════════ */
 
-    /* Cambia la pesta�a activa por nombre */
+    /* Cambia la pestaña activa por nombre */
     function switchTab(name) {
       document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
       document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
@@ -180,11 +185,11 @@
     }
 
 
-    /* ------------------------------------------------------------------
-       UTILIDADES � FEEDBACK VISUAL
-    ------------------------------------------------------------------ */
+    /* ══════════════════════════════════════════════════════════════════
+       UTILIDADES — FEEDBACK VISUAL
+    ══════════════════════════════════════════════════════════════════ */
 
-    /* Muestra una notificaci�n toast por 3 segundos
+    /* Muestra una notificación toast por 3 segundos
        type: 'ok' (verde) | 'err' (rojo) */
     function toast(msg, type = 'ok') {
       const t = document.getElementById('toast');
@@ -202,21 +207,21 @@
     }
 
 
-    /* ------------------------------------------------------------------
-       UTILIDADES � FECHAS
-    ------------------------------------------------------------------ */
+    /* ══════════════════════════════════════════════════════════════════
+       UTILIDADES — FECHAS
+    ══════════════════════════════════════════════════════════════════ */
 
-    /* Convierte "21 DE MAYO" ? "2026-05-21" (formato input[type=date]) */
+    /* Convierte "21 DE MAYO" → "2026-05-21" (formato input[type=date]) */
     function fechaToISO(fechaWeb) {
       if (!fechaWeb) return '';
-      const m = fechaWeb.match(/(\d+)\s+DE\s+([A-Z�����]+)/i);
+      const m = fechaWeb.match(/(\d+)\s+DE\s+([A-ZÁÉÍÓÚ]+)/i);
       if (!m) return '';
       const mes = MESES_WEB.indexOf(m[2].toUpperCase()) + 1;
       if (!mes) return '';
       return `${new Date().getFullYear()}-${String(mes).padStart(2,'0')}-${String(m[1]).padStart(2,'0')}`;
     }
 
-    /* Convierte "2026-05-21" ? "21 DE MAYO" (formato para el HTML p�blico) */
+    /* Convierte "2026-05-21" → "21 DE MAYO" (formato para el HTML público) */
     function isoToFechaWeb(iso) {
       if (!iso) return '';
       const [y, m, d] = iso.split('-');
@@ -224,14 +229,14 @@
     }
 
     /* Genera texto de countdown a partir de una fecha ISO "YYYY-MM-DD"
-       Devuelve string con d�as restantes, "HOY" o "Finalizado" */
+       Devuelve string con días restantes, "HOY" o "Finalizado" */
     function calcCountdown(iso) {
       if (!iso) return '';
       const hoy  = new Date(); hoy.setHours(0,0,0,0);
       const fin  = new Date(iso + 'T00:00:00');
       const diff = Math.round((fin - hoy) / 86400000);
       const leg  = `${fin.getDate()} de ${MESES[fin.getMonth()]}`;
-      if (diff > 0)   return `? Restan ${diff} d�as / Finaliza el ${leg}`;
-      if (diff === 0) return `?? �Finaliza HOY! ${leg}`;
-      return `? Finalizado el ${leg}`;
+      if (diff > 0)   return `⏳ Restan ${diff} días / Finaliza el ${leg}`;
+      if (diff === 0) return `🚨 ¡Finaliza HOY! ${leg}`;
+      return `❌ Finalizado el ${leg}`;
     }

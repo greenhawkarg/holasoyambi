@@ -904,6 +904,15 @@ def open_browser():
     webbrowser.open("http://127.0.0.1:5000")
 
 if __name__ == "__main__":
-    # Abre el navegador 1 segundo después de que Flask levante
-    Timer(1.0, open_browser).start()
-    app.run(debug=False, port=5000)
+    # El auto-reloader de Flask (activado por debug=True) reinicia este
+    # script como subproceso, así que sin este chequeo el navegador se
+    # abriría dos veces. WERKZEUG_RUN_MAIN solo está seteado en el
+    # proceso "real" que sirve la app, no en el proceso vigía
+    if os.environ.get("WERKZEUG_RUN_MAIN") == "true":
+        Timer(1.0, open_browser).start()
+    # debug=True activa TEMPLATES_AUTO_RELOAD (Jinja2 vuelve a leer
+    # index.html del disco en cada request en vez de cachearlo en memoria)
+    # y el auto-reloader de Flask, que reinicia el proceso solo cuando
+    # detecta cambios en app.py. Esto es lo que resuelve el problema de
+    # tener que apagar/prender el panel a mano para ver cambios en index.html
+    app.run(debug=True, port=5000)
