@@ -7,7 +7,7 @@
         "imagen": "imgs/index/agenda/ta-mrtoilet.jpg",
         "juego": "MR TOILET",
         "tipo": "standard",
-        "tipo_stream": "DÍA DE REALIDAD / CAMPAÑA",
+        "tipo_stream": "DÍA DE SIMULANDO / CAMPAÑA",
         "video": "UYqXwcSyAP8"
     },
     {
@@ -42,7 +42,7 @@
         "juego": "THE SOUL",
         "dia": "SÁBADO",
         "hora": "15:00 HS",
-        "tipo_stream": "CONTENIDO EXCLUSIVO",
+        "tipo_stream": "DEMO CERRADA / CONTENIDO EXCLUSIVO",
         "imagen": "imgs/index/agenda/the_soul.jpg",
         "video": "T1Pno_aW56o",
         "fecha_limite_calculada": "2026-08-06",
