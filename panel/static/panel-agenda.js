@@ -5,6 +5,43 @@
 ══════════════════════════════════════════════════════════════════ */
 
     /* ══════════════════════════════════════════════════════════════════
+       TIPO DE CAMPAÑA — GRUPOS DE COLOR
+       El campo "Tipo" de cada entrada de Agenda ahora usa la misma
+       lista de 14 opciones que "Tipo de Campaña" (variable global
+       OPCIONES, definida fuera de este archivo).
+       Solo ALGUNAS de esas 14 opciones deben activar el bloque de
+       Imagen de Fondo (BG) + Color de Borde. Se agrupan acá para
+       poder mantenerlas fácil en el futuro sin tocar el resto del código.
+    ══════════════════════════════════════════════════════════════════ */
+
+    /* Opciones que activan el bloque de color estilo "Twitch" (violeta) */
+    const TIPOS_COLOR_TWITCH = ['CONTENIDO EXCLUSIVO', 'DEMO CERRADA', 'EARLY ACCESS EXCLUSIVO', 'ESTRENO'];
+
+    /* Opciones que activan el bloque de color "Verde" */
+    const TIPOS_COLOR_VERDE  = ['INVITADOS A LA PLAYTEST', 'INVITADOS AL EVENTO', 'INVITADOS POR EL STUDIO'];
+
+    /* Colores por defecto de cada grupo (se pueden pisar manualmente con el color picker) */
+    const COLOR_TWITCH = '#9146FF'; // violeta de marca Twitch
+    const COLOR_VERDE  = '#22c55e'; // verde de marca del sitio (mismo que kicker de Noticias)
+
+    /* Devuelve a qué grupo de color pertenece un tipo de campaña, o null si es "normal"
+       (normal = no muestra bloque de BG + Color de Borde) */
+    function getGrupoColor(tipo) {
+      if (TIPOS_COLOR_TWITCH.includes(tipo)) return 'twitch';
+      if (TIPOS_COLOR_VERDE.includes(tipo))  return 'verde';
+      return null;
+    }
+
+    /* Devuelve el color hex por defecto según el grupo del tipo (o '' si no tiene grupo) */
+    function getColorPorDefecto(tipo) {
+      const g = getGrupoColor(tipo);
+      if (g === 'twitch') return COLOR_TWITCH;
+      if (g === 'verde')  return COLOR_VERDE;
+      return '';
+    }
+
+
+    /* ══════════════════════════════════════════════════════════════════
        HANDLERS DE CAMPOS — TARJETAS EXISTENTES
     ══════════════════════════════════════════════════════════════════ */
 
@@ -99,16 +136,25 @@
     /* Construye el elemento DOM de una tarjeta con su header, body y drag events */
     function buildCard(entry, idx) {
       const card = document.createElement('div');
-      card.className  = `entry-card ${entry.tipo}`;
+      /* NOTA: ya no se agrega entry.tipo como clase CSS porque ahora
+         puede tener espacios/acentos (ej: "CONTENIDO EXCLUSIVO") y
+         eso rompería el className. El color de borde se aplica
+         directamente con estilo inline en updateCardStyle(). */
+      card.className  = `entry-card`;
       card.dataset.idx = idx;
       card.draggable  = true;
 
-      const isEx = entry.tipo === 'exclusivo';
+      /* Grupo de color según el tipo de campaña elegido (twitch / verde / null) */
+      const grupoColor = getGrupoColor(entry.tipo);
+      const colorBadge = getColorPorDefecto(entry.tipo);
+      /* Si tiene grupo de color, pisamos el fondo del badge inline;
+         si no, se queda con el estilo "standard" definido en el CSS */
+      const badgeStyle = grupoColor ? ` style="background:${colorBadge};color:#fff"` : '';
 
       card.innerHTML = `
         <div class="entry-header" onclick="toggleCard(${idx})">
           <span class="drag-handle" draggable="false" onclick="event.stopPropagation()">⠿</span>
-          <span class="entry-badge ${isEx ? 'badge-exclusivo' : 'badge-standard'}">${isEx ? 'Exclusivo' : 'Standard'}</span>
+          <span class="entry-badge badge-standard"${badgeStyle}>${entry.tipo || '(sin tipo)'}</span>
           <span class="entry-name">${entry.juego || '(sin nombre)'}</span>
           <span class="entry-meta">${entry.fecha} · ${entry.dia} ${entry.hora}${entry.fecha_limite_calculada ? ' · ' + calcCountdown(entry.fecha_limite_calculada) : ''}</span>
           <div class="entry-actions" onclick="event.stopPropagation()">
@@ -153,8 +199,10 @@
     function buildBodyHTML(entry, idx) {
       const dias     = ['LUNES','MARTES','MIÉRCOLES','JUEVES','VIERNES','SÁBADO','DOMINGO'];
       const diasOpts = dias.map(d => `<option${entry.dia === d ? ' selected' : ''}>${d}</option>`).join('');
-      const tipoOpts = ['standard','exclusivo'].map(t =>
-        `<option value="${t}"${entry.tipo === t ? ' selected' : ''}>${t.charAt(0).toUpperCase() + t.slice(1)}</option>`
+      /* Tipo ahora usa la misma lista de 14 opciones (OPCIONES, variable global)
+         que "Tipo de Campaña". Reemplaza al viejo select Standard/Exclusivo. */
+      const tipoOpts = OPCIONES.map(o =>
+        `<option value="${o}"${entry.tipo === o ? ' selected' : ''}>${o}</option>`
       ).join('');
 
       /* Parsea tipo_stream "CAT1 / CAT2" en partes para pre-seleccionar los selects */
@@ -166,11 +214,12 @@
 
       const imgSrc   = entry.imagen    ? `/${entry.imagen}`    : '';
       const bgSrc    = entry.bg_imagen  ? `/${entry.bg_imagen}`  : '';
-      const isEx     = entry.tipo === 'exclusivo';
-      const borderColor = entry.border_color || '#d72626'; // color por defecto exclusivo
+      /* grupoColor: 'twitch' | 'verde' | null. Reemplaza al viejo isEx. */
+      const grupoColor   = getGrupoColor(entry.tipo);
+      const borderColor  = entry.border_color || getColorPorDefecto(entry.tipo) || '#d72626';
 
-      /* ── Bloque exclusivo: BG + color picker (solo se muestra si tipo=exclusivo) ── */
-      const exclBlock = isEx ? `
+      /* ── Bloque de color: BG + color picker (solo se muestra si el tipo pertenece a un grupo de color) ── */
+      const exclBlock = grupoColor ? `
         <div class="excl-block">
           <div class="excl-block-title">🎨 Exclusivo — Fondo &amp; Color</div>
           <div class="excl-row">
@@ -314,8 +363,18 @@
        para que el bloque exclusivo aparezca o desaparezca */
     function onTipoChange(idx, value) {
       agenda[idx].tipo = value;
+
+      /* Si el nuevo tipo pertenece a un grupo de color y todavía no tiene
+         un color de borde propio asignado, le ponemos el color por defecto
+         del grupo (violeta Twitch o verde). Si ya tenía un color puesto a
+         mano, lo respetamos. */
+      const grupoColor = getGrupoColor(value);
+      if (grupoColor && !agenda[idx].border_color) {
+        agenda[idx].border_color = getColorPorDefecto(value);
+      }
+
       updateCardStyle(idx);
-      // Regenera el body para mostrar/ocultar el bloque exclusivo
+      // Regenera el body para mostrar/ocultar el bloque de color
       const card = document.querySelector(`[data-idx="${idx}"]`);
       if (!card) return;
       const body = card.querySelector('.entry-body');
@@ -488,16 +547,24 @@
       card.querySelector('.entry-meta').textContent = `${e.fecha} · ${e.dia} ${e.hora}`;
     }
 
-    /* Actualiza el color del borde y el badge al cambiar el tipo */
+    /* Actualiza el color del borde y el badge al cambiar el tipo de campaña */
     function updateCardStyle(idx) {
       const card = document.querySelector(`[data-idx="${idx}"]`);
       if (!card) return;
-      const e    = agenda[idx];
-      const isEx = e.tipo === 'exclusivo';
-      card.className = `entry-card ${e.tipo}` + (card.classList.contains('open') ? ' open' : '');
+      const e = agenda[idx];
+      const grupoColor = getGrupoColor(e.tipo);
+      const colorHex   = e.border_color || getColorPorDefecto(e.tipo);
+
+      /* className ya no lleva el tipo (puede tener espacios/acentos) */
+      card.className = `entry-card` + (card.classList.contains('open') ? ' open' : '');
+      /* Borde izquierdo coloreado solo si el tipo pertenece a un grupo de color */
+      card.style.borderLeftColor = grupoColor ? colorHex : '';
+
       const badge = card.querySelector('.entry-badge');
-      badge.className  = `entry-badge ${isEx ? 'badge-exclusivo' : 'badge-standard'}`;
-      badge.textContent = isEx ? 'Exclusivo' : 'Standard';
+      badge.className = 'entry-badge badge-standard';
+      badge.style.background = grupoColor ? colorHex : '';
+      badge.style.color      = grupoColor ? '#fff'   : '';
+      badge.textContent = e.tipo || '(sin tipo)';
     }
 
     /* Abre / cierra el cuerpo de una tarjeta */
@@ -591,6 +658,11 @@
         sel.innerHTML = `<option value="">—</option>` +
           OPCIONES.map(o => `<option>${o}</option>`).join('');
       });
+
+      /* Puebla el select de Tipo con la misma lista de 14 opciones
+         (antes tenía hardcodeado Standard / Exclusivo) */
+      const selTipo = document.getElementById('n-tipo');
+      selTipo.innerHTML = OPCIONES.map(o => `<option value="${o}">${o}</option>`).join('');
     }
 
     /* Abre el panel y resetea todos los campos a valores por defecto */
@@ -603,7 +675,7 @@
       });
 
       /* Reset selects y textos */
-      document.getElementById('n-tipo').value         = 'standard';
+      document.getElementById('n-tipo').value         = OPCIONES[0]; // antes: 'standard'
       document.getElementById('n-dia').value          = 'VIERNES';
       document.getElementById('n-hora').value         = '16:00 HS';
       document.getElementById('n-img-name').textContent = '(ninguna)';
@@ -681,9 +753,12 @@
         fechaLimite = f.toISOString().split('T')[0]; // ← CORREGIDO (antes: siempre '')
       }
 
+      /* Tipo de campaña elegido en el select (una de las 14 opciones) */
+      const tipoNuevo = document.getElementById('n-tipo').value;
+
       /* Push del nuevo objeto a la agenda */
       agenda.push({
-        tipo:                   document.getElementById('n-tipo').value,
+        tipo:                   tipoNuevo,
         fecha:                  fechaWeb,                                      // FIX 1
         juego:                  juego.toUpperCase(),
         dia:                    document.getElementById('n-dia').value,
@@ -692,8 +767,9 @@
         imagen:                 imgRel,
         video:                  document.getElementById('n-video').value.trim(),
         fecha_limite_calculada: fechaLimite,                                   // FIX 2
-        bg_imagen:              '',       // se asigna luego desde la tarjeta si es exclusivo
-        border_color:           '#d72626' // color por defecto exclusivo
+        bg_imagen:              '',       // se asigna luego desde la tarjeta si el tipo tiene color
+        /* Color de borde por defecto según el grupo del tipo elegido (twitch/verde/normal) */
+        border_color:           getColorPorDefecto(tipoNuevo) || '#d72626'
       });
 
       cerrarNuevo();
