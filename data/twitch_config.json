@@ -4,12 +4,12 @@
     "crew_bg": "imgs/index/twitch/c&s_bg.webp",
     "cards": [
         {
-            "img": "imgs/index/twitch/card1.jpg",
+            "img": "imgs/index/twitch/igcamp-feed_webp.webp",
             "caption_titulo": "MINOS",
             "caption_desc": ""
         },
         {
-            "img": "imgs/index/twitch/card2.jpg",
+            "img": "imgs/index/twitch/igcamp-feed_webp.webp",
             "caption_titulo": "MOUSE P.I FOR HIRE",
             "caption_desc": ""
         },
@@ -19,7 +19,7 @@
             "caption_desc": ""
         },
         {
-            "img": "imgs/index/twitch/card4.jpg",
+            "img": "imgs/index/twitch/igcamp-feed_webp.webp",
             "caption_titulo": "WHISPER MOUNTAIN OUTBREAK",
             "caption_desc": ""
         }

@@ -5,23 +5,23 @@
     "cards": [
         {
             "img": "imgs/index/twitch/card1.jpg",
-            "caption_titulo": "Título card 1",
-            "caption_desc": "Descripción de la card 1"
+            "caption_titulo": "MINOS",
+            "caption_desc": ""
         },
         {
             "img": "imgs/index/twitch/card2.jpg",
-            "caption_titulo": "Título card 2",
-            "caption_desc": "Descripción de la card 2"
+            "caption_titulo": "MOUSE P.I FOR HIRE",
+            "caption_desc": ""
         },
         {
             "img": "imgs/index/twitch/card3.jpg",
-            "caption_titulo": "Título card 3",
-            "caption_desc": "Descripción de la card 3"
+            "caption_titulo": "WE GOTTA GO!",
+            "caption_desc": ""
         },
         {
             "img": "imgs/index/twitch/card4.jpg",
-            "caption_titulo": "Título card 4",
-            "caption_desc": "Descripción de la card 4"
+            "caption_titulo": "WHISPER MOUNTAIN OUTBREAK",
+            "caption_desc": ""
         }
     ],
     "crew": [
