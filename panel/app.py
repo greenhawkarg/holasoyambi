@@ -2,6 +2,7 @@ import os
 import re
 import json
 import shutil
+import time
 import webbrowser
 from threading import Timer
 from flask import Flask, render_template, request, jsonify, send_from_directory
@@ -756,8 +757,22 @@ def api_twitch_top_save():
 def api_twitch_top_upload_image():
     if "file" not in request.files:
         return jsonify({"ok": False, "msg": "No se recibió archivo"}), 400
-    f        = request.files["file"]
-    filename = f.filename.lower().replace(" ", "_")
+    f = request.files["file"]
+
+    # Nombre original saneado (minúsculas, espacios → guion bajo)
+    original = f.filename.lower().replace(" ", "_")
+    name, ext = os.path.splitext(original)
+
+    # BUGFIX: antes se guardaba con el nombre original tal cual, así que si
+    # dos cards distintas subían un archivo con el mismo nombre (típico si tu
+    # herramienta de diseño siempre exporta con el mismo nombre, ej.
+    # "igcamp-feed_webp.webp"), la segunda pisaba el archivo de la primera y
+    # las dos terminaban mostrando la misma imagen. Le agregamos un sufijo
+    # único (timestamp en milisegundos) para que cada upload sea un archivo
+    # físico distinto, sin importar el nombre original.
+    unique_suffix = str(int(time.time() * 1000))
+    filename = f"{name}_{unique_suffix}{ext}"
+
     os.makedirs(TWITCH_TOP_IMGS, exist_ok=True)
     f.save(os.path.join(TWITCH_TOP_IMGS, filename))
     return jsonify({"ok": True, "rel": f"imgs/index/twitch/{filename}"})
