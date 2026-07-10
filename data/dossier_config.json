@@ -470,21 +470,51 @@
         },
         {
             "anio": "2026",
-            "titulo": "Beat The Champions",
-            "desc": "Un año de consolidación, ampliando mi participación en campañas, colaboraciones y lanzamientos dentro de la industria del gaming. También fue una etapa para perfeccionar la calidad de mis producciones y seguir fortaleciendo mi presencia como creador de contenido.",
-            "imagen": "imgs/dossier/flyers/2026/beat_the_champions.webp"
-        },
-        {
-            "anio": "2026",
             "titulo": "Cheater'S Table",
             "desc": "Un año de consolidación, ampliando mi participación en campañas, colaboraciones y lanzamientos dentro de la industria del gaming. También fue una etapa para perfeccionar la calidad de mis producciones y seguir fortaleciendo mi presencia como creador de contenido.",
             "imagen": "imgs/dossier/flyers/2026/cheater's_table.webp"
         },
         {
             "anio": "2026",
+            "titulo": "Beat The Champions",
+            "desc": "Un año de consolidación, ampliando mi participación en campañas, colaboraciones y lanzamientos dentro de la industria del gaming. También fue una etapa para perfeccionar la calidad de mis producciones y seguir fortaleciendo mi presencia como creador de contenido.",
+            "imagen": "imgs/dossier/flyers/2026/beat_the_champions.webp"
+        },
+        {
+            "anio": "2026",
             "titulo": "Luna Abyss",
             "desc": "Un año de consolidación, ampliando mi participación en campañas, colaboraciones y lanzamientos dentro de la industria del gaming. También fue una etapa para perfeccionar la calidad de mis producciones y seguir fortaleciendo mi presencia como creador de contenido.",
             "imagen": "imgs/dossier/flyers/2026/luna_abyss.webp"
+        },
+        {
+            "anio": "2026",
+            "titulo": "Crown Wars The Black Prince",
+            "desc": "",
+            "imagen": "imgs/dossier/flyers/2026/crown_wars_the_black_prince.webp"
+        },
+        {
+            "anio": "2026",
+            "titulo": "Minos",
+            "desc": "",
+            "imagen": "imgs/dossier/flyers/2026/minos.jpg"
+        },
+        {
+            "anio": "2026",
+            "titulo": "We Gotta Go",
+            "desc": "",
+            "imagen": "imgs/dossier/flyers/2026/we_gotta_go.webp"
+        },
+        {
+            "anio": "2026",
+            "titulo": "Whisper Mountain Outbreak",
+            "desc": "",
+            "imagen": "imgs/dossier/flyers/2026/whisper_mountain_outbreak.webp"
+        },
+        {
+            "anio": "2026",
+            "titulo": "Graveyard Keeper",
+            "desc": "",
+            "imagen": "imgs/dossier/flyers/2026/graveyard_keeper.jpg"
         }
     ],
     "disenos": [
