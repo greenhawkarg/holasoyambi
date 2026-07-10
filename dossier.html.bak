@@ -4,14 +4,72 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Dossier â 4mbiTV</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700;900&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/dossier.css">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700;900&display=swap" rel="stylesheet">
+   
+    <link rel="stylesheet" href="css/dossier.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="css/nav.css">
+    <link rel="stylesheet" href="css/style.css">
+    
 </head>
 <body>
-<div class="dossier-wrap">
 
+    <!-- ══════════════════════════════════════════════
+         NAV — MENÚ FLOTANTE FIJO (sin reproductor)
+    ══════════════════════════════════════════════ -->
+    <nav class="nav" id="nav">
+
+        <div class="nav-left">
+
+            <div class="nav-sep"></div>
+
+            <a class="nav-home" href="index.html">
+                <i class="fas fa-home"></i>
+            </a>
+
+            <ul class="nav-links">
+                <li><a href="index.html#agenda">Agenda</a></li>
+                <li><a href="index.html#noticias">Noticias</a></li>
+                <li><a href="index.html#twitch">Twitch</a></li>
+                <li><a href="index.html#creatorphunt">Hunt</a></li>
+                <li><a href="dossier.html">Dossier</a></li>
+                <li><a href="https://www.clavecd.es/giveaway/4mbitv/sorteazo/XeBJI-148014048/" target="_blank" class="nav-sorteo">Sorteo</a></li>
+            </ul>
+
+        </div>
+
+        <ul class="nav-social">
+            <li><a href="https://www.twitch.tv/4mbitv" target="_blank" class="social-twitch"><i class="fab fa-twitch"></i></a></li>
+            <li><a href="https://www.youtube.com/@ambitvok" target="_blank" class="social-youtube"><i class="fab fa-youtube"></i></a></li>
+            <li><a href="https://www.instagram.com/4mbitv/" target="_blank" class="social-instagram"><i class="fab fa-instagram"></i></a></li>
+            <li><a href="https://discord.com/invite/CSQDumV" target="_blank" class="social-discord"><i class="fab fa-discord"></i></a></li>
+            <li><a href="https://x.com/4mbiTV" target="_blank" class="social-x"><i class="fab fa-x-twitter"></i></a></li>
+            <li><a href="https://open.spotify.com/intl-es/artist/64VR4resIiyFchXF9FCLGd?si=XwD_1BIhSKyxrguS7zMNEA" target="_blank" class="social-spotify"><i class="fab fa-spotify"></i></a></li>
+        </ul>
+
+    </nav>
+    
+    
+        <!-- ══════════════════════════════════════════
+         MINI HERO — 250px fijos, BG con efectos FX
+         Imagen: imgs/dossier/bg/dossier-hero-bg.webp
+        ══════════════════════════════════════════ -->
+    
+    <section class="dossier" id="dossier">
+    <div class="dossier-mini-hero">
+        <div class="dossier-mini-hero-bg"></div>        <!-- imagen de fondo posicionable -->
+        <div class="dossier-fx-grain"><canvas></canvas></div>  <!-- grain animado -->
+        <div class="dossier-fx-scan"></div>               <!-- scanlines -->
+        <div class="dossier-fx-vignette"></div>         <!-- vignette -->
+    </div>
+    
+    
+<div class="dossier-wrap">
+    
+    <!-- HERO PRINCIPAL — nombre, stats, kicker -->
     <div class="dossier-hero">
         <div class="dossier-hero-left">
             <span class="dossier-kicker">Media Kit &amp; Trayectoria</span>
@@ -25,29 +83,18 @@
             <div class="dossier-stat"><span class="dossier-stat-num">30+</span><span class="dossier-stat-lbl">Partners</span></div>
         </div>
     </div>
-
+    
+    <!-- NAV TABS — Campañas / Diseños / Gaming Network -->
     <nav class="dossier-tabs">
         <div class="dossier-tab active" data-tab="campanas">Campañas</div>
         <div class="dossier-tab" data-tab="disenos">Diseños</div>
         <div class="dossier-tab" data-tab="sponsors">Gaming Network</div>
     </nav>
-
+    
+    <!-- ══ TAB: CAMPAÑAS ══ -->
     <div class="tab-panel active" id="tab-campanas">
-
-        <div class="year-block">
-            <div class="year-header">
-                <span class="year-num">2026</span>
-                <div class="year-divider"></div>
-                <span class="year-count">3 Campañas</span>
-            </div>
-            <p class="year-desc">Un año de consolidación, ampliando mi participación en campañas, colaboraciones y lanzamientos dentro de la industria del gaming. También fue una etapa para perfeccionar la calidad de mis producciones y seguir fortaleciendo mi presencia como creador de contenido.</p>
-            <div class="flyers-grid">
-                <div class="flyer-item"><img src="imgs/dossier/flyers/2026/beat_the_champions.webp" alt="Beat The Champions"><div class="flyer-caption">Beat The Champions</div></div>
-                <div class="flyer-item"><img src="imgs/dossier/flyers/2026/cheater's_table.webp" alt="Cheater'S Table"><div class="flyer-caption">Cheater'S Table</div></div>
-                <div class="flyer-item"><img src="imgs/dossier/flyers/2026/luna_abyss.webp" alt="Luna Abyss"><div class="flyer-caption">Luna Abyss</div></div>
-            </div>
-        </div>
-
+        
+        <!-- Bloque año 2025 -->
         <div class="year-block">
             <div class="year-header">
                 <span class="year-num">2025</span>
@@ -66,7 +113,8 @@
                 <div class="flyer-item"><img src="imgs/dossier/flyers/2025/21-09-23_•_hunt_hayali.png" alt="21 09 23 • Hunt Hayali"><div class="flyer-caption">21 09 23 • Hunt Hayali</div></div>
             </div>
         </div>
-
+        
+        <!-- Bloque año 2024 -->
         <div class="year-block">
             <div class="year-header">
                 <span class="year-num">2024</span>
@@ -97,7 +145,8 @@
                 <div class="flyer-item"><img src="imgs/dossier/flyers/2024/300124_-_drops_pa.png" alt="300124   DROPS PA"><div class="flyer-caption">300124   DROPS PA</div></div>
             </div>
         </div>
-
+        
+        <!-- Bloque año 2023 -->
         <div class="year-block">
             <div class="year-header">
                 <span class="year-num">2023</span>
@@ -159,7 +208,8 @@
             </div>
         </div>
     </div>
-
+    
+    <!-- ══ TAB: DISEÑOS ══ -->
     <div class="tab-panel" id="tab-disenos">
         <div class="diseno-grupo">
             <div class="diseno-grupo-header">
@@ -176,7 +226,8 @@
             </div>
         </div>
     </div>
-
+    
+    <!-- ══ TAB: GAMING NETWORK / SPONSORS ══ -->
     <div class="tab-panel" id="tab-sponsors">
         <span class="block-kicker">Industry Partners</span>
         <div class="sponsors-intro-block">
@@ -269,6 +320,13 @@
     </div>
 
 </div>
+</section> 
+    
+<!-- ══════════════════════════════════════════
+     LIGHTBOX — overlay pantalla completa
+     Se activa desde Diseños y Campañas
+══════════════════════════════════════════ -->
+    
 <!-- LIGHTBOX -->
 <div id="lightbox" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,.92);z-index:9999;align-items:center;justify-content:center;flex-direction:column;gap:16px" onclick="cerrarLightbox(event)">
     <button onclick="cerrarLightbox()" style="position:fixed;top:24px;right:32px;background:none;border:none;color:#fff;font-size:32px;cursor:pointer;line-height:1">✕</button>
@@ -278,37 +336,10 @@
     </div>
     <p id="lb-caption" style="color:#9a9a9a;font-size:13px;font-weight:600;letter-spacing:3px;text-transform:uppercase;max-width:700px;text-align:center"></p>
 </div>
-<script>
-function abrirLightbox(src, caption, subcat) {
-    const lb = document.getElementById('lightbox');
-    document.getElementById('lb-img').src = src;
-    document.getElementById('lb-caption').textContent = caption;
-    const badge = document.getElementById('lb-badge');
-    badge.textContent = subcat; badge.style.display = subcat ? '' : 'none';
-    lb.style.display = 'flex';
-    document.body.style.overflow = 'hidden';
-}
-function cerrarLightbox(e) {
-    if (e && e.target !== document.getElementById('lightbox')) return;
-    document.getElementById('lightbox').style.display = 'none';
-    document.getElementById('lb-img').src = '';
-    document.body.style.overflow = '';
-}
-document.addEventListener('keydown', e => { if (e.key === 'Escape') cerrarLightbox(); });
-const tabs   = document.querySelectorAll('.dossier-tab');
-const panels = document.querySelectorAll('.tab-panel');
-function activarTab(name) {
-    tabs.forEach(t   => t.classList.toggle('active', t.dataset.tab === name));
-    panels.forEach(p => p.classList.toggle('active', p.id === 'tab-' + name));
-}
-tabs.forEach(tab => {
-    tab.addEventListener('click', () => {
-        activarTab(tab.dataset.tab);
-        localStorage.setItem('dossier_tab', tab.dataset.tab);
-    });
-});
-const saved = localStorage.getItem('dossier_tab');
-if (saved && document.getElementById('tab-' + saved)) activarTab(saved);
-</script>
+    
+    <!-- SCRIPTS -->
+    <script src="js/menu.js"></script>
+    <script src="js/dossier.js"></script>
+    
 </body>
 </html>
