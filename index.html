@@ -25,7 +25,6 @@
     <link rel="stylesheet" href="css/hero.css">
     <link rel="stylesheet" href="css/agenda.css">
     <link rel="stylesheet" href="css/twitch.css">
-    <link rel="stylesheet" href="css/youtube-tab.css">
     <link rel="stylesheet" href="css/noticias.css">
     <link rel="stylesheet" href="css/spotify.css">
     <link rel="stylesheet" href="css/creatorphunt.css">
@@ -231,7 +230,7 @@
 
 
     <!-- ══════════════════════════════════════════════
-    SECTION — TWITCH (con tabs Twitch / YouTube)
+    SECTION — TWITCH
     ══════════════════════════════════════════════ -->
 
     <section class="twitch" id="twitch">
@@ -242,18 +241,8 @@
         <!-- CAPA 2: CONTENIDO -->
         <div class="section-content">
 
-            <!-- ── TABS NAV ── -->
-            <div class="twitch-tabs-nav">
-                <button class="twitch-tab-btn active" data-tab="twitch">
-                    <i class="fab fa-twitch"></i> Twitch
-                </button>
-                <button class="twitch-tab-btn" data-tab="youtube">
-                    <i class="fab fa-youtube"></i> YouTube
-                </button>
-            </div>
-
-            <!-- ── TAB: TWITCH ── -->
-            <div class="twitch-tab-panel active" id="tab-twitch">
+            <!-- ── TWITCH (antes era un tab, ahora es la única sección) ── -->
+            <div id="tab-twitch">
 
                 <!-- BLOQUE SUPERIOR — pintado por twitch-top.js -->
                 <div class="twitch-top">
@@ -306,13 +295,6 @@
 
             </div>
             <!-- /tab-twitch -->
-
-            <!-- ── TAB: YOUTUBE ── -->
-            <div class="twitch-tab-panel" id="tab-youtube">
-                <!-- pintado por youtube.js -->
-                <div id="youtube-tab-content"></div>
-            </div>
-            <!-- /tab-youtube -->
 
         </div>
 
@@ -465,7 +447,6 @@
     <script src="js/player.js"></script>
     <script src="js/hero.js"></script>
     <script src="js/agenda.js"></script>
-    <script src="js/youtube.js"></script>
     <script src="js/tabs.js"></script>
     <script src="js/twitch-top.js"></script>
     <script src="js/twitch-vod.js"></script>
