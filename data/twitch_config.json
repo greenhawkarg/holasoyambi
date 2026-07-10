@@ -5,12 +5,12 @@
     "cards": [
         {
             "img": "imgs/index/twitch/igcamp-feed_webp.webp",
-            "caption_titulo": "MINOS",
+            "caption_titulo": "Cheater's Table",
             "caption_desc": ""
         },
         {
             "img": "imgs/index/twitch/igcamp-feed_webp.webp",
-            "caption_titulo": "MOUSE P.I FOR HIRE",
+            "caption_titulo": "Beat The Champions",
             "caption_desc": ""
         },
         {
@@ -20,7 +20,7 @@
         },
         {
             "img": "imgs/index/twitch/igcamp-feed_webp.webp",
-            "caption_titulo": "WHISPER MOUNTAIN OUTBREAK",
+            "caption_titulo": "Luna Abyss",
             "caption_desc": ""
         }
     ],

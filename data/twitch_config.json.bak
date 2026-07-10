@@ -4,13 +4,13 @@
     "crew_bg": "imgs/index/twitch/c&s_bg.webp",
     "cards": [
         {
-            "img": "imgs/index/twitch/card1.jpg",
-            "caption_titulo": "MINOS",
+            "img": "imgs/index/twitch/igcamp-feed_webp.webp",
+            "caption_titulo": "Cheater's Table",
             "caption_desc": ""
         },
         {
-            "img": "imgs/index/twitch/card2.jpg",
-            "caption_titulo": "MOUSE P.I FOR HIRE",
+            "img": "imgs/index/twitch/igcamp-feed_webp.webp",
+            "caption_titulo": "Beat The Champions",
             "caption_desc": ""
         },
         {
@@ -19,8 +19,8 @@
             "caption_desc": ""
         },
         {
-            "img": "imgs/index/twitch/card4.jpg",
-            "caption_titulo": "WHISPER MOUNTAIN OUTBREAK",
+            "img": "imgs/index/twitch/igcamp-feed_webp.webp",
+            "caption_titulo": "Luna Abyss",
             "caption_desc": ""
         }
     ],
