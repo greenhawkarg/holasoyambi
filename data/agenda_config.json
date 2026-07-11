@@ -76,5 +76,44 @@
         "tipo": "CAMPAÑA",
         "tipo_stream": "DESAFIO / CAMPAÑA",
         "video": "Mp9tbPaM7zs"
+    },
+    {
+        "tipo": "CAMPAÑA",
+        "fecha": "19 DE JULIO",
+        "juego": "FELL & SELL",
+        "dia": "DOMINGO",
+        "hora": "14:00 HS",
+        "tipo_stream": "CAMPAÑA",
+        "imagen": "imgs/index/agenda/fell_&_sell.jpg",
+        "video": "hH7KoqaXA9Q",
+        "fecha_limite_calculada": "2026-07-21",
+        "bg_imagen": "",
+        "border_color": "#d72626"
+    },
+    {
+        "tipo": "CAMPAÑA",
+        "fecha": "19 DE JULIO",
+        "juego": "ULTIMATE GUESS GAME",
+        "dia": "DOMINGO",
+        "hora": "15:30 HS",
+        "tipo_stream": "CAMPAÑA",
+        "imagen": "imgs/index/agenda/ultimate_guess_game.jpg",
+        "video": "8kuYFxy7OQs",
+        "fecha_limite_calculada": "2026-07-21",
+        "bg_imagen": "",
+        "border_color": "#d72626"
+    },
+    {
+        "tipo": "CAMPAÑA",
+        "fecha": "21 DE JULIO",
+        "juego": "TERRINOTH HEROES OF DESCENT",
+        "dia": "MARTES",
+        "hora": "14:00 HS",
+        "tipo_stream": "CAMPAÑA",
+        "imagen": "imgs/index/agenda/terrinoth_heroes_of_descent.jpg",
+        "video": "EqwBoN9NROM",
+        "fecha_limite_calculada": "2026-08-02",
+        "bg_imagen": "",
+        "border_color": "#d72626"
     }
 ]
