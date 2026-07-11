@@ -36,8 +36,14 @@
     <link rel="preload" as="image" href="imgs/index/hero/hero-bg_logo.webp">
     
 
+    <!-- El loader tapa la pantalla mientras cargan las imágenes dinámicas
+         SOLO la primera vez por sesión (ver loading.js). De ahí en más
+         (ej: volviendo de Dossier a Home) el loader se saca al instante,
+         así que necesitamos esto aparte para que no se vea el ícono de
+         "imagen rota" mientras el JS completa el src real de hero-logo,
+         hero-ovimg, agenda-thumb, noticias-featured-img, etc. -->
     <style>
-    #ambi-loader { display: none; }
+    img[src=""] { visibility: hidden; }
     </style>
     
 </head>

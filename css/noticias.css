@@ -143,34 +143,34 @@
     align-self: flex-start;
 }
 
-/* Stream → violeta (Twitch) */
-.noticias-badge.cat-stream {
-    background: rgba(109, 52, 164, 0.25);
-    color: var(--c-purple);
-}
-
-/* Juego → verde */
-.noticias-badge.cat-juego {
-    background: rgba(30, 215, 96, 0.15);
-    color: var(--c-green);
-}
-
-/* Comunidad → celeste */
+/* Stream / Comunidad → violeta */
+.noticias-badge.cat-stream,
 .noticias-badge.cat-comunidad {
-    background: rgba(62, 120, 199, 0.15);
-    color: var(--c-blue);
+    background: rgba(145, 70, 255, 0.18);
+    color: #9146FF;
 }
 
-/* Noticia → amarillo */
-.noticias-badge.cat-noticia {
-    background: rgba(241, 220, 40, 0.15);
-    color: var(--c-yellow);
+/* Juego / Evento / Lanzamiento → verde */
+.noticias-badge.cat-juego,
+.noticias-badge.cat-evento,
+.noticias-badge.cat-lanzamiento {
+    background: rgba(16, 185, 129, 0.15);
+    color: #10B981;
 }
 
-/* Review → naranja */
+/* Noticia / Review → celeste */
+.noticias-badge.cat-noticia,
 .noticias-badge.cat-review {
-    background: rgba(212, 131, 14, 0.15);
-    color: var(--c-orange);
+    background: rgba(56, 189, 248, 0.15);
+    color: #38BDF8;
+}
+
+/* Hot Fix / Update / Actualización → rojo */
+.noticias-badge.cat-hotfix,
+.noticias-badge.cat-update,
+.noticias-badge.cat-actualizacion {
+    background: rgba(239, 68, 68, 0.15);
+    color: #EF4444;
 }
 
 
@@ -325,8 +325,32 @@
     width: 30px;
 }
 
-.noticias-dot.active.cat-stream    { background: var(--c-purple); }
-.noticias-dot.active.cat-juego     { background: var(--c-green); }
-.noticias-dot.active.cat-comunidad { background: var(--c-blue); }
-.noticias-dot.active.cat-noticia   { background: var(--c-yellow); }
-.noticias-dot.active.cat-review    { background: var(--c-orange); }
+.noticias-dot.active.cat-stream,
+.noticias-dot.active.cat-comunidad     { background: #9146FF; }
+
+.noticias-dot.active.cat-juego,
+.noticias-dot.active.cat-evento,
+.noticias-dot.active.cat-lanzamiento   { background: #10B981; }
+
+.noticias-dot.active.cat-noticia,
+.noticias-dot.active.cat-review        { background: #38BDF8; }
+
+.noticias-dot.active.cat-hotfix,
+.noticias-dot.active.cat-update,
+.noticias-dot.active.cat-actualizacion { background: #EF4444; }
+
+/* ──────────────────────────────────────────
+   TÍTULO DESTACADO — LINK A noticia.html (o externo)
+   Mismo look que el texto plano, solo agrega cursor + hover
+────────────────────────────────────────── */
+
+.noticias-featured-title-link {
+    color: inherit;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.noticias-featured-title-link:hover {
+    color: var(--c-white);
+    text-decoration: underline;
+}

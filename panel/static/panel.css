@@ -649,6 +649,39 @@
 }
 .nc-img-wrap:hover .nc-img-overlay { opacity: 1; }
 
+/* ── TOGGLE COVER/CONTAIN — barra inferior sobre la miniatura ── */
+.nc-modo-toggle {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    gap: 4px;
+    padding: 6px;
+    background: linear-gradient(to top, rgba(0,0,0,.85), transparent);
+    z-index: 2;
+}
+
+.nc-modo-btn {
+    flex: 1;
+    background: rgba(255,255,255,.08);
+    border: 1px solid var(--border2);
+    border-radius: 4px;
+    color: var(--muted);
+    font-size: 10px;
+    font-weight: 700;
+    font-family: var(--font);
+    padding: 4px 0;
+    cursor: pointer;
+    transition: background .15s, color .15s, border-color .15s;
+}
+.nc-modo-btn:hover { color: #fff; }
+.nc-modo-btn.active {
+    background: rgba(145,70,255,.35);
+    border-color: var(--purple);
+    color: #fff;
+}
+
 /* ── CAMPOS ── */
 .nc-fields {
     flex: 1;
@@ -779,6 +812,348 @@
 .nc-titulo       { font-weight: 600; }
 .nc-url          { font-size: 12px; color: var(--muted); }
 .nc-desc         { resize: vertical; line-height: 1.5; }
+
+/* ── FONDO PERSONALIZADO FIJO ── */
+.nc-bg-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.nc-bg-btn {
+    background: var(--bg3);
+    border: 1px dashed var(--border2);
+    border-radius: var(--radius);
+    color: var(--muted);
+    font-size: 11px;
+    font-weight: 700;
+    font-family: var(--font);
+    padding: 7px 12px;
+    cursor: pointer;
+    transition: border-color .15s, color .15s;
+}
+.nc-bg-btn:hover {
+    border-color: var(--purple);
+    color: var(--text);
+}
+
+.nc-bg-name {
+    font-size: 11px;
+    color: var(--muted);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    max-width: 220px;
+}
+
+.nc-bg-clear {
+    background: transparent;
+    border: none;
+    color: var(--muted);
+    font-size: 12px;
+    cursor: pointer;
+    padding: 2px 6px;
+    border-radius: 4px;
+    transition: color .15s, background .15s;
+}
+.nc-bg-clear:hover { color: var(--red); background: rgba(239,68,68,.1); }
+
+/* ══════════════════════════════════════════════════════════════════
+   NOTICIAS — CUERPO (bloques texto/imagen/galería)
+══════════════════════════════════════════════════════════════════ */
+
+.nc-cuerpo {
+    border-top: 1px solid var(--border);
+    margin-top: 2px;
+    padding-top: 8px;
+}
+
+.nc-cuerpo-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    padding: 4px 2px;
+    user-select: none;
+}
+
+.nc-cuerpo-arrow {
+    font-size: 11px;
+    color: var(--muted);
+    width: 10px;
+    flex-shrink: 0;
+}
+
+.nc-cuerpo-label {
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--text);
+}
+
+.nc-cuerpo-count {
+    font-size: 11px;
+    color: var(--muted);
+    margin-left: auto;
+}
+
+/* ── LISTA DE BLOQUES ── */
+.nb-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-top: 8px;
+}
+
+/* ── CARD DE BLOQUE ── */
+.nb-card {
+    display: flex;
+    align-items: stretch;
+    background: var(--bg3);
+    border: 1px solid var(--border2);
+    border-radius: var(--radius);
+    overflow: hidden;
+    transition: border-color .2s;
+}
+
+.nb-card.dragging  { opacity: .4; }
+.nb-card.drag-over { border-top: 2px solid var(--purple); }
+
+.nb-drag-handle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 22px;
+    flex-shrink: 0;
+    color: var(--muted);
+    opacity: .4;
+    font-size: 14px;
+    cursor: grab;
+    background: var(--bg4);
+    border-right: 1px solid var(--border);
+    transition: opacity .15s;
+}
+.nb-drag-handle:hover  { opacity: .9; }
+.nb-drag-handle:active { cursor: grabbing; }
+
+.nb-body {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 10px 12px;
+    min-width: 0;
+}
+
+.nb-row-top {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.nb-tipo-label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--muted);
+}
+
+.nb-btn-del {
+    margin-left: auto;
+    background: transparent;
+    border: none;
+    color: var(--muted);
+    font-size: 13px;
+    cursor: pointer;
+    padding: 2px 6px;
+    border-radius: 4px;
+    line-height: 1;
+    transition: color .15s, background .15s;
+}
+.nb-btn-del:hover { color: var(--red); background: rgba(239,68,68,.1); }
+
+.nb-texto { min-height: 70px; }
+
+.nb-titulo-input {
+    font-weight: 700;
+}
+
+/* ── AGREGAR BLOQUE ── */
+.nb-add-row {
+    display: flex;
+    gap: 6px;
+}
+
+.nb-btn-add {
+    background: var(--bg3);
+    border: 1px dashed var(--border2);
+    border-radius: var(--radius);
+    color: var(--muted);
+    font-size: 11px;
+    font-weight: 700;
+    font-family: var(--font);
+    padding: 6px 12px;
+    cursor: pointer;
+    transition: border-color .15s, color .15s;
+}
+.nb-btn-add:hover {
+    border-color: var(--purple);
+    color: var(--text);
+}
+
+/* ── BLOQUE IMAGEN ── */
+.nb-img-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.nb-img-wrap {
+    position: relative;
+    width: 90px;
+    height: 60px;
+    flex-shrink: 0;
+    cursor: pointer;
+    background: var(--bg4);
+    border: 1px solid var(--border2);
+    border-radius: var(--radius);
+    overflow: hidden;
+}
+
+.nb-img-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.nb-img-empty {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    color: var(--muted);
+    opacity: .3;
+}
+
+.nb-img-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(145,70,255,.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    opacity: 0;
+    transition: opacity .2s;
+}
+.nb-img-wrap:hover .nb-img-overlay { opacity: 1; }
+
+/* Toggle Cover / Contain */
+.nb-modo-toggle {
+    display: flex;
+    gap: 4px;
+}
+
+.nb-modo-btn {
+    background: var(--bg4);
+    border: 1px solid var(--border2);
+    border-radius: 4px;
+    color: var(--muted);
+    font-size: 11px;
+    font-weight: 700;
+    font-family: var(--font);
+    padding: 5px 10px;
+    cursor: pointer;
+    transition: background .15s, color .15s, border-color .15s;
+}
+.nb-modo-btn:hover { color: var(--text); }
+.nb-modo-btn.active {
+    background: rgba(145,70,255,.18);
+    border-color: var(--purple);
+    color: var(--purple);
+}
+
+.nb-modo-toggle-sm .nb-modo-btn {
+    font-size: 10px;
+    padding: 3px 7px;
+}
+
+/* ── BLOQUE GALERÍA ── */
+.nb-gal-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.nb-gal-item {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    width: 100px;
+}
+
+.nb-gal-thumb {
+    position: relative;
+    width: 100px;
+    height: 66px;
+    background: var(--bg4);
+    border: 1px solid var(--border2);
+    border-radius: var(--radius);
+    overflow: hidden;
+}
+
+.nb-gal-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.nb-gal-del {
+    position: absolute;
+    top: 2px;
+    right: 2px;
+    background: rgba(0,0,0,.6);
+    border: none;
+    color: #fff;
+    font-size: 11px;
+    width: 18px;
+    height: 18px;
+    border-radius: 3px;
+    cursor: pointer;
+    line-height: 1;
+}
+.nb-gal-del:hover { background: var(--red); }
+
+.nb-gal-add {
+    width: 100px;
+    height: 66px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--bg3);
+    border: 1px dashed var(--border2);
+    border-radius: var(--radius);
+    color: var(--muted);
+    font-size: 10px;
+    font-weight: 700;
+    text-align: center;
+    cursor: pointer;
+    transition: border-color .15s, color .15s;
+}
+.nb-gal-add:hover {
+    border-color: var(--purple);
+    color: var(--text);
+}
+
+.nb-gal-count {
+    font-size: 10px;
+    color: var(--muted);
+    margin-top: 2px;
+}
 
 /* ══════════════════════════════════════════════════════════════════
    DATE PICKER — noticias

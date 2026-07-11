@@ -1,0 +1,308 @@
+/* ══════════════════════════════════════════════════════════════════
+   AMBI — NOTICIA.CSS
+   Página de detalle de una noticia individual (noticia.html?id=xxx)
+   Usa las mismas custom properties globales que noticias.css
+   (--c-black, --c-white, --font-main, --max-width, --c-purple, etc.)
+══════════════════════════════════════════════════════════════════ */
+
+
+/* ──────────────────────────────────────────
+   PÁGINA
+────────────────────────────────────────── */
+
+.noticia-page {
+    background-color: var(--c-black);
+    min-height: 100vh;
+    padding-top: 90px; /* deja lugar al nav flotante fijo */
+}
+
+
+/* ──────────────────────────────────────────
+   VOLVER
+────────────────────────────────────────── */
+
+.noticia-back {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 0 40px;
+    font-family: var(--font-main);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.45);
+    text-decoration: none;
+    transition: color .15s;
+}
+
+.noticia-back:hover {
+    color: var(--c-white);
+}
+
+
+/* ──────────────────────────────────────────
+   HEADER — imagen de portada + caption
+   (mismo lenguaje visual que .noticias-featured del carrusel)
+────────────────────────────────────────── */
+
+.noticia-header {
+    position: relative;
+    width: 100%;
+    max-width: var(--max-width);
+    margin: 16px auto 0;
+    padding: 0 40px;
+}
+
+.noticia-header-imgwrap {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    max-height: 480px;
+    overflow: hidden;
+    background: #0a0a0a;
+}
+
+.noticia-header-imgwrap img {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+.noticia-header-imgwrap.modo-cover img {
+    object-fit: cover;
+}
+
+.noticia-header-imgwrap.modo-contain img {
+    object-fit: contain;
+}
+
+.noticia-header-body {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 2;
+    padding: 60px 32px 24px;
+    background: linear-gradient(to top, rgba(0,0,0,0.92) 0%, rgba(0,0,0,0.85) 50%, transparent 100%);
+}
+
+.noticia-header-meta {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 10px;
+}
+
+.noticia-header-fecha {
+    font-family: var(--font-main);
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.45);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.noticia-header-title {
+    font-family: var(--font-main);
+    font-size: 32px;
+    font-weight: 700;
+    color: var(--c-white);
+    line-height: 1.2;
+    max-width: 900px;
+}
+
+
+/* ──────────────────────────────────────────
+   BADGE — mismos colores por categoría que noticias.css
+────────────────────────────────────────── */
+
+.noticia-badge {
+    display: inline-block;
+    font-family: var(--font-main);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 3px 10px;
+    border-radius: 2px;
+}
+
+.noticia-badge.cat-stream        { background: rgba(145, 70, 255, 0.18); color: #9146FF; }
+.noticia-badge.cat-comunidad     { background: rgba(145, 70, 255, 0.18); color: #9146FF; }
+.noticia-badge.cat-juego         { background: rgba(16, 185, 129, 0.15); color: #10B981; }
+.noticia-badge.cat-evento        { background: rgba(16, 185, 129, 0.15); color: #10B981; }
+.noticia-badge.cat-lanzamiento   { background: rgba(16, 185, 129, 0.15); color: #10B981; }
+.noticia-badge.cat-noticia       { background: rgba(56, 189, 248, 0.15); color: #38BDF8; }
+.noticia-badge.cat-review        { background: rgba(56, 189, 248, 0.15); color: #38BDF8; }
+.noticia-badge.cat-hotfix        { background: rgba(239, 68, 68, 0.15);  color: #EF4444; }
+.noticia-badge.cat-update        { background: rgba(239, 68, 68, 0.15);  color: #EF4444; }
+.noticia-badge.cat-actualizacion { background: rgba(239, 68, 68, 0.15);  color: #EF4444; }
+
+
+/* ──────────────────────────────────────────
+   CUERPO — contenedor de bloques
+────────────────────────────────────────── */
+
+.noticia-content {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 40px 40px 100px;
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+}
+
+
+/* ──────────────────────────────────────────
+   BLOQUE — TEXTO
+────────────────────────────────────────── */
+
+.noticia-block-texto {
+    font-family: var(--font-main);
+    font-size: 16px;
+    line-height: 1.7;
+    color: rgba(255, 255, 255, 0.75);
+    white-space: pre-line;
+}
+
+
+/* ──────────────────────────────────────────
+   BLOQUE — TÍTULO / SUBTÍTULO
+────────────────────────────────────────── */
+
+.noticia-block-titulo {
+    font-family: var(--font-main);
+    font-size: 26px;
+    font-weight: 700;
+    color: var(--c-white);
+    line-height: 1.25;
+}
+
+.noticia-block-subtitulo {
+    font-family: var(--font-main);
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.5);
+}
+
+
+/* ──────────────────────────────────────────
+   BLOQUE — IMAGEN SUELTA
+   modo "cover"   → recorta prolijo, alto fijo
+   modo "contain" → respeta la imagen tal cual (default)
+────────────────────────────────────────── */
+
+.noticia-block-imagen {
+    width: 100%;
+    background: #0a0a0a;
+}
+
+.noticia-block-imagen img {
+    width: 100%;
+    display: block;
+}
+
+.noticia-block-imagen.modo-cover {
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+}
+
+.noticia-block-imagen.modo-cover img {
+    height: 100%;
+    object-fit: cover;
+}
+
+.noticia-block-imagen.modo-contain img {
+    height: auto;
+    object-fit: contain;
+}
+
+
+/* ──────────────────────────────────────────
+   BLOQUE — GALERÍA
+   Layout flexible tipo masonry: cada imagen mantiene su
+   relación de aspecto real, no se fuerza un grid parejo.
+   modo "cover" recorta esa imagen puntual dentro de la fila;
+   modo "contain" (default) la deja completa sin recortes.
+────────────────────────────────────────── */
+
+.noticia-block-galeria {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.noticia-galeria-item {
+    flex: 1 1 260px;
+    max-height: 340px;
+    background: #0a0a0a;
+    overflow: hidden;
+    display: flex;
+}
+
+.noticia-galeria-item img {
+    width: 100%;
+    display: block;
+}
+
+.noticia-galeria-item.modo-cover img {
+    height: 100%;
+    object-fit: cover;
+}
+
+.noticia-galeria-item.modo-contain {
+    align-items: center;
+    justify-content: center;
+}
+
+.noticia-galeria-item.modo-contain img {
+    height: auto;
+    max-height: 340px;
+    width: auto;
+    max-width: 100%;
+    object-fit: contain;
+    margin: 0 auto;
+}
+
+
+/* ──────────────────────────────────────────
+   ESTADO — NOTICIA NO ENCONTRADA
+────────────────────────────────────────── */
+
+.noticia-not-found {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 120px 40px;
+    text-align: center;
+    font-family: var(--font-main);
+}
+
+.noticia-not-found-title {
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--c-white);
+    margin-bottom: 12px;
+}
+
+.noticia-not-found-desc {
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.5);
+    margin-bottom: 24px;
+}
+
+.noticia-not-found a {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--c-green);
+    text-decoration: none;
+}
+
+.noticia-not-found a:hover {
+    text-decoration: underline;
+}

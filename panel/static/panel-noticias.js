@@ -9,22 +9,53 @@
 /* ── ESTADO ── */
 let noticiasData = [];
 
-/* ── BADGE CONFIG ── */
+/* Índices de noticias con el "Cuerpo" expandido (se mantiene entre renders) */
+const cuerposAbiertos = new Set();
+
+/* ── BADGE CONFIG — orden alfabético por label ── */
 const BADGE_LABEL = {
-    stream:    'Stream',
-    juego:     'Juego',
-    comunidad: 'Comunidad',
-    noticia:   'Noticia',
-    review:    'Review',
+    actualizacion: 'Actualización',
+    comunidad:     'Comunidad',
+    evento:        'Evento',
+    hotfix:        'Hot Fix',
+    juego:         'Juego',
+    lanzamiento:   'Lanzamiento',
+    noticia:       'Noticia',
+    review:        'Review',
+    stream:        'Stream',
+    update:        'Update',
 };
 
+/* Familias de color: violeta (stream/comunidad) · verde (juego/evento/lanzamiento)
+   · celeste (noticia/review) · rojo (hotfix/update/actualizacion) */
 const BADGE_COLOR = {
-    stream:    { text: 'var(--purple)', bg: 'rgba(145,70,255,0.18)' },
-    juego:     { text: '#10B981',       bg: 'rgba(16,185,129,0.15)' },
-    comunidad: { text: '#38BDF8',       bg: 'rgba(56,189,248,0.15)' },
-    noticia:   { text: '#FBBF24',       bg: 'rgba(251,191,36,0.15)' },
-    review:    { text: '#FB923C',       bg: 'rgba(251,146,60,0.15)' },
+    stream:        { text: '#9146FF', bg: 'rgba(145,70,255,0.18)' },
+    comunidad:     { text: '#9146FF', bg: 'rgba(145,70,255,0.18)' },
+    juego:         { text: '#10B981', bg: 'rgba(16,185,129,0.15)' },
+    evento:        { text: '#10B981', bg: 'rgba(16,185,129,0.15)' },
+    lanzamiento:   { text: '#10B981', bg: 'rgba(16,185,129,0.15)' },
+    noticia:       { text: '#38BDF8', bg: 'rgba(56,189,248,0.15)' },
+    review:        { text: '#38BDF8', bg: 'rgba(56,189,248,0.15)' },
+    hotfix:        { text: '#EF4444', bg: 'rgba(239,68,68,0.15)' },
+    update:        { text: '#EF4444', bg: 'rgba(239,68,68,0.15)' },
+    actualizacion: { text: '#EF4444', bg: 'rgba(239,68,68,0.15)' },
 };
+
+/* ── ID — genera el próximo id libre para una categoría (cat-01, cat-02...)
+   Se asigna una sola vez al crear la noticia y nunca más se toca,
+   aunque después cambie de categoría. ── */
+function generarIdNoticia(cat) {
+    const prefix = cat || 'noticia';
+    let max = 0;
+    noticiasData.forEach(n => {
+        if (n.id && n.id.startsWith(prefix + '-')) {
+            const num = parseInt(n.id.slice(prefix.length + 1), 10);
+            if (!isNaN(num) && num > max) max = num;
+        }
+    });
+    const next = String(max + 1).padStart(2, '0');
+    return `${prefix}-${next}`;
+}
 
 
 /* ══════════════════════════════════════════════════════════════════════════════
@@ -40,6 +71,15 @@ async function loadNoticias() {
         console.warn('No se pudieron cargar las noticias:', e);
         noticiasData = [];
     }
+
+    /* Backfill defensivo: noticias viejas sin id o sin bloques
+       (nunca reasigna id a las que ya lo tienen) */
+    noticiasData.forEach(n => {
+        if (!n.id) n.id = generarIdNoticia(n.cat || 'noticia');
+        if (!Array.isArray(n.bloques)) n.bloques = [];
+        if (!n.modo) n.modo = 'cover';
+    });
+
     renderNoticias();
 }
 
@@ -82,10 +122,12 @@ function renderNoticiaCard(n, idx, container) {
         : '';
     const emptyHTML = `<div class="nc-img-empty" style="${imgSrc ? 'display:none' : ''}">📷</div>`;
 
-    /* ── Opciones del select de categoría ── */
-    const catOptions = Object.keys(BADGE_LABEL).map(c =>
-        `<option value="${c}"${cat === c ? ' selected' : ''}>${BADGE_LABEL[c]}</option>`
-    ).join('');
+    /* ── Opciones del select de categoría — cada una con su propio color
+       (si no, hereda el color del <select> y se ve ilegible en el desplegable) ── */
+    const catOptions = Object.keys(BADGE_LABEL).map(c => {
+        const optColor = BADGE_COLOR[c] || BADGE_COLOR.noticia;
+        return `<option value="${c}"${cat === c ? ' selected' : ''} style="color:${optColor.text};background:#1a1a1a">${BADGE_LABEL[c]}</option>`;
+    }).join('');
 
     card.innerHTML = `
         <div class="nc-drag-handle" title="Arrastrar para reordenar">⠿</div>
@@ -97,6 +139,9 @@ function renderNoticiaCard(n, idx, container) {
             <div class="nc-img-overlay">📷</div>
             <input type="file" id="nc-file-${idx}" accept=".jpg,.jpeg,.png,.webp"
                    style="display:none" onchange="onNoticiaImgChange(this,${idx})">
+            <div class="nc-modo-toggle" id="nc-modo-${idx}" onclick="event.stopPropagation()">
+                ${renderModoPortadaBtns(n, idx)}
+            </div>
         </div>
 
         <!-- CAMPOS -->
@@ -144,10 +189,23 @@ function renderNoticiaCard(n, idx, container) {
                    placeholder="https://... (URL de la noticia completa)"
                    oninput="noticiasData[${idx}].url=this.value">
 
+            <!-- FILA 3.5: Fondo personalizado fijo (opcional) -->
+            <div class="nc-bg-row" id="nc-bgrow-${idx}">
+                ${renderBgRow(n, idx)}
+            </div>
+
             <!-- FILA 4: Descripción -->
             <textarea class="nc-input nc-desc" rows="3"
                       placeholder="Descripción larga${isFirst ? ' — se muestra en la web como destacada' : ' — solo la noticia destacada la muestra'}"
                       oninput="noticiasData[${idx}].desc=this.value">${escHtml(n.desc || '')}</textarea>
+
+            <!-- CUERPO — bloques texto/imagen/galería -->
+            <div class="nc-cuerpo">
+                ${renderCuerpoHeader(n, idx)}
+                <div class="nb-list" id="nb-list-${idx}">
+                    ${cuerposAbiertos.has(idx) ? renderBloquesHTML(n, idx) : ''}
+                </div>
+            </div>
 
         </div>
     `;
@@ -163,6 +221,389 @@ function renderNoticiaCard(n, idx, container) {
 
 
 /* ══════════════════════════════════════════════════════════════════════════════
+   CUERPO — BLOQUES (texto / imagen / galería)
+   El orden de las cards en pantalla = el orden que se guarda en "bloques".
+══════════════════════════════════════════════════════════════════════════════ */
+
+function toggleCuerpo(idx) {
+    if (cuerposAbiertos.has(idx)) cuerposAbiertos.delete(idx);
+    else cuerposAbiertos.add(idx);
+    renderNoticias();
+}
+
+function renderCuerpoHeader(n, idx) {
+    const count   = (n.bloques || []).length;
+    const abierto = cuerposAbiertos.has(idx);
+    const label   = count ? `${count} bloque${count === 1 ? '' : 's'}` : 'vacío';
+    return `
+        <div class="nc-cuerpo-header" onclick="toggleCuerpo(${idx})">
+            <span class="nc-cuerpo-arrow">${abierto ? '▾' : '▸'}</span>
+            <span class="nc-cuerpo-label">Cuerpo de la noticia</span>
+            <span class="nc-cuerpo-count">${label}</span>
+        </div>
+    `;
+}
+
+function renderBloquesHTML(n, idx) {
+    const bloques = n.bloques || [];
+    const items   = bloques.map((b, bIdx) => renderBloqueCard(b, idx, bIdx)).join('');
+    return `
+        ${items}
+        <div class="nb-add-row">
+            <button class="nb-btn-add" onclick="agregarBloque(${idx},'titulo')">+ Título</button>
+            <button class="nb-btn-add" onclick="agregarBloque(${idx},'subtitulo')">+ Subtítulo</button>
+            <button class="nb-btn-add" onclick="agregarBloque(${idx},'texto')">+ Texto</button>
+            <button class="nb-btn-add" onclick="agregarBloque(${idx},'imagen')">+ Imagen</button>
+            <button class="nb-btn-add" onclick="agregarBloque(${idx},'galeria')">+ Galería</button>
+        </div>
+    `;
+}
+
+/* Re-renderiza solo el cuerpo de UNA noticia (no toda la lista),
+   así no se pierde el estado de scroll ni el de otras cards */
+function refrescarBloques(idxN) {
+    const n    = noticiasData[idxN];
+    const list = document.getElementById(`nb-list-${idxN}`);
+    if (list) list.innerHTML = renderBloquesHTML(n, idxN);
+
+    const header = list ? list.closest('.nc-cuerpo')?.querySelector('.nc-cuerpo-header') : null;
+    if (header) header.outerHTML = renderCuerpoHeader(n, idxN);
+}
+
+function agregarBloque(idxN, tipo) {
+    if (!Array.isArray(noticiasData[idxN].bloques)) noticiasData[idxN].bloques = [];
+
+    let nuevo;
+    if (tipo === 'titulo')    nuevo = { tipo: 'titulo',    contenido: '' };
+    if (tipo === 'subtitulo') nuevo = { tipo: 'subtitulo', contenido: '' };
+    if (tipo === 'texto')     nuevo = { tipo: 'texto',     contenido: '' };
+    if (tipo === 'imagen')    nuevo = { tipo: 'imagen',    src: '', modo: 'contain' };
+    if (tipo === 'galeria')   nuevo = { tipo: 'galeria',   imagenes: [] };
+    if (!nuevo) return;
+
+    noticiasData[idxN].bloques.push(nuevo);
+    cuerposAbiertos.add(idxN);
+    refrescarBloques(idxN);
+}
+
+function eliminarBloque(idxN, idxB) {
+    noticiasData[idxN].bloques.splice(idxB, 1);
+    refrescarBloques(idxN);
+}
+
+function renderBloqueCard(b, idxN, idxB) {
+    const tipoLabel = { titulo: 'Título', subtitulo: 'Subtítulo', texto: 'Texto', imagen: 'Imagen', galeria: 'Galería' }[b.tipo] || b.tipo;
+    return `
+        <div class="nb-card" draggable="true" data-idxn="${idxN}" data-idxb="${idxB}"
+             ondragstart="onBloqueDragStart(event,this)"
+             ondragover="onBloqueDragOver(event,this)"
+             ondrop="onBloqueDrop(event,this)"
+             ondragend="onBloqueDragEnd(event,this)">
+            <div class="nb-drag-handle" title="Arrastrar para reordenar">⠿</div>
+            <div class="nb-body">
+                <div class="nb-row-top">
+                    <span class="nb-tipo-label">${tipoLabel}</span>
+                    <button class="nb-btn-del" onclick="eliminarBloque(${idxN},${idxB})" title="Eliminar bloque">✕</button>
+                </div>
+                ${renderBloqueBody(b, idxN, idxB)}
+            </div>
+        </div>
+    `;
+}
+
+function renderBloqueBody(b, idxN, idxB) {
+    if (b.tipo === 'titulo')    return renderBloqueBodyTituloInput(b, idxN, idxB, 'Título del bloque');
+    if (b.tipo === 'subtitulo') return renderBloqueBodyTituloInput(b, idxN, idxB, 'Subtítulo del bloque');
+    if (b.tipo === 'texto')     return renderBloqueBodyTexto(b, idxN, idxB);
+    if (b.tipo === 'imagen')    return renderBloqueBodyImagen(b, idxN, idxB);
+    if (b.tipo === 'galeria')   return renderBloqueBodyGaleria(b, idxN, idxB);
+    return '';
+}
+
+function renderBloqueBodyTituloInput(b, idxN, idxB, placeholder) {
+    return `
+        <input class="nc-input nb-titulo-input" type="text" placeholder="${placeholder}"
+               value="${escHtml(b.contenido || '')}"
+               oninput="noticiasData[${idxN}].bloques[${idxB}].contenido=this.value">
+    `;
+}
+
+function renderBloqueBodyTexto(b, idxN, idxB) {
+    return `
+        <textarea class="nc-input nb-texto" rows="3" placeholder="Texto del bloque"
+                  oninput="noticiasData[${idxN}].bloques[${idxB}].contenido=this.value">${escHtml(b.contenido || '')}</textarea>
+    `;
+}
+
+function renderBloqueBodyImagen(b, idxN, idxB) {
+    const modo    = b.modo === 'cover' ? 'cover' : 'contain';
+    const imgSrc  = b.src ? `/${b.src}` : '';
+    const imgHTML = imgSrc
+        ? `<img src="${imgSrc}" alt="" onerror="this.style.display='none'">`
+        : `<div class="nb-img-empty">📷</div>`;
+    return `
+        <div class="nb-img-row">
+            <div class="nb-img-wrap" onclick="triggerBloqueImg(${idxN},${idxB})" title="Subir/cambiar imagen">
+                ${imgHTML}
+                <div class="nb-img-overlay">📷</div>
+                <input type="file" id="nb-file-${idxN}-${idxB}" accept=".jpg,.jpeg,.png,.webp"
+                       style="display:none" onchange="onBloqueImgChange(this,${idxN},${idxB})">
+            </div>
+            <div class="nb-modo-toggle">
+                <button class="nb-modo-btn ${modo === 'cover' ? 'active' : ''}" onclick="setModoImagen(${idxN},${idxB},'cover')">Cover</button>
+                <button class="nb-modo-btn ${modo === 'contain' ? 'active' : ''}" onclick="setModoImagen(${idxN},${idxB},'contain')">Contain</button>
+            </div>
+        </div>
+    `;
+}
+
+const GALERIA_MAX = 6;
+
+function renderBloqueBodyGaleria(b, idxN, idxB) {
+    const imagenes = b.imagenes || [];
+    const thumbs = imagenes.map((imgData, iIdx) => {
+        const modo = imgData.modo === 'cover' ? 'cover' : 'contain';
+        const src  = imgData.src ? `/${imgData.src}` : '';
+        return `
+            <div class="nb-gal-item">
+                <div class="nb-gal-thumb">
+                    ${src ? `<img src="${src}" alt="">` : `<div class="nb-img-empty">📷</div>`}
+                    <button class="nb-gal-del" onclick="eliminarImgGaleria(${idxN},${idxB},${iIdx})" title="Quitar">✕</button>
+                </div>
+                <div class="nb-modo-toggle nb-modo-toggle-sm">
+                    <button class="nb-modo-btn ${modo === 'cover' ? 'active' : ''}" onclick="setModoGaleriaImg(${idxN},${idxB},${iIdx},'cover')">Cover</button>
+                    <button class="nb-modo-btn ${modo === 'contain' ? 'active' : ''}" onclick="setModoGaleriaImg(${idxN},${idxB},${iIdx},'contain')">Contain</button>
+                </div>
+            </div>
+        `;
+    }).join('');
+
+    const canAddMore = imagenes.length < GALERIA_MAX;
+
+    return `
+        <div class="nb-gal-grid">
+            ${thumbs}
+            ${canAddMore ? `
+                <div class="nb-gal-add" onclick="triggerGaleriaImgs(${idxN},${idxB})" title="Agregar imágenes (máx. ${GALERIA_MAX})">
+                    <span>+ Agregar</span>
+                    <input type="file" id="nb-galfile-${idxN}-${idxB}" accept=".jpg,.jpeg,.png,.webp" multiple
+                           style="display:none" onchange="onGaleriaImgsChange(this,${idxN},${idxB})">
+                </div>
+            ` : ''}
+        </div>
+        <div class="nb-gal-count">${imagenes.length}/${GALERIA_MAX} imágenes</div>
+    `;
+}
+
+/* ── IMAGEN — bloque tipo "imagen" ── */
+
+function triggerBloqueImg(idxN, idxB) {
+    document.getElementById(`nb-file-${idxN}-${idxB}`)?.click();
+}
+
+async function onBloqueImgChange(input, idxN, idxB) {
+    const file = input.files[0];
+    if (!file) return;
+
+    const fd = new FormData();
+    fd.append('file', file);
+    fd.append('dest', 'cuerpo');
+
+    try {
+        setStatus('Subiendo imagen...', 'loading');
+        const res  = await fetch('/api/noticias/upload-image', { method: 'POST', body: fd });
+        const data = await res.json();
+        if (data.ok) {
+            noticiasData[idxN].bloques[idxB].src = data.rel;
+            setStatus('Imagen subida ✓', 'ok');
+            refrescarBloques(idxN);
+        } else {
+            setStatus('Error subiendo imagen', 'error');
+            toast('Error subiendo imagen', 'error');
+        }
+    } catch (e) {
+        setStatus('Error de red', 'error');
+        toast('Error de red', 'error');
+    }
+}
+
+function setModoImagen(idxN, idxB, modo) {
+    noticiasData[idxN].bloques[idxB].modo = modo;
+    refrescarBloques(idxN);
+}
+
+/* ── GALERÍA — bloque tipo "galeria" ── */
+
+function triggerGaleriaImgs(idxN, idxB) {
+    document.getElementById(`nb-galfile-${idxN}-${idxB}`)?.click();
+}
+
+async function onGaleriaImgsChange(input, idxN, idxB) {
+    const files = Array.from(input.files || []);
+    if (!files.length) return;
+
+    const bloque = noticiasData[idxN].bloques[idxB];
+    if (!Array.isArray(bloque.imagenes)) bloque.imagenes = [];
+
+    const espacioLibre = GALERIA_MAX - bloque.imagenes.length;
+    const aSubir        = files.slice(0, espacioLibre);
+
+    if (files.length > espacioLibre) {
+        toast(`Solo se agregaron ${espacioLibre} imágenes (máximo ${GALERIA_MAX} por galería)`, 'error');
+    }
+
+    setStatus('Subiendo imágenes...', 'loading');
+    for (const file of aSubir) {
+        const fd = new FormData();
+        fd.append('file', file);
+        fd.append('dest', 'cuerpo');
+        try {
+            const res  = await fetch('/api/noticias/upload-image', { method: 'POST', body: fd });
+            const data = await res.json();
+            if (data.ok) bloque.imagenes.push({ src: data.rel, modo: 'contain' });
+        } catch (e) {
+            toast('Error de red subiendo una imagen', 'error');
+        }
+    }
+    setStatus('Imágenes subidas ✓', 'ok');
+    refrescarBloques(idxN);
+}
+
+function eliminarImgGaleria(idxN, idxB, iIdx) {
+    noticiasData[idxN].bloques[idxB].imagenes.splice(iIdx, 1);
+    refrescarBloques(idxN);
+}
+
+function setModoGaleriaImg(idxN, idxB, iIdx, modo) {
+    noticiasData[idxN].bloques[idxB].imagenes[iIdx].modo = modo;
+    refrescarBloques(idxN);
+}
+
+/* ── DRAG & DROP — reordenar bloques dentro de UNA noticia
+   (stopPropagation obligatorio: si no, el drag de un bloque
+   termina disparando también el drag&drop de la noticia entera) ── */
+
+let dragSrcBloque = null;
+
+function onBloqueDragStart(e, el) {
+    e.stopPropagation();
+    dragSrcBloque = { idxN: +el.dataset.idxn, idxB: +el.dataset.idxb };
+    el.classList.add('dragging');
+    e.dataTransfer.effectAllowed = 'move';
+}
+
+function onBloqueDragOver(e, el) {
+    e.preventDefault();
+    e.stopPropagation();
+    e.dataTransfer.dropEffect = 'move';
+    document.querySelectorAll('.nb-card').forEach(c => c.classList.remove('drag-over'));
+    el.classList.add('drag-over');
+}
+
+function onBloqueDrop(e, el) {
+    e.preventDefault();
+    e.stopPropagation();
+    el.classList.remove('drag-over');
+    if (!dragSrcBloque) return;
+
+    const idxN       = +el.dataset.idxn;
+    const idxBTarget = +el.dataset.idxb;
+
+    /* Los bloques no se mezclan entre noticias distintas */
+    if (dragSrcBloque.idxN !== idxN || dragSrcBloque.idxB === idxBTarget) {
+        dragSrcBloque = null;
+        return;
+    }
+
+    const bloques = noticiasData[idxN].bloques;
+    const moved   = bloques.splice(dragSrcBloque.idxB, 1)[0];
+    bloques.splice(idxBTarget, 0, moved);
+    refrescarBloques(idxN);
+    dragSrcBloque = null;
+}
+
+function onBloqueDragEnd(e, el) {
+    e.stopPropagation();
+    el.classList.remove('dragging');
+    document.querySelectorAll('.nb-card').forEach(c => c.classList.remove('drag-over'));
+    dragSrcBloque = null;
+}
+
+
+/* ── PORTADA — toggle Cover / Contain (evita recortes forzados en el header) ── */
+
+function renderModoPortadaBtns(n, idx) {
+    const modo = n.modo === 'contain' ? 'contain' : 'cover';
+    return `
+        <button class="nc-modo-btn ${modo === 'cover' ? 'active' : ''}" onclick="setModoPortada(${idx},'cover')">Cover</button>
+        <button class="nc-modo-btn ${modo === 'contain' ? 'active' : ''}" onclick="setModoPortada(${idx},'contain')">Contain</button>
+    `;
+}
+
+function setModoPortada(idx, modo) {
+    noticiasData[idx].modo = modo;
+    const toggle = document.getElementById(`nc-modo-${idx}`);
+    if (toggle) toggle.innerHTML = renderModoPortadaBtns(noticiasData[idx], idx);
+}
+
+
+/* ── FONDO PERSONALIZADO FIJO — se ve completo en toda la pantalla,
+   no se mueve con el scroll (background-attachment: fixed) ── */
+
+function renderBgRow(n, idx) {
+    const nombre = n.bg ? n.bg.split('/').pop() : '';
+    return `
+        <button class="nc-bg-btn" onclick="triggerNoticiaBg(${idx})">
+            🖼️ ${n.bg ? 'Cambiar fondo fijo' : 'Fondo personalizado fijo (opcional)'}
+        </button>
+        ${n.bg ? `
+            <span class="nc-bg-name" title="${escHtml(n.bg)}">${escHtml(nombre)}</span>
+            <button class="nc-bg-clear" onclick="quitarNoticiaBg(${idx})" title="Quitar fondo">✕</button>
+        ` : ''}
+        <input type="file" id="nc-bgfile-${idx}" accept=".jpg,.jpeg,.png,.webp"
+               style="display:none" onchange="onNoticiaBgChange(this,${idx})">
+    `;
+}
+
+function triggerNoticiaBg(idx) {
+    document.getElementById(`nc-bgfile-${idx}`)?.click();
+}
+
+async function onNoticiaBgChange(input, idx) {
+    const file = input.files[0];
+    if (!file) return;
+
+    const fd = new FormData();
+    fd.append('file', file);
+    fd.append('dest', 'cuerpo');
+
+    try {
+        setStatus('Subiendo fondo...', 'loading');
+        const res  = await fetch('/api/noticias/upload-image', { method: 'POST', body: fd });
+        const data = await res.json();
+        if (data.ok) {
+            noticiasData[idx].bg = data.rel;
+            setStatus('Fondo subido ✓', 'ok');
+            const row = document.getElementById(`nc-bgrow-${idx}`);
+            if (row) row.innerHTML = renderBgRow(noticiasData[idx], idx);
+        } else {
+            setStatus('Error subiendo fondo', 'error');
+            toast('Error subiendo fondo', 'error');
+        }
+    } catch (e) {
+        setStatus('Error de red', 'error');
+        toast('Error de red', 'error');
+    }
+}
+
+function quitarNoticiaBg(idx) {
+    noticiasData[idx].bg = '';
+    const row = document.getElementById(`nc-bgrow-${idx}`);
+    if (row) row.innerHTML = renderBgRow(noticiasData[idx], idx);
+}
+
+
+/* ══════════════════════════════════════════════════════════════════════════════
    BADGE — cambio de categoría con color dinámico
 ══════════════════════════════════════════════════════════════════════════════ */
 
@@ -173,6 +614,11 @@ function onNoticiaCatChange(select, idx) {
     select.style.background = color.bg;
     noticiasData[idx].cat   = cat;
     noticiasData[idx].badge = BADGE_LABEL[cat] || cat;
+
+    /* El id se asigna una sola vez — si ya tiene, no se toca */
+    if (!noticiasData[idx].id) {
+        noticiasData[idx].id = generarIdNoticia(cat);
+    }
 }
 
 
@@ -353,7 +799,8 @@ async function onNoticiaImgChange(input, idx) {
 
 function limpiarNoticia(idx) {
     if (!confirm('¿Limpiar todos los campos de esta noticia?')) return;
-    noticiasData[idx] = { cat: 'noticia', badge: 'Noticia', titulo: '', desc: '', fecha: '', img: '', url: '' };
+    const idExistente = noticiasData[idx].id;
+    noticiasData[idx] = { id: idExistente, cat: 'noticia', badge: 'Noticia', titulo: '', desc: '', fecha: '', img: '', url: '', modo: 'cover', bg: '', bloques: [] };
     renderNoticias();
 }
 
@@ -374,7 +821,8 @@ function eliminarNoticia(idx) {
 ══════════════════════════════════════════════════════════════════════════════ */
 
 function abrirNuevaNoticia() {
-    noticiasData.push({ cat: 'noticia', badge: 'Noticia', titulo: '', desc: '', fecha: '', img: '', url: '' });
+    const cat = 'noticia';
+    noticiasData.push({ id: generarIdNoticia(cat), cat, badge: 'Noticia', titulo: '', desc: '', fecha: '', img: '', url: '', modo: 'cover', bg: '', bloques: [] });
     renderNoticias();
 
     /* Scroll a la nueva card */
@@ -441,7 +889,9 @@ async function guardarNoticias() {
         if (data.ok) {
             setStatus('Noticias guardadas ✓', 'ok');
             toast('Noticias guardadas correctamente', 'ok');
-            setTimeout(() => location.reload(), 800);
+            /* Solo refresca los datos, sin recargar la página entera
+               (location.reload() reseteaba el panel a la pestaña Home) */
+            await loadNoticias();
         } else {
             setStatus('Error al guardar', 'error');
             toast(data.msg || 'Error al guardar', 'error');

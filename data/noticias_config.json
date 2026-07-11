@@ -1,47 +1,33 @@
 [
     {
-        "badge": "Noticia",
-        "cat": "noticia",
-        "desc": "Marchamos donde caminan los muertos y rugen los forajidos.",
-        "fecha": "25 Mayo 2026",
-        "img": "imgs/noticias/hjk9inwwiae6btf.jpg",
-        "titulo": "¡Soldados del 26.º Regimiento! ",
-        "url": "https://x.com/HuntShowdown/status/2058915941144994180"
-    },
-    {
-        "badge": "Juego",
-        "cat": "juego",
-        "desc": "¡La actualización 1.6.3 ya está disponible en los servidores, así que asegúrate de actualizar el juego!",
-        "fecha": "23 Abril 2026",
-        "img": "imgs/noticias/hotfix-1-6-1-restored-land-edition-1-6-v0-cjhimz1y5rsg1.webp",
-        "titulo": "Hotfix 1.6.3 - Restored Land Edition (1.6)",
-        "url": ""
-    },
-    {
-        "badge": "Noticia",
-        "cat": "noticia",
-        "desc": "Nuevos elementos introducidos en la próxima gran actualización de Black One Blood Brothers.",
-        "fecha": "22 Mayo 2026",
-        "img": "imgs/noticias/hi9gqudx0aahj54.jpg",
-        "titulo": "Buceo profundo - Característica subacuática",
-        "url": ""
-    },
-    {
-        "badge": "Juego",
-        "cat": "juego",
-        "desc": "Lleva contigo al mejor amigo del cazador a donde quiera que vayas. ¡Consigue el tuyo ahora!",
-        "fecha": "17 Mayo 2026",
-        "img": "imgs/noticias/hih8afdxiaankpo.jpg",
-        "titulo": "Los escarabajos vaqueros están listos para invadir tu armario. 🤠🪲",
-        "url": ""
-    },
-    {
-        "badge": "Stream",
-        "cat": "stream",
-        "desc": "Contra todo pronóstico, el sentido común y varias decisiones de diseño probablemente evitables…",
-        "fecha": "13 Mayo 2026",
-        "img": "imgs/noticias/598ba25e9fafbd8646fe0bb061d6d091892714a0.jpg",
-        "titulo": "¡Mr Toilet ya está disponible en acceso anticipado!",
+        "badge": "Evento",
+        "bg": "noticia/imgs/bg-00.webp",
+        "bloques": [
+            {
+                "contenido": "Enterate como funciona.",
+                "tipo": "titulo"
+            },
+            {
+                "contenido": "Al 26.º Regimiento: ¡Ahora no es momento de retirarse! Sin importar las bajas que hayamos sufrido, todos y cada uno de ustedes deben levantarse por sus propios medios y llevar esa Carga Corrupta al globo, o el Delegado de la Desolación nos colgará de los dedos de los pies.",
+                "tipo": "texto"
+            },
+            {
+                "modo": "contain",
+                "src": "noticia/imgs/img-02.webp",
+                "tipo": "imagen"
+            },
+            {
+                "contenido": "Descubre los diferentes hitos en el rastreador de arriba para ver todas las recompensas que puedes ganar.\n\nVisitáen redes sociales y esta página con regularidad para estar al tanto del progreso de los cazadores y reclamar tus premios cuando alcancemos nuestros objetivos. Ten en cuenta que el plazo para canjear los códigos será limitado, ¡así que no te los pierdas!",
+                "tipo": "texto"
+            }
+        ],
+        "cat": "evento",
+        "desc": "Queres saber como participar ?",
+        "fecha": "11 Julio 2026",
+        "id": "noticia-01",
+        "img": "imgs/noticias/img-01.webp",
+        "modo": "cover",
+        "titulo": "EVENTO \"CARGO CORRUPTO \"",
         "url": ""
     }
 ]

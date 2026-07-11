@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Noticia | AmbiTV</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
+<!-- ICONS — necesario para los íconos del nav (fa-twitch, fa-home, etc) -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<!-- CSS GLOBAL + NAV — mismos que index.html, para que el menú flotante se vea y funcione igual -->
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/nav.css">
+<link rel="stylesheet" href="noticia/noticia.css">
+</head>
+<body>
+
+    <!-- ══════════════════════════════════════════════
+    NAV — MENÚ FLOTANTE FIJO
+    (calcado de index.html / dossier.html para que se vea/funcione igual en todas las páginas)
+    ══════════════════════════════════════════════ -->
+    <nav class="nav" id="nav">
+
+        <div class="nav-left">
+
+            <div class="nav-sep"></div> <!-- SEPARADOR -->
+
+            <a class="nav-home" href="index.html#hero">
+                <i class="fas fa-home"></i>
+            </a>
+
+            <ul class="nav-links">
+                <li><a href="index.html#agenda">Agenda</a></li>
+                <li><a href="index.html#noticias">Noticias</a></li>
+                <li><a href="index.html#twitch">Twitch</a></li>
+                <li><a href="index.html#creatorphunt">Hunt</a></li>
+                <li><a href="dossier.html">Dossier</a></li>
+                <li><a href="https://www.clavecd.es/giveaway/4mbitv/sorteazo/9nlRw-177230842/" target="_blank" class="nav-sorteo">Sorteo</a></li>
+            </ul>
+
+        </div>
+
+        <ul class="nav-social">
+            <li><a href="https://www.twitch.tv/4mbitv" target="_blank" class="social-twitch"><i class="fab fa-twitch"></i></a></li>
+            <li><a href="https://www.youtube.com/@ambitvok" target="_blank" class="social-youtube"><i class="fab fa-youtube"></i></a></li>
+            <li><a href="https://www.instagram.com/4mbitv/" target="_blank" class="social-instagram"><i class="fab fa-instagram"></i></a></li>
+            <li><a href="https://discord.com/invite/CSQDumV" target="_blank" class="social-discord"><i class="fab fa-discord"></i></a></li>
+            <li><a href="https://x.com/4mbiTV" target="_blank" class="social-x"><i class="fab fa-x-twitter"></i></a></li>
+            <li><a href="https://open.spotify.com/intl-es/artist/64VR4resIiyFchXF9FCLGd?si=XwD_1BIhSKyxrguS7zMNEA" target="_blank" class="social-spotify"><i class="fab fa-spotify"></i></a></li>
+        </ul>
+
+    </nav>
+
+    <!-- ══════════════════════════════════════════════
+    CONTENIDO — todo se arma por JS según el id en la URL
+    (noticia.html?id=xxx)
+    ══════════════════════════════════════════════ -->
+    <main class="noticia-page" id="noticia-page">
+
+        <a class="noticia-back" href="index.html#noticias">‹ Volver a Noticias</a>
+
+        <div class="noticia-header">
+            <div class="noticia-header-imgwrap" id="noticia-header-imgwrap">
+                <img id="noticia-header-img" src="" alt="">
+                <div class="noticia-header-body">
+                    <div class="noticia-header-meta">
+                        <span class="noticia-badge" id="noticia-badge"></span>
+                        <span class="noticia-header-fecha" id="noticia-fecha"></span>
+                    </div>
+                    <h1 class="noticia-header-title" id="noticia-title"></h1>
+                </div>
+            </div>
+        </div>
+
+        <div class="noticia-content" id="noticia-body">
+            <!-- bloques (texto / imagen / galeria) inyectados por noticia.js, en el orden del JSON -->
+        </div>
+
+    </main>
+
+    <script src="js/menu.js"></script>
+    <script src="noticia/noticia.js"></script>
+
+</body>
+</html>

@@ -52,11 +52,16 @@
 
     /* ── COLOR POR CATEGORÍA ── */
     const CAT_COLOR = {
-        stream:    'var(--c-purple)',
-        juego:     'var(--c-green)',
-        comunidad: 'var(--c-blue)',
-        noticia:   'var(--c-yellow)',
-        review:    'var(--c-orange)',
+        stream:        '#9146FF',
+        comunidad:     '#9146FF',
+        juego:         '#10B981',
+        evento:        '#10B981',
+        lanzamiento:   '#10B981',
+        noticia:       '#38BDF8',
+        review:        '#38BDF8',
+        hotfix:        '#EF4444',
+        update:        '#EF4444',
+        actualizacion: '#EF4444',
     };
 
     /* ── ESTADO ── */
@@ -88,8 +93,22 @@
         featBadge.textContent = it.badge;
         featBadge.className   = 'noticias-badge cat-' + it.cat;
         featFecha.textContent = it.fecha || '';
-        featTitle.textContent = it.titulo;
         featDesc.textContent  = it.desc;
+
+        /* Título como link — externo si la noticia tiene "url" cargada
+           (abre en pestaña nueva), interno a noticia.html si no la tiene */
+        featTitle.innerHTML = '';
+        const titleLink = document.createElement('a');
+        titleLink.className   = 'noticias-featured-title-link';
+        titleLink.textContent = it.titulo;
+        if (it.url) {
+            titleLink.href   = it.url;
+            titleLink.target = '_blank';
+            titleLink.rel    = 'noopener';
+        } else {
+            titleLink.href = 'noticia.html?id=' + encodeURIComponent(it.id || '');
+        }
+        featTitle.appendChild(titleLink);
 
         /* Dots */
         dotsWrap.querySelectorAll('.noticias-dot').forEach((d, i) => {

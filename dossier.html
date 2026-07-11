@@ -7,9 +7,63 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700;900&display=swap" rel="stylesheet">
+<!-- ICONS — necesario para los íconos del nav (fa-twitch, fa-home, etc) -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<!-- CSS GLOBAL + NAV — mismos que index.html, para que el menú flotante se vea y funcione igual -->
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/nav.css">
 <link rel="stylesheet" href="css/dossier.css">
 </head>
 <body>
+
+    <!-- ══════════════════════════════════════════════
+    NAV — MENÚ FLOTANTE FIJO
+    (calcado de index.html para que se vea/funcione igual en todas las páginas)
+    ══════════════════════════════════════════════ -->
+    <nav class="nav" id="nav">
+
+        <div class="nav-left">
+
+            <div class="nav-sep"></div> <!-- SEPARADOR -->
+
+            <a class="nav-home" href="index.html#hero">
+                <i class="fas fa-home"></i>
+            </a>
+
+            <ul class="nav-links">
+                <li><a href="index.html#agenda">Agenda</a></li>
+                <li><a href="index.html#noticias">Noticias</a></li>
+                <li><a href="index.html#twitch">Twitch</a></li>
+                <li><a href="index.html#creatorphunt">Hunt</a></li>
+                <li><a href="dossier.html">Dossier</a></li>
+                <li><a href="https://www.clavecd.es/giveaway/4mbitv/sorteazo/9nlRw-177230842/" target="_blank" class="nav-sorteo">Sorteo</a></li>
+            </ul>
+
+        </div>
+
+        <ul class="nav-social">
+            <li><a href="https://www.twitch.tv/4mbitv" target="_blank" class="social-twitch"><i class="fab fa-twitch"></i></a></li>
+            <li><a href="https://www.youtube.com/@ambitvok" target="_blank" class="social-youtube"><i class="fab fa-youtube"></i></a></li>
+            <li><a href="https://www.instagram.com/4mbitv/" target="_blank" class="social-instagram"><i class="fab fa-instagram"></i></a></li>
+            <li><a href="https://discord.com/invite/CSQDumV" target="_blank" class="social-discord"><i class="fab fa-discord"></i></a></li>
+            <li><a href="https://x.com/4mbiTV" target="_blank" class="social-x"><i class="fab fa-x-twitter"></i></a></li>
+            <li><a href="https://open.spotify.com/intl-es/artist/64VR4resIiyFchXF9FCLGd?si=XwD_1BIhSKyxrguS7zMNEA" target="_blank" class="social-spotify"><i class="fab fa-spotify"></i></a></li>
+        </ul>
+
+    </nav>
+
+    <!-- ══════════════════════════════════════════════
+    MINI HERO — BG + efectos FX (grain / scanlines / vignette)
+    Las clases ya estaban definidas en dossier.css pero les
+    faltaba este HTML para poder mostrarse.
+    ══════════════════════════════════════════════ -->
+    <div class="dossier-mini-hero">
+        <div class="dossier-mini-hero-bg"></div>
+        <div class="dossier-fx-grain"><canvas></canvas></div>
+        <div class="dossier-fx-scan"></div>
+        <div class="dossier-fx-vignette"></div>
+    </div>
+
 <div class="dossier-wrap">
 
     <div class="dossier-hero">
@@ -283,6 +337,7 @@
     </div>
     <p id="lb-caption" style="color:#9a9a9a;font-size:13px;font-weight:600;letter-spacing:3px;text-transform:uppercase;max-width:700px;text-align:center"></p>
 </div>
+<script src="js/menu.js"></script>
 <script>
 function abrirLightbox(src, caption, subcat) {
     const lb = document.getElementById('lightbox');

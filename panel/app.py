@@ -611,6 +611,7 @@ def api_index_upload_image():
 
 NOTICIAS_JSON = os.path.join(WEB_DIR, "data", "noticias_config.json")
 NOTICIAS_IMGS = os.path.join(WEB_DIR, "imgs", "noticias")
+NOTICIA_BODY_IMGS = os.path.join(WEB_DIR, "noticia", "imgs")
 
 
 def load_noticias():
@@ -656,6 +657,15 @@ def api_noticias_upload_image():
         return jsonify({"ok": False, "msg": "No se recibió archivo"}), 400
     f        = request.files["file"]
     filename = f.filename.lower().replace(" ", "_")
+    dest     = request.form.get("dest", "portada")
+
+    # Imágenes de cuerpo/galería (texto/imagen/galeria dentro de una noticia)
+    if dest == "cuerpo":
+        os.makedirs(NOTICIA_BODY_IMGS, exist_ok=True)
+        f.save(os.path.join(NOTICIA_BODY_IMGS, filename))
+        return jsonify({"ok": True, "rel": f"noticia/imgs/{filename}"})
+
+    # Portada — comportamiento original, sin cambios
     os.makedirs(NOTICIAS_IMGS, exist_ok=True)
     f.save(os.path.join(NOTICIAS_IMGS, filename))
     return jsonify({"ok": True, "rel": f"imgs/noticias/{filename}"})
