@@ -35,7 +35,7 @@
         "imagen": "imgs/index/agenda/satellite_odyssey_jupiter.jpg",
         "juego": "SATELLITE ODYSSEY JUPITER",
         "tipo": "CAMPAÑA",
-        "tipo_stream": "INVITADOS POR EL STUDIO / CAMPAÑA",
+        "tipo_stream": "DÍA DE FALOPITAS / INVITADOS POR EL STUDIO",
         "video": "3yyYAF_jQRc"
     },
     {
@@ -50,5 +50,31 @@
         "tipo": "CAMPAÑA",
         "tipo_stream": "CAMPAÑA",
         "video": "z5b-l29mzew"
+    },
+    {
+        "tipo": "CAMPAÑA",
+        "fecha": "16 DE JULIO",
+        "juego": "JOHN CARPENTER'S TOXIC COMMANDO",
+        "dia": "JUEVES",
+        "hora": "16:00 HS",
+        "tipo_stream": "DESAFIO / CAMPAÑA",
+        "imagen": "imgs/index/agenda/john_carpenter's_toxic_commando.jpg",
+        "video": "jWY-FfH_Ln8",
+        "fecha_limite_calculada": "2026-07-16",
+        "bg_imagen": "",
+        "border_color": "#d72626"
+    },
+    {
+        "tipo": "CAMPAÑA",
+        "fecha": "18 DE JULIO",
+        "juego": "HELL CLOCK",
+        "dia": "SÁBADO",
+        "hora": "15:00 HS",
+        "tipo_stream": "DESAFIO / CAMPAÑA",
+        "imagen": "imgs/index/agenda/hell_clock.jpg",
+        "video": "Mp9tbPaM7zs",
+        "fecha_limite_calculada": "2026-08-07",
+        "bg_imagen": "",
+        "border_color": "#d72626"
     }
 ]

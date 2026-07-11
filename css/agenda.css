@@ -272,158 +272,177 @@
 }
 
 /* ──────────────────────────────────────────
-   TARJETAS — ESTRUCTURA 3 CAPAS
+   LIGHTBOX AGENDA — GRID DE TARJETAS
+   Mínimo 4 columnas en desktop, se reduce en
+   pantallas chicas. max-width centra el grid
+   dentro del lightbox (antes no tenía límite).
 ────────────────────────────────────────── */
 
-.section-twitch-agenda {
+.lightbox-agenda-list {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 110px 40px 60px; /* top: deja lugar a los btns fijos (cerrar / pausar música) */
+}
+
+@media (max-width: 1200px) {
+    .lightbox-agenda-list { grid-template-columns: repeat(3, 1fr); }
+}
+
+@media (max-width: 860px) {
+    .lightbox-agenda-list { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 560px) {
+    .lightbox-agenda-list { grid-template-columns: 1fr; padding: 100px 20px 40px; }
+}
+
+
+/* ──────────────────────────────────────────
+   TARJETA DE GRID — ESTRUCTURA
+────────────────────────────────────────── */
+
+.agenda-grid-card {
     position: relative;
+    display: flex;
+    flex-direction: column;
     overflow: hidden;
+    border-radius: 6px;
+    background: #0f0f0f;
     border-top: 5px solid #9146ff;
 }
 
-.section-twitch-agenda.bg-exclusivo {
+.agenda-grid-card.bg-exclusivo {
     border-top-color: #d72626;
 }
 
-/* CAPA 1: BG */
-.section-twitch-agenda .section-bg {
+/* Capa de fondo — solo se ve/activa en tipo exclusivo (pendiente de reconectar
+   con el campo real del panel, ver nota de la sesión) */
+.agenda-grid-card .section-bg {
     position: absolute;
     inset: 0;
     background-color: #0f0f0f;
     background-size: cover;
     background-position: center;
     opacity: 0.8;
-    z-index: var(--z-bg, 0);
+    z-index: 0;
 }
 
-.section-twitch-agenda.bg-standard .section-bg {
+.agenda-grid-card.bg-standard .section-bg {
     background-image: url('../imgs/index/bgs/bg_twtich-agenda.jpg');
 }
 
-.section-twitch-agenda.bg-exclusivo .section-bg {
+.agenda-grid-card.bg-exclusivo .section-bg {
     background-image: var(--bg-url, url('../imgs/index/bgs/bg_twtich-ex-agenda.jpg'));
 }
 
-/* CAPA 2: CONTENIDO */
-.section-twitch-agenda .section-content {
-    position: relative;
-    z-index: var(--z-content, 20);
-    padding: 30px;
-}
-
-/* CAPA 3: BLEEDS */
-.section-twitch-agenda .section-bleeds {
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
-}
 
 /* ──────────────────────────────────────────
-   TARJETAS — CONTENIDO INTERNO
+   TARJETA DE GRID — IMAGEN + FECHA FLOTANTE
 ────────────────────────────────────────── */
 
-.twitch-banner {
+.agenda-grid-imgwrap {
+    position: relative;
+    z-index: 1;
     width: 100%;
-    display: flex;
-    align-items: center;
-}
-
-.twitch-thumb {
-    width: 300px;
     aspect-ratio: 460 / 215;
-    flex-shrink: 0;
     overflow: hidden;
+    background: #000;
 }
 
-.twitch-thumb img {
+.agenda-grid-imgwrap img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    border: 6px solid #000;
+    display: block;
 }
 
-.twitch-divider {
-    width: 2px;
-    height: 70%;
-    margin: 0 20px;
-    background: rgba(255,255,255,0.15);
-    flex-shrink: 0;
-}
-
-.twitch-info {
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-}
-
-.twitch-actions {
-    margin-left: auto;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-}
-
-.twitch-date {
-    color: #9146ff;
-    font-weight: 700;
-    font-size: 15px;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-}
-
-.bg-exclusivo .twitch-date {
-    color: #ff4d4d;
-}
-
-.twitch-game {
-    font-size: 25px;
-    font-weight: 900;
+.agenda-grid-date {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background: rgba(0, 0, 0, 0.75);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
     color: #fff;
-}
-
-.twitch-day {
-    color: #ccc;
-    font-size: 20px;
-}
-
-.twitch-type {
-    color: #888;
-    font-size: 18px;
-}
-
-.bg-exclusivo .twitch-type {
-    color: #E9DC24;
-}
-
-.twitch-btn {
-    padding: 10px 14px;
-    font-size: 12px;
-    letter-spacing: 2px;
+    font-family: var(--font-main);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
     text-transform: uppercase;
-    text-decoration: none;
-    text-align: center;
-    cursor: pointer;
-    transition: transform 0.3s, filter 0.3s;
+    padding: 4px 9px;
+    border-radius: 3px;
 }
 
-.twitch-btn.primary {
+
+/* ──────────────────────────────────────────
+   TARJETA DE GRID — TÍTULO / DÍA-HORA / TAGS / BTN
+────────────────────────────────────────── */
+
+.agenda-grid-body {
+    position: relative;
+    z-index: 1;
+    padding: 14px 16px 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+}
+
+.agenda-grid-title {
+    font-family: var(--font-main);
+    font-size: 16px;
+    font-weight: 800;
+    color: #fff;
+    line-height: 1.25;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.agenda-grid-daytime {
+    font-family: var(--font-main);
+    font-size: 12px;
+    color: #ccc;
+}
+
+.agenda-grid-tags {
+    font-family: var(--font-main);
+    font-size: 11px;
+    color: #888;
+    letter-spacing: 0.5px;
+}
+
+.agenda-grid-btn {
+    margin-top: 4px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
     background: #9146ff;
     color: #fff;
+    font-family: var(--font-main);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 9px 12px;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: transform 0.2s, filter 0.2s;
 }
 
-.bg-exclusivo .twitch-btn.primary {
+.agenda-grid-card.bg-exclusivo .agenda-grid-btn {
     background: #d72626;
 }
 
-.twitch-btn.channel {
-    border: 1px solid rgba(255,255,255,0.3);
-    color: #fff;
-    background: transparent;
-}
-
-.twitch-btn:hover {
-    transform: translateY(-3px);
-    filter: brightness(1.2);
+.agenda-grid-btn:hover {
+    transform: translateY(-2px);
+    filter: brightness(1.15);
 }
 
 /* ══════════════════════════════════════════════════════════════════

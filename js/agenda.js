@@ -71,40 +71,26 @@
                     ? ` style="--bg-url: url('${item.bg_url}')"` : '';
 
                 return `
-                <section class="section-twitch-agenda ${bgClass}"${bgStyle}>
+                <div class="agenda-grid-card ${bgClass}"${bgStyle}>
 
-                    <!-- CAPA 1: BG -->
+                    <!-- CAPA DE FONDO (solo visible en tipo exclusivo) -->
                     <div class="section-bg"></div>
 
-                    <!-- CAPA 2: CONTENIDO -->
-                    <div class="section-content">
-                        <div class="twitch-banner">
-
-                            <div class="twitch-thumb">
-                                <img src="${item.imagen}" alt="${item.juego}">
-                            </div>
-
-                            <div class="twitch-divider"></div>
-
-                            <div class="twitch-info">
-                                <span class="twitch-date">${item.fecha}</span>
-                                <h3 class="twitch-game">${item.juego}</h3>
-                                <span class="twitch-day">${item.dia} — ${item.hora}</span>
-                                <span class="twitch-type">${item.tipo_stream}</span>
-                            </div>
-
-                            <div class="twitch-actions">
-                                <a href="#" class="twitch-btn primary" data-video="${item.video}">VER TRAILER</a>
-                                <a href="https://www.twitch.tv/4mbitv" target="_blank" class="twitch-btn channel">VER CANAL</a>
-                            </div>
-
-                        </div>
+                    <!-- IMAGEN + FECHA COMO CHIP FLOTANDO -->
+                    <div class="agenda-grid-imgwrap">
+                        <img src="${item.imagen}" alt="${item.juego}">
+                        <span class="agenda-grid-date">${item.fecha}</span>
                     </div>
 
-                    <!-- CAPA 3: BLEEDS -->
-                    <div class="section-bleeds"></div>
+                    <!-- TÍTULO / DÍA-HORA / CATEGORÍAS / BOTÓN -->
+                    <div class="agenda-grid-body">
+                        <h3 class="agenda-grid-title">${item.juego}</h3>
+                        <span class="agenda-grid-daytime">${item.dia} — ${item.hora}</span>
+                        ${item.tipo_stream ? `<span class="agenda-grid-tags">${item.tipo_stream}</span>` : ''}
+                        <a href="#" class="agenda-grid-btn" data-video="${item.video}">▶ TRAILER</a>
+                    </div>
 
-                </section>`;
+                </div>`;
             }).join('');
 
 
