@@ -52,29 +52,29 @@
         "video": "z5b-l29mzew"
     },
     {
-        "tipo": "CAMPAÑA",
-        "fecha": "16 DE JULIO",
-        "juego": "JOHN CARPENTER'S TOXIC COMMANDO",
-        "dia": "JUEVES",
-        "hora": "16:00 HS",
-        "tipo_stream": "DESAFIO / CAMPAÑA",
-        "imagen": "imgs/index/agenda/john_carpenter's_toxic_commando.jpg",
-        "video": "jWY-FfH_Ln8",
-        "fecha_limite_calculada": "2026-07-16",
         "bg_imagen": "",
-        "border_color": "#d72626"
+        "border_color": "#d72626",
+        "dia": "JUEVES",
+        "fecha": "16 DE JULIO",
+        "fecha_limite_calculada": "2026-07-16",
+        "hora": "16:00 HS",
+        "imagen": "imgs/index/agenda/john_carpenter's_toxic_commando.jpg",
+        "juego": "JOHN CARPENTER'S TOXIC COMMANDO",
+        "tipo": "CAMPAÑA",
+        "tipo_stream": "DESAFIO / CAMPAÑA",
+        "video": "jWY-FfH_Ln8"
     },
     {
-        "tipo": "CAMPAÑA",
-        "fecha": "18 DE JULIO",
-        "juego": "HELL CLOCK",
-        "dia": "SÁBADO",
-        "hora": "15:00 HS",
-        "tipo_stream": "DESAFIO / CAMPAÑA",
-        "imagen": "imgs/index/agenda/hell_clock.jpg",
-        "video": "Mp9tbPaM7zs",
-        "fecha_limite_calculada": "2026-08-07",
         "bg_imagen": "",
-        "border_color": "#d72626"
+        "border_color": "#d72626",
+        "dia": "SÁBADO",
+        "fecha": "18 DE JULIO",
+        "fecha_limite_calculada": "2026-08-07",
+        "hora": "15:00 HS",
+        "imagen": "imgs/index/agenda/hell_clock.jpg",
+        "juego": "HELL CLOCK",
+        "tipo": "CAMPAÑA",
+        "tipo_stream": "DESAFIO / CAMPAÑA",
+        "video": "Mp9tbPaM7zs"
     }
 ]
