@@ -88,6 +88,14 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    const btnNavAgenda = document.getElementById('nav-agenda-link');
+    if (btnNavAgenda) {
+        btnNavAgenda.addEventListener('click', (e) => {
+            e.preventDefault();
+            abrirAgenda();
+        });
+    }
+
     if (btnCerrarAgenda) {
         btnCerrarAgenda.addEventListener('click', cerrarAgenda);
     }
