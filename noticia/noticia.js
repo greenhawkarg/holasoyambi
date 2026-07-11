@@ -13,6 +13,83 @@
 
     const page = document.getElementById('noticia-page');
 
+    /* ── BLOQUE TEXTO — separa párrafos de listas con viñeta ──
+       Una línea que empieza con "- " (guión + espacio) se agrupa
+       en una lista con círculo (estilo Steam). El resto sigue como
+       párrafo normal, respetando saltos de línea internos (pre-line).
+       Las líneas en blanco NO cortan una lista si lo que sigue es
+       otra viñeta (así el Enter extra entre bullets no genera huecos);
+       sí cortan un párrafo (nuevo <p>) o cierran la lista si lo
+       siguiente ya no es una viñeta. ── */
+    function renderBloqueTexto(contenido) {
+        const wrap = document.createElement('div');
+        wrap.className = 'noticia-texto-wrap';
+
+        const lineas = String(contenido).split('\n');
+        let paraLineas = [];
+        let listaItems = [];
+
+        function esVineta(linea) {
+            return /^-\s+/.test(linea.trim());
+        }
+
+        function flushParrafo() {
+            if (!paraLineas.length) return;
+            const p = document.createElement('p');
+            p.className = 'noticia-texto-p';
+            p.textContent = paraLineas.join('\n');
+            wrap.appendChild(p);
+            paraLineas = [];
+        }
+
+        function flushLista() {
+            if (!listaItems.length) return;
+            const ul = document.createElement('ul');
+            ul.className = 'noticia-texto-list';
+            listaItems.forEach(function (item) {
+                const li = document.createElement('li');
+                li.textContent = item;
+                ul.appendChild(li);
+            });
+            wrap.appendChild(ul);
+            listaItems = [];
+        }
+
+        for (let i = 0; i < lineas.length; i++) {
+            const linea = lineas[i];
+            const trimmed = linea.trim();
+
+            if (esVineta(trimmed)) {
+                flushParrafo();
+                listaItems.push(trimmed.replace(/^-\s+/, ''));
+                continue;
+            }
+
+            if (trimmed === '') {
+                /* Línea en blanco: miramos qué sigue (saltando más blancos).
+                   Si estamos dentro de una lista y lo próximo es otra
+                   viñeta, el salto no corta nada — se ignora. */
+                let j = i + 1;
+                while (j < lineas.length && lineas[j].trim() === '') j++;
+                const proxima = j < lineas.length ? lineas[j].trim() : '';
+                if (listaItems.length && esVineta(proxima)) {
+                    continue;
+                }
+                flushLista();
+                flushParrafo();
+                continue;
+            }
+
+            /* línea de texto normal */
+            flushLista();
+            paraLineas.push(linea);
+        }
+        flushLista();
+        flushParrafo();
+
+        return wrap;
+    }
+
     /* ── RENDER DE UN BLOQUE SEGÚN TIPO ── */
     function renderBloque(bloque) {
         if (bloque.tipo === 'titulo') {
@@ -30,10 +107,7 @@
         }
 
         if (bloque.tipo === 'texto') {
-            const p = document.createElement('p');
-            p.className = 'noticia-block-texto';
-            p.textContent = bloque.contenido || '';
-            return p;
+            return renderBloqueTexto(bloque.contenido || '');
         }
 
         if (bloque.tipo === 'imagen') {

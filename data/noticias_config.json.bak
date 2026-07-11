@@ -27,7 +27,37 @@
         "id": "noticia-01",
         "img": "imgs/noticias/img-01.webp",
         "modo": "cover",
-        "titulo": "Evento \"CARGA CORRUPTA \"",
+        "titulo": "Evento \" CARGA CORRUPTA \"",
+        "url": ""
+    },
+    {
+        "badge": "Actualización",
+        "bg": "",
+        "bloques": [
+            {
+                "contenido": "Agregados",
+                "tipo": "titulo"
+            },
+            {
+                "contenido": "- Se añadió el mapa de colaboración \"Museo HIKAKIN\".\n- Incluye mecánicas exclusivas disponibles únicamente durante esta colaboración.\n- Se agregó una versión alfa del soporte para controles. (La navegación por la interfaz de usuario (UI) aún no es compatible).\n- Se añadieron las etiquetas de región para Japón, Corea del Sur y Asia Oriental.",
+                "tipo": "texto"
+            },
+            {
+                "contenido": "Correcciones y ajustes",
+                "tipo": "titulo"
+            },
+            {
+                "contenido": "- Se corrigió un problema por el que la detección de colisiones no desaparecía cuando el clon estaba oculto.\n- Se ajustó el campo de visión (FOV) del Hunter, aumentando de 100 a 105.",
+                "tipo": "texto"
+            }
+        ],
+        "cat": "actualizacion",
+        "desc": "te contamos los nuevos cambios hasta el momento.",
+        "fecha": "11 Julio 2026",
+        "id": "noticia-02",
+        "img": "imgs/noticias/mc-img-01.webp",
+        "modo": "cover",
+        "titulo": "Actualización menor",
         "url": ""
     }
 ]

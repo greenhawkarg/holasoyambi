@@ -167,6 +167,53 @@
     white-space: pre-line;
 }
 
+/* Wrapper del bloque texto — agrupa párrafos y listas con viñeta
+   en el orden en que aparecen en el contenido */
+.noticia-texto-wrap {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.noticia-texto-p {
+    font-family: var(--font-main);
+    font-size: 16px;
+    line-height: 1.7;
+    color: rgba(255, 255, 255, 0.75);
+    white-space: pre-line;
+    margin: 0;
+}
+
+/* Lista con viñeta circular — mismo lenguaje visual que Steam */
+.noticia-texto-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}
+
+.noticia-texto-list li {
+    position: relative;
+    padding-left: 20px;
+    font-family: var(--font-main);
+    font-size: 16px;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.75);
+}
+
+.noticia-texto-list li::before {
+    content: '';
+    position: absolute;
+    left: 2px;
+    top: 9px;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.45);
+}
+
 
 /* ──────────────────────────────────────────
    BLOQUE — TÍTULO / SUBTÍTULO

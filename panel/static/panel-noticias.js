@@ -334,9 +334,38 @@ function renderBloqueBodyTituloInput(b, idxN, idxB, placeholder) {
 
 function renderBloqueBodyTexto(b, idxN, idxB) {
     return `
-        <textarea class="nc-input nb-texto" rows="3" placeholder="Texto del bloque"
+        <textarea class="nc-input nb-texto" id="nb-texto-${idxN}-${idxB}" rows="3" placeholder="Texto del bloque"
                   oninput="autoGrowTextarea(this); noticiasData[${idxN}].bloques[${idxB}].contenido=this.value">${escHtml(b.contenido || '')}</textarea>
+        <div class="nb-texto-tools">
+            <button type="button" class="nb-btn-vineta" onclick="insertarVineta(${idxN},${idxB})"
+                    title="Insertar línea de viñeta (se ve como lista con círculo)">• Viñeta</button>
+        </div>
     `;
+}
+
+/* Inserta "- " en la posición del cursor del textarea de un bloque de texto.
+   Si el cursor no está al inicio de línea, agrega un salto de línea antes
+   para que la viñeta arranque en su propia línea. */
+function insertarVineta(idxN, idxB) {
+    const ta = document.getElementById(`nb-texto-${idxN}-${idxB}`);
+    if (!ta) return;
+
+    const start = ta.selectionStart;
+    const end   = ta.selectionEnd;
+    const value = ta.value;
+
+    const necesitaSalto = start > 0 && value[start - 1] !== '\n';
+    const insercion = (necesitaSalto ? '\n' : '') + '- ';
+
+    ta.value = value.slice(0, start) + insercion + value.slice(end);
+    noticiasData[idxN].bloques[idxB].contenido = ta.value;
+
+    /* Recolocar el cursor justo después del "- " insertado */
+    const nuevaPos = start + insercion.length;
+    ta.focus();
+    ta.setSelectionRange(nuevaPos, nuevaPos);
+
+    autoGrowTextarea(ta);
 }
 
 function renderBloqueBodyImagen(b, idxN, idxB) {
