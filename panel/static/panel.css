@@ -972,7 +972,12 @@
 }
 .nb-btn-del:hover { color: var(--red); background: rgba(239,68,68,.1); }
 
-.nb-texto { min-height: 70px; }
+.nb-texto {
+    min-height: 70px;
+    resize: none;
+    overflow: hidden;
+    transition: height .1s;
+}
 
 .nb-titulo-input {
     font-weight: 700;

@@ -217,6 +217,7 @@ function renderNoticiaCard(n, idx, container) {
     card.addEventListener('dragend',   onNoticiaDragEnd);
 
     container.appendChild(card);
+    card.querySelectorAll('.nb-texto').forEach(autoGrowTextarea);
 }
 
 
@@ -264,7 +265,10 @@ function renderBloquesHTML(n, idx) {
 function refrescarBloques(idxN) {
     const n    = noticiasData[idxN];
     const list = document.getElementById(`nb-list-${idxN}`);
-    if (list) list.innerHTML = renderBloquesHTML(n, idxN);
+    if (list) {
+        list.innerHTML = renderBloquesHTML(n, idxN);
+        list.querySelectorAll('.nb-texto').forEach(autoGrowTextarea);
+    }
 
     const header = list ? list.closest('.nc-cuerpo')?.querySelector('.nc-cuerpo-header') : null;
     if (header) header.outerHTML = renderCuerpoHeader(n, idxN);
@@ -331,7 +335,7 @@ function renderBloqueBodyTituloInput(b, idxN, idxB, placeholder) {
 function renderBloqueBodyTexto(b, idxN, idxB) {
     return `
         <textarea class="nc-input nb-texto" rows="3" placeholder="Texto del bloque"
-                  oninput="noticiasData[${idxN}].bloques[${idxB}].contenido=this.value">${escHtml(b.contenido || '')}</textarea>
+                  oninput="autoGrowTextarea(this); noticiasData[${idxN}].bloques[${idxB}].contenido=this.value">${escHtml(b.contenido || '')}</textarea>
     `;
 }
 
@@ -913,6 +917,13 @@ function escHtml(str) {
         .replace(/"/g, '&quot;')
         .replace(/</g, '&lt;')
         .replace(/>/g, '&gt;');
+}
+
+/* Auto-ajusta la altura del textarea a su contenido — así los bloques de
+   texto largos se ven completos, sin scroll interno ni clicks extra */
+function autoGrowTextarea(el) {
+    el.style.height = 'auto';
+    el.style.height = el.scrollHeight + 'px';
 }
 
 

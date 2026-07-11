@@ -1,6 +1,7 @@
 [
     {
         "badge": "Evento",
+        "bg": "noticia/imgs/bg-00.webp",
         "bloques": [
             {
                 "contenido": "Enterate como funciona.",
@@ -27,7 +28,6 @@
         "img": "imgs/noticias/img-01.webp",
         "modo": "cover",
         "titulo": "EVENTO \"CARGO CORRUPTO \"",
-        "url": "",
-        "bg": "noticia/imgs/bg_02.jpg"
+        "url": ""
     }
 ]
