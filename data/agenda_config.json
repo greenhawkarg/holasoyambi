@@ -1,19 +1,6 @@
 [
     {
         "bg_imagen": "",
-        "border_color": "#9146FF",
-        "dia": "SÁBADO",
-        "fecha": "11 DE JULIO",
-        "fecha_limite_calculada": "2026-08-06",
-        "hora": "15:00 HS",
-        "imagen": "imgs/index/agenda/the_soul.jpg",
-        "juego": "THE SOUL",
-        "tipo": "DEMO CERRADA",
-        "tipo_stream": "DEMO CERRADA / CONTENIDO EXCLUSIVO",
-        "video": "T1Pno_aW56o"
-    },
-    {
-        "bg_imagen": "",
         "border_color": "#d72626",
         "dia": "DOMINGO",
         "fecha": "12 DE JULIO",
