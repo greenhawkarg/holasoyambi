@@ -59,5 +59,87 @@
         "modo": "cover",
         "titulo": "Actualización menor",
         "url": ""
+    },
+    {
+        "badge": "Actualización",
+        "bg": "",
+        "bloques": [
+            {
+                "contenido": "¡Saludos, Arquitectos del Laberinto!",
+                "tipo": "titulo"
+            },
+            {
+                "contenido": "Nos da mucho gusto presentarles MINOS 1.1, una actualización importante que incluye un nuevo modo optimizado, contenido adicional, dos modos de dificultad, cambios de equilibrio, correcciones de errores y mejoras, muchas de las cuales se basaron en sus comentarios hasta ahora, por lo cual estamos sumamente agradecidos. ¡Excelente trabajo, sigan así! steamhappy\n\nComo siempre, los invitamos a unirse a nuestra comunidad en Discord: es el mejor lugar para compartir comentarios, reportar errores y charlar con el equipo.",
+                "tipo": "texto"
+            },
+            {
+                "contenido": "¿Qué trae MINOS 1.1?",
+                "tipo": "titulo"
+            },
+            {
+                "contenido": "¡Nuevo modo Roguelite!*",
+                "tipo": "subtitulo"
+            },
+            {
+                "contenido": "Escuchando sus comentarios, decidimos crear un modo completamente nuevo, independiente de la experiencia de la Historia.\n\nEstá pensado para quienes disfrutan los juegos roguelike/roguelite, ya completaron el Modo Historia o simplemente sintieron que la experiencia principal era demasiado lenta.\n\n¡Ya pueden probarlo!\n\nEste modo elimina tutoriales, historia, puzles y secretos para ofrecer una experiencia mucho más directa. Solo gastarás tu experiencia (XP) después de ser derrotado, creando un ciclo de partidas más rápido y centrado en intentos cortos.",
+                "tipo": "texto"
+            },
+            {
+                "contenido": "Detalles del nuevo modo",
+                "tipo": "subtitulo"
+            },
+            {
+                "contenido": "- Disponible desde el Menú Principal.\n- No incluye historia.\n- La tienda de mejoras mediante XP solo está disponible en la Profundidad 0. El resto de las instalaciones del campamento están desbloqueadas desde el inicio.\n- La exploración fue simplificada: ya no hay Daedalus, Excavaciones, Cofres, Hongos, Pergaminos, Escotillas Secretas, Simulacrum, etc.\n- No existen atajos.\n- Se eliminaron las llaves y algunos Artefactos irrelevantes.\n- Ya no es posible reiniciar la oleada desde el menú de pausa; en su lugar podrás abandonar la partida actual.\n- La aceleración de velocidad está disponible durante la exploración.\n- Tras completar la última oleada podrás afrontar hasta 3 oleadas adicionales para conseguir más Óbolos de Plata.\n- Las Almas Perdidas de Aristoi ahora ofrecen Mejoras para Trampas en lugar de Artefactos a cambio de Óbolos de Oro.\n- La profundidad máxima ahora es 20 y cada partida termina enfrentándote a Theseus.",
+                "tipo": "texto"
+            },
+            {
+                "contenido": "Cambios de balance",
+                "tipo": "titulo"
+            },
+            {
+                "contenido": "Estos cambios afectan tanto al nuevo modo como al Modo Historia.",
+                "tipo": "texto"
+            },
+            {
+                "contenido": "Nuevo nivel de dificultad",
+                "tipo": "subtitulo"
+            },
+            {
+                "contenido": "Antes de comenzar una nueva partida deberás elegir entre:",
+                "tipo": "texto"
+            },
+            {
+                "contenido": "Modo Normal",
+                "tipo": "subtitulo"
+            },
+            {
+                "contenido": "Ideal si quieres completar el juego sin demasiadas complicaciones.\n\nNo exige una optimización constante: mientras evites errores importantes, podrás avanzar sin problemas.\n\n- Reintentos gratuitos.\n- Enemigos ligeramente más débiles.\n- Menor resistencia de los enemigos frente a las trampas.",
+                "tipo": "texto"
+            },
+            {
+                "contenido": "Modo Difícil",
+                "tipo": "subtitulo"
+            },
+            {
+                "contenido": "Un reto exigente pero justo.\n\nRequiere dominar todas las mecánicas del juego, combinar trampas y crear sinergias eficientes.\n\nEsta es la experiencia original que los desarrolladores pretendían ofrecer.",
+                "tipo": "texto"
+            },
+            {
+                "contenido": "Ajustes generales",
+                "tipo": "titulo"
+            },
+            {
+                "contenido": "- Se aumentó la vida de determinados enemigos.\n- Algunos enemigos ahora poseen mayor resistencia frente a ciertos tipos de trampas.\n- Reiniciar una oleada en dificultad Difícil cuesta ahora 5 Óbolos de Plata por intento.\n- Se ajustó la obtención de Gemas.\n- El Ancient Imaginarium solo permite comprar un dispositivo con descuento.\n- Ahora se obtienen Gemas y Óbolos adicionales al utilizar atajos para compensar la pérdida de recursos.\n- Las batallas largas ahora conceden recursos extra.\n- Los niveles pequeños y más difíciles ofrecen recompensas adicionales de Óbolos.\n- Las Cámaras del Tesoro ya no entregan Artefactos aleatorios. En su lugar, otorgan monedas adicionales para que el jugador las invierta como prefiera.\n- El Mulcher y sus versiones mejoradas ahora pueden eliminar un máximo de 5 enemigos.\n- La inmovilización del Rake se redujo de 6 a 2 segundos.\n- Se redujo el daño inicial del Artefacto Finisher Ballistas (-2 de daño).\n- El Artefacto Trigonometry Chart ya no reduce el daño de las Ballestas. En cambio, ahora obtiene +1 de daño cada 3 casillas recorridas (antes era cada 2).\n- La habilidad Eat Rats ahora cura 5 HP en lugar de 10.\n- Se eliminó del juego el modificador Tough Reinforcements.\n- El Artefacto Pendant of Arrow Dodging fue reemplazado por Pendant of Arrow Reflection. Ahora Asterion refleja una flecha por oleada en lugar de tener una probabilidad de esquivarla.\n- El Artefacto Vial of Rat Rabies reduce el daño de las ratas a 2. Si se combina con Rat Food, el daño pasa a ser 4.\n- Comprar varias veces determinados dispositivos y sus mejoras ahora incrementa progresivamente su precio. Afecta a:\n\n          / Hook\n          / Ballista Arrow Copier\n          / Cauldron\n          / Trojan Minotaur\n          / Sign Post\n\n- Comprar varios Artefactos por Óbolos de Plata o Gemas también incrementa su coste según la cantidad de Artefactos que ya poseas.\n- El equipo inicial ahora siempre es:\n\n          / Spike Trap\n          / Ballista\n          / Luring Trap\n          / Pressure Plate\n\nQueda todavía la sección de Corrección de errores (Bug Fixes), Mejoras (Improvements) y todo el Nuevo Contenido (artefactos y mejoras de dispositivos), que es aproximadamente la otra mitad del documento.",
+                "tipo": "texto"
+            }
+        ],
+        "cat": "actualizacion",
+        "desc": "Ya esta disponible el nuevo contenido.",
+        "fecha": "15 Julio 2026",
+        "id": "noticia-03",
+        "img": "imgs/noticias/minos-img-01.webp",
+        "modo": "cover",
+        "titulo": "Nuevo modo: ROGUELITE",
+        "url": ""
     }
 ]
