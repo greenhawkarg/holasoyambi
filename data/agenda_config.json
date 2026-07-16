@@ -2,19 +2,6 @@
     {
         "bg_imagen": "",
         "border_color": "#d72626",
-        "dia": "MIÉRCOLES",
-        "fecha": "15 DE JULIO",
-        "fecha_limite_calculada": "2026-08-06",
-        "hora": "13:00 HS",
-        "imagen": "imgs/index/agenda/conan_exiles_enhanced.jpg",
-        "juego": "CONAN EXILES ENHANCED",
-        "tipo": "CAMPAÑA",
-        "tipo_stream": "CAMPAÑA",
-        "video": "z5b-l29mzew"
-    },
-    {
-        "bg_imagen": "",
-        "border_color": "#d72626",
         "dia": "JUEVES",
         "fecha": "16 DE JULIO",
         "fecha_limite_calculada": "2026-07-16",
@@ -31,12 +18,25 @@
         "dia": "SÁBADO",
         "fecha": "18 DE JULIO",
         "fecha_limite_calculada": "2026-08-07",
-        "hora": "15:00 HS",
+        "hora": "18:30 HS",
         "imagen": "imgs/index/agenda/hell_clock.jpg",
         "juego": "HELL CLOCK",
         "tipo": "CAMPAÑA",
         "tipo_stream": "DESAFIO / CAMPAÑA",
         "video": "Mp9tbPaM7zs"
+    },
+    {
+        "tipo": "CAMPAÑA",
+        "fecha": "18 DE JULIO",
+        "juego": "FIRE AND ASHES",
+        "dia": "SÁBADO",
+        "hora": "20:00 HS",
+        "tipo_stream": "CONTENIDO EXCLUSIVO / DEMO CERRADA",
+        "imagen": "imgs/index/agenda/fire_and_ashes.jpg",
+        "video": "XtnKWDuRKGE",
+        "fecha_limite_calculada": "2026-08-13",
+        "bg_imagen": "",
+        "border_color": "#d72626"
     },
     {
         "bg_imagen": "",
@@ -76,5 +76,18 @@
         "tipo": "CAMPAÑA",
         "tipo_stream": "CAMPAÑA",
         "video": "EqwBoN9NROM"
+    },
+    {
+        "tipo": "CAMPAÑA",
+        "fecha": "21 DE JULIO",
+        "juego": "GROUND BRANCH",
+        "dia": "MARTES",
+        "hora": "15:30 HS",
+        "tipo_stream": "CAMPAÑA / INVITADOS POR EL STUDIO",
+        "imagen": "imgs/index/agenda/ground_branch.jpg",
+        "video": "h4pmHO4g90U",
+        "fecha_limite_calculada": "2026-08-13",
+        "bg_imagen": "",
+        "border_color": "#d72626"
     }
 ]
