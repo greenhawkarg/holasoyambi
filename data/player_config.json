@@ -13,5 +13,10 @@
     "file": "audio/10_-_For_You.mp3",
     "name": "Staind",
     "track": "For You"
+  },
+  {
+    "name": "Crossfade",
+    "track": "Cold",
+    "file": "audio/02_-_Cold.mp3"
   }
 ]
