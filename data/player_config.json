@@ -1,7 +1,12 @@
 [
   {
+    "file": "audio/As_The_Structure_Fails_-_06_-_Farewell.mp3",
     "name": "As The Structure Fails",
-    "track": "Farewell",
-    "file": "audio/As_The_Structure_Fails_-_06_-_Farewell.mp3"
+    "track": "Farewell"
+  },
+  {
+    "name": "Three Days Grace",
+    "track": "Animal I Have Become",
+    "file": "audio/1-03_-_Animal_I_Have_Become.mp3"
   }
 ]
