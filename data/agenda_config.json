@@ -2,19 +2,6 @@
     {
         "bg_imagen": "",
         "border_color": "#d72626",
-        "dia": "JUEVES",
-        "fecha": "16 DE JULIO",
-        "fecha_limite_calculada": "2026-07-16",
-        "hora": "16:00 HS",
-        "imagen": "imgs/index/agenda/john_carpenter's_toxic_commando.jpg",
-        "juego": "JOHN CARPENTER'S TOXIC COMMANDO",
-        "tipo": "CAMPAÑA",
-        "tipo_stream": "DESAFIO / CAMPAÑA",
-        "video": "jWY-FfH_Ln8"
-    },
-    {
-        "bg_imagen": "",
-        "border_color": "#d72626",
         "dia": "SÁBADO",
         "fecha": "18 DE JULIO",
         "fecha_limite_calculada": "2026-08-07",
@@ -26,17 +13,17 @@
         "video": "Mp9tbPaM7zs"
     },
     {
-        "tipo": "CAMPAÑA",
-        "fecha": "18 DE JULIO",
-        "juego": "FIRE AND ASHES",
-        "dia": "SÁBADO",
-        "hora": "20:00 HS",
-        "tipo_stream": "CONTENIDO EXCLUSIVO / DEMO CERRADA",
-        "imagen": "imgs/index/agenda/fire_and_ashes.jpg",
-        "video": "XtnKWDuRKGE",
-        "fecha_limite_calculada": "2026-08-13",
         "bg_imagen": "",
-        "border_color": "#d72626"
+        "border_color": "#d72626",
+        "dia": "SÁBADO",
+        "fecha": "18 DE JULIO",
+        "fecha_limite_calculada": "2026-08-13",
+        "hora": "20:00 HS",
+        "imagen": "imgs/index/agenda/fire_and_ashes.jpg",
+        "juego": "FIRE AND ASHES",
+        "tipo": "CAMPAÑA",
+        "tipo_stream": "CONTENIDO EXCLUSIVO / DEMO CERRADA",
+        "video": "XtnKWDuRKGE"
     },
     {
         "bg_imagen": "",
@@ -78,16 +65,16 @@
         "video": "EqwBoN9NROM"
     },
     {
-        "tipo": "CAMPAÑA",
-        "fecha": "21 DE JULIO",
-        "juego": "GROUND BRANCH",
-        "dia": "MARTES",
-        "hora": "15:30 HS",
-        "tipo_stream": "CAMPAÑA / INVITADOS POR EL STUDIO",
-        "imagen": "imgs/index/agenda/ground_branch.jpg",
-        "video": "h4pmHO4g90U",
-        "fecha_limite_calculada": "2026-08-13",
         "bg_imagen": "",
-        "border_color": "#d72626"
+        "border_color": "#d72626",
+        "dia": "MARTES",
+        "fecha": "21 DE JULIO",
+        "fecha_limite_calculada": "2026-08-13",
+        "hora": "15:30 HS",
+        "imagen": "imgs/index/agenda/ground_branch.jpg",
+        "juego": "GROUND BRANCH",
+        "tipo": "CAMPAÑA",
+        "tipo_stream": "CAMPAÑA / INVITADOS POR EL STUDIO",
+        "video": "h4pmHO4g90U"
     }
 ]
