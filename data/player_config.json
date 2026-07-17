@@ -1,12 +1,7 @@
 [
-    {
-        "name": "Ruby Friedman",
-        "track": "You’ll Never Leave Harlan Alive",
-        "file": "audio/01_you’ll_never_leave_harlan_alive.mp3"
-    },
-    {
-        "file": "audio/chevelle-face-to-the-floor.mp3",
-        "name": "CHEVELLE",
-        "track": "FACE TO THE FLOOR"
-    }
+  {
+    "file": "audio/chevelle-face-to-the-floor.mp3",
+    "name": "CHEVELLE",
+    "track": "FACE TO THE FLOOR"
+  }
 ]
