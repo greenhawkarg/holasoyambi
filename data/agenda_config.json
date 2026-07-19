@@ -2,32 +2,6 @@
     {
         "bg_imagen": "",
         "border_color": "#d72626",
-        "dia": "SÁBADO",
-        "fecha": "18 DE JULIO",
-        "fecha_limite_calculada": "2026-08-07",
-        "hora": "18:30 HS",
-        "imagen": "imgs/index/agenda/hell_clock.jpg",
-        "juego": "HELL CLOCK",
-        "tipo": "CAMPAÑA",
-        "tipo_stream": "DESAFIO / CAMPAÑA",
-        "video": "Mp9tbPaM7zs"
-    },
-    {
-        "bg_imagen": "",
-        "border_color": "#d72626",
-        "dia": "SÁBADO",
-        "fecha": "18 DE JULIO",
-        "fecha_limite_calculada": "2026-08-13",
-        "hora": "20:00 HS",
-        "imagen": "imgs/index/agenda/fire_and_ashes.jpg",
-        "juego": "FIRE AND ASHES",
-        "tipo": "CAMPAÑA",
-        "tipo_stream": "CONTENIDO EXCLUSIVO / DEMO CERRADA",
-        "video": "XtnKWDuRKGE"
-    },
-    {
-        "bg_imagen": "",
-        "border_color": "#d72626",
         "dia": "DOMINGO",
         "fecha": "19 DE JULIO",
         "fecha_limite_calculada": "2026-07-21",
