@@ -139,6 +139,17 @@
             return wrap;
         }
 
+        if (bloque.tipo === 'texto_rico') {
+            /* Único caso que usa innerHTML -- el HTML viene del editor
+               de texto rico del panel (negrita, h3/h4 internos, listas,
+               sangría). Los demás tipos siguen usando textContent tal
+               cual, sin tocarlos. */
+            const wrap = document.createElement('div');
+            wrap.className = 'noticia-rich';
+            wrap.innerHTML = bloque.contenido || '';
+            return wrap;
+        }
+
         /* tipo desconocido → lo ignoramos en vez de romper el render */
         return null;
     }

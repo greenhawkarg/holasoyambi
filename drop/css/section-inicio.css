@@ -1,0 +1,46 @@
+/* ==========================================================================
+   AMBI DROPS — Sección INICIO
+   Estilos propios del contenido de Inicio (cargado desde data/drops.json,
+   bloque "home"). Separado de drops.css para no acumular ahí todo.
+   ========================================================================== */
+
+.home-title {
+  font-family: var(--f-display);
+  font-size: clamp(20px, 2.6vw, 22px);
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: var(--bone);
+  margin: 28px 0 14px;
+}
+
+.home-bullets {
+  list-style: none;
+  margin: 0 0 22px;
+  padding: 0;
+}
+
+.home-bullets li {
+  position: relative;
+  padding-left: 18px;
+  color: var(--ink-muted);
+  font-size: 20px;
+  line-height: 1.6;
+  margin-bottom: 6px;
+}
+
+.home-bullets li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 10px;
+  width: 6px;
+  height: 6px;
+  background: var(--blood-bright);
+}
+
+.home-paragraph {
+  color: var(--ink-muted);
+  font-size: 20px;
+  line-height: 1.6;
+  margin: 0 0 14px;
+}

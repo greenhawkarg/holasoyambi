@@ -1,0 +1,126 @@
+{
+  "campaign": {
+    "game": "Hunt: Showdown 1896",
+    "title": "Twitch Drops",
+    "start_utc": "2026-07-22T15:00:00Z",
+    "end_utc": "2026-08-05T23:59:00Z",
+    "total_supply_crates": 22
+  },
+
+  "assets": {
+    "bg_image": "imgs/twitchdrops_bg.jpg",
+    "countdown_bg": "imgs/countdown_bg.jpg",
+    "badge_image": "imgs/hunter-bages.png"
+  },
+
+  "home": {
+    "title": "Campaña de Twitch Drops",
+    "intro": "Esta campaña de Twitch Drops incluye recompensas rotativas durante toda su duración, entre ellas:",
+    "bullets": [
+      "Un Cazador Legendario aleatorio.",
+      "Aspectos (Skins) Legendarios aleatorios.",
+      "Amuletos (Charms) aleatorios.",
+      "Avatares aleatorios.",
+      "El nuevo aspecto legendario Golden Hair Trigger: Dolch Precision.",
+      "Cajas de suministros (Supply Crates)."
+    ],
+    "paragraphs": [
+      "La campaña está dividida en seis ventanas de recompensas. Cada una cuenta con su propio progreso basado en el tiempo de visualización, y tu progreso solo se aplica a la ventana de recompensas que esté activa en ese momento.",
+      "Las recompensas principales cambian cada 2 o 3 días, mientras que las Cajas de suministros estarán disponibles durante toda cada ventana.",
+      "A lo largo de toda la campaña podrás conseguir hasta 22 Cajas de suministros, además de las recompensas principales rotativas que se detallan a continuación."
+    ]
+  },
+
+  "reward_windows": [
+    {
+      "id": "w1p1",
+      "label": "Semana 1 / Parte 1",
+      "start_utc": "2026-07-22T15:00:00Z",
+      "end_utc": "2026-07-24T15:00:00Z",
+      "tracks": [
+        { "time": "30 min", "reward": "Suministro" },
+        { "time": "1 hora", "reward": "Suministro" },
+        { "time": "2 horas", "reward": "Suministro" },
+        { "time": "3 horas", "reward": "Suministro" },
+        { "time": "4 horas", "reward": "Amuleto aleatorio" }
+      ]
+    },
+    {
+      "id": "w1p2",
+      "label": "Semana 1 / Parte 2",
+      "start_utc": "2026-07-24T15:00:00Z",
+      "end_utc": "2026-07-26T15:00:00Z",
+      "tracks": [
+        { "time": "30 min", "reward": "Suministro" },
+        { "time": "1 hora", "reward": "Suministro" },
+        { "time": "2 horas", "reward": "Suministro" },
+        { "time": "3 horas", "reward": "Suministro" },
+        { "time": "4 horas", "reward": "Skin Legendaria aleatoria" }
+      ]
+    },
+    {
+      "id": "w1p3",
+      "label": "Semana 1 / Parte 3",
+      "start_utc": "2026-07-26T15:00:00Z",
+      "end_utc": "2026-07-29T15:00:00Z",
+      "tracks": [
+        { "time": "30 min", "reward": "Suministro" },
+        { "time": "1 hora", "reward": "Suministro" },
+        { "time": "2 horas", "reward": "Avatar aleatorio" },
+        { "time": "3 horas", "reward": "Suministro" },
+        { "time": "4 horas", "reward": "Golden Hair Trigger: Precision" }
+      ]
+    },
+    {
+      "id": "w2p1",
+      "label": "Semana 2 / Parte 1",
+      "start_utc": "2026-07-29T15:00:00Z",
+      "end_utc": "2026-07-31T15:00:00Z",
+      "tracks": [
+        { "time": "30 min", "reward": "Suministro" },
+        { "time": "1 hora", "reward": "Suministro" },
+        { "time": "2 horas", "reward": "Suministro" },
+        { "time": "3 horas", "reward": "Suministro" },
+        { "time": "4 horas", "reward": "Amuleto aleatorio" }
+      ]
+    },
+    {
+      "id": "w2p2",
+      "label": "Semana 2 / Parte 2",
+      "start_utc": "2026-07-31T15:00:00Z",
+      "end_utc": "2026-08-02T15:00:00Z",
+      "tracks": [
+        { "time": "30 min", "reward": "Suministro" },
+        { "time": "1 hora", "reward": "Suministro" },
+        { "time": "2 horas", "reward": "Suministro" },
+        { "time": "3 horas", "reward": "Suministro" },
+        { "time": "4 horas", "reward": "Skin Legendaria aleatoria" }
+      ]
+    },
+    {
+      "id": "w2p3",
+      "label": "Semana 2 / Parte 3",
+      "start_utc": "2026-08-02T15:00:00Z",
+      "end_utc": "2026-08-05T23:59:00Z",
+      "tracks": [
+        { "time": "30 min", "reward": "Suministro" },
+        { "time": "1 hora", "reward": "Suministro" },
+        { "time": "2 horas", "reward": "Avatar aleatorio" },
+        { "time": "3 horas", "reward": "Suministro" },
+        { "time": "4 horas", "reward": "Cazador Legendario aleatorio" }
+      ]
+    }
+  ],
+
+  "supply_crate": {
+    "description": "Cada Suministro otorga 8 instancias de objetos in-game. No se recibe una caja física: el contenido se entrega como pop-ups individuales al reclamarlo en Twitch.",
+    "contents": [
+      { "qty": 1, "item": "Rifle aleatorio" },
+      { "qty": 1, "item": "Pistola aleatoria" },
+      { "qty": 1, "item": "Escopeta aleatoria" },
+      { "qty": 1, "item": "Arma especial aleatoria" },
+      { "qty": 3, "item": "Herramienta o consumible aleatorio" },
+      { "qty": 1, "item": "Cantidad aleatoria de Hunt Dollars" }
+    ]
+  }
+}

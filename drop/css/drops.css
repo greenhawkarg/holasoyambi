@@ -1,0 +1,456 @@
+/* ==========================================================================
+   AMBI DROPS — Hunt: Showdown 1896
+   Sistema de diseño: "Field Dossier" — parte reporte de campaña, parte
+   telegrama de guerra. Negro carbón + cuero envejecido, rojo óxido como
+   único acento de alarma, latón para remaches y marcos.
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=EB+Garamond:ital,wght@0,400;0,600;1,400&family=Courier+Prime:wght@400;700&display=swap');
+
+:root {
+  /* Color — paleta oficial (3 capturas de referencia del usuario):
+     1) neutros oscuros -> fondos generales
+     2) violetas -> acento de Twitch Drops
+     3) dorado/gris cálido -> marcos, detalles, texto sobre botones */
+  --bg-void:      #0c1013;   /* fondo general, casi negro */
+  --bg-panel:     #101417;   /* paneles / footerbar */
+  --bg-raised:    #121619;   /* tiles del countdown, cards */
+  --bg-raised-2:  #15181b;
+  --accent:        #4e3e68;   /* violeta Twitch Drops — alarma, líneas */
+  --accent-bright: #6e5f7f;   /* violeta claro — hover sobre acento */
+  --blood:        #6e1f1c;   /* rojo óxido — countdown y detalles puntuales */
+  --blood-bright: #9c2c22;   /* rojo óxido claro — estado activo/tick */
+  --brass:        #705e38;   /* dorado/bronce — remaches, marcos, íconos */
+  --brass-dim:    #575a57;   /* gris cálido — bordes y detalles secundarios */
+  --bone:         #ded3b8;   /* texto principal (sin cambios — ninguna captura trae un claro) */
+  --ink-muted:    #6f6d66;   /* texto secundario — gris cálido de la captura 3 */
+  --ink-faint:    #1a1917;   /* líneas y bordes tenues */
+
+  /* Tipografía */
+  --f-display: 'Cinzel', serif;
+  --f-body:    'EB Garamond', serif;
+  --f-mono:    'Courier Prime', monospace;
+
+  /* Fondos — fallback estático; se sobreescriben por JS (countdown.js)
+     leyendo el bloque "assets" de data/drops.json, para que después el
+     panel de control pueda cambiar la imagen sin tocar CSS. */
+  --bg-image:         url('../imgs/twitchdrops_bg.jpg');
+  --countdown-bg-image: url('../imgs/countdown_bg.jpg');
+
+  /* Layout */
+  --footerbar-h: 76px;
+  --submenu-h: 52px;
+  --header-pad: clamp(24px, 5vw, 56px);
+  --radius: 2px;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow: hidden;
+  background: var(--bg-void);
+  color: var(--bone);
+  font-family: var(--f-body);
+}
+
+body {
+  /* BG general de la web: imagen real (imgs/twitchdrops_bg.jpg) al fondo,
+     con un velo oscuro semitransparente encima para que el texto (bone/brass)
+     siga siendo legible, y arriba de todo la textura sutil de lona/grano
+     que ya teníamos. El orden de las capas en background-image va de
+     "más arriba" a "más abajo": textura -> velo oscuro -> foto. */
+  background-image:
+    /* 1. textura de grano fino (capa superior) */
+    repeating-linear-gradient(0deg, rgba(255,255,255,0.012) 0px, rgba(255,255,255,0.012) 1px, transparent 1px, transparent 3px),
+    /* 2. viñeta roja sutil arriba (capa intermedia, se mantenía antes) */
+    radial-gradient(ellipse at 50% -10%, rgba(78,62,104,0.14), transparent 55%),
+    /* 3. velo oscuro para contraste de texto sobre la foto — bajado a
+       0.35/0.45 para que la imagen se vea bien, solo lo justo para que
+       el texto no se pierda */
+    linear-gradient(rgba(11,10,8,0.35), rgba(11,10,8,0.45)),
+    /* 4. la foto de fondo en sí (editable desde el panel vía assets.bg_image) */
+    var(--bg-image);
+
+  background-repeat: repeat, no-repeat, no-repeat, no-repeat;
+  background-position: top left, top center, top center, center top;
+  background-size: auto, 100% 100%, 100% 100%, cover;
+
+  /* fija la foto al viewport para que no se mueva al hacer scroll;
+     en mobile Safari esto puede pesar, así que caemos a scroll normal ahí */
+  background-attachment: scroll, scroll, scroll, fixed;
+
+  padding-bottom: calc(var(--footerbar-h) + 24px);
+  min-height: 100vh;
+}
+
+/* En mobile, background-attachment: fixed da problemas de rendimiento/scroll
+   en iOS Safari — lo pasamos a scroll normal solo ahí. */
+@media (max-width: 768px) {
+  body {
+    background-attachment: scroll, scroll, scroll, scroll;
+  }
+}
+
+::selection { background: var(--accent); color: var(--bone); }
+
+/* ---------- Header ---------- */
+
+.dossier-header {
+  padding: var(--header-pad) var(--header-pad) 8px;
+  text-align: center;
+  border-bottom: 1px solid var(--ink-faint);
+}
+
+.eyebrow {
+  font-family: var(--f-mono);
+  font-size: 12px;
+
+  letter-spacing: 0.32em;
+  color: var(--brass);
+  text-transform: uppercase;
+}
+
+.dossier-title {
+  font-family: var(--f-display);
+  font-weight: 700;
+  font-size: clamp(28px, 4.5vw, 48px);
+  letter-spacing: 0.04em;
+  margin: 10px 0 4px;
+  color: var(--bone);
+  text-transform: uppercase;
+}
+
+.dossier-sub {
+  font-family: var(--f-body);
+  font-style: italic;
+  color: var(--ink-muted);
+  font-size: 16px;
+  margin-bottom: 20px;
+}
+
+/* ---------- Countdown (elemento firma) ---------- */
+
+.countdown-wrap {
+  max-width: 640px;
+  margin: auto;
+  padding: 38px clamp(116px, 4vw, 36px) 38px;
+  background-color: var(--bg-panel);
+  background-image:
+    linear-gradient(rgba(11,10,8,0.55), rgba(11,10,8,0.65)),
+    var(--countdown-bg-image);
+  background-size: cover;
+  background-position: center;
+  border: 5px solid var(--ink-faint);
+  position: relative;
+}
+
+.countdown-label {
+  text-align: center;
+  font-family: var(--f-mono);
+  font-size: 13px;
+  letter-spacing: 0.08em;
+  color: var(--ink-muted);
+  margin-bottom: 30px;
+}
+
+.countdown-label strong {
+  color: var(--bone);
+  font-weight: 700;
+}
+
+.countdown-label.live { color: var(--blood-bright); }
+
+.countdown-tiles {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+}
+
+.tile {
+  background: var(--bg-raised);
+  border: 1px solid var(--brass-dim);
+  border-radius: var(--radius);
+  padding: 14px 4px 10px;
+  text-align: center;
+  position: relative;
+}
+
+/* remaches de latón en las esquinas de cada tile */
+.tile::before, .tile::after {
+  content: "";
+  position: absolute;
+  width: 4px; height: 4px;
+  border-radius: 50%;
+  background: var(--brass-dim);
+  top: 5px;
+}
+.tile::before { left: 5px; }
+.tile::after  { right: 5px; }
+
+.tile .num {
+  display: block;
+  font-family: var(--f-mono);
+  font-weight: 700;
+  font-size: clamp(24px, 5vw, 34px);
+  color: var(--bone);
+  font-variant-numeric: tabular-nums;
+  transition: color 0.2s ease;
+}
+
+.tile .num.tick { color: var(--blood-bright); }
+
+.tile .unit {
+  display: block;
+  margin-top: 4px;
+  font-family: var(--f-mono);
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  color: var(--ink-muted);
+  text-transform: uppercase;
+}
+
+/* ---------- Content area (cargado dinámicamente) ---------- */
+
+#content {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 var(--header-pad) 40px;
+  min-height: 30vh;
+}
+
+.content-fade {
+  animation: fadeIn 0.35s ease;
+}
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.section-title {
+  font-family: var(--f-display);
+  font-size: clamp(20px, 3vw, 26px);
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: var(--bone);
+  border-bottom: 1px solid var(--ink-faint);
+  padding-bottom: 12px;
+  margin: 28px 0 20px;
+}
+
+.section-intro {
+  color: var(--ink-muted);
+  font-size: 17px;
+  line-height: 1.6;
+  max-width: 65ch;
+}
+
+/* ---------- Footerbar ---------- */
+
+.footerbar {
+  position: fixed;
+  bottom: 0; left: 0; right: 0;
+  height: var(--footerbar-h);
+  background: var(--bg-panel);
+  border-top: 1px solid var(--brass-dim);
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  gap: 2px;
+  z-index: 50;
+  transition: transform 0.3s ease;
+}
+
+.footerbar.is-pushed {
+  transform: translateY(calc(-1 * var(--submenu-h)));
+}
+
+.foot-btn {
+  font-family: var(--f-display);
+  font-size: clamp(12px, 1.6vw, 15px);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-muted);
+  background: transparent;
+  border: none;
+  padding: 0 clamp(18px, 4vw, 44px);
+  cursor: pointer;
+  position: relative;
+  transition: color 0.2s ease;
+}
+
+.foot-btn:hover { color: var(--bone); }
+
+.foot-btn.active { color: var(--bone); }
+
+.foot-btn.is-disabled {
+  opacity: 0.4;
+  pointer-events: none;
+}
+
+.foot-btn.active::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 12%; right: 12%;
+  height: 2px;
+  background: var(--blood-bright);
+}
+
+.foot-btn .btn-mark {
+  display: block;
+  font-family: var(--f-mono);
+  font-size: 9px;
+  letter-spacing: 0.2em;
+  color: var(--brass);
+  margin-top: 3px;
+}
+
+@media (max-width: 480px) {
+  .countdown-tiles { gap: 6px; }
+  .foot-btn { padding: 0 14px; }
+}
+
+/* ---------- Countdown solo en Inicio ---------- */
+
+.countdown-wrap.is-hidden {
+  display: none;
+}
+
+/* ---------- Submenú de Campaña (sale hacia arriba con animación) ---------- */
+
+.inicio-submenu {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: var(--submenu-h);
+  background: #090b0d;
+  border-top: 1px solid var(--ink-faint);
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  gap: 2px;
+  z-index: 44;
+  transform: translateY(100%);
+  opacity: 0;
+  pointer-events: none;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.inicio-submenu.is-open {
+  transform: translateY(0);
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.sub-btn {
+  font-family: var(--f-display);
+  font-size: clamp(11px, 1.4vw, 13px);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink-muted);
+  background: transparent;
+  border: none;
+  padding: 0 24px;
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.sub-btn:hover {
+  color: var(--bone);
+  background: rgba(255,255,255,0.04);
+}
+
+.sub-btn.active {
+  background: var(--brass);
+  color: var(--bg-void);
+}
+
+
+/* ---------- Page scroll (contenedor interno, la ventana nunca scrollea) ---------- */
+
+.page-scroll {
+  height: calc(100vh - var(--footerbar-h));
+  overflow-y: scroll;
+  overscroll-behavior: contain;
+  display: flex;
+  flex-direction: column;
+
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.page-scroll::-webkit-scrollbar {
+  display: none;               /* Chrome, Safari, Edge Chromium */
+}
+
+.page-scroll.has-submenu-open {
+  height: calc(100vh - var(--footerbar-h) - var(--submenu-h));
+}
+
+/* ---------- Indicador de scroll (doble flecha sobre el footer) ---------- */
+
+.scroll-cue {
+  position: fixed;
+  left: 50%;
+  bottom: calc(var(--footerbar-h) + 14px);
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  pointer-events: none;
+  z-index: 40;
+}
+
+.scroll-cue .chevron {
+  width: 14px;
+  height: 14px;
+  border-right: 2px solid var(--brass);
+  border-bottom: 2px solid var(--brass);
+  transform: rotate(45deg);
+  animation: cuePulse 1.6s ease-in-out infinite;
+}
+
+.scroll-cue .chevron:last-child {
+  margin-top: -8px;
+  animation-delay: 0.25s;
+}
+
+@keyframes cuePulse {
+  0%, 100% { opacity: 0.25; }
+  50%      { opacity: 1; }
+}
+
+/* ---------- Badge esquina inferior izquierda ---------- */
+
+.hunter-badge {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  height: 650px;
+  width: auto;
+  z-index: 60;
+  pointer-events: none;
+}
+
+.hunter-profile-overlay {
+  position: fixed;
+  inset: 0;
+  opacity: 0;
+  pointer-events: none;
+  z-index: 70;
+}
+
+.hunter-profile-panel {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: min(480px, 100%);
+  transform: translateX(100%);
+  z-index: 80;
+}

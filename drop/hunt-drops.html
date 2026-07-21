@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AmbiTV · Showdown Drops</title>
+    <link rel="stylesheet" href="css/drops.css">
+    <link rel="stylesheet" href="css/section-inicio.css">
+    <link rel="stylesheet" href="css/section-suministros.css">
+    <link rel="stylesheet" href="css/section-recompensas.css">
+</head>
+<body>
+
+  <div class="page-scroll">
+
+    <header class="dossier-header">
+      <div class="eyebrow">Reporte de Campaña</div>
+      <h1 class="dossier-title">Hunt: Showdown 1896 — Twitch Drops</h1>
+      <p class="dossier-sub">Mirá el stream. Reclamá tu botín.</p>
+    </header>
+
+    <!-- COUNTDOWN: se llena solo con js/countdown.js usando data/drops.json -->
+    <div class="countdown-wrap">
+      <div class="countdown-label" id="countdown-label">Cargando estado de la campaña…</div>
+      <div class="countdown-tiles">
+        <div class="tile"><span class="num" id="cd-days">00</span><span class="unit">Días</span></div>
+        <div class="tile"><span class="num" id="cd-hours">00</span><span class="unit">Horas</span></div>
+        <div class="tile"><span class="num" id="cd-mins">00</span><span class="unit">Min</span></div>
+        <div class="tile"><span class="num" id="cd-secs">00</span><span class="unit">Seg</span></div>
+      </div>
+    </div>
+
+    <!-- CONTENIDO: reemplazado dinámicamente por js/loader.js -->
+    <main id="content"></main>
+
+  </div>
+
+  <!-- Panel de perfil de cazador: vive fuera de #content a propósito.
+       Si estuviera dentro del fragmento que loader.js refetchea en cada
+       cambio de pestaña, quedaría atrapado dentro del nodo que anima
+       (.content-fade), y position:fixed pasaría a calcularse contra ese
+       nodo en vez del viewport durante los 0.35s de la animación — eso
+       era el glitch. Acá arriba nace una sola vez con el resto del layout
+       fijo (footerbar, countdown, badge) y nunca se destruye. -->
+  <div id="hunter-profile-overlay" class="hunter-profile-overlay"></div>
+  <aside id="hunter-profile-panel" class="hunter-profile-panel">
+    <button class="hunter-profile-close" id="hunter-profile-close" aria-label="Cerrar">&times;</button>
+    <div class="hunter-profile-img-wrap">
+      <img id="hunter-profile-img" src="" alt="">
+    </div>
+    <div class="hunter-profile-body">
+      <h3 id="hunter-profile-name"></h3>
+      <div id="hunter-profile-sections"></div>
+    </div>
+  </aside>
+
+  <!-- Indicador de "hay más contenido" -->
+  <div class="scroll-cue" id="scroll-cue" aria-hidden="true">
+    <span class="chevron"></span>
+    <span class="chevron"></span>
+  </div>
+    
+  <!-- Badge decorativo, esquina inferior izquierda (src lo setea countdown.js desde data/drops.json) -->
+  <img alt="" class="hunter-badge" id="hunter-badge">
+
+    <!-- Submenú de Campaña: sale hacia arriba con animación -->
+  <nav class="inicio-submenu" id="inicio-submenu">
+    <button class="sub-btn" data-target="campana-main">Campaña</button>
+    <button class="sub-btn" data-target="home-incluye">Qué incluye</button>
+  </nav>
+
+  <!-- FOOTERBAR: navegación fija -->
+  <nav class="footerbar">
+    <button class="foot-btn active" data-section="countdown">
+      Countdown
+      <span class="btn-mark">Inicio</span>
+    </button>
+    <button class="foot-btn" data-section="campana">
+      Campaña
+      <span class="btn-mark">Twitch Drops</span>
+    </button>
+    <button class="foot-btn" data-section="suministros">
+      Suministros
+      <span class="btn-mark">Supply Crates</span>
+    </button>
+    <button class="foot-btn" data-section="recompensas">
+      Recompensas
+      <span class="btn-mark">Rewards</span>
+    </button>
+  </nav>
+
+  <script src="js/assets.js"></script>
+  <script src="js/countdown.js"></script>
+  <script src="js/loader.js"></script>
+  <script src="js/hunter-profile.js"></script>
+</body>
+</html>

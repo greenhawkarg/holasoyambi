@@ -1,0 +1,63 @@
+/* ==========================================================================
+   AMBI DROPS — Sección SUMINISTROS
+   Estilos propios del contenido de Suministros (sections/suministros.html).
+   Separado de drops.css para no acumular ahí todo, igual que section-inicio.css.
+   ========================================================================== */
+
+/* .section-intro trae max-width: 65ch por defecto (drops.css), pensado para
+   texto largo. Acá lo sacamos para que use el mismo ancho que Inicio
+   (limitado solo por #content, 900px). */
+.suministros-view .section-intro {
+  max-width: none;
+}
+
+.sum-total {
+  font-family: var(--f-mono);
+  font-size: 13px;
+  letter-spacing: 0.08em;
+  color: var(--brass);
+  margin: 18px 0 24px;
+}
+
+.sum-contents {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 12px;
+}
+
+.sum-card {
+  background: var(--bg-raised);
+  border: 1px solid var(--brass-dim);
+  padding: 14px 16px;
+}
+
+.sum-card-qty {
+  font-family: var(--f-mono);
+  font-size: 20px;
+  color: var(--bone);
+}
+
+.sum-card-label {
+  font-size: 15px;
+  color: var(--ink-muted);
+  margin-top: 2px;
+}
+
+.sum-window-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--ink-faint);
+  font-size: 15px;
+}
+
+.sum-window-label {
+  color: var(--bone);
+}
+
+.sum-window-date {
+  color: var(--ink-muted);
+  font-family: var(--f-mono);
+  font-size: 13px;
+}

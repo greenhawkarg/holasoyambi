@@ -1,63 +1,79 @@
 [
     {
-        "badge": "Evento",
-        "bg": "noticia/imgs/bg-00.webp",
-        "bloques": [
-            {
-                "contenido": "Enterate como funciona.",
-                "tipo": "titulo"
-            },
-            {
-                "contenido": "Al 26.º Regimiento: ¡Ahora no es momento de retirarse! Sin importar las bajas que hayamos sufrido, todos y cada uno de ustedes deben levantarse por sus propios medios y llevar esa Carga Corrupta al globo, o el Delegado de la Desolación nos colgará de los dedos de los pies.",
-                "tipo": "texto"
-            },
-            {
-                "modo": "contain",
-                "src": "noticia/imgs/img-02.webp",
-                "tipo": "imagen"
-            },
-            {
-                "contenido": "Descubre los diferentes hitos en el rastreador de arriba para ver todas las recompensas que puedes ganar.\n\nVisitáen redes sociales y esta página con regularidad para estar al tanto del progreso de los cazadores y reclamar tus premios cuando alcancemos nuestros objetivos. Ten en cuenta que el plazo para canjear los códigos será limitado, ¡así que no te los pierdas!",
-                "tipo": "texto"
-            }
-        ],
-        "cat": "evento",
-        "desc": "Queres saber como participar ?",
-        "fecha": "11 Julio 2026",
-        "id": "noticia-01",
-        "img": "imgs/noticias/img-01.webp",
-        "modo": "cover",
-        "titulo": "Evento \" CARGA CORRUPTA \"",
-        "url": ""
-    },
-    {
-        "badge": "Actualización",
+        "badge": "Noticia",
         "bg": "",
         "bloques": [
             {
-                "contenido": "Agregados",
+                "contenido": "GROUND BRANCH V1.0 ya llegó.",
                 "tipo": "titulo"
             },
             {
-                "contenido": "- Se añadió el mapa de colaboración \"Museo HIKAKIN\".\n- Incluye mecánicas exclusivas disponibles únicamente durante esta colaboración.\n- Se agregó una versión alfa del soporte para controles. (La navegación por la interfaz de usuario (UI) aún no es compatible).\n- Se añadieron las etiquetas de región para Japón, Corea del Sur y Asia Oriental.",
-                "tipo": "texto"
+                "contenido": "<p data-start=\"319\" data-end=\"998\" class=\"PDq2pG_selectionAnchorContainer\">Además del <strong data-start=\"330\" data-end=\"355\">Prólogo de la campaña</strong>, que incluye <strong data-start=\"369\" data-end=\"393\">2 nuevas Operaciones</strong>, esta versión incorpora una importante renovación de la IA enemiga, el nuevo sistema de armaduras, una revisión completa del sistema de puertas, una actualización del catálogo de mapas (2 mapas completamente nuevos, 2 rehechos desde cero, una gran remodelación de otro mapa y varias mejoras adicionales), el nuevo modo de juego <strong data-start=\"722\" data-end=\"736\">Extracción</strong>, una actualización del movimiento del personaje y otras animaciones, una amplia variedad de nuevas armas y equipamiento, fases lunares seleccionables, numerosas mejoras visuales y de audio, una enorme cantidad de correcciones de errores y bloqueos, y mucho más.<span aria-hidden=\"true\" class=\"PDq2pG_selectionAnchor\"></span></p>\n<p data-start=\"1000\" data-end=\"1144\">Todo esto fue desarrollado sobre una base de código completamente refactorizada para ofrecer mayor estabilidad y facilitar futuras ampliaciones.</p>\n<p data-start=\"1146\" data-end=\"1218\">💡 <strong data-start=\"1149\" data-end=\"1218\">Si todavía no lo hiciste, asegurate de leer el Intel Report #032.</strong></p>\n<p data-start=\"1220\" data-end=\"1471\">Como explicamos en nuestro último blog de desarrollo, este es el comienzo del camino posterior al lanzamiento. Cada actualización del roadmap seguirá construyendo sobre esta base con nuevas misiones de campaña, características, mejoras y correcciones.</p>\n<p data-start=\"1473\" data-end=\"1639\">💡 Además de las actualizaciones previstas, también podremos publicar hotfixes y pequeños parches entre las versiones principales. ¡Sigan enviándonos sus comentarios!</p>",
+                "tipo": "texto_rico"
             },
             {
-                "contenido": "Correcciones y ajustes",
+                "contenido": "Notas de la versión 1.0",
                 "tipo": "titulo"
             },
             {
-                "contenido": "- Se corrigió un problema por el que la detección de colisiones no desaparecía cuando el clon estaba oculto.\n- Se ajustó el campo de visión (FOV) del Hunter, aumentando de 100 a 105.",
-                "tipo": "texto"
+                "modo": "contain",
+                "src": "noticia/imgs/1784483900273-01.jpg",
+                "tipo": "imagen"
+            },
+            {
+                "contenido": "<h2 data-section-id=\"1ykprhv\" data-start=\"2090\" data-end=\"2100\" class=\"PDq2pG_selectionAnchorContainer\">General<span aria-hidden=\"true\" class=\"PDq2pG_selectionAnchor\"></span></h2>\n<p data-start=\"2102\" data-end=\"2184\">Estos son algunos de los cambios más visibles que notarás apenas inicies el juego:</p>\n<ul data-start=\"2186\" data-end=\"2942\">\n<li data-section-id=\"j65j4o\" data-start=\"2186\" data-end=\"2271\">\nEl menú principal fue renovado con una nueva cinemática para introducir la campaña.\n</li>\n<li data-section-id=\"4jlgoy\" data-start=\"2272\" data-end=\"2493\">\nSe agregaron y actualizaron varias piezas musicales, incluyendo:\n<ul data-start=\"2341\" data-end=\"2493\">\n<li data-section-id=\"1sftj0o\" data-start=\"2341\" data-end=\"2369\">\nmúsica del menú principal,\n</li>\n<li data-section-id=\"mgqqsy\" data-start=\"2372\" data-end=\"2412\">\nsonidos de transición entre pantallas,\n</li>\n<li data-section-id=\"1gddjvd\" data-start=\"2415\" data-end=\"2493\">\nmúsica para los briefings del nuevo punto caliente del noroeste de Pakistán.\n</li>\n</ul>\n</li>\n<li data-section-id=\"ivuw8e\" data-start=\"2494\" data-end=\"2730\">\nSe creó una <strong data-start=\"2508\" data-end=\"2522\">Ready Room</strong> completamente nueva.\n<ul data-start=\"2546\" data-end=\"2730\">\n<li data-section-id=\"wks8sd\" data-start=\"2546\" data-end=\"2621\">\nAhora forma parte de <strong data-start=\"2569\" data-end=\"2594\">The Farm (Camp Peary)</strong>, el mapa de entrenamiento.\n</li>\n<li data-section-id=\"18k66jd\" data-start=\"2624\" data-end=\"2730\">\nDesde allí podrás iniciar:\n<ul data-start=\"2657\" data-end=\"2730\">\n<li data-section-id=\"k9ep1t\" data-start=\"2657\" data-end=\"2676\">\nmisiones rápidas,\n</li>\n<li data-section-id=\"nza8tf\" data-start=\"2681\" data-end=\"2699\">\npartidas online,\n</li>\n<li data-section-id=\"1o4ojgl\" data-start=\"2704\" data-end=\"2730\">\noperaciones del Prólogo.\n</li>\n</ul>\n</li>\n</ul>\n</li>\n<li data-section-id=\"12t5pf8\" data-start=\"2731\" data-end=\"2843\">\nLa nueva pose del operador en la pantalla de personalización permite apreciar completamente el arma principal.\n</li>\n<li data-section-id=\"1shz0mx\" data-start=\"2844\" data-end=\"2942\">\nLas pantallas de carga ahora incluyen imágenes de fondo y pequeños cambios visuales adicionales.&nbsp;</li>\n</ul>",
+                "tipo": "texto_rico"
+            },
+            {
+                "contenido": "Modo Operación",
+                "tipo": "titulo"
+            },
+            {
+                "contenido": "<p data-start=\"2969\" data-end=\"3050\" class=\"PDq2pG_selectionAnchorContainer\">El gran protagonista de esta actualización y el verdadero comienzo de la campaña.<span aria-hidden=\"true\" class=\"PDq2pG_selectionAnchor\"></span></p>\n<p data-start=\"3052\" data-end=\"3101\">El modo <strong data-start=\"3060\" data-end=\"3074\">Operations</strong> vuelve a estar disponible.</p>\n<p data-start=\"3103\" data-end=\"3332\">Desde el menú principal podrás acceder al <strong data-start=\"3145\" data-end=\"3164\">Operations Menu</strong>, donde podrás explorar los distintos <strong data-start=\"3202\" data-end=\"3214\">Hotspots</strong> (zonas de interés de la CIA) directamente sobre el mapa o mediante la lista ubicada en la esquina inferior izquierda.</p>\n<p data-start=\"3334\" data-end=\"3470\">Al pasar el cursor sobre un hotspot aparecerá un panel de noticias en la parte superior derecha mostrando los acontecimientos recientes.</p>\n<h3 data-section-id=\"1y8qyju\" data-start=\"3472\" data-end=\"3489\">Nuevo Hotspot</h3>\n<p data-start=\"3491\" data-end=\"3533\"><strong data-start=\"3491\" data-end=\"3533\">Noroeste de Pakistán (Kill or Capture)</strong></p>\n<p data-start=\"3535\" data-end=\"3599\">Este escenario sirve como introducción al Prólogo de la campaña.</p>\n<h3 data-section-id=\"o04l9k\" data-start=\"3601\" data-end=\"3623\">Nuevas Operaciones</h3>\n<ul data-start=\"3625\" data-end=\"3668\">\n<li data-section-id=\"1urqfic\" data-start=\"3625\" data-end=\"3645\">\n<strong data-start=\"3627\" data-end=\"3645\">01. Onyx Flame</strong>\n</li>\n<li data-section-id=\"jfk23e\" data-start=\"3646\" data-end=\"3668\">\n<strong data-start=\"3648\" data-end=\"3668\">02. Gilded Arrow</strong>\n</li>\n</ul>\n<p data-start=\"3670\" data-end=\"3701\">Se juegan de forma consecutiva.</p>\n<p data-start=\"3703\" data-end=\"3752\">Al completar la primera se desbloquea la segunda.</p>\n<p data-start=\"3754\" data-end=\"3769\">Pueden jugarse:</p>\n<ul data-start=\"3771\" data-end=\"3838\">\n<li data-section-id=\"164hxiz\" data-start=\"3771\" data-end=\"3795\">\nen solitario (offline)\n</li>\n<li data-section-id=\"m2527o\" data-start=\"3796\" data-end=\"3817\">\nen solitario online\n</li>\n<li data-section-id=\"qbzshy\" data-start=\"3818\" data-end=\"3838\">\ncooperativo online</li></ul>",
+                "tipo": "texto_rico"
+            },
+            {
+                "modo": "contain",
+                "src": "noticia/imgs/1784484604297-02.jpg",
+                "tipo": "imagen"
+            },
+            {
+                "contenido": "Briefings completamente doblados",
+                "tipo": "titulo"
+            },
+            {
+                "contenido": "<p data-start=\"3882\" data-end=\"3977\" class=\"PDq2pG_selectionAnchorContainer\">Los informes tanto del hotspot como de cada misión cuentan ahora con actuación de voz completa.<span aria-hidden=\"true\" class=\"PDq2pG_selectionAnchor\"></span></p>\n<p data-start=\"3979\" data-end=\"4005\">Participan los personajes:</p>\n<ul data-start=\"4007\" data-end=\"4060\">\n<li data-section-id=\"1tni5cu\" data-start=\"4007\" data-end=\"4022\">\n<strong data-start=\"4009\" data-end=\"4022\">John Hawk</strong>\n</li>\n<li data-section-id=\"g9kk9p\" data-start=\"4023\" data-end=\"4060\">\nel controlador del equipo <strong data-start=\"4051\" data-end=\"4060\">Forge</strong>\n</li>\n</ul>\n<p data-start=\"4062\" data-end=\"4135\">Los controles de reproducción ubicados sobre el cuadro de texto permiten:</p>\n<ul data-start=\"4137\" data-end=\"4179\">\n<li data-section-id=\"1jhj5ln\" data-start=\"4137\" data-end=\"4149\">\nreproducir\n</li>\n<li data-section-id=\"1iptwmk\" data-start=\"4150\" data-end=\"4158\">\npausar\n</li>\n<li data-section-id=\"1asq4c7\" data-start=\"4159\" data-end=\"4179\">\nreiniciar el audio\n</li>\n</ul>\n<p data-start=\"4181\" data-end=\"4384\">El equipo comenta que dedicó mucho esfuerzo a crear varios eventos especiales y secuencias guionizadas para estas nuevas operaciones, aunque prefieren no revelar demasiados detalles para evitar spoilers.</p>\n<p data-start=\"4386\" data-end=\"4479\">💡 <strong data-start=\"4389\" data-end=\"4479\">La IA aliada regresará en el Capítulo 1 (versión 1.1.0), junto con nuevas operaciones.</strong></p>",
+                "tipo": "texto_rico"
+            },
+            {
+                "contenido": "Misiones rápidas y PvP",
+                "tipo": "titulo"
+            },
+            {
+                "contenido": "<p data-start=\"4512\" data-end=\"4627\" class=\"PDq2pG_selectionAnchorContainer\">Los modos <strong data-start=\"4522\" data-end=\"4535\">Lone Wolf</strong>, cooperativo y PvP recibieron varias mejoras para aumentar la inmersión y la rejugabilidad.<span aria-hidden=\"true\" class=\"PDq2pG_selectionAnchor\"></span></p>\n<p data-start=\"4629\" data-end=\"4641\">Entre ellas:</p>\n<ul data-start=\"4643\" data-end=\"5151\">\n<li data-section-id=\"jv4rcn\" data-start=\"4643\" data-end=\"4803\">\nEn distintos modos de juego, <strong data-start=\"4674\" data-end=\"4683\">Forge</strong> se comunica por radio durante momentos importantes (por ejemplo, al comienzo de la misión para recordar los objetivos).\n</li>\n<li data-section-id=\"1yak83\" data-start=\"4804\" data-end=\"4957\">\nSe incorpora el nuevo parámetro <strong data-start=\"4838\" data-end=\"4852\">Moon Phase</strong>, que permite elegir el nivel de iluminación nocturna:\n<ul data-start=\"4909\" data-end=\"4957\">\n<li data-section-id=\"1t6us0n\" data-start=\"4909\" data-end=\"4921\">\nluna nueva\n</li>\n<li data-section-id=\"h90ab6\" data-start=\"4924\" data-end=\"4942\">\ncuarto creciente\n</li>\n<li data-section-id=\"1t629dg\" data-start=\"4945\" data-end=\"4957\">\nluna llena\n</li>\n</ul>\n</li>\n<li data-section-id=\"kgucyg\" data-start=\"4958\" data-end=\"5054\">\nPuede seleccionarse antes de iniciar la misión o directamente desde el tablero de operaciones.\n</li>\n<li data-section-id=\"1a66xsp\" data-start=\"5055\" data-end=\"5151\">\nLa luz de la luna ahora proyecta sombras, generando zonas de ocultamiento mucho más realistas.\n</li>\n</ul>\n<p data-start=\"5153\" data-end=\"5248\">Solo asegurate de no hacer ruido... porque las patrullas enemigas seguirán pudiendo escucharte.</p>",
+                "tipo": "texto_rico"
+            },
+            {
+                "modo": "contain",
+                "src": "noticia/imgs/1784484483203-03.gif",
+                "tipo": "imagen"
+            },
+            {
+                "tipo": "titulo",
+                "contenido": "IA Enemiga"
+            },
+            {
+                "tipo": "texto_rico",
+                "contenido": "<p data-start=\"25\" data-end=\"215\" class=\"PDq2pG_selectionAnchorContainer\">La inteligencia artificial recibió una de las actualizaciones más importantes de toda la historia de GROUND BRANCH, buscando ofrecer enemigos mucho más inteligentes, creíbles y consistentes.<span aria-hidden=\"true\" class=\"PDq2pG_selectionAnchor\"></span></p>\n<h2 data-section-id=\"532750\" data-start=\"217\" data-end=\"239\">Sistema de apuntado</h2>\n<ul data-start=\"241\" data-end=\"511\">\n<li data-section-id=\"qprh87\" data-start=\"241\" data-end=\"298\">\nEl punto de mira predeterminado ahora es la <strong data-start=\"287\" data-end=\"297\">pelvis</strong>.\n</li>\n<li data-section-id=\"19c3omu\" data-start=\"299\" data-end=\"416\">\nSi únicamente la cabeza del jugador es visible, la IA disparará directamente a ella en lugar de perder el objetivo.\n</li>\n<li data-section-id=\"180jmmg\" data-start=\"417\" data-end=\"511\">\nLos enemigos de mayor nivel de habilidad apuntarán preferentemente al <strong data-start=\"489\" data-end=\"510\">pecho o la cabeza</strong>.\n</li>\n</ul>\n<hr data-start=\"513\" data-end=\"516\">\n<h2 data-section-id=\"qmg92w\" data-start=\"518\" data-end=\"542\">Percepción y reacción</h2>\n<ul data-start=\"544\" data-end=\"746\">\n<li data-section-id=\"10apyix\" data-start=\"544\" data-end=\"608\">\nLa distancia máxima de visión aumentó de <strong data-start=\"587\" data-end=\"607\">100 a 200 metros</strong>.\n</li>\n<li data-section-id=\"zps8wb\" data-start=\"609\" data-end=\"746\">\nSe ajustó la velocidad con la que aumenta el estado de alerta para evitar que los enemigos se queden mirando al jugador sin reaccionar.\n</li>\n</ul>\n<hr data-start=\"748\" data-end=\"751\">\n<h2 data-section-id=\"rzj9ou\" data-start=\"753\" data-end=\"785\">Supresión y respuesta al daño</h2>\n<p data-start=\"787\" data-end=\"893\">Los enemigos ahora reaccionan incluso si reciben un disparo cuando todavía no habían detectado al jugador.</p>\n<p data-start=\"895\" data-end=\"908\">Los impactos:</p>\n<ul data-start=\"910\" data-end=\"1057\">\n<li data-section-id=\"m9es2p\" data-start=\"910\" data-end=\"930\">\ngeneran supresión;\n</li>\n<li data-section-id=\"1yxh2e\" data-start=\"931\" data-end=\"980\">\nregistran la ubicación aproximada del atacante;\n</li>\n<li data-section-id=\"rlifb\" data-start=\"981\" data-end=\"1057\">\nprovocan que el enemigo busque cobertura, aunque no tenga línea de visión.\n</li>\n</ul>\n<p data-start=\"1059\" data-end=\"1078\">Esto significa que:</p>\n<blockquote data-start=\"1080\" data-end=\"1200\">\n<p data-start=\"1082\" data-end=\"1200\">Si herís a un enemigo pero no lo eliminás, ahora intentará escapar y ponerse a cubierto antes de que puedas rematarlo.</p>\n</blockquote>\n<hr data-start=\"1202\" data-end=\"1205\">\n<h2 data-section-id=\"6rrvsc\" data-start=\"1207\" data-end=\"1222\">IA defensiva</h2>\n<p data-start=\"1224\" data-end=\"1321\">Los enemigos asignados a posiciones defensivas ahora permanecen vinculados a su punto de guardia.</p>\n<p data-start=\"1323\" data-end=\"1341\">Eso significa que:</p>\n<ul data-start=\"1343\" data-end=\"1471\">\n<li data-section-id=\"9a6qgj\" data-start=\"1343\" data-end=\"1384\">\nno abandonarán completamente su puesto;\n</li>\n<li data-section-id=\"2pxx4t\" data-start=\"1385\" data-end=\"1424\">\nsí girarán hacia sonidos sospechosos;\n</li>\n<li data-section-id=\"cswkjf\" data-start=\"1425\" data-end=\"1471\">\npodrán escuchar a los jugadores acercándose.\n</li>\n</ul>\n<p data-start=\"1473\" data-end=\"1605\">En mapas como <strong data-start=\"1487\" data-end=\"1499\">Hospital</strong>, esto evita que todos los enemigos corran hacia un mismo pasillo, generando combates mucho más naturales.</p>\n<hr data-start=\"1607\" data-end=\"1610\">\n<h2 data-section-id=\"ymfivz\" data-start=\"1612\" data-end=\"1643\">Sistema de puntos de guardia</h2>\n<p data-start=\"1645\" data-end=\"1708\">Cada enemigo sólo puede ocupar un punto de vigilancia a la vez.</p>\n<p data-start=\"1710\" data-end=\"1742\">Cuando cambia de comportamiento:</p>\n<ul data-start=\"1744\" data-end=\"1794\">\n<li data-section-id=\"1b205dt\" data-start=\"1744\" data-end=\"1763\">\nlibera ese punto;\n</li>\n<li data-section-id=\"12zbsvu\" data-start=\"1764\" data-end=\"1794\">\notro enemigo puede ocuparlo.\n</li>\n</ul>\n<hr data-start=\"1796\" data-end=\"1799\">\n<h2 data-section-id=\"xgasig\" data-start=\"1801\" data-end=\"1809\">Moral</h2>\n<p data-start=\"1811\" data-end=\"1843\">Los enemigos ahora tienen moral.</p>\n<p data-start=\"1845\" data-end=\"1873\">Si ven morir a un compañero:</p>\n<ul data-start=\"1875\" data-end=\"1955\">\n<li data-section-id=\"1ianyoc\" data-start=\"1875\" data-end=\"1894\">\nsufren supresión;\n</li>\n<li data-section-id=\"hezlrp\" data-start=\"1895\" data-end=\"1916\">\ndisminuye su moral;\n</li>\n<li data-section-id=\"16d6gy3\" data-start=\"1917\" data-end=\"1955\">\nmodifican sus decisiones de combate.\n</li>\n</ul>\n<p data-start=\"1957\" data-end=\"2051\">Por primera vez, eliminar enemigos delante de sus compañeros tiene un efecto psicológico real.</p>\n<hr data-start=\"2053\" data-end=\"2056\">\n<h2 data-section-id=\"14neo2h\" data-start=\"2058\" data-end=\"2069\">Retirada</h2>\n<p data-start=\"2071\" data-end=\"2160\">El tiempo que un enemigo permanece oculto antes de volver a combatir depende de su nivel.</p>\n<p data-start=\"2162\" data-end=\"2194\">Los enemigos más experimentados:</p>\n<ul data-start=\"2196\" data-end=\"2317\">\n<li data-section-id=\"ia8gf6\" data-start=\"2196\" data-end=\"2240\">\nmantienen la cobertura durante más tiempo;\n</li>\n<li data-section-id=\"13jysox\" data-start=\"2241\" data-end=\"2283\">\nrompen el contacto con menos frecuencia;\n</li>\n<li data-section-id=\"thsfts\" data-start=\"2284\" data-end=\"2317\">\nresultan mucho más resistentes.\n</li>\n</ul>\n<hr data-start=\"2319\" data-end=\"2322\">\n<h2 data-section-id=\"1wg09yd\" data-start=\"2324\" data-end=\"2338\">Rendimiento</h2>\n<p data-start=\"2340\" data-end=\"2451\">Gran parte del comportamiento de la IA fue migrado desde <strong data-start=\"2397\" data-end=\"2411\">Blueprints</strong> a <strong data-start=\"2414\" data-end=\"2421\">C++</strong>, mejorando considerablemente:</p>\n<ul data-start=\"2453\" data-end=\"2524\">\n<li data-section-id=\"yxdo56\" data-start=\"2453\" data-end=\"2470\">\nel rendimiento;\n</li>\n<li data-section-id=\"r96g0i\" data-start=\"2471\" data-end=\"2488\">\nla estabilidad;\n</li>\n<li data-section-id=\"10ku67q\" data-start=\"2489\" data-end=\"2524\">\nla capacidad de expansión futura.</li></ul>"
             }
         ],
-        "cat": "actualizacion",
-        "desc": "te contamos los nuevos cambios hasta el momento.",
-        "fecha": "11 Julio 2026",
-        "id": "noticia-02",
-        "img": "imgs/noticias/mc-img-01.webp",
+        "cat": "noticia",
+        "desc": "",
+        "fecha": "19 Julio 2026",
+        "id": "noticia-04",
+        "img": "imgs/noticias/1784481971336-528c09d6cdac925070a4bd039d1852d8f7223dfb_960x311.png",
         "modo": "cover",
-        "titulo": "Actualización menor",
+        "titulo": "GROUND BRANCH V1.0 ya está disponible",
         "url": ""
     },
     {
@@ -140,6 +156,67 @@
         "img": "imgs/noticias/minos-img-01.webp",
         "modo": "cover",
         "titulo": "Nuevo modo: ROGUELITE",
+        "url": ""
+    },
+    {
+        "badge": "Actualización",
+        "bg": "",
+        "bloques": [
+            {
+                "contenido": "Agregados",
+                "tipo": "titulo"
+            },
+            {
+                "contenido": "- Se añadió el mapa de colaboración \"Museo HIKAKIN\".\n- Incluye mecánicas exclusivas disponibles únicamente durante esta colaboración.\n- Se agregó una versión alfa del soporte para controles. (La navegación por la interfaz de usuario (UI) aún no es compatible).\n- Se añadieron las etiquetas de región para Japón, Corea del Sur y Asia Oriental.",
+                "tipo": "texto"
+            },
+            {
+                "contenido": "Correcciones y ajustes",
+                "tipo": "titulo"
+            },
+            {
+                "contenido": "- Se corrigió un problema por el que la detección de colisiones no desaparecía cuando el clon estaba oculto.\n- Se ajustó el campo de visión (FOV) del Hunter, aumentando de 100 a 105.",
+                "tipo": "texto"
+            }
+        ],
+        "cat": "actualizacion",
+        "desc": "te contamos los nuevos cambios hasta el momento.",
+        "fecha": "11 Julio 2026",
+        "id": "noticia-02",
+        "img": "imgs/noticias/mc-img-01.webp",
+        "modo": "cover",
+        "titulo": "Actualización menor",
+        "url": ""
+    },
+    {
+        "badge": "Evento",
+        "bg": "noticia/imgs/bg-00.webp",
+        "bloques": [
+            {
+                "contenido": "Enterate como funciona.",
+                "tipo": "titulo"
+            },
+            {
+                "contenido": "Al 26.º Regimiento: ¡Ahora no es momento de retirarse! Sin importar las bajas que hayamos sufrido, todos y cada uno de ustedes deben levantarse por sus propios medios y llevar esa Carga Corrupta al globo, o el Delegado de la Desolación nos colgará de los dedos de los pies.",
+                "tipo": "texto"
+            },
+            {
+                "modo": "contain",
+                "src": "noticia/imgs/img-02.webp",
+                "tipo": "imagen"
+            },
+            {
+                "contenido": "Descubre los diferentes hitos en el rastreador de arriba para ver todas las recompensas que puedes ganar.\n\nVisitáen redes sociales y esta página con regularidad para estar al tanto del progreso de los cazadores y reclamar tus premios cuando alcancemos nuestros objetivos. Ten en cuenta que el plazo para canjear los códigos será limitado, ¡así que no te los pierdas!",
+                "tipo": "texto"
+            }
+        ],
+        "cat": "evento",
+        "desc": "Queres saber como participar ?",
+        "fecha": "11 Julio 2026",
+        "id": "noticia-01",
+        "img": "imgs/noticias/img-01.webp",
+        "modo": "cover",
+        "titulo": "Evento \" CARGA CORRUPTA \"",
         "url": ""
     }
 ]

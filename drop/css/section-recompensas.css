@@ -1,0 +1,387 @@
+/* ==========================================================================
+   Sección Recompensas — estilos propios
+   ========================================================================== */
+
+/* Contenedor principal donde se inyecta el contenido de recompensas.html */
+#reward-detail {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* .section-intro trae un max-width (65ch) por defecto; en Recompensas lo
+   sacamos para que el texto llegue al mismo ancho que Campaña/Suministros. */
+#recompensas-view .section-intro {
+  max-width: none;
+}
+
+/* --------------------------------------------------------------------------
+   POOL DE NOMBRES (los "chips" de texto arriba, ej: lista de cazadores
+   posibles antes de mostrar las cards con imagen)
+   -------------------------------------------------------------------------- */
+.reward-pool {
+  gap: 8px;
+  margin: 14px 0 18px;
+}
+
+/* Variante para pools con foto de cazador (Cazador Legendario, Avatar):
+   layout original intacto, exactamente como estaba antes de tocar nada. */
+.reward-pool--cards {
+  display: flex;
+  flex-wrap: nowrap;
+}
+
+/* Variante para pools de solo texto (Amuleto): grid en vez de flex
+   nowrap, así los chips bajan de línea en vez de desbordar la página
+   hacia la derecha. */
+.reward-pool--text {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+}
+
+/* Variante para pools de armas (Skin Legendaria): grid con cards de
+   foto, columnas más angostas que antes para que las cards queden
+   chicas (parecidas en tamaño a las de cazador). */
+.reward-pool--guns {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;   /* evita que las cards se estiren a la altura de la más alta de la fila */
+  gap: 8px;
+}
+
+.reward-pool > span {
+  background: var(--bg-raised);
+  border: 1px solid var(--ink-faint);
+  padding: 8px 10px;
+  font-size: 14px;
+  color: var(--bone);
+  box-sizing: border-box;
+}
+
+/* Card de arma (Skin Legendaria). Clase separada de .hunter-card a
+   propósito, para no engancharse con el click listener del panel de
+   perfil de cazador (ver hunter-profile.js). El nombre queda siempre
+   visible abajo (no oculto/hover como en .hunter-card), porque las
+   skins no tienen panel de perfil que lo muestre al abrir.
+   Sin aspect-ratio fijo: la card toma el alto que le da la imagen
+   (ancho fijo, alto auto), así se amolda a la proporción real de cada
+   foto en vez de forzar un recuadro parejo con fondo sobrante. */
+.gun-card {
+  position: relative;
+  width: 180px;
+  background: var(--bg-raised);
+  border: 1px solid var(--ink-faint);
+  box-sizing: border-box;
+  overflow: hidden;
+  display: flex;              /* NUEVO: apila imagen + label en columna */
+  flex-direction: column;     /* NUEVO */
+}
+
+.gun-card img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Ya no flota sobre la imagen: es un bloque propio debajo, con su
+   propio fondo y padding — así hay aire entre el arma y el texto. */
+.gun-card-label {
+  padding: 8px 10px 10px;
+  background: var(--bg-raised);
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+/* Nombre del arma: PROTAGONISTA — mayúsculas, más grande, color fuerte */
+.gun-card-weapon {
+  font-size: 12px;              /* un poco más chico que antes (13px) */
+  font-weight: 600;
+  letter-spacing: 0.01em;       /* menos separación entre letras — ayuda a que entre */
+  text-transform: uppercase;
+  color: var(--brass);
+  line-height: 1.25;
+  white-space: nowrap;          /* fuerza un solo renglón */
+  overflow: hidden;
+  text-overflow: ellipsis;      /* si no entra, corta con "…" en vez de bajar de línea */
+}
+
+/* Nombre de la skin: dato secundario — más chico, tono apagado */
+.gun-card-skin {
+  font-size: 11px;
+  color: var(--ink-muted);
+  line-height: 1.25;
+}
+
+/* --------------------------------------------------------------------------
+   CARDS DE CAZADORES (las miniaturas clickeables en la grilla de
+   Recompensas, NO confundir con el panel de perfil que se abre al hacer
+   click — esa parte está más abajo)
+   -------------------------------------------------------------------------- */
+
+/* Caja de cada card individual: define el recorte 3:4 y el tamaño máximo */
+.hunter-card {
+  position: relative;
+  aspect-ratio: 3 / 4;
+  overflow: hidden;
+  background: var(--bg-raised);
+  border: 1px solid var(--ink-faint);
+  flex: 1 1 0;
+  max-width: 130px;
+}
+
+/* Imagen dentro de la card: llena toda la caja recortando lo que sobre */
+.hunter-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Nombre del cazador dentro de la card: arranca oculto abajo (translateY
+   100% = fuera de la card) y sube con degradé al hacer hover */
+.hunter-card span {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 8px 10px;
+  font-size: 14px;
+  color: var(--bone);
+  background: linear-gradient(to top, rgba(11,10,8,0.85), transparent);
+  transform: translateY(100%);
+  transition: transform 0.2s ease;
+}
+
+/* Al pasar el mouse (o foco por teclado) el nombre sube y queda visible */
+.hunter-card:hover span,
+.hunter-card:focus-within span {
+  transform: translateY(0);
+}
+
+/* Línea final tipo "recompensa confirmada" debajo de las cards */
+.reward-final {
+  font-family: var(--f-mono);
+  font-size: 15px;
+  color: var(--brass);
+  border-left: 2px solid var(--blood);
+  padding-left: 12px;
+  margin-top: 16px;
+}
+
+/* ==========================================================================
+   PANEL DE PERFIL DE CAZADOR (la solapa/ficha que se abre desde la
+   derecha al hacer click en una .hunter-card, con foto + lore)
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   VELO DE FONDO (overlay oscuro detrás del panel; también sirve para
+   cerrar el panel al hacer click afuera)
+   -------------------------------------------------------------------------- */
+.hunter-profile-overlay {
+  position: fixed;
+  inset: 0;                                 /* cubre toda la pantalla */
+  background: rgba(11,10,8,0.65);           /* oscurece el fondo */
+  opacity: 0;                               /* invisible por defecto */
+  pointer-events: none;                     /* no clickeable por defecto */
+  transition: opacity 0.25s ease;           /* fade suave al abrir/cerrar */
+  z-index: 70;                              /* debajo del panel (80) */
+}
+
+/* Clase que JS agrega/saca para mostrar u ocultar el velo */
+.hunter-profile-overlay.is-open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* --------------------------------------------------------------------------
+   PANEL LATERAL (la solapa en sí — el contenedor blanco/oscuro que
+   desliza desde el borde derecho de la pantalla)
+   -------------------------------------------------------------------------- */
+.hunter-profile-panel {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: min(500px, 100%);                  /* ANCHO DEL PANEL — tocar acá para hacerlo más angosto/ancho */
+  background: var(--bg-panel);
+  background-image:
+    linear-gradient(rgba(11,10,8,0.75), rgba(11,10,8,0.85)),
+    var(--countdown-bg-image);
+  background-size: cover;
+  background-position: center;
+  border-left: 1px solid var(--brass-dim);
+  transform: translateX(100%);              /* posición cerrada: corrido fuera de pantalla a la derecha */
+  transition: transform 0.3s ease;          /* animación de deslizamiento */
+  z-index: 80;                              /* arriba del velo */
+  overflow-y: auto;                         /* scroll interno si el lore es largo */
+  padding-bottom: 40px;
+}
+
+/* Clase que JS agrega para "abrir" el panel (lo trae a translateX(0)) */
+.hunter-profile-panel.is-open {
+  transform: translateX(0);
+}
+
+/* --------------------------------------------------------------------------
+   IMAGEN DEL CAZADOR — ahora en formato AVATAR CIRCULAR con marco
+   (antes era un rectángulo grande de 3:4 que ocupaba todo el ancho del
+   panel; eso hacía que la imagen se estirara y se pixelara)
+   -------------------------------------------------------------------------- */
+.hunter-profile-img-wrap {
+  width: 150px;                             /* TAMAÑO DEL CÍRCULO — subir/bajar este valor junto con height */
+  height: 150px;
+  border-radius: 50%;                       /* esto es lo que hace el círculo (enmascara el contenido) */
+  overflow: hidden;                         /* recorta la imagen para que respete el círculo */
+  margin: 40px 0 0 24px;                      /* separación arriba + centrado horizontal */
+  border: 3px solid var(--brass);           /* EL "FRAME" — grosor y color del marco dorado */
+  box-shadow: 0 0 0 6px rgba(11,10,8,0.55), /* halo oscuro alrededor del marco (efecto medallón) */
+              0 8px 20px rgba(0,0,0,0.5);   /* sombra proyectada para dar profundidad */
+}
+
+/* Imagen adentro del círculo: cubre todo el espacio sin deformarse */
+.hunter-profile-img-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;                        /* recorta en vez de estirar/deformar */
+  object-position: top center;              /* ENCUADRE — "top" prioriza cara/cabeza sobre el resto del cuerpo */
+  display: block;
+}
+
+/* --------------------------------------------------------------------------
+   TEXTO DEL PERFIL (nombre + secciones de lore debajo del avatar)
+   -------------------------------------------------------------------------- */
+
+/* Contenedor de todo el bloque de texto (padding lateral del panel) */
+.hunter-profile-body {
+  padding: 20px 24px;
+}
+
+/* Nombre completo del cazador (ej: "Lulu Bassett") */
+#hunter-profile-name {
+  font-family: var(--f-display);
+  font-size: 22px;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: var(--bone);
+  margin: 0 0 18px;
+}
+
+/* Subtítulo de cada bloque de lore (ej: "Historia", "Personalidad") */
+.hunter-profile-heading {
+  font-family: var(--f-display);
+  font-size: 14px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--brass);
+  margin: 20px 0 8px;
+}
+
+/* El primer heading no necesita separación extra arriba */
+.hunter-profile-heading:first-child {
+  margin-top: 0;
+}
+
+/* Párrafo de texto de cada sección de lore */
+.hunter-profile-text {
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--ink-muted);
+  margin: 0;
+}
+
+
+.hunter-profile-close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 32px;
+  height: 32px;
+  border: none;
+  background: var(--blood);
+  color: var(--bone);
+  font-size: 20px;
+  line-height: 1;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+}
+
+.hunter-profile-close:hover {
+  background: var(--blood-bright);
+}
+
+
+/* --------------------------------------------------------------------------
+   POPUP DE ZOOM (foto grande al pasar el mouse por una gun-card)
+   -------------------------------------------------------------------------- */
+#gun-zoom-popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 200;                 /* por encima de todo, incluso del panel de perfil (80) */
+  pointer-events: none;         /* nunca intercepta el mouse — si no, "parpadea" al pasar por encima */
+  opacity: 0;
+  transform: scale(0.95);
+  transition: opacity 0.15s ease, transform 0.15s ease;
+  background: var(--bg-raised);
+  border: 1px solid var(--brass-dim);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.6);
+  padding: 8px;
+}
+
+#gun-zoom-popup.is-visible {
+  opacity: 1;
+  transform: scale(1);
+}
+
+#gun-zoom-popup img {
+  display: block;
+  max-width: 360px;   /* TAMAÑO DEL ZOOM — subí/bajá este valor a gusto */
+  max-height: 360px;
+  width: auto;
+  height: auto;
+}
+
+
+/* --------------------------------------------------------------------------
+   CARDS DE AMULETO — misma lógica que .gun-card (imagen completa, sin
+   recorte, alto automático), pero con un solo renglón de nombre en vez
+   de arma+skin separados, porque el amuleto tiene un único nombre.
+   -------------------------------------------------------------------------- */
+.reward-pool--charms {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.charm-card {
+  position: relative;
+  width: 130px;
+  background: var(--bg-raised);
+  border: 1px solid var(--ink-faint);
+  box-sizing: border-box;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.charm-card img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: contain;
+}
+
+.charm-card-name {
+  padding: 8px 10px 10px;
+  background: var(--bg-raised);
+  font-size: 12px;
+  color: var(--bone);
+  line-height: 1.25;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

@@ -216,6 +216,106 @@
 
 
 /* ──────────────────────────────────────────
+   BLOQUE — TEXTO RICO (texto_rico)
+   HTML real generado por el editor de texto rico del panel. Título y
+   subtítulo INTERNOS mapean a h3/h4 (no h2/h3) para no duplicar la
+   jerarquía que ya usan los bloques titulo/subtitulo de nivel
+   superior de arriba.
+────────────────────────────────────────── */
+
+.noticia-rich {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.noticia-rich p {
+    font-family: var(--font-main);
+    font-size: 16px;
+    line-height: 1.7;
+    color: rgba(255, 255, 255, 0.75);
+    margin: 0;
+}
+
+.noticia-rich strong,
+.noticia-rich b {
+    color: var(--c-white);
+    font-weight: 700;
+}
+
+.noticia-rich h3 {
+    font-family: var(--font-main);
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--c-white);
+    line-height: 1.3;
+    margin: 0;
+}
+
+.noticia-rich h4 {
+    font-family: var(--font-main);
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.55);
+    margin: 0;
+}
+
+.noticia-rich ul,
+.noticia-rich ol {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+/* Viñeta circular -- mismo lenguaje visual que .noticia-texto-list */
+.noticia-rich ul {
+    list-style: none;
+    padding: 0;
+}
+
+.noticia-rich ul li {
+    position: relative;
+    padding-left: 20px;
+    font-family: var(--font-main);
+    font-size: 16px;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.75);
+}
+
+.noticia-rich ul li::before {
+    content: '';
+    position: absolute;
+    left: 2px;
+    top: 9px;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.45);
+}
+
+/* Lista numerada -- números nativos del navegador, sin recorte propio */
+.noticia-rich ol {
+    padding-left: 20px;
+}
+
+.noticia-rich ol li {
+    font-family: var(--font-main);
+    font-size: 16px;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.75);
+}
+
+/* Sangría -- toggle manual desde el editor (no indent nativo del
+   navegador), reemplaza el hack de espacios en blanco a mano */
+.noticia-rich .rt-indent {
+    margin-left: 28px;
+}
+
+
+/* ──────────────────────────────────────────
    BLOQUE — TÍTULO / SUBTÍTULO
 ────────────────────────────────────────── */
 

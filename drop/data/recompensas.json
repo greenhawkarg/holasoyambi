@@ -1,0 +1,247 @@
+{
+    "avatars": {
+      "Billy Story": "imgs/avatars/Profile_Avatar_Billy_Story.png",
+      "Kill Buyer": "imgs/avatars/Profile_Avatar_Kill_Buyer.png",
+      "Lulu": "imgs/avatars/Profile_Avatar_Lulu.png",
+      "Steel Eyed": "imgs/avatars/Profile_Avatar_Steel_Eyed.png",
+      "The Infected": "imgs/avatars/Profile_Avatar_The_Infected.png",
+      "Umpire's Bane": "imgs/avatars/Profile_Avatar_Umpire's_Bane.png"
+    },
+  "hunters": {
+    "Lulu": "imgs/hunters/Hunter_Lulu.webp",
+    "Kill Buyer": "imgs/hunters/Hunter_Kill_Buyer.webp",
+    "Billy Story": "imgs/hunters/Hunter_Billy_Story.webp",
+    "Steel Eyed": "imgs/hunters/Hunter_Steel_Eyed.webp",
+    "The Infected": "imgs/hunters/Hunter_The_Infected.webp",
+    "Umpire's Bane": "imgs/hunters/Hunter_Umpire_Bane.webp"
+  },
+
+  "hunter_lore": {
+    "Lulu": {
+      "full_name": "Lulu Bassett",
+      "sections": [
+        {
+          "heading": "Historia",
+          "text": "Antes de convertirse en Hunter, Lulu Bassett trabajaba como prostituta y cortesana. Aunque prefería la compañía de las mujeres, mantenía relaciones con hombres para poder sobrevivir. Con el tiempo descubrió que podía obtener mucho más que dinero utilizando su capacidad para acercarse a ellos y aprovechar el momento justo para matarlos.\n\nAl unirse a la Cacería, transformó esas habilidades en su mayor fortaleza. En lugar de depender de la seducción para vivir, comenzó a utilizarla como una herramienta para engañar, manipular y eliminar a sus objetivos con precisión."
+        },
+        {
+          "heading": "Personalidad",
+          "text": "Lulu no destaca por la fuerza bruta ni por su experiencia militar. Es una mujer inteligente, paciente y calculadora.\n\nPrefiere observar a sus presas, ganarse su confianza y esperar el instante perfecto antes de actuar. Su estilo consiste en convertir el engaño y la astucia en armas tan letales como cualquier revólver."
+        },
+        {
+          "heading": "The Marquis",
+          "text": "Su arma característica es The Marquis, un cuchillo heredado de su mentora y madame.\n\nMás que una simple herramienta, representa el legado de las mujeres que aprendieron a sobrevivir utilizando su ingenio y su capacidad para defenderse cuando era necesario. El cuchillo acompaña a Lulu como símbolo de ese pasado y de la vida que dejó atrás."
+        },
+        {
+          "heading": "Relación con Sofia",
+          "text": "Durante los acontecimientos del lore de Hunt, Lulu desarrolla un fuerte vínculo con Sofia.\n\nAmbas combaten juntas y arriesgan sus vidas para protegerse mutuamente en distintas ocasiones. Crytek confirmó que Lulu es un personaje queer, y Sofia es la persona con la que mantiene la relación más significativa conocida dentro de la historia oficial."
+        },
+        {
+          "heading": "Legado",
+          "text": "Lulu representa un tipo de Hunter diferente al habitual. No se convirtió en cazadora por entrenamiento militar ni por sed de violencia, sino porque descubrió que sus habilidades para leer a las personas, manipularlas y actuar con sangre fría eran igual de valiosas en el Bayou.\n\nSu historia es la de una mujer que transformó una vida marcada por la supervivencia en una ventaja, convirtiendo el ingenio, la paciencia y la determinación en sus armas más peligrosas."
+        }
+      ]
+    },
+    "Kill Buyer": {
+      "full_name": "Kill Buyer",
+      "sections": [
+        {
+          "heading": "Historia",
+          "text": "Kill Buyer era un comerciante especializado en adquirir mercancías de procedencia dudosa. Durante años construyó su fortuna comprando objetos robados, armas, joyas y cualquier bien obtenido mediante la violencia, sin hacer preguntas sobre su origen.\n\nCuando la corrupción del Bayou comenzó a extenderse, comprendió que los restos de criaturas, artefactos malditos y trofeos de los Hunters tenían un valor incalculable. Abandonó el papel de intermediario y decidió participar personalmente en la Cacería para asegurarse de obtener los mejores botines antes que nadie."
+        },
+        {
+          "heading": "Personalidad",
+          "text": "Kill Buyer es frío, pragmático y extremadamente codicioso.\n\nNo lucha por justicia, gloria o venganza. Para él, todo tiene un precio y cada cacería es simplemente una oportunidad de negocio. Ve a los monstruos, a los Hunters e incluso a la corrupción como mercancías cuyo valor puede explotarse.\n\nSu experiencia negociando con criminales le enseñó a desconfiar de todos y a aprovechar cualquier ventaja si eso significa salir con un beneficio mayor."
+        },
+        {
+          "heading": "Equipo y apariencia",
+          "text": "Su aspecto refleja su antigua profesión: viste ropa elegante pero desgastada por el Bayou, protegida con piezas de cuero y equipo improvisado para sobrevivir a la Cacería.\n\nCada arma y herramienta que lleva parece haber sido obtenida mediante intercambios, compras o saqueos, reforzando la imagen de un hombre que siempre encuentra la forma de sacar provecho de cualquier situación."
+        },
+        {
+          "heading": "Motivación",
+          "text": "A diferencia de muchos Hunters que buscan detener la corrupción o cumplir una misión personal, Kill Buyer entra al Bayou porque allí se encuentran los objetos más valiosos del mundo.\n\nPara él, los trofeos de monstruos, las armas legendarias y cualquier reliquia sobrenatural representan riqueza. La Cacería no es una cruzada; es el negocio más rentable que ha encontrado."
+        },
+        {
+          "heading": "Legado",
+          "text": "Kill Buyer simboliza la codicia llevada al extremo dentro del universo de Hunt. Mientras otros Hunters sobreviven por deber o desesperación, él demuestra que incluso en un mundo dominado por monstruos siempre habrá quienes vean una oportunidad para hacer fortuna.\n\nSu historia recuerda que, en el Bayou, el verdadero peligro no siempre proviene de las criaturas... sino también de las personas dispuestas a ponerle precio a cualquier cosa."
+        }
+      ]
+    },
+    "Billy Story": {
+      "full_name": "Billy Story",
+      "sections": [
+        {
+          "heading": "Historia",
+          "text": "Billy Story fue un forajido y pistolero cuya reputación se forjó a base de robos, asaltos y enfrentamientos armados. Durante años vivió al margen de la ley, convirtiéndose en un hombre tan buscado como temido.\n\nSu habilidad con el revólver y su capacidad para sobrevivir a cualquier situación le permitieron escapar una y otra vez de la justicia. Sin embargo, cuando la corrupción comenzó a extenderse por el Bayou, Billy encontró un lugar donde sus talentos valían más que cualquier recompensa ofrecida por su captura: la Cacería."
+        },
+        {
+          "heading": "Personalidad",
+          "text": "Billy es audaz, confiado y temerario.\n\nEstá acostumbrado a resolver los problemas con rapidez y a confiar en su puntería antes que en los planes elaborados. Vive según su propio código y rara vez permite que alguien le diga qué hacer.\n\nAunque posee un fuerte instinto de supervivencia, no rehúye el peligro y suele enfrentarse a él con una mezcla de sangre fría y descaro."
+        },
+        {
+          "heading": "Equipo y apariencia",
+          "text": "Su vestimenta refleja claramente su pasado como pistolero del Viejo Oeste: sombrero, abrigo largo y un equipo práctico para largos viajes y enfrentamientos.\n\nSu imagen transmite la de un hombre curtido por años de violencia, siempre preparado para desenfundar antes que su adversario."
+        },
+        {
+          "heading": "Motivación",
+          "text": "Billy no participa en la Cacería por heroísmo ni por un sentido de justicia.\n\nEl Bayou representa para él un lugar donde las reglas del mundo civilizado dejan de importar y donde un hombre con buena puntería puede abrirse camino por su cuenta. Cada contrato es una nueva oportunidad para sobrevivir, ganar dinero y demostrar que sigue siendo uno de los mejores tiradores."
+        },
+        {
+          "heading": "Legado",
+          "text": "Billy Story encarna el arquetipo clásico del forajido del Viejo Oeste dentro del universo de Hunt: Showdown. Su experiencia como criminal y pistolero le permite adaptarse con naturalidad a un mundo dominado por monstruos y cazadores.\n\nMientras otros Hunters buscan redención o persiguen un propósito mayor, Billy simplemente hace lo que mejor sabe hacer: sobrevivir con un revólver en la mano y salir con vida del siguiente enfrentamiento."
+        }
+      ]
+    },
+    "Steel Eyed": {
+      "full_name": "Steel Eyed (Red Descot)",
+      "sections": [
+        {
+          "heading": "Historia",
+          "text": "Red Descot, conocido como Steel Eyed, fue un pistolero solitario que pasó gran parte de su vida recorriendo montañas, cañones y llanuras áridas sin un destino fijo. Su existencia estuvo marcada por el aislamiento, el sufrimiento y la constante huida de su pasado.\n\nDurante esos años adoptó un lema que guiaba cada uno de sus pasos: el polvo termina cubriendo la tumba de quienes bajan la guardia, y todo camino acaba conduciendo a la muerte. Esa filosofía lo mantuvo con vida hasta que recibió el llamado de la Cacería, donde finalmente encontró un propósito para toda la dureza y el dolor que había acumulado."
+        },
+        {
+          "heading": "Personalidad",
+          "text": "Steel Eyed es un hombre reservado, resistente y de voluntad inquebrantable.\n\nNo habla más de lo necesario y prefiere dejar que sus acciones hablen por él. Años de soledad lo convirtieron en alguien extremadamente paciente, capaz de soportar las peores condiciones sin perder la calma.\n\nSu fortaleza nace de la experiencia y de haber sobrevivido a una vida llena de dificultades."
+        },
+        {
+          "heading": "Equipo y apariencia",
+          "text": "Su aspecto refleja el de un veterano del Viejo Oeste: ropa gastada por los viajes, un sombrero de ala ancha y un largo abrigo cubierto por el polvo del camino.\n\nCada detalle de su vestimenta transmite la imagen de un hombre que ha pasado más tiempo cabalgando por territorios salvajes que viviendo entre la civilización."
+        },
+        {
+          "heading": "Motivación",
+          "text": "Para Red Descot, la Cacería representa mucho más que un trabajo.\n\nDespués de años vagando sin rumbo, encuentra en el Bayou un lugar donde toda su experiencia, resistencia y determinación pueden servir para un propósito mayor. En lugar de seguir huyendo de su pasado, decide enfrentar el peligro de frente."
+        },
+        {
+          "heading": "Legado",
+          "text": "Steel Eyed representa al clásico pistolero errante que encuentra redención en la Cacería. Su historia no gira en torno a la riqueza ni a la gloria, sino a la perseverancia y a la capacidad de seguir adelante incluso cuando el camino parece conducir únicamente hacia la muerte.\n\nEs un Hunter definido por su resistencia, su disciplina y la convicción de que solo quienes permanecen atentos hasta el final logran sobrevivir."
+        }
+      ]
+    },
+    "The Infected": {
+      "full_name": "The Infected (Bennett Hudson)",
+      "sections": [
+        {
+          "heading": "Historia",
+          "text": "Bennett Hudson fue uno de los desafortunados que sobrevivieron al contacto directo con la corrupción del Bayou.\n\nMientras la mayoría de las personas expuestas morían rápidamente o perdían la cordura, Bennett sufrió un destino aún peor: permaneció con vida mientras su cuerpo comenzaba a pudrirse lentamente. Una necrosis imparable se extendió por su carne como una gangrena, consumiéndolo día tras día sin concederle el alivio de la muerte."
+        },
+        {
+          "heading": "Personalidad",
+          "text": "La enfermedad transformó por completo a Bennett.\n\nConsciente de que su cuerpo se deteriora sin remedio, continúa luchando impulsado por una enorme voluntad de supervivencia. Vive atrapado entre la vida y la muerte, soportando un sufrimiento constante mientras se niega a rendirse ante la corrupción."
+        },
+        {
+          "heading": "Equipo y apariencia",
+          "text": "Su aspecto es el reflejo de la infección que consume su cuerpo.\n\nSu piel presenta graves signos de necrosis y descomposición, mientras vendas y prendas improvisadas intentan contener el avance de la enfermedad. Su presencia resulta tan perturbadora que muchos Hunters lo confunden con una de las criaturas del Bayou."
+        },
+        {
+          "heading": "Motivación",
+          "text": "Bennett continúa participando en la Cacería porque todavía conserva parte de su humanidad.\n\nCada expedición representa una oportunidad para seguir luchando contra la corrupción que lo consume o, al menos, impedir que otros sufran el mismo destino. Su existencia es una batalla constante contra una enfermedad que nunca deja de avanzar."
+        },
+        {
+          "heading": "Legado",
+          "text": "The Infected representa el costo más cruel de la corrupción del Bayou. No es un monstruo... pero tampoco un hombre completamente sano. Es el recordatorio de que sobrevivir a la corrupción no siempre significa vencerla.\n\nSu historia encarna el horror de una muerte lenta e inevitable, donde el verdadero enemigo no es una bestia del pantano, sino la infección que devora lentamente a quien aún se aferra a la vida."
+        }
+      ]
+    },
+    "Umpire's Bane": {
+      "full_name": "Umpire's Bane",
+      "sections": [
+        {
+          "heading": "Historia",
+          "text": "Antes de convertirse en Hunter, Umpire's Bane era un jugador de béisbol profesional conocido por su enorme talento y su temperamento explosivo. Su carrera prometía llevarlo a la cima, pero una violenta discusión con un árbitro terminó de la peor manera: perdió el control y lo mató en pleno campo de juego.\n\nA partir de ese momento se convirtió en un fugitivo. Obligado a abandonar la vida que conocía, encontró refugio en el Bayou, donde la violencia ya no era un escándalo, sino una forma de sobrevivir. Allí canalizó su fuerza y agresividad hacia la Cacería, dejando atrás su pasado como deportista para convertirse en un Hunter."
+        },
+        {
+          "heading": "Personalidad",
+          "text": "Umpire's Bane es impulsivo, competitivo y extremadamente agresivo.\n\nAcostumbrado a vivir bajo presión, enfrenta cada combate con una intensidad que pocos pueden igualar. Su carácter explosivo sigue siendo parte de su identidad, aunque ahora lo utiliza contra monstruos y Hunters en lugar de hacerlo dentro de un estadio."
+        },
+        {
+          "heading": "Equipo y apariencia",
+          "text": "Su vestimenta conserva claros elementos de su pasado deportivo, aunque adaptados a la dura realidad del Bayou.\n\nEl uniforme desgastado, combinado con equipo de protección improvisado y armas de la época, refleja el contraste entre la vida que perdió y la que terminó abrazando como Hunter."
+        },
+        {
+          "heading": "Motivación",
+          "text": "La Cacería representa para él una oportunidad de escapar de su pasado y encontrar un lugar donde nadie juzgue los errores que cometió.\n\nEn el Bayou ya no existen árbitros ni reglas deportivas: solo importa sobrevivir y demostrar quién es el más fuerte."
+        },
+        {
+          "heading": "Legado",
+          "text": "Umpire's Bane simboliza cómo un solo momento de ira puede cambiar una vida para siempre.\n\nSu historia muestra la caída de un hombre que pasó de ser una estrella del deporte a convertirse en un cazador endurecido por la violencia. En el Bayou encontró un mundo donde su fuerza y su ferocidad dejaron de ser un problema y se transformaron en las herramientas que le permiten seguir con vida."
+        }
+      ]
+    }
+  },
+
+  "recompensas": {
+    "cazador_legendario": {
+      "label": "Cazador Legendario",
+      "note": "Los Cazadores de Drops anteriores tienen prioridad. Si te falta alguno de la lista, desbloqueás uno de estos:",
+      "pool": ["Lulu", "Kill Buyer", "Billy Story", "Steel Eyed", "The Infected", "Umpire's Bane"],
+      "fallback_note": "Si ya tenés todos los anteriores, se desbloquea un Cazador Legendario aleatorio de la lista de Blood Bond (con chance menor de Bad Hand, Union Suit: Red Drawers o Union Suit: Sunday Best).",
+      "final_fallback": "Si ya tenés todos los Cazadores de Drops y Blood Bond, recibís 10.000 Hunt Dollars.",
+      "excluded_note": "Los nuevos Cazadores Blood Bond de la Update 2.8 y los exclusivos de eventos/temporada no están en esta lista."
+    },
+    "skin_legendaria": {
+      "label": "Skin Legendaria",
+      "note": "Las Skins de Drops anteriores tienen prioridad. Si te falta alguna, desbloqueás una de estas:",
+      "pool": [
+        "Alley Cat - Bornheim No. 3",
+        "Bingham Brash - Martini-Henry Riposte",
+        "Bloodshot - Hand Crossbow",
+        "Jackal's Snare - Terminus",
+        "Lavish Farewell - Pax",
+        "Old Tusk - Springfield 1866",
+        "Seven Sights - Sparks Sniper",
+        "Sinner's Sinew - Hunting Bow",
+        "Solzer's Silver - Bornheim No. 3 Extended",
+        "Spare Dime - Nagant M1895 Silencer",
+        "Swallow's Tail - Centennial",
+        "Ten Paces - Scottfield",
+        "The Fifth Tale - Mosin Obrez",
+        "Ferro - Romero 77 Shorty",
+        "Tender is the Night - Railroad Hammer",
+        "Huff's Kit - First Aid Kit",
+        "Roe Stalker - Knife",
+        "Storied Past - Quad Derringer",
+        "The Marquis - Knife",
+        "Malady - Poison Bomb"
+      ],
+      "fallback_pool": [
+        "Silent Sting - Bornheim No. 3 Silencer",
+        "Golden Petal: Extended - Bornheim No. 3 Extended",
+        "Calamity Jane - Centennial",
+        "Snake Seer - Crossbow",
+        "Steel Sprung - Hand Crossbow",
+        "Ritual's Promise - Martini-Henry",
+        "Gaunt - Mosin Obrez Extended",
+        "Falling Timber - Nagant M1895 Silencer",
+        "Certain Victory - Pax",
+        "Gilded Maul - Railroad Hammer",
+        "Sins of the Son - Romero 77 Hatchet",
+        "Good Intentions: Spitfire - Scottfield Spitfire",
+        "Crypt Seal: Sniper - Sparks Sniper",
+        "Spring's End - Springfield 1866 Shorty",
+        "Blind Justice - Terminus",
+        "LeMonnier's Kit - First Aid Kit",
+        "Reaper's Arm - Knife",
+        "Fate's Feather - Knife",
+        "Revelation - Quad Derringer",
+        "Juggler's Flourish - Poison Bomb"
+      ],
+      "final_fallback": "Si ya tenés todas las Skins de Drops y Blood Bond de ambas listas, recibís 5.000 Hunt Dollars."
+    },
+    "golden_skin": {
+      "label": "Golden Hair Trigger: Precision",
+      "note": "La Semana 1 - Parte 3 trae una de las recompensas más esperadas de la campaña: Golden Hair Trigger: Precision, un nuevo aspecto legendario para la Dolch 96 Precision. Disponible exclusivamente durante esta etapa de los Twitch Drops, este diseño permitirá añadir un acabado único a una de las pistolas más icónicas de Hunt: Showdown. No olvides reclamarlo antes de que finalice la ventana de recompensas, ya que luego dará paso a los siguientes Drops de la campaña."
+    },
+    "avatar": {
+      "label": "Avatar",
+      "note": "Si obtenés esta recompensa, recibís uno de los Avatares de Drops anteriores. Solo se incluyen Avatares de Twitch Drops en este pool:",
+      "pool": ["Billy Story", "Kill Buyer", "Lulu", "Steel Eyed", "The Infected", "Umpire's Bane"]
+    },
+    "amuleto": {
+      "label": "Amuleto",
+      "note": "Los Amuletos de Drops anteriores tienen prioridad. Si te falta alguno, desbloqueás uno de estos:",
+      "pool": ["Carnassial Wills", "Gator Eye", "Hera's Gift", "Molted Curio", "Moondial", "Scaled Peak", "Sinner's Hope", "True North"],
+      "fallback_pool": ["Ruby's Favor", "Blood Bullet", "Dusk's Third Eye", "Lotus Incense", "Sorrow's Locks", "Emerald Dove", "Ristra", "Void Mark"],
+      "final_fallback": "Si ya tenés todos los Amuletos de Drops y Blood Bond, recibís 5.000 Hunt Dollars."
+    }
+  }
+}
