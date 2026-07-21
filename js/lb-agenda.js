@@ -80,14 +80,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    const btnVerAgenda = document.getElementById('agenda-btn');
-    if (btnVerAgenda) {
-        btnVerAgenda.addEventListener('click', (e) => {
-            e.preventDefault();
-            abrirAgenda();
-        });
-    }
-
     const btnNavAgenda = document.getElementById('nav-agenda-link');
     if (btnNavAgenda) {
         btnNavAgenda.addEventListener('click', (e) => {

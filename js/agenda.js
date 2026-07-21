@@ -39,7 +39,6 @@
 
     const lightbox    = document.getElementById('lightbox-agenda');
     const lista       = document.getElementById('lightbox-agenda-list');
-    const btnAbrir    = document.getElementById('agenda-btn');
     const btnNavAgenda = document.getElementById('nav-agenda-link');
     const btnCerrar   = document.querySelector('.lightbox-agenda-close');
 
@@ -56,7 +55,6 @@
         document.body.style.overflow = '';
     }
 
-    if (btnAbrir)     btnAbrir.addEventListener('click',     (e) => { e.preventDefault(); abrirLightbox(); });
     if (btnNavAgenda) btnNavAgenda.addEventListener('click', (e) => { e.preventDefault(); abrirLightbox(); });
     if (btnCerrar)    btnCerrar.addEventListener('click', cerrarLightbox);
     if (lightbox)     lightbox.addEventListener('click',  (e) => { if (e.target === lightbox) cerrarLightbox(); });
