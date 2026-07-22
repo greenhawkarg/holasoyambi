@@ -61,3 +61,56 @@
   font-family: var(--f-mono);
   font-size: 13px;
 }
+
+.sum-windows {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.sum-window-card {
+  background: var(--bg-raised);
+  border: 1px solid var(--brass-dim);
+  padding: 16px 18px;
+}
+
+.sum-window-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 12px;
+  padding-bottom: 10px;
+  margin-bottom: 8px;
+  border-bottom: 1px solid var(--ink-faint);
+}
+
+.sum-window-head .sum-window-label {
+  font-family: var(--f-display);
+  font-size: 15px;
+  letter-spacing: 0.03em;
+  color: var(--brass);
+}
+
+.sum-window-tracks {
+  display: flex;
+  flex-direction: column;
+}
+
+.sum-track-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 6px 0;
+  font-size: 14px;
+}
+
+.sum-track-time {
+  font-family: var(--f-mono);
+  color: var(--ink-muted);
+  min-width: 64px;
+}
+
+.sum-track-reward {
+  color: var(--bone);
+  text-align: right;
+}
