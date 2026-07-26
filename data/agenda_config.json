@@ -2,32 +2,6 @@
     {
         "bg_imagen": "",
         "border_color": "#d72626",
-        "dia": "LUNES",
-        "fecha": "20 DE JULIO",
-        "fecha_limite_calculada": "2026-07-21",
-        "hora": "1:00 PM",
-        "imagen": "imgs/index/agenda/fell_&_sell.jpg",
-        "juego": "FELL & SELL",
-        "tipo": "normal",
-        "tipo_stream": "CAMPAÑA",
-        "video": "hH7KoqaXA9Q"
-    },
-    {
-        "bg_imagen": "",
-        "border_color": "#d72626",
-        "dia": "LUNES",
-        "fecha": "20 DE JULIO",
-        "fecha_limite_calculada": "2026-07-21",
-        "hora": "1:00 PM",
-        "imagen": "imgs/index/agenda/ultimate_guess_game.jpg",
-        "juego": "ULTIMATE GUESS GAME",
-        "tipo": "normal",
-        "tipo_stream": "CAMPAÑA",
-        "video": "8kuYFxy7OQs"
-    },
-    {
-        "bg_imagen": "",
-        "border_color": "#d72626",
         "dia": "JUEVES",
         "fecha": "30 DE JULIO",
         "fecha_limite_calculada": "2026-08-02",
