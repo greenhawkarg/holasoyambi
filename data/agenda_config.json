@@ -63,5 +63,18 @@
         "bg_imagen": "",
         "border_color": "#9146ff",
         "video": "U2o6pEeHUTw"
+    },
+    {
+        "juego": "The Last Caretaker",
+        "dia": "DOMINGO",
+        "fecha": "9 DE AGOSTO",
+        "hora": "3:00 PM",
+        "fecha_limite_calculada": "2026-08-24",
+        "tipo": "normal",
+        "tipo_stream": "CAMPAÑA / EARLY ACCESS",
+        "imagen": "imgs/index/agenda/1785096178703-The_Last_Caretaker.jpg",
+        "bg_imagen": "",
+        "border_color": "#9146ff",
+        "video": "0P0twgxYCLI"
     }
 ]
