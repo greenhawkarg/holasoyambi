@@ -13,6 +13,19 @@
         "video": "EqwBoN9NROM"
     },
     {
+        "juego": "Wreck Runners",
+        "dia": "MARTES",
+        "fecha": "21 DE JULIO",
+        "hora": "4:00 PM",
+        "fecha_limite_calculada": "2026-08-14",
+        "tipo": "normal",
+        "tipo_stream": "CAMPAÑA / DESAFIO",
+        "imagen": "imgs/index/agenda/1785094871119-Wreck_Runners.jpg",
+        "bg_imagen": "",
+        "border_color": "#9146ff",
+        "video": "hk9gvVm11nA"
+    },
+    {
         "bg_imagen": "",
         "border_color": "#d72626",
         "dia": "JUEVES",
