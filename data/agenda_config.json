@@ -50,5 +50,18 @@
         "tipo": "normal",
         "tipo_stream": "INVITADOS POR EL ESTUDIO / CAMPAÑA",
         "video": "9kyBiB8aMSY"
+    },
+    {
+        "juego": "Firefighting Simulator Ignite",
+        "dia": "DOMINGO",
+        "fecha": "2 DE AGOSTO",
+        "hora": "4:00 PM",
+        "fecha_limite_calculada": "2026-08-15",
+        "tipo": "normal",
+        "tipo_stream": "CAMPAÑA / DESAFIO",
+        "imagen": "imgs/index/agenda/1785095126897-Firefighting_Simulator_Ignite.jpg",
+        "bg_imagen": "",
+        "border_color": "#9146ff",
+        "video": "U2o6pEeHUTw"
     }
 ]
