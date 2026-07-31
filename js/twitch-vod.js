@@ -1,38 +1,27 @@
 /* ══════════════════════════════════════════════════════════════════
    TWITCH — Live status, título, viewers, último VOD
    Canal: 4mbitv
+
+   IMPORTANTE: este archivo YA NO tiene el token de Twitch adentro.
+   El token vive server-side, en las Cloudflare Pages Functions
+   (/functions/api/twitch/channel.js), que lo genera y renueva solas.
+   Acá simplemente se pide la data a NUESTRO propio endpoint.
 ══════════════════════════════════════════════════════════════════ */
 
-const TWITCH_CLIENT_ID = 'zux2vfz52ssm0xtrc2wahapj77nrdq';
-const TWITCH_TOKEN     = 'l09l7y5h3q5nv0vro98t1d9nbnq447';
-const TWITCH_CHANNEL   = '4mbitv';
+const TWITCH_CHANNEL = '4mbitv';
 
 async function getTwitchData() {
-    // User ID
-    const userRes = await fetch(
-        `https://api.twitch.tv/helix/users?login=${TWITCH_CHANNEL}`,
-        { headers: { 'Client-ID': TWITCH_CLIENT_ID, 'Authorization': `Bearer ${TWITCH_TOKEN}` } }
-    );
-    const userData = await userRes.json();
-    const userId = userData.data[0].id;
+    // En vez de pegarle directo a api.twitch.tv (que exige un token
+    // que vence), pedimos a nuestra propia función serverless, que
+    // ya devuelve todo listo: user, stream y vod.
+    const res = await fetch(`/api/twitch/channel?channel=${encodeURIComponent(TWITCH_CHANNEL)}`);
 
-    // Stream en vivo
-    const streamRes = await fetch(
-        `https://api.twitch.tv/helix/streams?user_id=${userId}`,
-        { headers: { 'Client-ID': TWITCH_CLIENT_ID, 'Authorization': `Bearer ${TWITCH_TOKEN}` } }
-    );
-    const streamData = await streamRes.json();
-    const stream = streamData.data[0] || null;
+    if (!res.ok) {
+        throw new Error(`Error al pedir datos de Twitch: ${res.status}`);
+    }
 
-    // Último VOD
-    const vodRes = await fetch(
-        `https://api.twitch.tv/helix/videos?user_id=${userId}&first=1&type=archive`,
-        { headers: { 'Client-ID': TWITCH_CLIENT_ID, 'Authorization': `Bearer ${TWITCH_TOKEN}` } }
-    );
-    const vodData = await vodRes.json();
-    const vod = vodData.data[0] || null;
-
-    return { stream, vod };
+    const data = await res.json();
+    return { stream: data.stream, vod: data.vod };
 }
 
 function formatViewers(n) {
@@ -44,6 +33,8 @@ async function initTwitch() {
     try {
         const { stream, vod } = await getTwitchData();
         const isLive = !!stream;
+
+        /* ── EMBED PRINCIPAL (player en vivo o thumbnail offline) ── */
         const embedEl = document.querySelector('.twitch-player-embed');
         if (embedEl) {
             if (isLive) {
@@ -60,7 +51,6 @@ async function initTwitch() {
                 `;
             }
         }
-        
 
         /* ── TÍTULO DEL STREAM ── */
         const titleEl = document.querySelector('.twitch-stream-title');
@@ -70,7 +60,7 @@ async function initTwitch() {
                 : '// ESTATE ATENTO A LA AGENDA PARA EL PRÓXIMO STREAM';
         }
 
-        /* ── STATUS ── */
+        /* ── STATUS (LIVE / OFFLINE + viewers) ── */
         const statusWrap = document.querySelector('.twitch-status');
         if (statusWrap) {
             if (isLive) {
@@ -87,7 +77,7 @@ async function initTwitch() {
             }
         }
 
-        /* ── VOD PREVIEW ── */
+        /* ── VOD PREVIEW (último stream grabado) ── */
         const vodWrap = document.querySelector('.twitch-vod-embed');
         if (vodWrap && vod) {
             const thumbUrl = vod.thumbnail_url
@@ -107,6 +97,8 @@ async function initTwitch() {
                 </div>
             `;
 
+            // Al hacer click en el thumbnail del VOD, lo reemplaza por el
+            // player embebido real (con autoplay) usando el id del VOD.
             vodWrap.querySelector('.twitch-vod-preview').addEventListener('click', function () {
                 const id = this.dataset.vodId;
                 const parent = window.location.hostname || 'localhost';
@@ -119,8 +111,6 @@ async function initTwitch() {
             });
         }
 
-        
-        
     } catch (e) {
         console.warn('Twitch API error:', e);
     }

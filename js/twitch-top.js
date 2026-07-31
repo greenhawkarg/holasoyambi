@@ -3,9 +3,12 @@
    Lee data/twitch_config.json y pinta el bloque superior de la
    sección Twitch (kicker, título, cards, crew).
    Fotos del crew: manual (foto) o auto desde API Twitch (url).
+
+   IMPORTANTE: ya no usa TWITCH_CLIENT_ID/TWITCH_TOKEN acá. Los
+   avatares se resuelven server-side vía /api/twitch/avatars, que
+   devuelve todos los logins pedidos en un solo request (antes se
+   hacía un fetch por cada integrante del crew, uno por uno).
 ══════════════════════════════════════════════════════════════════ */
-
-
 
 /* Extrae el login de una URL de Twitch o devuelve el string tal cual */
 function extractTwitchLogin(url) {
@@ -16,24 +19,20 @@ function extractTwitchLogin(url) {
             const parts = u.pathname.split('/').filter(Boolean);
             return parts[0] || null;
         }
-    } catch(e) {}
+    } catch (e) {}
     return null;
 }
 
-/* Trae la profile_image_url de un login de Twitch via API */
-async function fetchTwitchAvatar(login) {
+/* Trae { login: profile_image_url } para varios logins de una sola vez,
+   pegándole a nuestra propia función serverless (no a Twitch directo). */
+async function fetchTwitchAvatars(logins) {
+    if (logins.length === 0) return {};
     try {
-        const res  = await fetch(
-            `https://api.twitch.tv/helix/users?login=${login}`,
-            { headers: {
-                'Client-ID': TWITCH_CLIENT_ID,
-                'Authorization': `Bearer ${TWITCH_TOKEN}`
-            }}
-        );
-        const data = await res.json();
-        return data.data[0]?.profile_image_url || null;
-    } catch(e) {
-        return null;
+        const res = await fetch(`/api/twitch/avatars?logins=${encodeURIComponent(logins.join(','))}`);
+        if (!res.ok) return {};
+        return await res.json();
+    } catch (e) {
+        return {};
     }
 }
 
@@ -72,29 +71,35 @@ document.addEventListener('DOMContentLoaded', async function () {
         /* ── CREW & STREAMERS ── */
         const crewList = (data.crew || []).filter(c => c.nombre);
 
-        /* Resolver fotos: manual primero, API como fallback */
-        const crewWithAvatars = await Promise.all(crewList.map(async c => {
+        // Solo hace falta pedirle a la API los logins de quienes NO
+        // tienen foto manual cargada en el JSON.
+        const loginsToFetch = crewList
+            .filter(c => !c.foto)
+            .map(c => extractTwitchLogin(c.url))
+            .filter(Boolean);
+
+        // Un solo pedido para todo el crew, en vez de uno por persona.
+        const avatarMap = await fetchTwitchAvatars(loginsToFetch);
+
+        const crewWithAvatars = crewList.map(c => {
             if (c.foto) return { ...c, avatar: '/' + c.foto };
             const login = extractTwitchLogin(c.url);
-            if (login) {
-                const apiAvatar = await fetchTwitchAvatar(login);
-                if (apiAvatar) return { ...c, avatar: apiAvatar };
-            }
-            return { ...c, avatar: null };
-        }));
+            const apiAvatar = login ? avatarMap[login] : null;
+            return { ...c, avatar: apiAvatar || null };
+        });
 
         const ROL_VALID = ['hammer', 'sword', 'vip'];
 
         const crew = document.createElement('div');
         crew.className = 'twitch-top-crew';
-            if (data.crew_bg) {
-                crew.style.backgroundImage = `url('${data.crew_bg}')`;
-                crew.style.backgroundSize = 'cover';
-                crew.style.backgroundPosition = 'center';
-                crew.style.backgroundBlendMode = 'overlay';
-                crew.style.backgroundColor = 'rgba(109, 52, 164, 0.85)';
-            }
-            const crewItems = crewWithAvatars.map(c => {
+        if (data.crew_bg) {
+            crew.style.backgroundImage = `url('${data.crew_bg}')`;
+            crew.style.backgroundSize = 'cover';
+            crew.style.backgroundPosition = 'center';
+            crew.style.backgroundBlendMode = 'overlay';
+            crew.style.backgroundColor = 'rgba(109, 52, 164, 0.85)';
+        }
+        const crewItems = crewWithAvatars.map(c => {
             const rolHtml = (c.rol && ROL_VALID.includes(c.rol))
                 ? `<img class="twitch-top-crew-rol" src="imgs/index/twitch/${c.rol}.png" alt="${c.rol}">`
                 : '';
