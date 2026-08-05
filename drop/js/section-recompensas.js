@@ -21,11 +21,17 @@
   const oldSubmenu = document.getElementById('recompensas-submenu');
   if (oldSubmenu) oldSubmenu.remove();
 
+  // Si venimos de un click en Suministros sobre un premio puntual, arrancamos
+  // directamente en esa categoría en vez de la primera de la lista.
+  const pendingCategory = window.AmbiPendingRewardCategory;
+  window.AmbiPendingRewardCategory = null;
+  const initialKey = categories.some(c => c.key === pendingCategory) ? pendingCategory : categories[0].key;
+
   const submenu = document.createElement('nav');
   submenu.id = 'recompensas-submenu';
   submenu.className = 'inicio-submenu';
   submenu.innerHTML = categories.map((cat, i) =>
-    `<button class="sub-btn${i === 0 ? ' active' : ''}" data-view="${cat.key}">${cat.label}</button>`
+    `<button class="sub-btn${cat.key === initialKey ? ' active' : ''}" data-view="${cat.key}">${cat.label}</button>`
   ).join('');
   document.body.appendChild(submenu);
 
@@ -129,7 +135,7 @@
       rec = data.recompensas;
       hunters = data.hunters || {};
       avatars = data.avatars || {};
-      renderDetail(categories[0].key);
+      renderDetail(initialKey);
     })
     .catch(err => console.error('[AMBI DROPS] Error en recompensas', err));
 

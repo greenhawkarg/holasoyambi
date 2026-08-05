@@ -114,3 +114,15 @@
   color: var(--bone);
   text-align: right;
 }
+
+.sum-track-link {
+  color: var(--brass);
+  text-decoration: none;
+  border-bottom: 1px solid var(--brass-dim);
+  transition: color 0.15s ease, border-color 0.15s ease;
+}
+
+.sum-track-link:hover {
+  color: var(--bone);
+  border-color: var(--brass);
+}

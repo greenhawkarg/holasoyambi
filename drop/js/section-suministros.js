@@ -64,6 +64,18 @@
       const windowsWrap = document.getElementById('crate-windows');
       const fmt = d => d.toLocaleDateString('es-AR', { day: '2-digit', month: 'short' });
 
+      // Mapea el texto de la recompensa a la categoría de sections/recompensas.html
+      // (las keys son las mismas que usa section-recompensas.js). "Suministro"
+      // no tiene categoría propia en Recompensas, así que queda como texto plano.
+      function rewardCategory(text) {
+        if (/Golden Hair Trigger/i.test(text)) return 'golden_skin';
+        if (/Skin Legendaria/i.test(text)) return 'skin_legendaria';
+        if (/Cazador Legendario/i.test(text)) return 'cazador_legendario';
+        if (/Amuleto/i.test(text)) return 'amuleto';
+        if (/Avatar/i.test(text)) return 'avatar';
+        return null;
+      }
+
       data.reward_windows.forEach(w => {
         const start = new Date(w.start_utc);
         const end = new Date(w.end_utc);
@@ -71,12 +83,18 @@
         const card = document.createElement('div');
         card.className = 'sum-window-card';
 
-        const tracksHtml = (w.tracks || []).map(t => `
-          <div class="sum-track-row">
-            <span class="sum-track-time">${t.time}</span>
-            <span class="sum-track-reward">${t.reward}</span>
-          </div>
-        `).join('');
+        const tracksHtml = (w.tracks || []).map(t => {
+          const cat = rewardCategory(t.reward);
+          const rewardHtml = cat
+            ? `<a href="#recompensas" class="sum-track-link" data-category="${cat}">${t.reward}</a>`
+            : t.reward;
+          return `
+            <div class="sum-track-row">
+              <span class="sum-track-time">${t.time}</span>
+              <span class="sum-track-reward">${rewardHtml}</span>
+            </div>
+          `;
+        }).join('');
 
         card.innerHTML = `
           <div class="sum-window-head">
@@ -87,6 +105,18 @@
         `;
 
         windowsWrap.appendChild(card);
+      });
+
+      // Delegación: al clickear un premio, guarda qué categoría hay que
+      // mostrar y simula el click en el botón "Recompensas" del footer.
+      // section-recompensas.js lee window.AmbiPendingRewardCategory al cargar.
+      windowsWrap.addEventListener('click', (e) => {
+        const link = e.target.closest('.sum-track-link');
+        if (!link) return;
+        e.preventDefault();
+        window.AmbiPendingRewardCategory = link.dataset.category;
+        const recBtn = document.querySelector('.foot-btn[data-section="recompensas"]');
+        if (recBtn) recBtn.click();
       });
     })
     .catch(err => console.error('[AMBI DROPS] Error en suministros', err));
