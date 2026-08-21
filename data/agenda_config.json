@@ -1,41 +1,15 @@
 [
     {
         "bg_imagen": "",
-        "border_color": "#d72626",
-        "dia": "DOMINGO",
-        "fecha": "9 DE AGOSTO",
-        "fecha_limite_calculada": "2026-08-13",
-        "hora": "3:00 PM",
-        "imagen": "imgs/index/agenda/ground_branch.jpg",
-        "juego": "GROUND BRANCH",
-        "tipo": "normal",
-        "tipo_stream": "INVITADOS POR EL ESTUDIO / CAMPAÑA",
-        "video": "h4pmHO4g90U"
-    },
-    {
-        "bg_imagen": "",
         "border_color": "#9146ff",
         "dia": "DOMINGO",
-        "fecha": "9 DE AGOSTO",
+        "fecha": "23 DE AGOSTO",
         "fecha_limite_calculada": "2026-08-24",
-        "hora": "4:00 PM",
+        "hora": "3:00 PM",
         "imagen": "imgs/index/agenda/1785096178703-The_Last_Caretaker.jpg",
         "juego": "The Last Caretaker",
         "tipo": "normal",
         "tipo_stream": "CAMPAÑA / EARLY ACCESS",
         "video": "0P0twgxYCLI"
-    },
-    {
-        "bg_imagen": "",
-        "border_color": "#9146ff",
-        "dia": "DOMINGO",
-        "fecha": "9 DE AGOSTO",
-        "fecha_limite_calculada": "2026-08-15",
-        "hora": "5:00 PM",
-        "imagen": "imgs/index/agenda/1784466148199-ArcRunner.jpg",
-        "juego": "ArcRunner",
-        "tipo": "normal",
-        "tipo_stream": "INVITADOS POR EL ESTUDIO / CAMPAÑA",
-        "video": "9kyBiB8aMSY"
     }
 ]
