@@ -198,3 +198,19 @@ hamburger?.addEventListener('click', () => {
 overlay?.addEventListener('click', closeMobileNav);
 closeBtn?.addEventListener('click', closeMobileNav);
 mobileBtns.forEach(btn => btn.addEventListener('click', () => setTimeout(closeMobileNav, 300)));
+
+
+/* ── LINK DEL SORTEO — dinámico desde index_config.json ──
+   El href venía hardcodeado en el HTML. Acá lo traemos del panel
+   (campo nav.sorteo_url) y lo aplicamos a todos los links con
+   class="nav-sorteo" (desktop y, si existe, la versión mobile).   */
+fetch('data/index_config.json')
+    .then(res => res.json())
+    .then(data => {
+        const url = data?.nav?.sorteo_url;
+        if (!url) return;
+        document.querySelectorAll('.nav-sorteo').forEach(a => {
+            a.setAttribute('href', url);
+        });
+    })
+    .catch(err => console.error('No se pudo cargar el link del sorteo:', err));
