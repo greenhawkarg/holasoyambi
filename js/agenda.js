@@ -1,18 +1,19 @@
 /* ══════════════════════════════════════════════════════════════════
-   AMBI — agenda.js (v2)
+   AMBI — agenda.js (v3)
    1. Lee data/agenda_destacado.json → pinta sección AGENDA del index
       (banner de "próximo evento destacado" debajo del HERO)
    2. Lee data/agenda_config.json    → renderiza lightbox de schedule
       (sin cambios respecto a la versión anterior)
    Independiente: no sabe nada de bleeds ni de otras secciones.
 
-   CAMBIO DE ESTA VUELTA: el punto 1 antes leía data/index_config.json
-   (fuente vieja, desconectada del panel nuevo de Agenda Destacado).
-   Ahora lee data/agenda_destacado.json, que es el archivo que escribe
-   el módulo "Agenda > Destacado" del panel. Los nombres de campo son
-   distintos entre ambos JSON, por eso cambia también el mapeo de abajo
-   (titulo en vez de juego, descripcion en vez de desc, etc.).
-══════════════════════════════════════════════════════════════════ */
+   CAMBIOS DE ESTA VUELTA:
+   - badge_color: si viene seteado desde el panel, se aplica como
+     background-color del badge (#agenda-badge). Si viene vacío, NO se
+     toca el style -> queda el color que ya define el CSS del sitio
+     por default (no forzamos nada si el usuario no eligió uno).
+   - btn_texto / btn_link: el botón "VER DROPS" ahora es editable desde
+     el panel -- antes el texto y el href estaban fijos en el HTML.
+   ══════════════════════════════════════════════════════════════════ */
 
 (async function () {
 
@@ -48,9 +49,15 @@
             if (titleEl) titleEl.textContent = data.titulo;
         }
 
-        if (data.tipo) {
-            const badgeEl = document.getElementById('agenda-badge');
-            if (badgeEl) badgeEl.textContent = data.tipo;
+        const badgeEl = document.getElementById('agenda-badge');
+        if (badgeEl) {
+            if (data.tipo) badgeEl.textContent = data.tipo;
+            // Solo se pisa el color de fondo si el panel guardó uno --
+            // si "badge_color" viene vacío, se deja el color que ya
+            // trae el CSS del sitio por default (no forzar nada acá).
+            if (data.badge_color) {
+                badgeEl.style.backgroundColor = data.badge_color;
+            }
         }
 
         // Imagen del thumb: usamos la ruta real guardada por el panel
@@ -70,6 +77,14 @@
         const fechaEl = document.getElementById('agenda-fecha');
         if (fechaEl && data.fecha && data.hora) {
             fechaEl.textContent = `${formatearFechaDestacado(data.fecha)} — ${data.hora}`;
+        }
+
+        // Botón: texto y link editables desde el panel (antes fijos en
+        // el HTML del sitio como "VER DROPS" -> drop/hunt-drops.html)
+        const btnEl = document.getElementById('agenda-btn');
+        if (btnEl) {
+            if (data.btn_texto) btnEl.textContent = data.btn_texto;
+            if (data.btn_link)  btnEl.setAttribute('href', data.btn_link);
         }
 
     } catch (e) {
