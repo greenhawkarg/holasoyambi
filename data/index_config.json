@@ -1,47 +1,47 @@
 {
-  "juego": "SHOWDOWN DROPS",
-  "tipo": "CONTENIDO EXCLUSIVO",
-  "desc": "Toda la información de los Twitch Drops ahora está reunida en un solo lugar. Descubrí las recompensas, las fechas de cada etapa y todo lo que necesitás para no perderte ningún Drop.",
-  "fecha": "22 DE JULIO",
-  "fecha_iso": "2026-07-22",
-  "dia": "MIÉRCOLES",
-  "hora": "6:00 AM",
-  "thumb": "imgs/index/agenda/twitter_1920x1080.jpg",
-  "object": "imgs/index/hero-bg_img.webp",
-  "logo": "imgs/index/hero/hero-bg_logo.webp",
-  "bg": "imgs/index/bgs/hero-bg.webp",
-  "bleed": "imgs/index/agenda/agenda_over-img.webp",
-  "nav": {
-    "sorteo_url": "https://www.clavecd.es/giveaway/4mbitv/sorteazo/SwPlQ-232040145",
-    "links": [
-      {
-        "href": "#",
-        "label": "Agenda"
-      },
-      {
-        "href": "#noticias",
-        "label": "Noticias"
-      },
-      {
-        "href": "#twitch",
-        "label": "Twitch"
-      },
-      {
-        "href": "#creatorphunt",
-        "label": "Hunt"
-      },
-      {
-        "href": "dossier.html",
-        "label": "Dossier"
-      }
-    ]
-  },
-  "redes": {
-    "discord": "https://discord.com/invite/CSQDumV",
-    "instagram": "https://www.instagram.com/4mbitv/",
-    "spotify": "https://open.spotify.com/intl-es/artist/64VR4resIiyFchXF9FCLGd",
-    "twitch": "https://www.twitch.tv/4mbitv",
-    "x": "https://x.com/4mbiTV",
-    "youtube": "https://www.youtube.com/@ambitvok"
-  }
+    "juego": "SHOWDOWN DROPS",
+    "tipo": "CONTENIDO EXCLUSIVO",
+    "desc": "Toda la información de los Twitch Drops ahora está reunida en un solo lugar. Descubrí las recompensas, las fechas de cada etapa y todo lo que necesitás para no perderte ningún Drop.",
+    "fecha": "22 DE JULIO",
+    "fecha_iso": "2026-07-22",
+    "dia": "MIÉRCOLES",
+    "hora": "6:00 AM",
+    "thumb": "imgs/index/agenda/twitter_1920x1080.jpg",
+    "object": "imgs/index/hero-bg_img.webp",
+    "logo": "imgs/index/hero/hero-bg_logo.webp",
+    "bg": "imgs/index/bgs/hero-bg.webp",
+    "bleed": "imgs/index/agenda/agenda_over-img.webp",
+    "nav": {
+        "sorteo_url": "https://www.clavecd.es/giveaway/4mbitv/sorteazo/SwPlQ-232040145",
+        "links": [
+            {
+                "href": "#",
+                "label": "Agenda"
+            },
+            {
+                "href": "#noticias",
+                "label": "Noticias"
+            },
+            {
+                "href": "#twitch",
+                "label": "Twitch"
+            },
+            {
+                "href": "#creatorphunt",
+                "label": "Hunt"
+            },
+            {
+                "href": "dossier.html",
+                "label": "Dossier"
+            }
+        ]
+    },
+    "redes": {
+        "discord": "https://discord.com/invite/CSQDumV",
+        "instagram": "https://www.instagram.com/4mbitv/",
+        "spotify": "https://open.spotify.com/intl-es/artist/64VR4resIiyFchXF9FCLGd",
+        "twitch": "https://www.twitch.tv/4mbitv",
+        "x": "https://x.com/4mbiTV",
+        "youtube": "https://www.youtube.com/@ambitvok"
+    }
 }
