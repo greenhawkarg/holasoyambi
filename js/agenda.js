@@ -80,11 +80,24 @@
         }
 
         // Botón: texto y link editables desde el panel (antes fijos en
-        // el HTML del sitio como "VER DROPS" -> drop/hunt-drops.html)
+        // el HTML del sitio como "VER DROPS" -> drop/hunt-drops.html).
+        // Si no hay link cargado (btn_link vacío), el botón no debe
+        // navegar a ningún lado -- en su lugar muestra un aviso de que
+        // todavía no está disponible, y no depende de que quede pegado
+        // el link viejo (bug ya corregido del lado del panel).
         const btnEl = document.getElementById('agenda-btn');
         if (btnEl) {
             if (data.btn_texto) btnEl.textContent = data.btn_texto;
-            if (data.btn_link)  btnEl.setAttribute('href', data.btn_link);
+
+            if (data.btn_link) {
+                btnEl.setAttribute('href', data.btn_link);
+            } else {
+                btnEl.setAttribute('href', '#');
+                btnEl.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    alert('PRÓXIMAMENTE');
+                });
+            }
         }
 
     } catch (e) {
