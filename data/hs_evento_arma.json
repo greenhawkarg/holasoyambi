@@ -1,0 +1,12 @@
+{
+  "eyebrow": "Armamento",
+  "titulo": "The Burgess",
+  "bg": "imgs/bg-tb.webp",
+  "clip": "imgs/tb-cliploop-00.mp4",
+
+  "parrafos": [
+    "Una escopeta plegable de acción por corredera, con cañón largo y un cargador de 6 proyectiles.",
+    "Su capacidad de arma Size 3 tiene como contrapartida unas animaciones de equipamiento y desequipamiento más largas. Puede utilizarse junto con el Trait <strong>Bulletgrubber</strong> para recuperar los proyectiles vivos expulsados.",
+    "Durante Blood Testament se desbloquean también las variantes <strong>Burgess Bayonet</strong> (agrega una hoja/bayoneta) y <strong>Burgess Trauma</strong> (culata reforzada, convierte el ataque cuerpo a cuerpo pesado en un golpe de martillo)."
+  ]
+}
