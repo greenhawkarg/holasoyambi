@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blood Testament — Hunt: Showdown</title>
+<script>
+(function(){
+  var esCelular = /Android.*Mobile|iPhone|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+  if (esCelular) document.documentElement.classList.add('hs-is-phone');
+})();
+</script>
+<link rel="stylesheet" href="css/hs-evento.css?v=5">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=JetBrains+Mono:wght@400;600&family=EB+Garamond:ital@0;1&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<div class="hs-mobile-gate">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+    <rect x="5" y="2" width="14" height="20" rx="2"/>
+    <line x1="12" y1="18" x2="12" y2="18.01"/>
+  </svg>
+  <h2 class="hs-mobile-gate-title">Disfrutá esta experiencia<br>en horizontal</h2>
+  <p class="hs-mobile-gate-text">Usá una tablet, notebook o PC para ver Blood Testament como está pensado.</p>
+</div>
+
+<nav class="hs-sticky-nav" id="hsStickyNav">
+  <a class="hs-sticky-link hs-sticky-link--home" data-target="hsPage" aria-label="Inicio" title="Inicio">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M3 11.5 12 4l9 7.5"/>
+      <path d="M5 10v9a1 1 0 0 0 1 1h4v-6h4v6h4a1 1 0 0 0 1-1v-9"/>
+    </svg>
+  </a>
+  <a class="hs-sticky-link" data-target="lore">Blood Testament</a>
+  <a class="hs-sticky-link" data-target="evento">Make Them Bleed</a>
+  <a class="hs-sticky-link" data-target="arma">The Burgess</a>
+  <a class="hs-sticky-link" data-target="update">Update 2.9</a>
+</nav>
+
+<div class="hs-page" id="hsPage">
+
+  <!-- VISTA 1: TRAILER -->
+  <section class="hs-hero" id="hsHero">
+    <div class="hs-bg" style="background-image:url('imgs/bg-web.webp')"></div>
+    <div class="hs-hero-vignette"></div>
+
+    <div class="hs-hero-content">
+      <span class="hs-eyebrow">HUNT: SHOWDOWN 1896 — UPDATE 2.9</span>
+      <h1 class="hs-logo">BLOOD<br>TESTAMENT</h1>
+
+      <div class="hs-video-frame">
+        <video class="hs-video" controls preload="metadata" poster="imgs/thumb.jpg">
+          <source src="imgs/trailer.mp4" type="video/mp4">
+        </video>
+      </div>
+
+      <button class="hs-btn-info" id="hsBtnInfo">
+        <span>MÁS INFO</span>
+      </button>
+    </div>
+  </section>
+
+  <!-- VISTA 2: MENU -->
+  <section class="hs-menu" id="hsMenu">
+    <div class="hs-bg" style="background-image:url('imgs/bg-web-links.webp')"></div>
+    <div class="hs-menu-vignette"></div>
+
+    <div class="hs-menu-header">
+      <span class="hs-eyebrow">BLOOD TESTAMENT</span>
+      <h2 class="hs-menu-title">Explorá el evento</h2>
+      <button class="hs-btn-replay" id="hsBtnReplay" type="button">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+        <span>Ver tráiler</span>
+      </button>
+    </div>
+
+    <nav class="hs-links" id="hsLinks">
+      <a class="hs-link" href="#" data-target="lore">
+        <span class="hs-link-face hs-link-title">BLOOD TESTAMENT</span>
+        <span class="hs-link-face hs-link-sub">INFORMACIÓN</span>
+      </a>
+      <a class="hs-link" href="#" data-target="evento">
+        <span class="hs-link-face hs-link-title">MAKE THEM BLEED</span>
+        <span class="hs-link-face hs-link-sub">EVENTO COMUNITARIO</span>
+      </a>
+      <a class="hs-link" href="#" data-target="arma">
+        <span class="hs-link-face hs-link-title">THE BURGESS</span>
+        <span class="hs-link-face hs-link-sub">ARMAMENTO</span>
+      </a>
+      <a class="hs-link" href="#" data-target="update">
+        <span class="hs-link-face hs-link-title">UPDATE 2.9</span>
+        <span class="hs-link-face hs-link-sub">CAMBIOS</span>
+      </a>
+    </nav>
+  </section>
+
+</div>
+
+<!-- ===== SECCIONES DE CONTENIDO (one-page, debajo del hero/menu) ===== -->
+
+<section class="hs-section" id="lore">
+  <span class="hs-eyebrow">Información</span>
+  <h3 class="hs-section-title">Una nueva pesadilla se alza</h3>
+  <div class="hs-section-media">
+    <div class="hs-section-body">
+      <p>Los hombres desesperados son víctimas fáciles. La Corrupción puede arrebatárselo todo a un hombre, y <strong>Warren Russett</strong> lo sabe demasiado bien: lo perdió todo, hasta quedar sin salida aparente.</p>
+      <p>Fue entonces cuando apareció <strong>Lynch</strong>, con un suero sanguíneo recién formulado que prometía devolverle lo que había perdido. Russett aceptó.</p>
+      <p>Pero lo que comenzó como una segunda oportunidad se convirtió en algo mucho más oscuro: el suero despertó en él una dependencia cada vez más intensa, hasta transformarse en una sed insaciable de sangre. Cuando la necesidad se vuelve adicción, recuperar el control puede resultar imposible.</p>
+      <p>Esta es la historia de Blood Testament: desesperación, corrupción y una búsqueda por recuperar lo perdido. Pero detrás del suero y de Lynch todavía quedan preguntas por responder. ¿Qué ocurrió realmente con Warren Russett? Eso es lo que los cazadores tendrán que descubrir.</p>
+    </div>
+
+    <div class="hs-lore-lists">
+      <div class="hs-lore-list-block">
+        <h4 class="hs-lore-list-title">Blood Testament</h4>
+        <ul>
+          <li>Del 8 de septiembre al 8 de diciembre</li>
+          <li>Pase de batalla</li>
+          <li>Nueva condición climática dinámica</li>
+          <li>Nuevas armas</li>
+          <li>Nuevas herramientas</li>
+          <li>Eventos comunitarios</li>
+          <li>Más contenido que se irá desbloqueando</li>
+        </ul>
+      </div>
+
+      <div class="hs-lore-list-block">
+        <h4 class="hs-lore-list-title">Capítulo 1</h4>
+        <ul>
+          <li>Evento comunitario (3 hitos)</li>
+          <li>Nuevas mecánicas del evento</li>
+          <li>Nuevos Rasgos ardientes</li>
+          <li>Un nuevo arma</li>
+          <li>Nuevo Reto de Historia gratuito</li>
+        </ul>
+      </div>
+
+      <div class="hs-lore-list-block">
+        <h4 class="hs-lore-list-title">Capítulos 2 y 3</h4>
+        <ul>
+          <li>Un arma nueva más</li>
+          <li>Nueva Herramienta</li>
+          <li>Nuevas Cartas de Tarot</li>
+          <li>Más eventos comunitarios</li>
+          <li>Y otros cambios sin detallar</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="hs-section" id="evento">
+  <span class="hs-eyebrow">Evento comunitario</span>
+  <h3 class="hs-section-title">Make Them Bleed</h3>
+  <div class="hs-section-media">
+    <div class="hs-section-body">
+      <p>Con la Actualización 2.9, Hunt: Showdown 1896 presenta un enorme evento comunitario en el que todos los jugadores participan obteniendo puntos al completar objetivos durante las Misiones.</p>
+      <p>Es la primera vez que un evento de Hunt permite visualizar su progreso en tiempo real: la comunidad podrá comprobar en todo momento cómo avanza esta progresión colectiva.</p>
+      <p>Los puntos se consiguen mediante sacrificios de sangre, matando monstruos y completando objetivos de misión.</p>
+
+      <div class="hs-lore-list-block">
+        <h4 class="hs-lore-list-title">Fases</h4>
+        <ul>
+          <li>Fase 1: <strong>Luna de Sangre</strong> — revelada</li>
+          <li>Fase 2: <strong>Chupacabra</strong> — revelada</li>
+          <li>Fase 3: «La verdadera pesadilla» — sin desvelar</li>
+        </ul>
+      </div>
+    </div>
+    <div class="hs-media-frame">
+      <video id="hsClipMTB" autoplay muted loop playsinline preload="auto" poster="imgs/PLACEHOLDER-evento.webp">
+        <source src="imgs/mtb-cliploop-00.mp4" type="video/mp4">
+      </video>
+      <button class="hs-btn-fullscreen" id="hsBtnFullscreenMTB" type="button" aria-label="Pantalla completa" title="Pantalla completa">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M8 3H5a2 2 0 0 0-2 2v3"/>
+          <path d="M16 3h3a2 2 0 0 1 2 2v3"/>
+          <path d="M21 16v3a2 2 0 0 1-2 2h-3"/>
+          <path d="M3 16v3a2 2 0 0 0 2 2h3"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <div class="hs-triptych" id="hsTriptychMTB"></div>
+</section>
+
+<section class="hs-section" id="arma">
+  <span class="hs-eyebrow">Armamento</span>
+  <h3 class="hs-section-title">The Burgess</h3>
+  <div class="hs-section-media">
+    <div class="hs-section-body">
+      <p>Una escopeta plegable de acción por corredera, con cañón largo y un cargador de 6 proyectiles.</p>
+      <p>Durante Blood Testament se desbloquean también las variantes <strong>Burgess Bayonet</strong> (agrega una hoja/bayoneta) y <strong>Burgess Trauma</strong> (culata reforzada, convierte el ataque cuerpo a cuerpo pesado en un golpe de martillo).</p>
+    </div>
+    <div class="hs-media-frame">
+      <video id="hsClipTB" autoplay muted loop playsinline preload="auto" poster="imgs/tb-imgA.webp">
+        <source src="imgs/tb-cliploop-00.mp4" type="video/mp4">
+      </video>
+      <button class="hs-btn-fullscreen" id="hsBtnFullscreenTB" type="button" aria-label="Pantalla completa" title="Pantalla completa">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M8 3H5a2 2 0 0 0-2 2v3"/>
+          <path d="M16 3h3a2 2 0 0 1 2 2v3"/>
+          <path d="M21 16v3a2 2 0 0 1-2 2h-3"/>
+          <path d="M3 16v3a2 2 0 0 0 2 2h3"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <div class="hs-duo" id="hsDuoTB"></div>
+</section>
+
+<section class="hs-section" id="update">
+  <span class="hs-eyebrow">Cambios</span>
+  <h3 class="hs-section-title">Update 2.9</h3>
+  <div class="hs-section-body">
+    <p>Se reduce el alcance y munición de reserva del Hunting Bow, y Terminus recibe más daño y una dispersión más cerrada. Se ajustan precios de Slugs, Tools y Consumables, y se agrega la nueva munición LeMat High Velocity Ammo.</p>
+    <p>Ahora los Traits pueden guardarse como parte de los Loadouts (hasta 15 por build), y el máximo de espacios para Hunters sube de 75 a 100.</p>
+    <p>Todos los Extraction Points, Supply Points y Scout Towers estarán ocultos por defecto — interactuar con un Clue revelará dos Extraction Points.</p>
+  </div>
+</section>
+
+<script src="js/hs-evento.js?v=4"></script>
+</body>
+</html>

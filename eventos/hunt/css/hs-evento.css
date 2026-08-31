@@ -1,0 +1,860 @@
+/* ===== hs-evento.css =====
+   Paleta "Blood Testament":
+   --hs-black : #0A0A0A  (base, coherente con --c-black del sitio)
+   --hs-blood : #6E0F1A  (rojo sangre seca, acento primario del evento)
+   --hs-glow  : #C41230  (rojo más vivo, glow / hover)
+   --hs-bone  : #E4DCC8  (hueso/pergamino, texto principal)
+   --hs-ash   : #3A3530  (marrón-ceniza, divisores y paneles)
+*/
+
+:root{
+  --hs-black: #0A0A0A;
+  --hs-blood: #6E0F1A;
+  --hs-glow: #C41230;
+  --hs-bone: #E4DCC8;
+  --hs-ash: #3A3530;
+
+  --hs-ease: cubic-bezier(.22,.61,.36,1);
+}
+
+html{
+  scroll-behavior: smooth;
+  /* Se oculta la scrollbar nativa a propósito: con el bloqueo de scroll
+     entre secciones, poder arrastrarla directamente es la principal
+     causa de que se "asome" la sección siguiente antes de corregirse.
+     El scroll sigue funcionando igual (rueda/touch/teclado), solo se
+     saca el control visual que permitía saltarse el bloqueo. */
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* Edge/IE legacy */
+}
+
+html::-webkit-scrollbar{
+  display: none; /* Chrome, Safari, Edge Chromium */
+}
+
+html, body{
+  margin: 0;
+  background: var(--hs-black);
+}
+
+.hs-page{
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  height: 100dvh;
+  background: var(--hs-black);
+  color: var(--hs-bone);
+  overflow: hidden;
+  font-family: 'EB Garamond', serif;
+}
+
+.hs-eyebrow{
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: .28em;
+  color: var(--hs-glow);
+  text-transform: uppercase;
+}
+
+/* ---------- VISTA 1: HERO / TRAILER ---------- */
+
+.hs-hero{
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow-y: auto;
+  transition: opacity .5s var(--hs-ease), filter .5s var(--hs-ease), transform .5s var(--hs-ease);
+}
+
+.hs-bg{
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  background-color: #150506;
+}
+
+.hs-hero-vignette{
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at center, transparent 30%, rgba(10,10,10,.75) 100%),
+    linear-gradient(180deg, rgba(10,10,10,.4) 0%, rgba(10,10,10,.15) 30%, rgba(10,10,10,.85) 100%);
+}
+
+.hs-hero-content{
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 22px;
+  padding: 32px;
+}
+
+.hs-logo{
+  font-family: 'Cinzel', serif;
+  font-weight: 700;
+  font-size: clamp(40px, 8vw, 92px);
+  line-height: .95;
+  letter-spacing: .04em;
+  margin: 0;
+  color: var(--hs-bone);
+  text-shadow: 0 0 40px rgba(196,18,48,.35);
+}
+
+.hs-video-frame{
+  width: min(680px, 86vw);
+  border: 1px solid rgba(196,18,48,.4);
+  box-shadow: 0 0 60px rgba(110,15,26,.35);
+  background: #000;
+  margin-top: 6px;
+}
+
+.hs-video{
+  display: block;
+  width: 100%;
+  aspect-ratio: 16/9;
+}
+
+.hs-btn-info{
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: .22em;
+  color: var(--hs-bone);
+  background: transparent;
+  border: 1px solid var(--hs-blood);
+  padding: 16px 40px;
+  cursor: pointer;
+  transition: background .35s var(--hs-ease), color .35s var(--hs-ease), transform .2s var(--hs-ease);
+}
+
+.hs-btn-info:hover{
+  background: var(--hs-blood);
+  transform: translateY(-2px);
+}
+
+.hs-hero.is-hidden{
+  opacity: 0;
+  filter: blur(6px);
+  transform: scale(1.03);
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+}
+
+/* ---------- VISTA 2: MENU ---------- */
+
+.hs-menu{
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 60px clamp(24px, 8vw, 120px);
+  overflow-y: auto;
+  opacity: 0;
+  filter: blur(6px);
+  transform: translateY(16px);
+  pointer-events: none;
+  transition: opacity .5s var(--hs-ease) .1s, filter .5s var(--hs-ease) .1s, transform .5s var(--hs-ease) .1s;
+}
+
+.hs-menu.is-visible{
+  opacity: 1;
+  filter: blur(0);
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.hs-menu-vignette{
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, rgba(10,10,10,.25) 0%, rgba(10,10,10,.15) 35%, rgba(10,10,10,.55) 100%);
+}
+
+.hs-menu .hs-bg{
+  background-size: 100% auto;
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+
+.hs-menu-header{
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 40px;
+}
+
+.hs-menu-title{
+  font-family: 'Cinzel', serif;
+  font-weight: 500;
+  font-size: clamp(22px, 3vw, 30px);
+  margin: 0;
+  color: var(--hs-bone);
+}
+
+.hs-btn-replay{
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  align-self: flex-start;
+  margin-top: 6px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--hs-bone);
+  background: transparent;
+  border: 1px solid var(--hs-ash);
+  padding: 10px 18px;
+  cursor: pointer;
+  transition: border-color .25s var(--hs-ease), color .25s var(--hs-ease);
+}
+
+.hs-btn-replay svg{
+  width: 14px;
+  height: 14px;
+}
+
+.hs-btn-replay:hover{
+  border-color: var(--hs-blood);
+  color: var(--hs-glow);
+}
+
+.hs-links{
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  border-top: 1px solid var(--hs-ash);
+}
+
+.hs-link{
+  position: relative;
+  display: flex;
+  align-items: center;
+  height: clamp(64px, 9vw, 96px);
+  padding: 0 28px;
+  border-bottom: 1px solid var(--hs-ash);
+  text-decoration: none;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.hs-link::before{
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--hs-blood);
+  transform: translateY(101%);
+  transition: transform .4s var(--hs-ease);
+  z-index: -1;
+}
+
+.hs-link:hover::before{
+  transform: translateY(0);
+}
+
+.hs-link-face{
+  position: absolute;
+  left: 28px;
+  font-family: 'Cinzel', serif;
+  font-weight: 600;
+  font-size: clamp(22px, 4vw, 40px);
+  letter-spacing: .02em;
+  white-space: nowrap;
+  transition: transform .4s var(--hs-ease), opacity .4s var(--hs-ease);
+}
+
+.hs-link-title{
+  color: var(--hs-bone);
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.hs-link-sub{
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: .28em;
+  color: var(--hs-bone);
+  transform: translateY(120%);
+  opacity: 0;
+}
+
+.hs-link:hover .hs-link-title{
+  transform: translateY(-120%);
+  opacity: 0;
+}
+
+.hs-link:hover .hs-link-sub{
+  transform: translateY(0);
+  opacity: 1;
+}
+
+@media (max-width: 640px){
+  .hs-link-face{ left: 18px; }
+  .hs-link{ padding: 0 18px; }
+}
+
+@media (prefers-reduced-motion: reduce){
+  .hs-hero, .hs-menu, .hs-link::before, .hs-link-face, .hs-btn-info{
+    transition-duration: .01ms !important;
+  }
+}
+
+/* ======================================================
+   ONE-PAGE: nav lateral + secciones de contenido
+   ====================================================== */
+
+:root{
+  --hs-nav-w: 240px;
+}
+
+.hs-sticky-nav{
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  height: 100dvh;
+  width: var(--hs-nav-w);
+  z-index: 50;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 18px;
+  padding: 24px 28px;
+  background: var(--hs-black);
+  border-right: 1px solid var(--hs-ash);
+  transform: translateX(-100%);
+  transition: transform .4s var(--hs-ease);
+  pointer-events: none;
+}
+
+.hs-sticky-nav.is-visible{
+  transform: translateX(0);
+  pointer-events: auto;
+}
+
+.hs-sticky-link{
+  font-family: 'Cinzel', serif;
+  font-weight: 600;
+  font-size: 13px;
+  letter-spacing: .08em;
+  color: var(--hs-ash);
+  text-decoration: none;
+  text-transform: uppercase;
+  text-align: left;
+  cursor: pointer;
+  padding-left: 14px;
+  border-left: 1px solid transparent;
+  transition: color .25s var(--hs-ease), border-color .25s var(--hs-ease);
+}
+
+.hs-sticky-link--home{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  padding: 0 0 16px;
+  margin-bottom: 4px;
+  border-left: none;
+  border-bottom: 1px solid var(--hs-ash);
+}
+
+.hs-sticky-link--home svg{
+  width: 20px;
+  height: 20px;
+  color: var(--hs-ash);
+  transition: color .25s var(--hs-ease);
+}
+
+.hs-sticky-link--home:hover svg{
+  color: var(--hs-bone);
+}
+
+.hs-sticky-link.is-active{
+  color: var(--hs-bone);
+  border-color: var(--hs-blood);
+}
+
+.hs-sticky-link:hover{
+  color: var(--hs-bone);
+}
+
+.hs-section{
+  position: relative;
+  min-height: 100vh;
+  padding-top: 140px;
+  padding-bottom: 100px;
+  padding-right: clamp(24px, 8vw, 120px);
+  padding-left: calc(var(--hs-nav-w) + clamp(24px, 6vw, 100px));
+  border-top: 1px solid var(--hs-ash);
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+#lore{
+  background-image: linear-gradient(180deg, rgba(10,10,10,.88), rgba(10,10,10,.94)), url('../imgs/bg-bt.webp');
+}
+#evento{
+  background-image: linear-gradient(180deg, rgba(10,10,10,.88), rgba(10,10,10,.94)), url('../imgs/bg-mtb.webp');
+}
+#arma{
+  background-image: linear-gradient(180deg, rgba(10,10,10,.88), rgba(10,10,10,.94)), url('../imgs/bg-tb.webp');
+}
+#update{
+  background-image: linear-gradient(180deg, rgba(10,10,10,.88), rgba(10,10,10,.94)), url('../imgs/bg-u29.webp');
+}
+
+@media (max-width: 900px){
+  .hs-section{
+    padding-left: clamp(24px, 8vw, 120px);
+    /* fixed backgrounds pueden trabar/parpadear en tablets con scroll táctil, así que acá se cae a scroll normal */
+    background-attachment: scroll;
+  }
+}
+
+.hs-section-title{
+  font-family: 'Cinzel', serif;
+  font-weight: 700;
+  font-size: clamp(28px, 4vw, 44px);
+  margin: 0;
+  line-height: 1.05;
+  color: var(--hs-bone);
+  text-shadow: 0 0 30px rgba(196,18,48,.25);
+}
+
+.hs-section-body{
+  max-width: 680px;
+  font-size: 18px;
+  line-height: 1.65;
+  color: rgba(228,220,200,.92);
+}
+
+/* lore ahora tiene columna derecha (listados), ya no usa el ancho ampliado de "sección sin media" */
+
+.hs-section-body p{ margin: 0 0 20px; }
+
+#lore .hs-section-body p:last-child{
+  margin-bottom: 0;
+}
+.hs-section-body strong{ color: var(--hs-bone); font-weight: 600; }
+
+.hs-section-media{
+  display: grid;
+  grid-template-columns: 1.1fr .9fr;
+  gap: 48px;
+  align-items: center;
+}
+
+#arma .hs-section-media{
+  align-items: start;
+}
+
+.hs-media-frame{
+  position: relative;
+}
+
+.hs-media-frame img,
+.hs-media-frame video{
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--hs-blood);
+}
+
+.hs-btn-fullscreen{
+  position: absolute;
+  right: 12px;
+  bottom: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  background: rgba(10,10,10,.7);
+  border: 1px solid var(--hs-ash);
+  color: var(--hs-bone);
+  cursor: pointer;
+  backdrop-filter: blur(4px);
+  transition: border-color .25s var(--hs-ease), background .25s var(--hs-ease);
+}
+
+.hs-btn-fullscreen svg{
+  width: 18px;
+  height: 18px;
+}
+
+.hs-btn-fullscreen:hover{
+  border-color: var(--hs-blood);
+  background: rgba(10,10,10,.9);
+}
+
+/* ---------- Listados de #lore (Blood Testament / Capítulo 1 / Capítulos 2 y 3) ---------- */
+
+/* En #lore los listados van visualmente a la izquierda y el texto a la derecha,
+   pero se mantiene el orden del HTML (texto primero) para lectura/accesibilidad */
+#lore .hs-section-media{
+  grid-template-columns: 3fr 7fr;
+  gap: 32px;
+  align-items: stretch;
+}
+
+#lore .hs-section-body{
+  box-sizing: border-box;
+  background: rgba(10,10,10,.4);
+  border: 1px solid rgba(58,53,48,.7);
+  padding: 32px 36px;
+  backdrop-filter: blur(3px);
+  order: 2;
+}
+#lore .hs-lore-lists{
+  order: 1;
+}
+
+.hs-lore-lists{
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.hs-lore-list-block{
+  border-left: 1px solid var(--hs-ash);
+  padding-left: 18px;
+}
+
+.hs-lore-list-title{
+  font-family: 'Cinzel', serif;
+  font-weight: 600;
+  font-size: 17px;
+  margin: 0 0 8px;
+  color: var(--hs-bone);
+}
+
+.hs-lore-list-block ul{
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.hs-lore-list-block li{
+  position: relative;
+  padding-left: 16px;
+  font-size: 13px;
+  line-height: 1.35;
+  color: rgba(228,220,200,.85);
+}
+
+.hs-lore-list-block li::before{
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 6px;
+  width: 5px;
+  height: 5px;
+  background: var(--hs-glow);
+}
+
+@media (max-width: 800px){
+  .hs-section-media{ grid-template-columns: 1fr; }
+}
+
+/* ======================================================
+   GATE MOBILE (celulares, cualquier orientación)
+   ====================================================== */
+
+.hs-mobile-gate{ display:none; }
+
+html.hs-is-phone .hs-mobile-gate{
+  display:flex;
+  position:fixed;
+  inset:0;
+  z-index:999;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  gap:20px;
+  padding:40px;
+  text-align:center;
+  background:var(--hs-black);
+  color:var(--hs-bone);
+}
+
+html.hs-is-phone .hs-page,
+html.hs-is-phone .hs-sticky-nav,
+html.hs-is-phone .hs-section{
+  display:none;
+}
+
+.hs-mobile-gate svg{
+  width:56px; height:56px;
+  color:var(--hs-glow);
+  animation: hsRotateHint 2s ease-in-out infinite;
+}
+@keyframes hsRotateHint{
+  0%,100%{ transform: rotate(0deg); }
+  50%{ transform: rotate(90deg); }
+}
+.hs-mobile-gate-title{
+  font-family:'Cinzel',serif;
+  font-weight:700;
+  font-size:22px;
+  margin:0;
+}
+.hs-mobile-gate-text{
+  font-family:'JetBrains Mono',monospace;
+  font-size:13px;
+  letter-spacing:.04em;
+  color:rgba(228,220,200,.75);
+  max-width:320px;
+  margin:0;
+}
+
+/* ---------- Tríptico de clips (evento comunitario) ---------- */
+
+/* Grid con 2 filas explícitas: fila de texto (t1/t2/t3, alto variable
+   según cuánto texto tenga cada fase) y fila de video (m1/m2/m3). Al ser
+   filas de grid, las 3 celdas de la fila "video" arrancan todas en la
+   misma línea, sin importar que los textos de arriba tengan distinto
+   largo — eso es lo que evita que los clips queden desalineados. */
+.hs-triptych{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-areas:
+    "t1 t2 t3"
+    "m1 m2 m3";
+  column-gap: 32px;
+  row-gap: 18px;
+  margin-top: 8px;
+  align-items: start;
+}
+
+/* Asigna cada uno de los 6 hijos (3 textos seguidos de 3 videos, en ese
+   orden en el DOM — ver renderTriptico en el JS) a su celda del grid.
+   Todos son <div>, así que nth-of-type cuenta la posición real entre
+   TODOS los hijos: los de media son el 4to, 5to y 6to div, no el 1-2-3. */
+.hs-triptych > .hs-triptych-text:nth-of-type(1){ grid-area: t1; }
+.hs-triptych > .hs-triptych-text:nth-of-type(2){ grid-area: t2; }
+.hs-triptych > .hs-triptych-text:nth-of-type(3){ grid-area: t3; }
+.hs-triptych > .hs-triptych-media:nth-of-type(4){ grid-area: m1; }
+.hs-triptych > .hs-triptych-media:nth-of-type(5){ grid-area: m2; }
+.hs-triptych > .hs-triptych-media:nth-of-type(6){ grid-area: m3; }
+
+.hs-triptych-text{
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.hs-triptych-title{
+  font-family: 'Cinzel', serif;
+  font-weight: 600;
+  font-size: 18px;
+  margin: 0;
+  color: var(--hs-bone);
+}
+
+.hs-triptych-sub{
+  display: block;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--hs-glow);
+}
+
+.hs-triptych-list{
+  list-style: none;
+  margin: 12px 0 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-size: 13px;
+  line-height: 1.45;
+  color: rgba(228,220,200,.85);
+}
+
+.hs-triptych-list strong{
+  display: block;
+  color: var(--hs-bone);
+  font-weight: 600;
+}
+
+@media (max-width: 900px){
+  .hs-triptych{
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "t1" "m1"
+      "t2" "m2"
+      "t3" "m3";
+    row-gap: 14px;
+  }
+}
+
+/* ---------- Dúo de columnas (The Burgess) ----------
+   Mismo criterio que .hs-triptych pero con 2 columnas: fila de texto
+   arriba (alto variable), fila de media abajo (video o imagen), siempre
+   alineadas entre sí. */
+.hs-duo{
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-areas:
+    "t1 t2"
+    "m1 m2";
+  column-gap: 48px;
+  row-gap: 18px;
+  margin-top: 48px;
+}
+
+.hs-duo > .hs-duo-text:nth-of-type(1){ grid-area: t1; }
+.hs-duo > .hs-duo-text:nth-of-type(2){ grid-area: t2; }
+.hs-duo > .hs-duo-media:nth-of-type(3){ grid-area: m1; }
+.hs-duo > .hs-duo-media:nth-of-type(4){ grid-area: m2; }
+
+.hs-duo-eyebrow{
+  display: block;
+  margin-bottom: 6px;
+}
+
+.hs-duo-text p{
+  margin: 0 0 14px;
+  font-size: 15px;
+  line-height: 1.6;
+  color: rgba(228,220,200,.9);
+}
+.hs-duo-text p:last-child{ margin-bottom: 0; }
+
+.hs-duo-list{
+  list-style: none;
+  margin: 10px 0 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.hs-duo-list li{
+  position: relative;
+  padding-left: 16px;
+  font-size: 15px;
+  line-height: 1.5;
+  color: rgba(228,220,200,.9);
+}
+
+.hs-duo-list li::before{
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 8px;
+  width: 5px;
+  height: 5px;
+  background: var(--hs-glow);
+}
+
+.hs-duo-media img{
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+@media (max-width: 900px){
+  .hs-duo{
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "t1" "m1"
+      "t2" "m2";
+    row-gap: 14px;
+  }
+}
+
+/* ---------- Placeholder "sin señal" (fase sin clip todavía) ----------
+   Reemplaza el video cuando la fase no trae "clip" en el JSON. Simula
+   estática de TV: ruido granulado en escala de grises (SVG feTurbulence
+   como fondo, sin archivos de imagen), líneas de escaneo y un jitter
+   sutil de posición. El día que haya clip real, alcanza con agregar
+   "clip" en el JSON — esto desaparece solo. */
+
+.hs-tv-static{
+  position: relative;
+  aspect-ratio: 16 / 9;
+  width: 100%;
+  overflow: hidden;
+  background: #0d0d0d;
+  border: 1px solid var(--hs-blood);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hs-tv-static::before{
+  content: "";
+  position: absolute;
+  inset: -25%;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='120' height='120'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix type='matrix' values='0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 .55 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+  background-size: 160px 160px;
+  filter: grayscale(1) contrast(1.4);
+  opacity: .55;
+  animation: hsTvJitter .25s steps(2) infinite;
+}
+
+.hs-tv-static::after{
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(180deg, rgba(255,255,255,.06) 0 1px, transparent 1px 3px);
+  mix-blend-mode: overlay;
+  pointer-events: none;
+}
+
+@keyframes hsTvJitter{
+  0%{ transform: translate(0,0); }
+  25%{ transform: translate(-3%,-2%); }
+  50%{ transform: translate(2%,3%); }
+  75%{ transform: translate(-2%,1%); }
+  100%{ transform: translate(3%,-3%); }
+}
+
+.hs-tv-static-label{
+  position: relative;
+  z-index: 1;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: .24em;
+  text-transform: uppercase;
+  color: rgba(228,220,200,.85);
+  background: rgba(10,10,10,.55);
+  border: 1px solid rgba(228,220,200,.25);
+  padding: 8px 16px;
+}
+
+@media (prefers-reduced-motion: reduce){
+  .hs-tv-static::before{ animation-duration: .01ms !important; }
+}

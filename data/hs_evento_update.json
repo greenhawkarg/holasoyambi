@@ -1,0 +1,11 @@
+{
+  "eyebrow": "Cambios",
+  "titulo": "Update 2.9",
+  "bg": "imgs/bg-u29.webp",
+
+  "parrafos": [
+    "Se reduce el alcance y munición de reserva del Hunting Bow, y Terminus recibe más daño y una dispersión más cerrada. Se ajustan precios de Slugs, Tools y Consumables, y se agrega la nueva munición LeMat High Velocity Ammo.",
+    "Ahora los Traits pueden guardarse como parte de los Loadouts (hasta 15 por build), y el máximo de espacios para Hunters sube de 75 a 100.",
+    "Todos los Extraction Points, Supply Points y Scout Towers estarán ocultos por defecto — interactuar con un Clue revelará dos Extraction Points."
+  ]
+}

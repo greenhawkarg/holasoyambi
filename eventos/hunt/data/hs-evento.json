@@ -1,0 +1,86 @@
+{
+  "eyebrow": "HUNT: SHOWDOWN 1896 — UPDATE 2.9",
+  "logo_linea1": "BLOOD",
+  "logo_linea2": "TESTAMENT",
+
+  "bg": "imgs/bg-web.webp",
+  "video": "imgs/trailer.mp4",
+  "poster": "imgs/thumb.jpg",
+
+  "colores": {
+    "blood": "#6E0F1A",
+    "glow": "#C41230"
+  },
+
+  "menu_titulo": "Explorá el evento",
+
+  "secciones": {
+    "lore": { "bg": "imgs/bg-bt.webp" },
+    "evento": {
+      "bg": "imgs/bg-mtb.webp",
+      "fases": [
+        {
+          "titulo": "Luna de Sangre",
+          "sub": "Cambios dinámicos",
+          "items": [
+            { "label": "Luna de Sangre intensa →", "text": "Una luz carmesí atraviesa las nubes, brillo rojo más fuerte, monstruos más agresivos y rápidos." },
+            { "label": "Luna de Sangre oscura →", "text": "Nubes negras, visibilidad reducida, monstruos de vuelta a la normalidad." }
+          ],
+          "clip": "imgs/mtb-cliploop-01.mp4",
+          "poster": "imgs/PLACEHOLDER-luna.webp"
+        },
+        {
+          "titulo": "Chupacabra",
+          "sub": "Nuevo Rasgo ardiente",
+          "items": [
+            { "label": "", "text": "Interactúa con un caballo, vaca o jaula de animales vivos para restaurar una barra de salud. Al ser un Rasgo ardiente, se consume al usarlo." }
+          ],
+          "clip": "imgs/mtb-cliploop-02.mp4",
+          "poster": "imgs/PLACEHOLDER-chupacabra.webp"
+        },
+        {
+          "titulo": "La verdadera pesadilla",
+          "sub": "Sin datos",
+          "items": [
+            { "label": "", "text": "Queda a la expectativa de la comunidad qué puede llegar a ser: un jefe, un evento oculto… pronto lo sabremos." }
+          ],
+          "clip": ""
+        }
+      ]
+    },
+    "arma": {
+      "bg": "imgs/bg-tb.webp",
+      "clip": "imgs/tb-cliploop-00.mp4",
+      "duo": [
+        {
+          "eyebrow": "Nueva escopeta",
+          "titulo": "The Burgess",
+          "lista": [
+            "Cuesta 300 Hunt Dollars",
+            "Ocupa 3 ranuras",
+            "Animaciones para equipar y guardar más lentas",
+            "Comportamiento similar a Slate"
+          ],
+          "clip": "imgs/tb-burguess.mp4"
+        },
+        {
+          "eyebrow": "The Burgess",
+          "titulo": "Estadísticas",
+          "parrafos": [
+            "Su rango de muerte asegurada ronda los 12 metros, ya después sería menos precisa.",
+            "Va a ser compatible con dos perks, Ojo de Hierro y también Recogebalas. En cuanto a munición compatible: Aliento de Dragón, Flechette, Moneda y Slug."
+          ],
+          "img": "imgs/tb-perks.webp"
+        }
+      ]
+    },
+    "update": { "bg": "imgs/bg-u29.webp" }
+  },
+
+  "links": [
+    { "titulo": "BLOOD TESTAMENT", "sub": "INFORMACIÓN", "target": "lore" },
+    { "titulo": "MAKE THEM BLEED", "sub": "EVENTO COMUNITARIO", "target": "evento" },
+    { "titulo": "THE BURGESS", "sub": "ARMAMENTO", "target": "arma" },
+    { "titulo": "UPDATE 2.9", "sub": "CAMBIOS", "target": "update" }
+  ]
+}
