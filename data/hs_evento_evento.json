@@ -1,0 +1,18 @@
+{
+  "eyebrow": "Evento comunitario",
+  "titulo": "Make Them Bleed",
+  "bg": "imgs/bg-mtb.webp",
+  "clip": "imgs/mtb-cliploop-00.mp4",
+
+  "parrafos": [
+    "Con la Actualización 2.9, Hunt: Showdown 1896 presenta un enorme evento comunitario en el que todos los jugadores participan obteniendo puntos al completar objetivos durante las Misiones.",
+    "Es la primera vez que un evento de Hunt permite visualizar su progreso en tiempo real: la comunidad podrá comprobar en todo momento cómo avanza esta progresión colectiva.",
+    "Los puntos se consiguen mediante sacrificios de sangre, matando monstruos y completando objetivos de misión."
+  ],
+
+  "fases": [
+    "Fase 1: <strong>Luna de Sangre</strong> — revelada",
+    "Fase 2: <strong>Chupacabra</strong> — revelada",
+    "Fase 3: «La verdadera pesadilla» — sin desvelar"
+  ]
+}

@@ -1,0 +1,47 @@
+{
+  "eyebrow": "Información",
+  "titulo": "Una nueva pesadilla se alza",
+  "bg": "imgs/bg-bt.webp",
+
+  "parrafos": [
+    "Los hombres desesperados son víctimas fáciles. La Corrupción puede arrebatárselo todo a un hombre, y <strong>Warren Russett</strong> lo sabe demasiado bien: lo perdió todo, hasta quedar sin salida aparente.",
+    "Fue entonces cuando apareció <strong>Lynch</strong>, con un suero sanguíneo recién formulado que prometía devolverle lo que había perdido. Russett aceptó.",
+    "Pero lo que comenzó como una segunda oportunidad se convirtió en algo mucho más oscuro: el suero despertó en él una dependencia cada vez más intensa, hasta transformarse en una sed insaciable de sangre. Cuando la necesidad se vuelve adicción, recuperar el control puede resultar imposible.",
+    "Esta es la historia de Blood Testament: desesperación, corrupción y una búsqueda por recuperar lo perdido. Pero detrás del suero y de Lynch todavía quedan preguntas por responder. ¿Qué ocurrió realmente con Warren Russett? Eso es lo que los cazadores tendrán que descubrir."
+  ],
+
+  "listas": [
+    {
+      "titulo": "Blood Testament",
+      "items": [
+        "Del 8 de septiembre al 8 de diciembre",
+        "Pase de batalla",
+        "Nueva condición climática dinámica",
+        "Nuevas armas",
+        "Nuevas herramientas",
+        "Eventos comunitarios",
+        "Más contenido que se irá desbloqueando"
+      ]
+    },
+    {
+      "titulo": "Capítulo 1",
+      "items": [
+        "Evento comunitario (3 hitos)",
+        "Nuevas mecánicas del evento",
+        "Nuevos Rasgos ardientes",
+        "Un nuevo arma",
+        "Nuevo Reto de Historia gratuito"
+      ]
+    },
+    {
+      "titulo": "Capítulos 2 y 3",
+      "items": [
+        "Un arma nueva más",
+        "Nueva Herramienta",
+        "Nuevas Cartas de Tarot",
+        "Más eventos comunitarios",
+        "Y otros cambios sin detallar"
+      ]
+    }
+  ]
+}

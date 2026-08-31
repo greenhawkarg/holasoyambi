@@ -1,0 +1,23 @@
+{
+  "eyebrow": "HUNT: SHOWDOWN 1896 — UPDATE 2.9",
+  "logo_linea1": "BLOOD",
+  "logo_linea2": "TESTAMENT",
+
+  "bg": "imgs/bg-web.webp",
+  "video": "imgs/trailer.mp4",
+  "poster": "imgs/thumb.jpg",
+
+  "colores": {
+    "blood": "#6E0F1A",
+    "glow": "#C41230"
+  },
+
+  "menu_titulo": "Explorá el evento",
+
+  "links": [
+    { "titulo": "BLOOD TESTAMENT", "sub": "INFORMACIÓN", "target": "lore" },
+    { "titulo": "MAKE THEM BLEED", "sub": "EVENTO COMUNITARIO", "target": "evento" },
+    { "titulo": "THE BURGESS", "sub": "ARMAMENTO", "target": "arma" },
+    { "titulo": "UPDATE 2.9", "sub": "CAMBIOS", "target": "update" }
+  ]
+}
