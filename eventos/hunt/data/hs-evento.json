@@ -4,8 +4,6 @@
   "logo_linea2": "TESTAMENT",
 
   "bg": "imgs/bg-web.webp",
-  "video": "imgs/trailer.mp4",
-  "poster": "imgs/thumb.jpg",
 
   "colores": {
     "blood": "#6E0F1A",
@@ -18,6 +16,8 @@
     "lore": { "bg": "imgs/bg-bt.webp" },
     "evento": {
       "bg": "imgs/bg-mtb.webp",
+      "clip": "https://pub-574d405c5c174caea9bfc999ae7cddf2.r2.dev/video/mtb-cliploop-00.mp4",
+      "poster": "imgs/PLACEHOLDER-evento.webp",
       "fases": [
         {
           "titulo": "Luna de Sangre",
@@ -26,7 +26,7 @@
             { "label": "Luna de Sangre intensa →", "text": "Una luz carmesí atraviesa las nubes, brillo rojo más fuerte, monstruos más agresivos y rápidos." },
             { "label": "Luna de Sangre oscura →", "text": "Nubes negras, visibilidad reducida, monstruos de vuelta a la normalidad." }
           ],
-          "clip": "imgs/mtb-cliploop-01.mp4",
+          "clip": "https://pub-574d405c5c174caea9bfc999ae7cddf2.r2.dev/video/mtb-cliploop-01.mp4",
           "poster": "imgs/PLACEHOLDER-luna.webp"
         },
         {
@@ -35,7 +35,7 @@
           "items": [
             { "label": "", "text": "Interactúa con un caballo, vaca o jaula de animales vivos para restaurar una barra de salud. Al ser un Rasgo ardiente, se consume al usarlo." }
           ],
-          "clip": "imgs/mtb-cliploop-02.mp4",
+          "clip": "https://pub-574d405c5c174caea9bfc999ae7cddf2.r2.dev/video/mtb-cliploop-02.mp4",
           "poster": "imgs/PLACEHOLDER-chupacabra.webp"
         },
         {
@@ -50,7 +50,8 @@
     },
     "arma": {
       "bg": "imgs/bg-tb.webp",
-      "clip": "imgs/tb-cliploop-00.mp4",
+      "clip": "https://pub-574d405c5c174caea9bfc999ae7cddf2.r2.dev/video/tb-cliploop-00.mp4",
+      "poster": "imgs/tb-imgA.webp",
       "duo": [
         {
           "eyebrow": "Nueva escopeta",
@@ -61,7 +62,7 @@
             "Animaciones para equipar y guardar más lentas",
             "Comportamiento similar a Slate"
           ],
-          "clip": "imgs/tb-burguess.mp4"
+          "clip": "https://pub-574d405c5c174caea9bfc999ae7cddf2.r2.dev/video/tb-burguess.mp4"
         },
         {
           "eyebrow": "The Burgess",

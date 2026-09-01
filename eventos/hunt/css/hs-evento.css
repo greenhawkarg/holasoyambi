@@ -121,6 +121,7 @@ html, body{
   display: block;
   width: 100%;
   aspect-ratio: 16/9;
+  border: 0;
 }
 
 .hs-btn-info{

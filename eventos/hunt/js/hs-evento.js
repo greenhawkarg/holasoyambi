@@ -3,26 +3,28 @@ document.addEventListener('DOMContentLoaded', () => {
   const btnReplay = document.getElementById('hsBtnReplay');
   const hero = document.getElementById('hsHero');
   const menu = document.getElementById('hsMenu');
-  const video = document.querySelector('.hs-video');
+  const video = document.getElementById('hsHeroVideo'); // iframe de YouTube (antes era <video>)
+  const heroVideoSrc = video ? video.src : '';
 
   // --- Transición Vista 1 (tráiler) -> Vista 2 (menú) ---
+  // Un iframe no tiene .pause(): se corta reiniciando el src a vacío,
+  // así se detiene cualquier audio/reproducción en curso al ocultar el hero.
   if (btnInfo && hero && menu) {
     btnInfo.addEventListener('click', () => {
-      if (video) video.pause();
+      if (video) video.src = '';
       hero.classList.add('is-hidden');
       menu.classList.add('is-visible');
     });
   }
 
   // --- Volver a ver el tráiler desde el menú (Vista 2 -> Vista 1) ---
+  // Restaura el src original: el trailer vuelve a mostrar la miniatura
+  // de YouTube lista para reproducirse desde el principio.
   if (btnReplay && hero && menu) {
     btnReplay.addEventListener('click', () => {
       menu.classList.remove('is-visible');
       hero.classList.remove('is-hidden');
-      if (video) {
-        video.currentTime = 0;
-        video.play().catch(() => {});
-      }
+      if (video) video.src = heroVideoSrc;
     });
   }
 
@@ -182,13 +184,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const bgEl = document.querySelector('.hs-bg');
     if (bgEl && data.bg) bgEl.style.backgroundImage = `url('${data.bg}')`;
 
-    // Video + poster
-    if (video && data.video) {
-      const source = video.querySelector('source');
-      if (source) source.src = data.video;
-      if (data.poster) video.poster = data.poster;
-      video.load();
-    }
+    // Nota: el trailer del hero ahora es un iframe de YouTube fijo en el
+    // HTML (ver #hsHeroVideo) — ya no se sobreescribe "video"/"poster"
+    // desde el JSON como antes con el <video> local.
 
     // Eyebrow + logo (hero)
     const heroEyebrow = hero ? hero.querySelector('.hs-eyebrow') : null;
@@ -239,6 +237,10 @@ document.addEventListener('DOMContentLoaded', () => {
             source.src = cfg.clip;
             videoEl.load();
           }
+          // Poster (miniatura mientras carga el clip): igual que el clip,
+          // se pisa desde el JSON si viene definido; si no, queda el que
+          // ya trae el HTML como fallback fijo.
+          if (cfg.poster && videoEl) videoEl.poster = cfg.poster;
         }
       });
 
