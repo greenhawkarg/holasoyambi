@@ -176,6 +176,19 @@
         "video": "mNP3ztvNBFI"
     },
     {
+        "juego": "Mr Toilet",
+        "dia": "SÁBADO",
+        "fecha": "12 DE SEPTIEMBRE",
+        "hora": "3:00 PM",
+        "fecha_limite_calculada": "",
+        "tipo": "normal",
+        "tipo_stream": "CAMPAÑA",
+        "imagen": "imgs/index/agenda/1788530959050-Mr_Toilet.jpg",
+        "bg_imagen": "",
+        "border_color": "#9146ff",
+        "video": "UYqXwcSyAP8"
+    },
+    {
         "juego": "Lifted",
         "dia": "DOMINGO",
         "fecha": "13 DE SEPTIEMBRE",
