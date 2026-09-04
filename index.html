@@ -432,7 +432,7 @@
         <div class="lightbox-agenda-inner">
             <div class="lightbox-agenda-list" id="lightbox-agenda-list"></div>
         </div>
-    </div>
+    </div>    
     
     <!-- ══════════════════════════════════════════════
     LIGHTBOX — VIDEO TRAILER
@@ -440,6 +440,23 @@
     <div id="lightbox-video" class="lightbox-video">
         <button class="lightbox-video-close">×</button>
         <div class="lightbox-video-wrapper" id="lightbox-video-wrapper"></div>
+    </div>
+
+    <!-- ══════════════════════════════════════════════
+    LIGHTBOX — DESAFÍO (info del Twitch Drop del evento)
+    Solo se abre si la card tiene botón DESAFÍO (evento
+    con campo "desafio" en agenda_config.json)
+    ══════════════════════════════════════════════ -->
+    <div id="lightbox-desafio" class="lightbox-desafio">
+        <button class="lightbox-desafio-close">×</button>
+        <div class="lightbox-desafio-card">
+            <div class="lightbox-desafio-header">
+                <h3 id="ld-titulo"></h3>
+                <p id="ld-descripcion"></p>
+                <h4 id="ld-titulo-es" class="lightbox-desafio-es"></h4>
+                <p id="ld-descripcion-es" class="lightbox-desafio-es"></p>
+            </div>
+        </div>
     </div>
 
     <!-- ══════════════════════════════════════════════

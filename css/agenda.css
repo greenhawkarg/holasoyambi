@@ -353,7 +353,7 @@
     background: #000;
 }
 
-.agenda-grid-imgwrap img {
+.agenda-grid-imgwrap > img {
     width: 100%;
     height: 100%;
     object-fit: cover;
@@ -364,6 +364,7 @@
     position: absolute;
     top: 10px;
     left: 10px;
+    z-index: 3; /* por encima del contenido del desafío (z-index:2) cuando está activo */
     background: rgba(0, 0, 0, 0.75);
     backdrop-filter: blur(4px);
     -webkit-backdrop-filter: blur(4px);
@@ -550,4 +551,269 @@
     background: rgba(255, 255, 255, 0.20);
     animation: none;
     height: 4px;
+}
+
+
+
+
+/* ══════════════════════════════════════════════════════════════════
+   AGENDA — BOTÓN DESAFÍO (condicional, solo si el evento tiene drop)
+══════════════════════════════════════════════════════════════════ */
+
+/* Fila que parte el espacio del botón TRAILER en dos, cuando el
+   evento tiene desafío. Reemplaza al .agenda-grid-btn de ancho
+   completo -- no cambia la altura de la card. */
+.agenda-grid-btns {
+    margin-top: 4px;
+    display: flex;
+    gap: 8px;
+}
+
+/* Dentro de la fila partida, TRAILER pierde su margin-top propio
+   (ya lo pone .agenda-grid-btns) y ocupa la mitad del ancho */
+.agenda-grid-btns .agenda-grid-btn--split {
+    margin-top: 0;
+    flex: 1;
+}
+
+.agenda-grid-btn-desafio {
+    flex: 1;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    background: rgba(145, 70, 255, 0.12);
+    border: none;
+    color: #e6d9ff;
+    font-family: var(--font-main);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 9px 10px;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: transform 0.2s;
+    animation: agendaDesafioPulso 2.6s ease-in-out infinite;
+}
+
+@keyframes agendaDesafioPulso {
+    0%, 100% {
+        background: rgba(145, 70, 255, 0.12);
+        color: #e6d9ff;
+    }
+    50% {
+        background: #9146ff;
+        color: #fff;
+    }
+}
+
+.agenda-grid-btn-desafio:hover {
+    background: #9146ff;
+    color: #fff;
+    transform: translateY(-2px);
+    animation-play-state: paused;
+}
+
+
+/* ══════════════════════════════════════════════════════════════════
+   AGENDA — SWAP DENTRO DEL IMGWRAP
+   Reemplaza al modal lightbox-desafio de acá abajo (que queda en el
+   archivo sin usarse por ahora, no se borró por las dudas).
+   La imagen y el bloque de texto del desafío quedan superpuestos,
+   ambos position:absolute dentro de .agenda-grid-imgwrap -- que ya
+   tiene aspect-ratio fijo + overflow:hidden, por eso el card nunca
+   cambia de alto sea cual sea el que esté visible.
+══════════════════════════════════════════════════════════════════ */
+
+/* La fecha se oculta en modo desafío -- es un swap completo, no
+   convive info de los dos estados. Vuelve a aparecer al tocar VOLVER. */
+.agenda-grid-card.mostrando-desafio .agenda-grid-date {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.agenda-grid-imgwrap > img,
+.agenda-grid-desafio-bg,
+.agenda-grid-desafio-content {
+    position: absolute;
+    inset: 0;
+    transition: opacity 0.25s ease;
+}
+
+.agenda-grid-imgwrap > img {
+    opacity: 1;
+}
+
+/* CAPA 1 (fondo): color sólido + marca de agua. Nada de texto acá --
+   así el logo nunca puede verse afectado por el layout del texto. */
+.agenda-grid-desafio-bg {
+    background: #15161a;
+    opacity: 0;
+    pointer-events: none;
+    z-index: 2;
+    overflow: hidden;
+}
+
+.agenda-grid-desafio-watermark {
+    position: absolute;
+    right: -16px;
+    bottom: -16px;
+    height: 140px;
+    width: auto;
+    opacity: 0.12;
+    filter: brightness(0) invert(1);
+}
+
+/* CAPA 2 (texto): completamente aparte de la capa de fondo, sin
+   fondo propio (se ve el de la capa 1 por transparencia). Solo
+   contiene título y descripción -- nunca la imagen. */
+.agenda-grid-desafio-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 6px;
+    padding: 16px;
+    opacity: 0;
+    pointer-events: none;
+    z-index: 3;
+    overflow: hidden;
+}
+
+/* Estado activo -- lo togglea lb-agenda.js con .mostrando-desafio
+   en la card. Se oculta la imagen, se muestran las dos capas nuevas. */
+.agenda-grid-card.mostrando-desafio .agenda-grid-imgwrap > img {
+    opacity: 0;
+}
+
+.agenda-grid-card.mostrando-desafio .agenda-grid-desafio-bg,
+.agenda-grid-card.mostrando-desafio .agenda-grid-desafio-content {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+/* Badge de dificultad -- pill chico arriba del título. Color fijo por
+   nivel (mismo color siempre para esa dificultad en todos los eventos,
+   no elegible desde el panel), paleta definida por Ambi. */
+.agenda-grid-desafio-badge {
+    align-self: flex-start;
+    font-family: var(--font-main);
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 0.5px;
+    color: #15161a;
+    padding: 3px 8px;
+    border-radius: 4px;
+    margin-bottom: 2px;
+}
+
+.agenda-grid-desafio-badge[data-dificultad="NOOB"]      { background: #63E06F; }
+.agenda-grid-desafio-badge[data-dificultad="EASY"]      { background: #4FA9FF; }
+.agenda-grid-desafio-badge[data-dificultad="MEDIUM"]    { background: #FFD447; }
+.agenda-grid-desafio-badge[data-dificultad="HARD"]      { background: #FF7A30; }
+.agenda-grid-desafio-badge[data-dificultad="LEGENDARY"] { background: #D92B45; color: #fff; }
+
+/* Solo se muestra la traducción en español -- el inglés queda
+   guardado en el JSON como referencia pero no se renderiza acá. */
+.agenda-grid-desafio-titulo {
+    font-family: var(--font-main);
+    font-size: 15px;
+    font-weight: 800;
+    color: #fff;
+    margin: 0;
+    line-height: 1.25;
+}
+
+.agenda-grid-desafio-desc {
+    font-family: var(--font-main);
+    font-size: 12px;
+    color: #aaa;
+    line-height: 1.5;
+    margin: 0;
+}
+
+
+/* ══════════════════════════════════════════════════════════════════
+   LIGHTBOX — DESAFÍO (modal con la info del Twitch Drop -- sin usar
+   desde que el desafío pasó a mostrarse dentro de la card)
+══════════════════════════════════════════════════════════════════ */
+
+.lightbox-desafio {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.85);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 9600; /* por encima de lightbox-agenda (9000) y lightbox-video (9500) */
+}
+
+.lightbox-desafio.active {
+    display: flex;
+}
+
+.lightbox-desafio-close {
+    position: fixed;
+    top: 24px;
+    right: 36px;
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 50px;
+    line-height: 1;
+    cursor: pointer;
+    z-index: 9601;
+    transition: color 0.2s;
+}
+
+.lightbox-desafio-close:hover {
+    color: var(--c-red);
+}
+
+.lightbox-desafio-card {
+    width: 90%;
+    max-width: 380px;
+    background: #15161a;
+    border: 1px solid #2a2b30;
+    border-radius: 10px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.lightbox-desafio-header h3 {
+    font-family: var(--font-main);
+    font-size: 17px;
+    font-weight: 800;
+    color: #fff;
+    margin: 0 0 4px;
+}
+
+.lightbox-desafio-header p {
+    font-family: var(--font-main);
+    font-size: 13px;
+    color: #aaa;
+    margin: 0;
+}
+
+/* Traducción en español: mismo bloque header, pero un toque más chica
+   y apagada que el original en inglés (h3/p de arriba), para que se
+   note que es la versión traducida sin competir visualmente. */
+.lightbox-desafio-header h4.lightbox-desafio-es {
+    font-family: var(--font-main);
+    font-size: 14px;
+    font-weight: 700;
+    color: #ccc;
+    margin: 10px 0 2px;
+}
+
+.lightbox-desafio-header p.lightbox-desafio-es {
+    font-family: var(--font-main);
+    font-size: 12px;
+    font-style: italic;
+    color: #888;
+    margin: 0;
+}
 }

@@ -1,18 +1,31 @@
 /* ══════════════════════════════════════════════════════════════════
-   AMBI — agenda.js (v3)
+   AMBI — agenda.js (v4)
    1. Lee data/agenda_destacado.json → pinta sección AGENDA del index
       (banner de "próximo evento destacado" debajo del HERO)
    2. Lee data/agenda_config.json    → renderiza lightbox de schedule
-      (sin cambios respecto a la versión anterior)
+      (ahora con botón DESAFÍO condicional -- ver v4 más abajo)
    Independiente: no sabe nada de bleeds ni de otras secciones.
 
-   CAMBIOS DE ESTA VUELTA:
+   CAMBIOS v3:
    - badge_color: si viene seteado desde el panel, se aplica como
      background-color del badge (#agenda-badge). Si viene vacío, NO se
      toca el style -> queda el color que ya define el CSS del sitio
      por default (no forzamos nada si el usuario no eligió uno).
    - btn_texto / btn_link: el botón "VER DROPS" ahora es editable desde
      el panel -- antes el texto y el href estaban fijos en el HTML.
+
+   CAMBIOS v4:
+   - Nuevo botón DESAFÍO en cada card del lightbox de agenda, pero
+     SOLO cuando el evento trae un objeto "desafio" en agenda_config.json.
+     Si el evento no tiene ese campo, la card queda exactamente igual
+     que antes (un solo botón TRAILER, ancho completo).
+   - Cuando hay desafío, la fila de botones se parte 50/50 (TRAILER +
+     DESAFÍO) en vez de agrandar la card -- el layout del grid no se
+     mueve.
+   - El objeto "desafio" completo se manda como JSON en un data-attribute
+     del botón (data-desafio), para que lb-agenda.js (script aparte, que
+     no comparte scope con este archivo) pueda leerlo y abrir su propio
+     modal sin tener que volver a pedir el JSON.
    ══════════════════════════════════════════════════════════════════ */
 
 (async function () {
@@ -105,7 +118,7 @@
     }
 
     /* ──────────────────────────────────────────
-       2. LIGHTBOX — SCHEDULE (sin cambios)
+       2. LIGHTBOX — SCHEDULE
     ────────────────────────────────────────── */
 
     const lightbox    = document.getElementById('lightbox-agenda');
@@ -141,6 +154,57 @@
                 const bgStyle       = (esBgExclusivo && item.bg_url)
                     ? ` style="--bg-url: url('${item.bg_url}')"` : '';
 
+                /* ── BOTÓN(ES) DE LA CARD ──
+                   Si el evento tiene un objeto "desafio" en el JSON, la fila
+                   de botones se parte en dos (TRAILER + DESAFÍO). Si no lo
+                   tiene, queda el botón TRAILER solo, ancho completo, igual
+                   que antes -- así los eventos sin drop/desafío no cambian
+                   en nada. */
+                const tieneDesafio = !!item.desafio;
+
+                /* Ya no se manda el desafío como JSON en un data-attribute:
+                   el contenido se renderiza directo dentro del imgwrap (ver
+                   más abajo) y lb-agenda.js solo togglea la visibilidad --
+                   no necesita volver a leer el objeto. */
+                const esPrensa = tieneDesafio && item.desafio.origen === 'prensa';
+                const desafioBtnLabel = esPrensa ? '📣 PRENSA' : '⚔️ DESAFÍO';
+
+                const botones = tieneDesafio
+                    ? `<div class="agenda-grid-btns">
+                           <a href="#" class="agenda-grid-btn agenda-grid-btn--split" data-video="${item.video}">▶ TRAILER</a>
+                           <a href="#" class="agenda-grid-btn-desafio" data-desafio-origen="${item.desafio.origen || 'dare_drop'}">${desafioBtnLabel}</a>
+                       </div>`
+                    : `<a href="#" class="agenda-grid-btn" data-video="${item.video}">▶ TRAILER</a>`;
+
+                /* Dos capas separadas -- la de fondo (color sólido +
+                   marca de agua) y la de texto (título/descripción) no
+                   comparten contenedor, así el logo nunca puede verse
+                   afectado por el layout flex del texto. Solo se
+                   renderiza la traducción en español (titulo_es/
+                   descripcion_es) -- el inglés original queda en el
+                   JSON como referencia, no se muestra en el sitio. */
+                const desafioLogo = item.desafio && item.desafio.origen === 'prensa'
+                    ? 'imgs/index/agenda/prensa.png'
+                    : 'imgs/index/agenda/daredrop_logo.webp';
+
+                const desafioBg = tieneDesafio
+                    ? `<div class="agenda-grid-desafio-bg">
+                           <img class="agenda-grid-desafio-watermark" src="${desafioLogo}" alt="">
+                       </div>`
+                    : '';
+
+                const desafioBadge = (tieneDesafio && item.desafio.dificultad)
+                    ? `<span class="agenda-grid-desafio-badge" data-dificultad="${item.desafio.dificultad}">${item.desafio.dificultad}</span>`
+                    : '';
+
+                const desafioContent = tieneDesafio
+                    ? `<div class="agenda-grid-desafio-content">
+                           ${desafioBadge}
+                           <h4 class="agenda-grid-desafio-titulo">${item.desafio.titulo_es || item.desafio.titulo || ''}</h4>
+                           <p class="agenda-grid-desafio-desc">${item.desafio.descripcion_es || item.desafio.descripcion || ''}</p>
+                       </div>`
+                    : '';
+
                 return `
                 <div class="agenda-grid-card ${bgClass}"${bgStyle}>
 
@@ -151,14 +215,16 @@
                     <div class="agenda-grid-imgwrap">
                         <img src="${item.imagen}" alt="${item.juego}">
                         <span class="agenda-grid-date">${item.fecha}</span>
+                        ${desafioBg}
+                        ${desafioContent}
                     </div>
 
-                    <!-- TÍTULO / DÍA-HORA / CATEGORÍAS / BOTÓN -->
+                    <!-- TÍTULO / DÍA-HORA / CATEGORÍAS / BOTÓN(ES) -->
                     <div class="agenda-grid-body">
                         <h3 class="agenda-grid-title">${item.juego}</h3>
                         <span class="agenda-grid-daytime">${item.dia} — ${item.hora}</span>
                         ${item.tipo_stream ? `<span class="agenda-grid-tags">${item.tipo_stream}</span>` : ''}
-                        <a href="#" class="agenda-grid-btn" data-video="${item.video}">▶ TRAILER</a>
+                        ${botones}
                     </div>
 
                 </div>`;

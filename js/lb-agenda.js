@@ -1,10 +1,11 @@
 /* ══════════════════════════════════════════════════════════════════
-   AMBI — lb-agenda.js
-   Maneja el lightbox de agenda y el lightbox de video (trailers).
+   AMBI — lb-agenda.js (v2)
+   Maneja el lightbox de agenda, el lightbox de video (trailers)
+   y el lightbox de desafío (info del drop de Twitch, nuevo en v2).
 ══════════════════════════════════════════════════════════════════ */
 
 document.addEventListener('DOMContentLoaded', () => {
-    
+
     /* ──────────────────────────────────────────
        ELEMENTOS
     ────────────────────────────────────────── */
@@ -127,6 +128,9 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    /* ──────────────────────────────────────────
+       TECLA ESC — cierra el modal que esté activo
+    ────────────────────────────────────────── */
     document.addEventListener('keydown', (e) => {
         if (e.key !== 'Escape') return;
         if (lbVideo.classList.contains('active')) {
@@ -137,15 +141,35 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     /* ──────────────────────────────────────────
-       DELEGACIÓN — BOTONES VER TRAILER
+       DELEGACIÓN — BOTONES VER TRAILER Y DESAFÍO
+       Un solo listener en la lista cubre ambos botones.
+       DESAFÍO ya no abre un modal aparte: togglea la clase
+       .mostrando-desafio en la card (crossfade definido en
+       agenda.css) y cambia el texto del botón.
     ────────────────────────────────────────── */
     const lista = document.getElementById('lightbox-agenda-list');
     if (lista) {
         lista.addEventListener('click', (e) => {
-            const btn = e.target.closest('[data-video]');
-            if (!btn) return;
-            e.preventDefault();
-            abrirVideo(btn.dataset.video);
+            // Botón DESAFÍO
+            const btnDesafio = e.target.closest('.agenda-grid-btn-desafio');
+            if (btnDesafio) {
+                e.preventDefault();
+                const card = btnDesafio.closest('.agenda-grid-card');
+                if (!card) return;
+
+                const mostrando = card.classList.toggle('mostrando-desafio');
+                const esPrensa = btnDesafio.dataset.desafioOrigen === 'prensa';
+                const labelOriginal = esPrensa ? '📣 PRENSA' : '⚔️ DESAFÍO';
+                btnDesafio.textContent = mostrando ? '↩ VOLVER' : labelOriginal;
+                return;
+            }
+
+            // Botón TRAILER
+            const btnVideo = e.target.closest('[data-video]');
+            if (btnVideo) {
+                e.preventDefault();
+                abrirVideo(btnVideo.dataset.video);
+            }
         });
     }
 
