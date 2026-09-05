@@ -2,19 +2,6 @@
     {
         "bg_imagen": "",
         "border_color": "#9146ff",
-        "dia": "VIERNES",
-        "fecha": "4 DE SEPTIEMBRE",
-        "fecha_limite_calculada": "",
-        "hora": "8:00 PM",
-        "imagen": "imgs/index/agenda/1788514655123-Project_P.I.T.T..jpg",
-        "juego": "Project P.I.T.T.",
-        "tipo": "normal",
-        "tipo_stream": "CAMPAÑA",
-        "video": "AQrS4qwaACA"
-    },
-    {
-        "bg_imagen": "",
-        "border_color": "#9146ff",
         "desafio": {
             "descripcion": "Get your first upgrade of any gear in shop",
             "descripcion_es": "Obtenga su primera actualización de cualquier equipo en la tienda",
